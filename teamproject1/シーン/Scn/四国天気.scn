@@ -1,0 +1,49 @@
+
+Frame "四国天気" {
+	Version 50463 
+	BGC 0 0 0 115  
+	fVideoAtr { Ortho3D }
+	fOADevice { "GRID-EX32HD" }
+	Layer "レイヤー1" {
+		Image "イメージ" {
+			877 483 166 114  CC 
+			Name "sikoku.png" 0 
+			ExpandForDevice 
+			Offset ( 0 ) ( 0 ) 
+			Resize byRate 4 
+		} 
+		Group {
+			PolyLine "直線" {
+				8 
+				Color { 255 255 255 255   AntiAlias 2 }
+				1333 172  1731 172  
+			} 
+			String {
+				1361 167 340  H CL 
+				Style "LSNマール体" 
+				Size 63 100 
+				Color { 255 255 255 255   AntiAlias 2 }
+				Effect {
+					Edge {
+						3 
+						Color { 0 0 0 255  }
+					}
+				}
+				Proportional 
+				"四国地方" 
+			} 
+		} 
+		Link "高松" {
+			"共通天気板" 72 102  T( "天気情報" ) R( 23281 ) 
+		} 
+		Link "徳島" {
+			"共通天気板" 80 446  T( "天気情報" ) R( 71106 ) 
+		} 
+		Link "高知" {
+			"共通天気板" -366 416  T( "天気情報" ) R( 74181 ) 
+		} 
+		Link "松山" {
+			"共通天気板" -378 78  T( "天気情報" ) R( 73166 ) 
+		} 
+	} 
+} 

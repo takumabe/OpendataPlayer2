@@ -1,0 +1,43 @@
+
+Frame "北海道天気" {
+	Version 50463 
+	BGC 0 0 0 115  
+	fVideoAtr { Ortho3D }
+	fOADevice { "GRID-EX32HD" }
+	Layer "レイヤー1" {
+		Image "イメージ" {
+			848 453 224 174  CC 
+			Name "hokkaidochihou.png" 0 
+			ExpandForDevice 
+			Offset ( 0 ) ( 0 ) 
+			Resize byRate 3 
+		} 
+		Group {
+			PolyLine "直線" {
+				8 
+				Color { 255 255 255 255   AntiAlias 2 }
+				1333 172  1731 172  
+			} 
+			String {
+				1361 167 340  H CL 
+				Style "LSNマール体" 
+				Size 63 100 
+				Color { 255 255 255 255   AntiAlias 2 }
+				Effect {
+					Edge {
+						3 
+						Color { 0 0 0 255  }
+					}
+				}
+				Proportional 
+				"北海道地方" 
+			} 
+		} 
+		Link "札幌" {
+			"共通天気板" -412 270  T( "天気情報" ) R( 14163 ) 
+		} 
+		Link "釧路" {
+			"共通天気板" 94 402  T( "天気情報" ) R( 19432 ) 
+		} 
+	} 
+} 

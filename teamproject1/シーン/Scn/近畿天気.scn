@@ -1,0 +1,58 @@
+
+Frame "近畿天気" {
+	Version 50463 
+	BGC 0 0 0 115  
+	fVideoAtr { Ortho3D }
+	fOADevice { "GRID-EX32HD" }
+	Layer "レイヤー1" {
+		Image "イメージ" {
+			868 413 184 254  CC 
+			Name "kinki.png" 0 
+			ExpandForDevice 
+			Offset ( 0 ) ( 0 ) 
+			Resize byRate 3 
+		} 
+		Group {
+			PolyLine "直線" {
+				8 
+				Color { 255 255 255 255   AntiAlias 2 }
+				1333 172  1731 172  
+			} 
+			String {
+				1361 167 340  H CL 
+				Style "LSNマール体" 
+				Size 63 100 
+				Color { 255 255 255 255   AntiAlias 2 }
+				Effect {
+					Edge {
+						3 
+						Color { 0 0 0 255  }
+					}
+				}
+				Proportional 
+				"近畿地方" 
+			} 
+		} 
+		Link "大津" {
+			"共通天気板" 166 40  T( "天気情報" ) R( 60216 ) 
+		} 
+		Link "津" {
+			"共通天気板" 180 440  T( "天気情報" ) R( 53133 ) 
+		} 
+		Link "奈良" {
+			"共通天気板" -48 254  T( "天気情報" ) R( 64036 ) 
+		} 
+		Link "京都" {
+			"共通天気板" -150 -40  T( "天気情報" ) R( 61286 ) 
+		} 
+		Link "神戸" {
+			"共通天気板" -446 74  T( "天気情報" ) R( 63518 ) 
+		} 
+		Link "大阪" {
+			"共通天気板" -348 316  T( "天気情報" ) R( 62078 ) 
+		} 
+		Link "和歌山" {
+			"共通天気板" -220 582  T( "天気情報" ) R( 65042 ) 
+		} 
+	} 
+} 

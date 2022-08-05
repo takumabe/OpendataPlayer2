@@ -1,0 +1,401 @@
+
+Frame "全国の天気情報" {
+	Version 50463 
+	BGC 0 0 0 115  
+	fVideoAtr { Ortho3D }
+	fOADevice { "GRID-EX32HD" }
+	Layer "レイヤー1" {
+		Image "イメージ" {
+			460 54 1000 849  CC 
+			Path "C:\\Users\\kimura\\Desktop\\チーム開発\\日本地図\\deforme" 
+			Name "nihonchizu-color-deformed.png" 0 
+			ExpandForDevice 
+			Offset ( 0 ) ( 0 ) 
+			Resize byRect uLocked 
+		} 
+		Group {
+			T( "天気情報" ) R( 14163 ) 
+			Ellipse "円" {
+				1246 176 30 30  
+				Color { 255 255 255 255   AntiAlias 2 }
+			}
+			PolyLine "直線" {
+				8 
+				Color { 255 255 255 255   AntiAlias 2 }
+				uPoints {
+					2 
+					1257 164 1557 164 
+				} 
+				Rotate ( -10 ) 
+				1257 164  1557 164  
+			} 
+			Group {
+				Board "板" {
+					1509 78 270 168  
+					Color { 255 255 255 255   AntiAlias 2 }
+					Effect {
+						ShadeDrop {
+							10 SE  ShadeRate 40 
+							Color { 0 0 0 255  }
+						}
+					}
+				}
+				Link "リンク" {
+					"共通天気全国板" 1210 -701  
+				} 
+			} 
+		} 
+		Group {
+			T( "天気情報" ) R( 34392 ) 
+			PolyLine "直線" {
+				8 
+				Color { 255 255 255 255   AntiAlias 2 }
+				uPoints {
+					2 
+					1335 405 1535 405 
+				} 
+				Rotate ( -10 ) 
+				1335 405  1535 405  
+			} 
+			Ellipse "円" {
+				1322 408 30 30  
+				Color { 255 255 255 255   AntiAlias 2 }
+			}
+			Group {
+				Board "板" {
+					1475 328 270 168  
+					Color { 255 255 255 255   AntiAlias 2 }
+					Effect {
+						ShadeDrop {
+							10 SE  ShadeRate 40 
+							Color { 0 0 0 255  }
+						}
+					}
+				}
+				Link "リンク" {
+					"共通天気全国板" 1176 -452  
+				} 
+			} 
+		} 
+		Group {
+			T( "天気情報" ) R( 54232 ) 
+			PolyLine "直線" {
+				8 
+				Color { 255 255 255 255   AntiAlias 2 }
+				uPoints {
+					2 
+					1027 386 1227 386 
+				} 
+				Rotate ( 50 ) 
+				1027 386  1227 386  
+			} 
+			Ellipse "円" {
+				1176 448 30 30  
+				Color { 255 255 255 255   AntiAlias 2 }
+			}
+			Group {
+				Board "板" {
+					919 194 270 168  
+					Color { 255 255 255 255   AntiAlias 2 }
+					Effect {
+						ShadeDrop {
+							10 NW  ShadeRate 40 
+							Color { 0 0 0 255  }
+						}
+					}
+				}
+				Link "リンク" {
+					"共通天気全国板" 620 -585  
+				} 
+			} 
+		} 
+		Group {
+			T( "天気情報" ) R( 57066 ) 
+			PolyLine "直線" {
+				8 
+				Color { 255 255 255 255   AntiAlias 2 }
+				uPoints {
+					2 
+					781 422 1081 422 
+				} 
+				Rotate ( 60 ) 
+				781 422  1081 422  
+			} 
+			Ellipse "円" {
+				992 536 30 30  
+				Color { 255 255 255 255   AntiAlias 2 }
+			}
+			Group {
+				Board "板" {
+					621 150 270 168  
+					Color { 255 255 255 255   AntiAlias 2 }
+					Effect {
+						ShadeDrop {
+							10 NW  ShadeRate 40 
+							Color { 0 0 0 255  }
+						}
+					}
+				}
+				Link "リンク" {
+					"共通天気全国板" 322 -631  
+				} 
+			} 
+		} 
+		Group {
+			T( "天気情報" ) R( 44132 ) 
+			PolyLine "直線" {
+				8 
+				Color { 255 255 255 255   AntiAlias 2 }
+				uPoints {
+					2 
+					1307 666 1507 666 
+				} 
+				Rotate ( 12 ) 
+				1307 666  1507 666  
+			} 
+			Ellipse "円" {
+				1294 632 30 30  
+				Color { 255 255 255 255   AntiAlias 2 }
+			}
+			Group {
+				Board "板" {
+					1459 598 270 168  
+					Color { 255 255 255 255   AntiAlias 2 }
+					Effect {
+						ShadeDrop {
+							10 SE  ShadeRate 40 
+							Color { 0 0 0 255  }
+						}
+					}
+				}
+				Link "リンク" {
+					"共通天気全国板" 1160 -181  
+				} 
+			} 
+		} 
+		Group {
+			T( "天気情報" ) R( 51106 ) 
+			PolyLine "直線" {
+				8 
+				Color { 255 255 255 255   AntiAlias 2 }
+				uPoints {
+					2 
+					1061 782 1361 782 
+				} 
+				Rotate ( 30 ) 
+				1061 782  1361 782  
+			} 
+			Ellipse "円" {
+				1068 694 30 30  
+				Color { 255 255 255 255   AntiAlias 2 }
+			}
+			Group {
+				Board "板" {
+					1241 786 270 168  
+					Color { 255 255 255 255   AntiAlias 2 }
+					Effect {
+						ShadeDrop {
+							10 SE  ShadeRate 40 
+							Color { 0 0 0 255  }
+						}
+					}
+				}
+				Link "リンク" {
+					"共通天気全国板" 942 6  
+				} 
+			} 
+		} 
+		Group {
+			T( "天気情報" ) R( 62078 ) 
+			PolyLine "直線" {
+				8 
+				Color { 255 255 255 255   AntiAlias 2 }
+				uPoints {
+					2 
+					811 810 1111 810 
+				} 
+				Rotate ( 80 ) 
+				811 810  1111 810  
+			} 
+			Ellipse "円" {
+				920 650 30 30  
+				Color { 255 255 255 255   AntiAlias 2 }
+			}
+			Group {
+				Board "板" {
+					944 820 270 168  
+					Color { 255 255 255 255   AntiAlias 2 }
+					Effect {
+						ShadeDrop {
+							13 S  ShadeRate 40 
+							Color { 0 0 0 255  }
+						}
+					}
+				}
+				Link "リンク" {
+					"共通天気全国板" 645 38  
+				} 
+			} 
+		} 
+		Group {
+			T( "天気情報" ) R( 74181 ) 
+			PolyLine "直線" {
+				8 
+				Color { 255 255 255 255   AntiAlias 2 }
+				uPoints {
+					2 
+					671 868 871 868 
+				} 
+				Rotate ( 85 ) 
+				671 868  871 868  
+			} 
+			Ellipse "円" {
+				748 750 30 30  
+				Color { 255 255 255 255   AntiAlias 2 }
+			}
+			Group {
+				Board "板" {
+					645 840 270 168  
+					Color { 255 255 255 255   AntiAlias 2 }
+					Effect {
+						ShadeDrop {
+							10 SW  ShadeRate 40 
+							Color { 0 0 0 255  }
+						}
+					}
+				}
+				Link "リンク" {
+					"共通天気全国板" 346 59  
+				} 
+			} 
+		} 
+		Group {
+			T( "天気情報" ) R( 67437 ) 
+			PolyLine "直線" {
+				8 
+				Color { 255 255 255 255   AntiAlias 2 }
+				uPoints {
+					2 
+					641 526 841 526 
+				} 
+				Rotate ( 65 ) 
+				641 526  841 526  
+			} 
+			Ellipse "円" {
+				768 602 30 30  
+				Color { 255 255 255 255   AntiAlias 2 }
+			}
+			Group {
+				Board "板" {
+					585 344 270 168  
+					Color { 255 255 255 255   AntiAlias 2 }
+					Effect {
+						ShadeDrop {
+							10 NW  ShadeRate 40 
+							Color { 0 0 0 255  }
+						}
+					}
+				}
+				Link "リンク" {
+					"共通天気全国板" 286 -436  
+				} 
+			} 
+		} 
+		Group {
+			T( "天気情報" ) R( 82182 ) 
+			PolyLine "直線" {
+				8 
+				Color { 255 255 255 255   AntiAlias 2 }
+				uPoints {
+					2 
+					435 478 635 478 
+				} 
+				Rotate ( 55 ) 
+				435 478  635 478  
+			} 
+			Ellipse "円" {
+				580 548 30 30  
+				Color { 255 255 255 255   AntiAlias 2 }
+			}
+			Group {
+				Board "板" {
+					275 326 270 168  
+					Color { 255 255 255 255   AntiAlias 2 }
+					Effect {
+						ShadeDrop {
+							10 NW  ShadeRate 40 
+							Color { 0 0 0 255  }
+						}
+					}
+				}
+				Link "リンク" {
+					"共通天気全国板" -24 -455  
+				} 
+			} 
+		} 
+		Group {
+			T( "天気情報" ) R( 86141 ) 
+			PolyLine "直線" {
+				8 
+				Color { 255 255 255 255   AntiAlias 2 }
+				uPoints {
+					2 
+					421 734 621 734 
+				} 
+				Rotate ( 12 ) 
+				421 734  621 734  
+			} 
+			Ellipse "円" {
+				606 740 30 30  
+				Color { 255 255 255 255   AntiAlias 2 }
+			}
+			Group {
+				Board "板" {
+					184 616 270 168  
+					Color { 255 255 255 255   AntiAlias 2 }
+					Effect {
+						ShadeDrop {
+							10 SW  ShadeRate 40 
+							Color { 0 0 0 255  }
+						}
+					}
+				}
+				Link "リンク" {
+					"共通天気全国板" -115 -166  
+				} 
+			} 
+		} 
+		Group {
+			T( "天気情報" ) R( 91197 ) 
+			PolyLine "直線" {
+				8 
+				Color { 255 255 255 255   AntiAlias 2 }
+				uPoints {
+					2 
+					403 877 603 877 
+				} 
+				Rotate ( -20 ) 
+				403 877  603 877  
+			} 
+			Ellipse "円" {
+				586 826 30 30  
+				Color { 255 255 255 255   AntiAlias 2 }
+			}
+			Group {
+				Board "板" {
+					243 836 270 168  
+					Color { 255 255 255 255   AntiAlias 2 }
+					Effect {
+						ShadeDrop {
+							10 SW  ShadeRate 40 
+							Color { 0 0 0 255  }
+						}
+					}
+				}
+				Link "リンク" {
+					"共通天気全国板" -56 57  
+				} 
+			} 
+		} 
+	} 
+} 

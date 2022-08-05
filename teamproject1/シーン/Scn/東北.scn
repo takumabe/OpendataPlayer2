@@ -1,0 +1,71 @@
+
+Frame "東北" {
+	Version 50463 
+	BGC 0 0 0 115  
+	fVideoAtr { Ortho3D }
+	fOADevice { "GRID-EX32HD" }
+	Layer "レイヤー1" {
+		Image "イメージ" {
+			869 414 182 252  CC 
+			Name "tohoku.png" 0 
+			ExpandForDevice 
+			Offset ( 0 ) ( 0 ) 
+			Resize byRate 3 
+		} 
+		StringBox {
+			205 104 354 124  H CL T 0 
+			Style "LSNマール体" 
+			Size 40 100 
+			Color { 255 255 255 255   AntiAlias 2 }
+			Effect {
+				Edge {
+					3 
+					Color { 0 0 0 255  }
+				}
+			}
+			Proportional 
+			"新型コロナウイルス\n" 
+			"新規陽性者数\n" 
+			"\(T( "コロナの情報" ) C( "日付" ) , Ss)" 
+		} 
+		Group {
+			PolyLine "直線" {
+				8 
+				Color { 255 255 255 255   AntiAlias 2 }
+				1333 172  1731 172  
+			} 
+			String {
+				1361 167 340  H CL 
+				Style "LSNマール体" 
+				Size 63 100 
+				Color { 255 255 255 255   AntiAlias 2 }
+				Effect {
+					Edge {
+						3 
+						Color { 0 0 0 255  }
+					}
+				}
+				Proportional 
+				"東北地方" 
+			} 
+		} 
+		Link "青森" {
+			"共通コロナ板" 302 -176  T( "都道府県情報" ) R( 3 ) 
+		} 
+		Link "岩手" {
+			"共通コロナ板" 634 84  T( "都道府県情報" ) R( 4 ) 
+		} 
+		Link "宮城" {
+			"共通コロナ板" 600 278  T( "都道府県情報" ) R( 5 ) 
+		} 
+		Link "福島" {
+			"共通コロナ板" 462 552  T( "都道府県情報" ) R( 8 ) 
+		} 
+		Link "山形" {
+			"共通コロナ板" -72 282  T( "都道府県情報" ) R( 7 ) 
+		} 
+		Link "秋田" {
+			"共通コロナ板" -48 90  T( "都道府県情報" ) R( 6 ) 
+		} 
+	} 
+} 

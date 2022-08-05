@@ -1,0 +1,520 @@
+
+Stencil {
+	Version 504 
+	Parts 
+	Color { 255 255 255 255  }
+	Group "マスク(保存)" {
+		Board "マスク" {
+			72 54 200 50  
+			Color { 0 0 0 0   AntiAlias 4  BlendMask }
+		}
+	}
+	Parts 
+	Color { 192 192 192 255  }
+	Group "青板縦グラデ" {
+		Board "青板縦グラデ" {
+			72 110 200 50  
+			Grad {
+				0 0 255 153  0 0 255 0  S  Trig 
+			} 
+		} 
+	} Parts 
+	Color { 255 255 255 255  }
+	Group "黒板縦グラデ" {
+		Board "黒板縦グラデ" {
+			72 170 200 50  
+			Grad {
+				0 0 0 153  0 0 0 0  S  Trig 
+			} 
+		} 
+	} Parts 
+	Color { 255 255 255 255  }
+	Group "緑板縦グラデ" {
+		Board "緑板縦グラデ" {
+			72 230 200 50  
+			Grad {
+				0 94 19 153  0 94 19 0  S  Trig 
+			} 
+		} 
+	} Parts 
+	Color { 32 32 32 255  }
+	Group "白板縦グラデ" {
+		Board "白板縦グラデ" {
+			72 300 200 50  
+			Grad {
+				227 227 230 153  227 225 230 0  S  Trig 
+			} 
+		} 
+	} Parts 
+	Color { 255 255 255 255  }
+	Group "青板横グラデ" {
+		Board "青板横グラデ" {
+			300 110 200 50  
+			Grad {
+				Colors 4 0 0 255 0  50 0 0 255 153  100 0 0 255 153  105 0 0 255 0  E  Trig 
+			} 
+		} 
+	} Parts 
+	Color { 255 255 255 255  }
+	Group "黒板横グラデ" {
+		Board "黒板横グラデ" {
+			300 170 200 50  
+			Grad {
+				Colors 4 0 0 0 0  50 0 0 0 153  100 0 0 0 153  105 0 0 0 0  E  Trig 
+			} 
+		} 
+	} Parts 
+	Color { 192 192 192 255  }
+	Group "緑板横グラデ" {
+		Board "緑板横グラデ" {
+			300 231 200 50  
+			Grad {
+				Colors 4 0 94 19 0  50 0 94 19 153  100 0 94 19 153  105 0 94 19 0  E  Trig 
+			} 
+		} 
+	} Parts 
+	Color { 64 64 64 255  }
+	Group "白板横グラデ" {
+		Board "白板横グラデ" {
+			300 300 200 50  
+			Grad {
+				Colors 4 227 227 230 0  50 227 227 230 153  100 227 227 230 153  105 227 227 230 0  E  Trig 
+			} 
+		} 
+	} Parts 
+	Group "正三角形大" {
+		Polygon "正三角形大" {
+			Color { 144 255 0 255  }
+			3 
+			144 72  196 158  97 158  
+		} 
+	} Parts 
+	Group "正六角形大" {
+		Polygon "正六角形大" {
+			Color { 144 255 0 255  }
+			6 
+			260 72  310 72  334 115  310 158  260 158  235 115  
+		} 
+	} Parts 
+	Group "直角三角形大" {
+		Polygon "直角三角形大" {
+			Color { 144 255 0 255  }
+			3 
+			455 109  455 158  356 158  
+		} 
+	} Parts 
+	Group "左上角" {
+		PolyLine "左上角" {
+			5 
+			Color { 255 255 126 255  }
+			102 122  102 71  153 71  
+		} 
+	} Parts 
+	Group "左下角" {
+		PolyLine "左下角" {
+			5 
+			Color { 255 255 126 255  }
+			102 130  102 180  153 180  
+		} 
+	} Parts 
+	Group "右上角" {
+		PolyLine "右上角" {
+			5 
+			Color { 255 255 126 255  }
+			214 122  214 71  163 71  
+		} 
+	} Parts 
+	Group "右下角" {
+		PolyLine "右下角" {
+			5 
+			Color { 255 255 126 255  }
+			163 180  214 180  214 130  
+		} 
+	} Parts 
+	Group "矢１" {
+		PolyLine "矢１" {
+			10 
+			Color { 0 255 0 255  }
+			LineEnd Round Arrow2 
+			Node Round 20 
+			Effect {
+				Depth {
+					6 SE  
+					Color { 0 127 0 255  }
+				}
+			}
+			99 241  99 288  101 298  111 308  
+			121 311  132 309  142 304  147 295  
+			169 255  
+		} 
+	} Parts 
+	Group "矢２" {
+		PolyLine "矢２" {
+			10 
+			Color { 0 255 0 255  }
+			LineEnd Round Arrow2 
+			Node Round 20 
+			Effect {
+				Depth {
+					6 SE  
+					Color { 0 127 0 255  }
+				}
+			}
+			223 317  223 246  294 246  
+		} 
+	} Parts 
+	Group "左上角ドロップ" {
+		PolyLine "左上角ドロップ" {
+			10 
+			Color { 255 255 126 255  }
+			Effect {
+				Drop {
+					6 SE  
+					Color { 127 127 63 255  }
+				}
+			}
+			352 129  352 76  405 76  
+		} 
+	} Parts 
+	Group "左下角ドロップ" {
+		PolyLine "左下角ドロップ" {
+			10 
+			Color { 255 255 126 255  }
+			Effect {
+				Drop {
+					6 NE  
+					Color { 127 127 63 255  }
+				}
+			}
+			352 149  352 199  403 199  
+		} 
+	} Parts 
+	Group "右上角ドロップ" {
+		PolyLine "右上角ドロップ" {
+			10 
+			Color { 255 255 126 255  }
+			Effect {
+				Drop {
+					6 SW  
+					Color { 127 127 63 255  }
+				}
+			}
+			484 128  484 75  431 75  
+		} 
+	} Parts 
+	Group "右下角ドロップ" {
+		PolyLine "右下角ドロップ" {
+			10 
+			Color { 255 255 126 255  }
+			Effect {
+				Drop {
+					6 NW  
+					Color { 127 127 63 255  }
+				}
+			}
+			435 199  486 199  486 149  
+		} 
+	} 
+	Group "板付き文字列１" {
+		Group "板付き文字列１" {
+			Board "ひぐま板" {
+				60 96 510 21  
+				Color { 255 0 0 255  }
+				Obliq H 45 
+				Effect {
+					Depth {
+						2 SE  
+						Color { 127 0 0 255  }
+					}
+				}
+			}
+			String "ひぐま文字列" {
+				93 109 442  H CL 
+				Style "Ｎ-太角ゴシック体" 
+				Size 50 100 
+				Effect {
+					Edge {
+						1 
+						Color { 0 0 0 255  }
+					}
+					Depth {
+						4 SE  
+						Color { 1 0 0 255  }
+					}
+				}
+				Proportional 
+				Obliq 30 
+				"ひぐまニュース★最新情報" 
+			} 
+		} 
+	} 
+	Group "板付き文字列２" {
+		Group "板付き文字列２" {
+			Board "レポート板１" {
+				63 175 510 10  
+				Color { 0 220 255 255  }
+				Obliq H 45 
+			} 
+			Board "レポート板２" {
+				69 162 510 10  
+				Color { 0 220 89 255  }
+				Obliq H 45 
+			} 
+			String "レポート文字列" {
+				94 192 436  H CL 
+				Style "マルＣユニバース" 
+				Size 80 100 
+				Color { 215 217 217 255  }
+				Effect {
+					Edge {
+						1 
+						Color { 0 0 0 255  }
+					}
+					Depth {
+						5 NE  
+						Color { 103 101 100 181  }
+					}
+				}
+				Proportional 
+				"Ｔｏｄａｙ’ｓ　Ｒｅｐｏｒｔ" 
+			} 
+		} 
+	} Parts 
+	Group "四角吹き出し" {
+		Group "四角吹き出し" {
+			Group "吹き出し四角" {
+				Effect {
+					Edge {
+						2 
+						Color { 0 0 220 255  }
+					}
+					Depth {
+						4 SE  
+						Color { 160 160 160 255  }
+					}
+				}
+				Polygon "ポリゴン" {
+					Color { 255 255 255 255  }
+					3 
+					176 291  110 370  123 290  
+				} 
+				Board "板" {
+					81 228 212 83  
+					Color { 255 255 255 255  }
+					RoundCorner 16 
+				} 
+			} 
+			String "吹き出し四角文字列" {
+				90 285 184  H HL 
+				Style "Ｎ-太角ゴシック体" 
+				Size 40 100 
+				Color { 0 157 202 255  }
+				Effect {
+					Depth {
+						4 SE  
+						Color { 44 43 108 255  }
+					}
+				}
+				Obliq 30 
+				"今週のイチオシ" 
+			} 
+		} 
+	} Parts 
+	Group "楕円吹き出し" {
+		Group "楕円吹き出し" {
+			Group "吹き出し楕円" {
+				Effect {
+					ShadeEdge {
+						6 ShadeRate 0 
+						Color { 255 0 0 255  }
+					}
+				}
+				Polygon "ポリゴン" {
+					Color { 230 232 234 255  }
+					3 
+					477 269  411 348  424 268  
+				} 
+				Ellipse "円" {
+					347 223 209 86  
+					Color { 230 232 234 255  }
+				}
+			}
+			String "吹き出し楕円文字列" {
+				375 277 161  H CL 
+				Style "Ｎ-太角ゴシック体" 
+				Size 32 100 
+				Color { 254 207 155 255  }
+				Effect {
+					Edge {
+						1 
+						Color { 252 252 0 255  }
+					}
+					Depth {
+						3 SE  
+						Color { 127 108 77 255  }
+					}
+				}
+				Obliq 30 
+				"ヒント！" 
+			} 
+		} 
+	} Parts 
+	Group "引き出し線" {
+		Group "引き出し線" {
+			PolyLine "引き出し線" {
+				6 
+				Color { 255 98 0 255  }
+				LineEnd Arrow2 Cut 
+				Effect {
+					Depth {
+						4 NE  
+						Color { 245 180 0 255  }
+					}
+				}
+				112 440  142 382  288 382  
+			} 
+			String "引き出し線文字列" {
+				142 375 149  H HL 
+				Style "Ｎ-太角ゴシック体" 
+				Size 24 100 
+				Effect {
+					Edge {
+						1 
+						Color { 169 60 0 255  }
+					}
+				}
+				Proportional 
+				Obliq 30 
+				"色使いがポイント" 
+			} 
+		} 
+	} 
+	Group "横書き表" {
+		Table "横書き表" {
+			0 0  0 43  5 
+			Group "１行" {
+				Board "板" {
+					100 74 477 18  
+					Color { 91 94 254 153  }
+				}
+				String "1列目" {
+					105 85 144  H HL 
+					Style "Ｎ-太角ゴシック体" 
+					Size 26 100 
+					Effect {
+						Edge {
+							1 
+							Color { 0 0 0 255  }
+						}
+						Depth {
+							2 SE  
+							Color { 0 0 0 255  }
+						}
+					}
+					"\(C( 0 ) , Ss)" 
+				} 
+				String "2列目" {
+					265 85 144  H CL 
+					Style "Ｎ-太角ゴシック体" 
+					Size 26 100 
+					Effect {
+						Edge {
+							1 
+							Color { 0 0 0 255  }
+						}
+						Depth {
+							2 SE  
+							Color { 0 0 0 255  }
+						}
+					}
+					"\(C( 1 ) , Ss)" 
+				} 
+				String "3列目" {
+					425 85 144  H TL 
+					Style "Ｎ-太角ゴシック体" 
+					Size 26 100 
+					Effect {
+						Edge {
+							1 
+							Color { 0 0 0 255  }
+						}
+						Depth {
+							2 SE  
+							Color { 0 0 0 255  }
+						}
+					}
+					"\(C( 2 ) , Ss)" 
+				} 
+			} 
+		} 
+	} 
+	Group "縦書き表" {
+		Table "縦書き表" {
+			0 0  -55 0  8 
+			Group "１行" {
+				Board "板" {
+					496 60 40 362  
+					Color { 91 94 254 153  }
+				}
+				String "1列目" {
+					516 64 110  V HL 
+					Style "Ｎ-太角ゴシック体" 
+					Size 26 100 
+					Effect {
+						Edge {
+							1 
+							Color { 0 0 0 255  }
+						}
+						Depth {
+							2 SE  
+							Color { 0 0 0 255  }
+						}
+					}
+					"\(C( 0 ) , Ss)" 
+				} 
+				String "2列目" {
+					516 183 110  V HL 
+					Style "Ｎ-太角ゴシック体" 
+					Size 26 100 
+					Effect {
+						Edge {
+							1 
+							Color { 0 0 0 255  }
+						}
+						Depth {
+							2 SE  
+							Color { 0 0 0 255  }
+						}
+					}
+					"\(C( 1 ) , Ss)" 
+				} 
+				String "3列目" {
+					516 303 110  V TL 
+					Style "Ｎ-太角ゴシック体" 
+					Size 26 100 
+					Effect {
+						Edge {
+							1 
+							Color { 0 0 0 255  }
+						}
+						Depth {
+							2 SE  
+							Color { 0 0 0 255  }
+						}
+					}
+					"\(C( 2 ) , Ss)" 
+				} 
+			} 
+		} 
+	} 
+	Group {
+	}
+	Group {
+	}
+	Group {
+	}
+	Group {
+	}
+	Group {
+	}
+}

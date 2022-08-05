@@ -1,0 +1,61 @@
+
+Frame "九州天気" {
+	Version 50463 
+	BGC 0 0 0 115  
+	fVideoAtr { Ortho3D }
+	fOADevice { "GRID-EX32HD" }
+	Layer "レイヤー1" {
+		Image "イメージ" {
+			857 361 206 358  CC 
+			Name "kyusyu.png" 0 
+			ExpandForDevice 
+			Offset ( 0 ) ( 0 ) 
+			Resize byRate 2.500000 
+		} 
+		Group {
+			PolyLine "直線" {
+				8 
+				Color { 255 255 255 255   AntiAlias 2 }
+				1333 172  1731 172  
+			} 
+			String {
+				1361 167 340  H CL 
+				Style "LSNマール体" 
+				Size 63 100 
+				Color { 255 255 255 255   AntiAlias 2 }
+				Effect {
+					Edge {
+						3 
+						Color { 0 0 0 255  }
+					}
+				}
+				Proportional 
+				"九州地方" 
+			} 
+		} 
+		Link "福岡" {
+			"共通天気板" 40 -110  T( "天気情報" ) R( 82182 ) 
+		} 
+		Link "大分" {
+			"共通天気板" 164 72  T( "天気情報" ) R( 83216 ) 
+		} 
+		Link "宮崎" {
+			"共通天気板" 194 266  T( "天気情報" ) R( 87376 ) 
+		} 
+		Link "鹿児島" {
+			"共通天気板" 114 480  T( "天気情報" ) R( 88317 ) 
+		} 
+		Link "熊本" {
+			"共通天気板" -154 222  T( "天気情報" ) R( 86141 ) 
+		} 
+		Link "長崎" {
+			"共通天気板" -448 90  T( "天気情報" ) R( 84496 ) 
+		} 
+		Link "佐賀" {
+			"共通天気板" -278 -98  T( "天気情報" ) R( 85142 ) 
+		} 
+		Link "那覇" {
+			"共通天気板" -256 622  T( "天気情報" ) R( 91197 ) 
+		} 
+	} 
+} 

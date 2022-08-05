@@ -1,0 +1,78 @@
+
+Frame "関東" {
+	Version 50463 
+	BGC 0 0 0 115  
+	fVideoAtr { Ortho3D }
+	fOADevice { "GRID-EX32HD" }
+	Layer "レイヤー1" {
+		Image "イメージ" {
+			869 418 182 244  CC 
+			Name "kanto.png" 0 
+			ExpandForDevice 
+			Offset ( 0 ) ( 0 ) 
+			Resize byRate 3 
+		} 
+		Group {
+			Group {
+				StringBox {
+					205 104 354 124  H CL T 0 
+					Style "LSNマール体" 
+					Size 40 100 
+					Color { 255 255 255 255   AntiAlias 2 }
+					Effect {
+						Edge {
+							3 
+							Color { 0 0 0 255  }
+						}
+					}
+					Proportional 
+					"新型コロナウイルス\n" 
+					"新規陽性者数\n" 
+					"\(T( "コロナの情報" ) C( "日付" ) , Ss)" 
+				} 
+			} 
+		} 
+		Group {
+			PolyLine "直線" {
+				8 
+				Color { 255 255 255 255   AntiAlias 2 }
+				1333 172  1731 172  
+			} 
+			String {
+				1361 167 340  H CL 
+				Style "LSNマール体" 
+				Size 63 100 
+				Color { 255 255 255 255   AntiAlias 2 }
+				Effect {
+					Edge {
+						3 
+						Color { 0 0 0 255  }
+					}
+				}
+				Proportional 
+				"関東地方" 
+			} 
+		} 
+		Link "栃木" {
+			"共通コロナ板" 328 -182  T( "都道府県情報" ) R( 10 ) 
+		} 
+		Link "茨城" {
+			"共通コロナ板" 650 14  T( "都道府県情報" ) R( 9 ) 
+		} 
+		Link "千葉" {
+			"共通コロナ板" 628 302  T( "都道府県情報" ) R( 13 ) 
+		} 
+		Link "神奈川" {
+			"共通コロナ板" 98 534  T( "都道府県情報" ) R( 15 ) 
+		} 
+		Link "東京" {
+			"共通コロナ板" 56 268  T( "都道府県情報" ) R( 14 ) 
+		} 
+		Link "埼玉" {
+			"共通コロナ板" -64 114  T( "都道府県情報" ) R( 12 ) 
+		} 
+		Link "群馬" {
+			"共通コロナ板" 16 -44  T( "都道府県情報" ) R( 11 ) 
+		} 
+	} 
+} 

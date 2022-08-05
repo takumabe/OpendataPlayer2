@@ -1,0 +1,58 @@
+
+Frame "関東天気" {
+	Version 50463 
+	BGC 0 0 0 115  
+	fVideoAtr { Ortho3D }
+	fOADevice { "GRID-EX32HD" }
+	Layer "レイヤー1" {
+		Image "イメージ" {
+			869 418 182 244  CC 
+			Name "kanto.png" 0 
+			ExpandForDevice 
+			Offset ( 0 ) ( 0 ) 
+			Resize byRate 3 
+		} 
+		Group {
+			PolyLine "直線" {
+				8 
+				Color { 255 255 255 255   AntiAlias 2 }
+				1333 172  1731 172  
+			} 
+			String {
+				1361 167 340  H CL 
+				Style "LSNマール体" 
+				Size 63 100 
+				Color { 255 255 255 255   AntiAlias 2 }
+				Effect {
+					Edge {
+						3 
+						Color { 0 0 0 255  }
+					}
+				}
+				Proportional 
+				"関東地方" 
+			} 
+		} 
+		Link "千葉" {
+			"共通天気板" 182 376  T( "天気情報" ) R( 45212 ) 
+		} 
+		Link "水戸" {
+			"共通天気板" 206 44  T( "天気情報" ) R( 40201 ) 
+		} 
+		Link "東京" {
+			"共通天気板" -112 294  T( "天気情報" ) R( 44132 ) 
+		} 
+		Link "横浜" {
+			"共通天気板" -294 574  T( "天気情報" ) R( 46106 ) 
+		} 
+		Link "さいたま" {
+			"共通天気板" -444 210  T( "天気情報" ) R( 43241 ) 
+		} 
+		Link "前橋" {
+			"共通天気板" -416 0  T( "天気情報" ) R( 42251 ) 
+		} 
+		Link "宇都宮" {
+			"共通天気板" -112 -92  T( "天気情報" ) R( 41277 ) 
+		} 
+	} 
+} 

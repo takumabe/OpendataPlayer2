@@ -1,0 +1,65 @@
+
+Frame "四国" {
+	Version 50463 
+	BGC 0 0 0 115  
+	fVideoAtr { Ortho3D }
+	fOADevice { "GRID-EX32HD" }
+	Layer "レイヤー1" {
+		Image "イメージ" {
+			877 483 166 114  CC 
+			Name "sikoku.png" 0 
+			ExpandForDevice 
+			Offset ( 0 ) ( 0 ) 
+			Resize byRate 4 
+		} 
+		StringBox {
+			205 104 354 124  H CL T 0 
+			Style "LSNマール体" 
+			Size 40 100 
+			Color { 255 255 255 255   AntiAlias 2 }
+			Effect {
+				Edge {
+					3 
+					Color { 0 0 0 255  }
+				}
+			}
+			Proportional 
+			"新型コロナウイルス\n" 
+			"新規陽性者数\n" 
+			"\(T( "コロナの情報" ) C( "日付" ) , Ss)" 
+		} 
+		Group {
+			PolyLine "直線" {
+				8 
+				Color { 255 255 255 255   AntiAlias 2 }
+				1333 172  1731 172  
+			} 
+			String {
+				1361 167 340  H CL 
+				Style "LSNマール体" 
+				Size 63 100 
+				Color { 255 255 255 255   AntiAlias 2 }
+				Effect {
+					Edge {
+						3 
+						Color { 0 0 0 255  }
+					}
+				}
+				Proportional 
+				"四国地方" 
+			} 
+		} 
+		Link "香川" {
+			"共通コロナ板" 648 116  T( "都道府県情報" ) R( 38 ) 
+		} 
+		Link "徳島" {
+			"共通コロナ板" 614 384  T( "都道府県情報" ) R( 37 ) 
+		} 
+		Link "高知" {
+			"共通コロナ板" -84 268  T( "都道府県情報" ) R( 40 ) 
+		} 
+		Link "愛媛" {
+			"共通コロナ板" -34 -2  T( "都道府県情報" ) R( 39 ) 
+		} 
+	} 
+} 

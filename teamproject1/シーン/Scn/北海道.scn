@@ -1,0 +1,56 @@
+
+Frame "北海道" {
+	Version 50463 
+	BGC 0 0 0 115  
+	fVideoAtr { Ortho3D }
+	fOADevice { "GRID-EX32HD" }
+	Layer "北海道" {
+		Image "イメージ" {
+			848 453 224 174  CC 
+			Name "hokkaidochihou.png" 0 
+			ExpandForDevice 
+			Offset ( 0 ) ( 0 ) 
+			Resize byRate 3 
+		} 
+		StringBox {
+			205 104 354 124  H CL T 0 
+			Style "LSNマール体" 
+			Size 40 100 
+			Color { 255 255 255 255   AntiAlias 2 }
+			Effect {
+				Edge {
+					3 
+					Color { 0 0 0 255  }
+				}
+			}
+			Proportional 
+			"新型コロナウイルス\n" 
+			"新規陽性者数\n" 
+			"\(T( "コロナの情報" ) C( "日付" ) , Ss)" 
+		} 
+		Group {
+			PolyLine "直線" {
+				8 
+				Color { 255 255 255 255   AntiAlias 2 }
+				1333 172  1731 172  
+			} 
+			String {
+				1361 167 340  H CL 
+				Style "LSNマール体" 
+				Size 63 100 
+				Color { 255 255 255 255   AntiAlias 2 }
+				Effect {
+					Edge {
+						3 
+						Color { 0 0 0 255  }
+					}
+				}
+				Proportional 
+				"北海道地方" 
+			} 
+		} 
+		Link "北海道" {
+			"共通コロナ板" 502 364  T( "都道府県情報" ) R( 2 ) 
+		} 
+	} 
+} 

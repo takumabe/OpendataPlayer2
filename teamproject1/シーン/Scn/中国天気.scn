@@ -1,0 +1,52 @@
+
+Frame "中国天気" {
+	Version 50463 
+	BGC 0 0 0 115  
+	fVideoAtr { Ortho3D }
+	fOADevice { "GRID-EX32HD" }
+	Layer "レイヤー1" {
+		Image "イメージ" {
+			887 468 146 144  CC 
+			Name "chugoku.png" 0 
+			ExpandForDevice 
+			Offset ( 0 ) ( 0 ) 
+			Resize byRate 4 
+		} 
+		Group {
+			PolyLine "直線" {
+				8 
+				Color { 255 255 255 255   AntiAlias 2 }
+				1333 172  1731 172  
+			} 
+			String {
+				1361 167 340  H CL 
+				Style "LSNマール体" 
+				Size 63 100 
+				Color { 255 255 255 255   AntiAlias 2 }
+				Effect {
+					Edge {
+						3 
+						Color { 0 0 0 255  }
+					}
+				}
+				Proportional 
+				"中国地方" 
+			} 
+		} 
+		Link "鳥取" {
+			"共通天気板" 178 140  T( "天気情報" ) R( 69122 ) 
+		} 
+		Link "岡山" {
+			"共通天気板" 178 388  T( "天気情報" ) R( 66408 ) 
+		} 
+		Link "広島" {
+			"共通天気板" -156 486  T( "天気情報" ) R( 67437 ) 
+		} 
+		Link "山口" {
+			"共通天気板" -438 266  T( "天気情報" ) R( 81286 ) 
+		} 
+		Link "松江" {
+			"共通天気板" -156 16  T( "天気情報" ) R( 68132 ) 
+		} 
+	} 
+} 

@@ -1,0 +1,78 @@
+
+Frame "近畿" {
+	Version 50463 
+	BGC 0 0 0 115  
+	fVideoAtr { Ortho3D }
+	fOADevice { "GRID-EX32HD" }
+	Layer "レイヤー1" {
+		Image "イメージ" {
+			868 413 184 254  CC 
+			Name "kinki.png" 0 
+			ExpandForDevice 
+			Offset ( 0 ) ( 0 ) 
+			Resize byRate 3 
+		} 
+		Group {
+			Group {
+				StringBox {
+					205 104 354 124  H CL T 0 
+					Style "LSNマール体" 
+					Size 40 100 
+					Color { 255 255 255 255   AntiAlias 2 }
+					Effect {
+						Edge {
+							3 
+							Color { 0 0 0 255  }
+						}
+					}
+					Proportional 
+					"新型コロナウイルス\n" 
+					"新規陽性者数\n" 
+					"\(T( "コロナの情報" ) C( "日付" ) , Ss)" 
+				} 
+			} 
+		} 
+		Group {
+			PolyLine "直線" {
+				8 
+				Color { 255 255 255 255   AntiAlias 2 }
+				1333 172  1731 172  
+			} 
+			String {
+				1361 167 340  H CL 
+				Style "LSNマール体" 
+				Size 63 100 
+				Color { 255 255 255 255   AntiAlias 2 }
+				Effect {
+					Edge {
+						3 
+						Color { 0 0 0 255  }
+					}
+				}
+				Proportional 
+				"近畿地方" 
+			} 
+		} 
+		Link "京都" {
+			"共通コロナ板" 356 -138  T( "都道府県情報" ) R( 27 ) 
+		} 
+		Link "滋賀" {
+			"共通コロナ板" 644 -8  T( "都道府県情報" ) R( 26 ) 
+		} 
+		Link "奈良" {
+			"共通コロナ板" 406 158  T( "都道府県情報" ) R( 30 ) 
+		} 
+		Link "三重" {
+			"共通コロナ板" 634 394  T( "都道府県情報" ) R( 25 ) 
+		} 
+		Link "和歌山" {
+			"共通コロナ板" 152 560  T( "都道府県情報" ) R( 31 ) 
+		} 
+		Link "大阪" {
+			"共通コロナ板" 62 270  T( "都道府県情報" ) R( 28 ) 
+		} 
+		Link "兵庫" {
+			"共通コロナ板" -54 -2  T( "都道府県情報" ) R( 29 ) 
+		} 
+	} 
+} 

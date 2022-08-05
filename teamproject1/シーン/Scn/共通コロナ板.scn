@@ -1,0 +1,27 @@
+
+Frame "共通コロナ板" {
+	Version 50463 
+	fOADevice { "GRID-EX32HD" }
+	Layer "レイヤー1" {
+		Group {
+			Board "サンプル" {
+				532 290 280 117  
+				Color { 255 22 40 255   AntiAlias 2 }
+			}
+			String {
+				539 375 264  H CL 
+				Style "LSNマール体" 
+				Size 74 100 
+				Color { 255 255 255 255   AntiAlias 2 }
+				Effect {
+					Edge {
+						3 
+						Color { 0 0 0 255  }
+					}
+				}
+				Proportional 
+				"\(T( "都道府県情報" ) C( "name" ) , Ss) : ,,\(T( "コロナの情報" ) C( T( "都道府県情報" ) C( "name" ) ) , L/U31310d)" 
+			} 
+		} 
+	} 
+} 

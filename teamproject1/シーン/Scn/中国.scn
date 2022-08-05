@@ -1,0 +1,68 @@
+
+Frame "中国" {
+	Version 50463 
+	BGC 0 0 0 115  
+	fVideoAtr { Ortho3D }
+	fOADevice { "GRID-EX32HD" }
+	Layer "レイヤー1" {
+		Image "イメージ" {
+			887 468 146 144  CC 
+			Name "chugoku.png" 0 
+			ExpandForDevice 
+			Offset ( 0 ) ( 0 ) 
+			Resize byRate 4 
+		} 
+		StringBox {
+			205 104 354 124  H CL T 0 
+			Style "LSNマール体" 
+			Size 40 100 
+			Color { 255 255 255 255   AntiAlias 2 }
+			Effect {
+				Edge {
+					3 
+					Color { 0 0 0 255  }
+				}
+			}
+			Proportional 
+			"新型コロナウイルス\n" 
+			"新規陽性者数\n" 
+			"\(T( "コロナの情報" ) C( "日付" ) , Ss)" 
+		} 
+		Group {
+			PolyLine "直線" {
+				8 
+				Color { 255 255 255 255   AntiAlias 2 }
+				1333 172  1731 172  
+			} 
+			String {
+				1361 167 340  H CL 
+				Style "LSNマール体" 
+				Size 63 100 
+				Color { 255 255 255 255   AntiAlias 2 }
+				Effect {
+					Edge {
+						3 
+						Color { 0 0 0 255  }
+					}
+				}
+				Proportional 
+				"中国地方" 
+			} 
+		} 
+		Link "広島" {
+			"共通コロナ板" 290 431  T( "都道府県情報" ) R( 35 ) 
+		} 
+		Link "岡山" {
+			"共通コロナ板" 626 288  T( "都道府県情報" ) R( 34 ) 
+		} 
+		Link "鳥取" {
+			"共通コロナ板" 626 91  T( "都道府県情報" ) R( 32 ) 
+		} 
+		Link "島根" {
+			"共通コロナ板" 296 -51  T( "都道府県情報" ) R( 33 ) 
+		} 
+		Link "山口" {
+			"共通コロナ板" -30 195  T( "都道府県情報" ) R( 36 ) 
+		} 
+	} 
+} 
