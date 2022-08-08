@@ -33,7 +33,7 @@ namespace teamproject1
 
             // オープンデータ更新監視用fileSystemWatcher設定
             string strCsvPath = $"{AppDomain.CurrentDomain.BaseDirectory}";
-            strCsvPath = strCsvPath.Substring(0, strCsvPath.IndexOf("bin")) + @"\シーン\Data";
+            strCsvPath = strCsvPath.Substring(0, strCsvPath.IndexOf("bin")) + @"シーン\Data";
             this.OpendataFileWatcher.Path = strCsvPath;
             this.OpendataFileWatcher.Renamed += new System.IO.RenamedEventHandler(watcher_Renamed);
         }
@@ -55,7 +55,7 @@ namespace teamproject1
                     return;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(this, ex.Message, "caption", MessageBoxButtons.OK);
             }
@@ -96,7 +96,7 @@ namespace teamproject1
                 m_pplayer = null;
             }
 
-            if(OpendataFileWatcher != null)
+            if (OpendataFileWatcher != null)
             {
                 OpendataFileWatcher.EnableRaisingEvents = false;
                 OpendataFileWatcher.Dispose();
@@ -192,7 +192,7 @@ namespace teamproject1
                 }
             };
             // タイマー起動(0.5秒後に処理実行、1秒おきに繰り返し)
-            MyTimer = new System.Threading.Timer(callback, null, 500, 1000);  
+            MyTimer = new System.Threading.Timer(callback, null, 500, 1000);
         }
 
         /*--------------------------------------------------------------------------------
@@ -232,7 +232,7 @@ namespace teamproject1
             m_pplayer.execute("Take");
             return;
         }
-        
+
         private string selectDate;
         /*--------------------------------------------------------------------------------
          * 指定した日付・都道府県のコロナ感染者を表示
@@ -255,7 +255,7 @@ namespace teamproject1
             {//天気予報表示
 
             }
-            
+
         }
 
         /*--------------------------------------------------------------------------------
@@ -295,17 +295,17 @@ namespace teamproject1
         {
             if (e.Name == "新規陽性者数tmp.csv")
             {
-                // コロナ情報が更新された時の処理
+                // 新規陽性者数.csvが更新された時の処理
                 try
                 {
-                    // 最新日時取得、カレンダーにセット
+                    // 最新日時取得、カレンダーの最大日付にセット
                     string latestDate = this.m_OpendataDownLoader.formatDataforCovid();
-                    if(latestDate != "")
+                    if (latestDate != "")
                     {
                         MonthCalendar.MaxDate = DateTime.ParseExact(latestDate, "yyyy/MM/dd", null);
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
@@ -313,9 +313,8 @@ namespace teamproject1
             else
             {
                 // 天気情報の更新処理
-
             }
-            
+
             string strScenePath = Application.StartupPath.Replace("\\", "\\\\");
             strScenePath = strScenePath.Substring(0, strScenePath.IndexOf("bin"));
             m_pplayer.execute("Load '" + strScenePath + "\\\\シーン\\\\Scn\\\\TeamDevelopment.scm'");

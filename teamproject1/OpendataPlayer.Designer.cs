@@ -29,6 +29,7 @@ namespace teamproject1
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OpendataPlayer));
             this.id2 = new System.Windows.Forms.Button();
             this.id3 = new System.Windows.Forms.Button();
             this.id4 = new System.Windows.Forms.Button();
@@ -702,7 +703,7 @@ namespace teamproject1
             // 
             // Corona
             // 
-            this.Corona.BackgroundImage = global::teamproject1.Properties.Resources.コロナ2;
+            this.Corona.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Corona.BackgroundImage")));
             this.Corona.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Corona.FlatAppearance.BorderSize = 0;
             this.Corona.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -715,7 +716,7 @@ namespace teamproject1
             // 
             // Weather
             // 
-            this.Weather.BackgroundImage = global::teamproject1.Properties.Resources.天気;
+            this.Weather.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Weather.BackgroundImage")));
             this.Weather.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Weather.FlatAppearance.BorderSize = 0;
             this.Weather.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -728,7 +729,7 @@ namespace teamproject1
             // 
             // Play
             // 
-            this.Play.BackgroundImage = global::teamproject1.Properties.Resources.playbutton;
+            this.Play.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Play.BackgroundImage")));
             this.Play.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Play.FlatAppearance.BorderSize = 0;
             this.Play.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
