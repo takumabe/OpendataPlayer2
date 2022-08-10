@@ -545,8 +545,6 @@ namespace teamproject1
             }
 
             Console.WriteLine("天気情報.csv完了");
-
-            return;
         }
 
         private void releaseExcelCom()
