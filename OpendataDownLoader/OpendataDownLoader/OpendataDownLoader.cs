@@ -33,7 +33,7 @@ namespace OpendataDownLoader
                 this.m_TaskService.Connect(null, null, null, null);
 
                 // ITaskFolderを初期化
-                this.m_RootFolder = this.m_TaskService.GetFolder("\\");
+                this.m_RootFolder = this.m_TaskService.GetFolder(@"\");
 
                 // パス情報設定
                 this.m_TaskSchedulerPath = @"\OpenDataPlayer\";
@@ -96,9 +96,9 @@ namespace OpendataDownLoader
                 System.IO.Directory.CreateDirectory(strDataPath);
             }
 
-            if (strCommandFilePath.EndsWith("\\"))
+            if (strCommandFilePath.EndsWith(@"\"))
             {
-                strCommandFilePath = strCommandFilePath.Substring(0, strCommandFilePath.LastIndexOf("\\"));
+                strCommandFilePath = strCommandFilePath.Substring(0, strCommandFilePath.LastIndexOf(@"\"));
             }
 
             if (!System.IO.Directory.Exists(strCommandFilePath))
@@ -106,14 +106,22 @@ namespace OpendataDownLoader
                 System.IO.Directory.CreateDirectory(strCommandFilePath);
             }
 
-            string strBatFullPath = strCommandFilePath + "\\" + strCommandFileName + ".bat";
-            string strVbsFullPath = strCommandFilePath + "\\" + strCommandFileName + ".vbs";
+            string strBatFullPath = strCommandFilePath + @"\" + strCommandFileName + ".bat";
+            string strVbsFullPath = strCommandFilePath + @"\" + strCommandFileName + ".vbs";
 
             System.IO.File.WriteAllText(strBatFullPath, "@echo off" + Environment.NewLine, System.Text.Encoding.GetEncoding("shift_jis"));
             System.IO.File.AppendAllText(strBatFullPath, "bitsadmin /transfer " + strCommandFileName + "_OpendataDownLoader " + strUrl + " " + strCsvPath, System.Text.Encoding.GetEncoding("shift_jis"));
 
             System.IO.File.WriteAllText(strVbsFullPath, "Set ws = CreateObject(\"Wscript.Shell\")" + Environment.NewLine, System.Text.Encoding.GetEncoding("shift_jis"));
             System.IO.File.AppendAllText(strVbsFullPath, "ws.run \"cmd /c " + strBatFullPath + "\", vbHide" + Environment.NewLine, System.Text.Encoding.GetEncoding("shift_jis"));
+        }
+
+        private void addFormatBat(string strBatPath)
+        {
+            string strFormatExePath = $@"{AppDomain.CurrentDomain.BaseDirectory}";
+            strFormatExePath = strFormatExePath.Substring(0, strFormatExePath.IndexOf(@"\bin"));
+            strFormatExePath = strFormatExePath.Substring(0, strFormatExePath.LastIndexOf(@"\")) + @"\OpendataDownLoader\FormatCovidCsv\FormatCovidCsv\bin\Debug\FotmatCovidCsv.exe";
+            System.IO.File.AppendAllText(strBatPath, " && " + strFormatExePath, System.Text.Encoding.GetEncoding("shift-jis"));
         }
 
         /*--------------------------------------------------------------------------------
@@ -168,16 +176,16 @@ namespace OpendataDownLoader
 
             // スケジューラライブラリのパスからタスク名取得
             string strTaskName = strSchedulerPath;
-            if (strTaskName.Contains("\\"))
+            if (strTaskName.Contains(@"\"))
             {
-                strTaskName = strTaskName.Substring(strTaskName.LastIndexOf("\\") + 1);
+                strTaskName = strTaskName.Substring(strTaskName.LastIndexOf(@"\") + 1);
 
             }
 
             try
             {
                 // テンプレートファイルを開く
-                xmlDocument.Load(this.m_XmlPath + "\\Template\\DayTemplate.xml");
+                xmlDocument.Load(this.m_XmlPath + @"\Template\DayTemplate.xml");
 
                 // 実行間隔の設定
                 var daysinterval = xmlDocument.GetElementsByTagName("DaysInterval")[0];
@@ -223,7 +231,7 @@ namespace OpendataDownLoader
             try
             {
                 // 作成したxmlファイルを保存
-                xmlDocument.Save(this.m_XmlPath + "\\" + strTaskName.Replace("\\", "_") + ".xml");
+                xmlDocument.Save(this.m_XmlPath + @"\" + strTaskName.Replace(@"\", "_") + ".xml");
             }
             catch (Exception ex)
             {
@@ -247,15 +255,15 @@ namespace OpendataDownLoader
             System.Xml.XmlDocument xmlDocument = new System.Xml.XmlDocument();
 
             string strTaskName = strSchedulerPath;
-            if (strTaskName.Contains("\\"))
+            if (strTaskName.Contains(@"\"))
             {
-                strTaskName = strTaskName.Substring(strTaskName.LastIndexOf("\\") + 1);
+                strTaskName = strTaskName.Substring(strTaskName.LastIndexOf(@"\") + 1);
 
             }
 
             try
             {
-                xmlDocument.Load(this.m_XmlPath + "\\Template\\TimeTemplate.xml");
+                xmlDocument.Load(this.m_XmlPath + @"\Template\TimeTemplate.xml");
 
                 // 実行間隔の設定
                 var daysinterval = xmlDocument.GetElementsByTagName("Interval")[0];
@@ -296,7 +304,7 @@ namespace OpendataDownLoader
                 try
                 {
                     // 作成したxmlファイルを保存
-                    xmlDocument.Save(this.m_XmlPath + "\\" + strTaskName.Replace("\\", "_") + ".xml");
+                    xmlDocument.Save(this.m_XmlPath + @"\" + strTaskName.Replace(@"\", "_") + ".xml");
                 }
                 catch (Exception ex)
                 {
@@ -395,12 +403,12 @@ namespace OpendataDownLoader
         {
             try
             {
-                string strSchedulerPath = this.m_TaskSchedulerPath.Substring(0, this.m_TaskSchedulerPath.LastIndexOf("\\"));
+                string strSchedulerPath = this.m_TaskSchedulerPath.Substring(0, this.m_TaskSchedulerPath.LastIndexOf(@"\"));
                 serachFolder(strSchedulerPath);
 
                 try
                 {
-                    this.m_RootFolder = this.m_TaskService.GetFolder("\\");
+                    this.m_RootFolder = this.m_TaskService.GetFolder(@"\");
                     this.m_RootFolder.DeleteFolder(strSchedulerPath, 0);
                 }
                 catch (Exception ex)
@@ -428,39 +436,42 @@ namespace OpendataDownLoader
             strCommandDir = strCommandDir.Substring(0, strCommandDir.IndexOf(@"\bin"));
             strCommandDir = strCommandDir.Substring(0, strCommandDir.LastIndexOf(@"\")) + @"\OpendataDownLoader\TaskCommand\";
             string strCsvPath = $"{AppDomain.CurrentDomain.BaseDirectory}";
-            strCsvPath = strCsvPath.Substring(0, strCsvPath.IndexOf("bin")) + @"シーン\Data";
+            strCsvPath = strCsvPath.Substring(0, strCsvPath.IndexOf(@"\bin"));
+            strCsvPath = strCsvPath.Substring(0, strCsvPath.LastIndexOf(@"\")) + @"\シーン\Data\";
             string strStart = DateTime.Now.ToString("yyyy-MM-ddT") + "00:00:00";
             string strEnd = "2100-01-01T00:00:00";
 
             string URLCovid = "https://covid19.mhlw.go.jp/public/opendata/newly_confirmed_cases_daily.csv";
-            string CsvPathCovid = strCsvPath + "\\新規陽性者数tmp.csv";
+            string CsvPathCovid = strCsvPath + @"\新規陽性者数tmp.csv";
             string CommandFileNameCovid = "covid-19";
+            string strBatPathCovid = strCommandDir + CommandFileNameCovid + ".bat";
             string SchedulerPathCovid = "covid-19";
 
             string URLHTemp = "https://www.data.jma.go.jp/obd/stats/data/mdrr/tem_rct/alltable/mxtemsadext00_rct.csv";
-            string CsvPathHTemp = strCsvPath + "\\最高気温.csv";
+            string CsvPathHTemp = strCsvPath + @"\最高気温.csv";
             string CommandFileNameHTemp = "HighTemp";
             string SchedulerPathHTemp = "HighTemp";
 
             string URLLTemp = "https://www.data.jma.go.jp/obd/stats/data/mdrr/tem_rct/alltable/mntemsadext00_rct.csv";
-            string CsvPathLTemp = strCsvPath + "\\最低気温.csv";
+            string CsvPathLTemp = strCsvPath + @"\最低気温.csv";
             string CommandFileNameLTemp = "LowTemp";
             string SchedulerPathLTemp = "LowTemp";
 
             string URLRain = "https://www.data.jma.go.jp/obd/stats/data/mdrr/pre_rct/alltable/predaily00_rct.csv";
-            string CsvPathRain = strCsvPath + "\\日降水量.csv";
+            string CsvPathRain = strCsvPath + @"\日降水量.csv";
             string CommandFileNameRain = "Rain";
             string SchedulerPathRain = "Rain";
 
             string URLWind = "https://www.data.jma.go.jp/obd/stats/data/mdrr/wind_rct/alltable/mxwsp00_rct.csv";
-            string CsvPathWind = strCsvPath + "\\最大風速.csv";
+            string CsvPathWind = strCsvPath + @"\最大風速.csv";
             string CommandFileNameWind = "Wind";
             string SchedulerPathWind = "Wind";
 
             try
             {
                 this.createTaskCommand(URLCovid, CsvPathCovid, strCommandDir, CommandFileNameCovid);
-                System.Xml.XmlDocument covidXml = this.createXmlDay(SchedulerPathCovid, strStart, strEnd, strCommandDir + CommandFileNameCovid + ".vbs", 1);
+                this.addFormatBat(strBatPathCovid);
+                System.Xml.XmlDocument covidXml = this.createXmlTime(SchedulerPathCovid, strStart, strEnd, strCommandDir + CommandFileNameCovid + ".vbs", "PT6H");
                 if (this.registerTaskByXml(covidXml) == "")
                 {
                     bResult = false;
@@ -505,51 +516,6 @@ namespace OpendataDownLoader
             }
 
             return bResult;
-        }
-
-        public string formatDataforCovid()
-        {
-            string latestDate = "";
-            string strCsvPath = $"{AppDomain.CurrentDomain.BaseDirectory}";
-            strCsvPath = strCsvPath.Substring(0, strCsvPath.IndexOf("bin")) + @"シーン\Data\";
-            string strTmpCsv = strCsvPath + "新規陽性者数tmp.csv";
-            string strCsv = strCsvPath + "新規陽性者数.csv";
-
-            try
-            {
-                using (System.IO.StreamReader streamReader = new System.IO.StreamReader(strTmpCsv))
-                {
-                    // 列の説明行は＃を付けてコメントアウト
-                    string header = streamReader.ReadLine();
-                    System.IO.File.WriteAllText(strCsv, "#" + header + Environment.NewLine, System.Text.Encoding.GetEncoding("shift-jis"));
-
-                    while (!streamReader.EndOfStream)
-                    {
-                        string line = streamReader.ReadLine();
-                        string[] date = line.Substring(0, line.IndexOf(",")).Split('/');
-                        line = line.Substring(line.IndexOf(","));
-
-                        if (date[1].Length != 2)
-                        {
-                            date[1] = "0" + date[1];
-                        }
-                        if (date[2].Length != 2)
-                        {
-                            date[2] = "0" + date[2];
-                        }
-                        line = date[0] + "/" + date[1] + "/" + date[2] + line;
-
-                        System.IO.File.AppendAllText(strCsv, line + Environment.NewLine, System.Text.Encoding.GetEncoding("shift-jis"));
-                        latestDate = line.Substring(0, line.IndexOf(","));
-                    }
-                }
-                System.IO.File.Delete(strTmpCsv);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            return latestDate;
         }
     }
 }
