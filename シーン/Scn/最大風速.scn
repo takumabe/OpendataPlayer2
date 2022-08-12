@@ -1,0 +1,25 @@
+
+Frame "最大風速" {
+	Version 50463 
+	fOADevice { "GRID-EX32HD" }
+	Layer "レイヤー1" {
+		StringBox {
+			219 169 296 69  H CL T 0 
+			Style "LSN太角ゴシック体" 
+			Size 36 100 
+			Color { 255 255 255 255   AntiAlias 2 }
+			Space 50 
+			Proportional 
+			"今日の最大風速" 
+		} 
+		PolyLine "折れ線" {
+			15 
+			Color { 25 255 204 255   AntiAlias 2 }
+			uPoints {
+				3 
+				210 191 227.111111 251 504 251 
+			} 
+			210 191  227 251  504 251  
+		} 
+	} 
+} 

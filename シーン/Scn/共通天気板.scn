@@ -16,9 +16,9 @@ Frame "共通天気板" {
 			}
 			String {
 				1049 229 105  H CL 
-				Style "LSNマール体" 
+				Style "TV用太角ゴシック体" 
 				Size 30 100 
-				Color { 0 0 0 255   AntiAlias 2 }
+				Color { 0 0 0 255   AntiAlias 3 }
 				Proportional 
 				"\(C( 1 ) , Ss)" 
 			} 
@@ -27,11 +27,13 @@ Frame "共通天気板" {
 				}
 				( V0 == "気温" ) 
 				Group "気温" {
+					uZoomIn { NonVolatile 2000 CC 0 }
+					uTimeCodeInfoIn { Priority 1 LinkTop 0 }
 					String {
-						1043 296 130  H HL 
-						Style "LSNマール体" 
-						Size 60 100 
-						Color { 255 255 255 255   AntiAlias 2 }
+						1048 293 130  H CL 
+						Style "マルＣフーツラ" 
+						Size 58 100 
+						Color { ColorSwitch { 255 255 255 255   ( C( 2 ) >= 35 ) 255 183 12 255   }  AntiAlias 2 }
 						Effect {
 							Edge {
 								3 
@@ -39,12 +41,15 @@ Frame "共通天気板" {
 							}
 						}
 						Proportional 
-						"\(C( 2 ) , Ld)℃" 
+						"\(C( 2 ) , S!s)" 
+						Style "LSN太角ゴシック体" 
+						Size 34 100 
+						"℃" 
 					} 
 					String {
-						1065 338 78  H HL 
-						Style "LSNマール体" 
-						Size 36 100 
+						1070 332 78  H CL 
+						Style "マルＣフーツラ" 
+						Size 39 100 
 						Color { 255 255 255 255   AntiAlias 2 }
 						Effect {
 							Edge {
@@ -53,15 +58,20 @@ Frame "共通天気板" {
 							}
 						}
 						Proportional 
-						"\(C( 3 ) , Ld)℃" 
+						"\(C( 3 ) , S!s)" 
+						Style "LSN太角ゴシック体" 
+						Size 27 100 
+						"℃" 
 					} 
 				} 
 				( V0 == "日降水量" ) 
 				Group "日降水量" {
+					uZoomIn { NonVolatile 2000 CC 0 }
+					uTimeCodeInfoIn { Priority 1 LinkTop 0 }
 					String {
-						1013 319 185  H CL 
-						Style "LSNマール体" 
-						Size 72 100 
+						1011 319 185  H CL 
+						Style "マルＣフーツラ" 
+						Size 70 100 
 						Color { 255 255 255 255   AntiAlias 2 }
 						Effect {
 							Edge {
@@ -70,15 +80,20 @@ Frame "共通天気板" {
 							}
 						}
 						Proportional 
-						"\(C( 4 ) , Ld)mm" 
+						"\(C( 4 ) , S!s)" 
+						Style "LSN太角ゴシック体" 
+						Size 40 100 
+						"mm" 
 					} 
 				} 
 				( V0 == "最大風速" ) 
 				Group "最大風速" {
+					uZoomIn { NonVolatile 2000 CC 0 }
+					uTimeCodeInfoIn { Priority 1 LinkTop 0 }
 					String {
-						1020 321 173  H CL 
-						Style "LSNマール体" 
-						Size 72 100 
+						1018 321 173  H CL 
+						Style "マルＣフーツラ" 
+						Size 70 100 
 						Color { 255 255 255 255   AntiAlias 2 }
 						Effect {
 							Edge {
@@ -87,7 +102,10 @@ Frame "共通天気板" {
 							}
 						}
 						Proportional 
-						"\(C( 5 ) , Ld)m/s" 
+						"\(C( 5 ) , S!s)" 
+						Style "LSN太角ゴシック体" 
+						Size 40 100 
+						"m/s" 
 					} 
 				} 
 			} 

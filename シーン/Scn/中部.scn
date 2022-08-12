@@ -11,41 +11,54 @@ Frame "中部" {
 			Offset ( 0 ) ( 0 ) 
 			Resize byRate 3 
 		} 
-		StringBox {
-			205 104 354 124  H CL T 0 
-			Style "LSNマール体" 
-			Size 40 100 
-			Color { 255 255 255 255   AntiAlias 2 }
+		String {
+			1674 73 522  V HL 
+			Style "LSN太角ゴシック体" 
+			Size 244 100 
+			Transparent { AntiAlias 2 }
 			Effect {
 				Edge {
-					3 
-					Color { 0 0 0 255  }
+					5 
+					Color { 25 255 204 255  }
 				}
 			}
 			Proportional 
-			"新型コロナウイルス\n" 
-			"新規陽性者数\n" 
-			"\(T( "コロナの情報" ) C( "日付" ) , Ss)" 
+			"中部" 
 		} 
 		Group {
-			PolyLine "直線" {
-				8 
+			StringBox {
+				138 104 303 106  H CL T 0 
+				Style "TV用太角ゴシック体" 
+				Size 40 100 
 				Color { 255 255 255 255   AntiAlias 2 }
-				1333 172  1731 172  
-			} 
-			String {
-				1361 167 340  H CL 
-				Style "LSNマール体" 
-				Size 63 100 
-				Color { 255 255 255 255   AntiAlias 2 }
-				Effect {
-					Edge {
-						3 
-						Color { 0 0 0 255  }
-					}
-				}
 				Proportional 
-				"中部地方" 
+				"新型コロナウイルス\n" 
+				Offset 0 -7 
+				"新" 
+				Offset 0 -7 
+				"規" 
+				Offset 0 -7 
+				"陽" 
+				Offset 0 -7 
+				"性" 
+				Offset 0 -7 
+				"者" 
+				Offset 0 -7 
+				"数\n" 
+				Style "LSN太角ゴシック体" 
+				Size 32 100 
+				Offset 0 -22 
+				"\(T( "コロナの情報" ) C( "日付" ) , Ss)" 
+				Offset 0 -22 
+			} 
+			PolyLine "折れ線" {
+				15 
+				Color { 25 255 204 255   AntiAlias 2 }
+				uPoints {
+					3 
+					120 100.693462 139.206349 246.018077 450 246.018077 
+				} 
+				120 101  139 246  450 246  
 			} 
 		} 
 		Link "新潟" {
