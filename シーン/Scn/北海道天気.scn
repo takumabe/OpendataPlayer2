@@ -13,24 +13,19 @@ Frame "北海道天気" {
 			Resize byRate 3 
 		} 
 		Group {
-			PolyLine "直線" {
-				8 
-				Color { 255 255 255 255   AntiAlias 2 }
-				1333 172  1731 172  
-			} 
 			String {
-				1361 167 340  H CL 
-				Style "LSNマール体" 
-				Size 63 100 
-				Color { 255 255 255 255   AntiAlias 2 }
+				1674 73 736  V HL 
+				Style "LSN太角ゴシック体" 
+				Size 244 100 
+				Transparent { AntiAlias 2 }
 				Effect {
 					Edge {
-						3 
-						Color { 0 0 0 255  }
+						5 
+						Color { 25 255 204 255  }
 					}
 				}
 				Proportional 
-				"北海道地方" 
+				"北海道" 
 			} 
 		} 
 		Link "札幌" {
@@ -38,6 +33,28 @@ Frame "北海道天気" {
 		} 
 		Link "釧路" {
 			"共通天気板" 94 402  T( "天気情報" ) R( 19432 ) 
+		} 
+		Switch "スイッチ" {
+			Group "デフォルト" {
+			}
+			( V0 == "気温" ) 
+			Group "気温" {
+				Link "気温" {
+					"気温" -104 -86  
+				} 
+			} 
+			( V0 == "日降水量" ) 
+			Group "日降水量" {
+				Link "日降水量" {
+					"日降水量" -90 -65  
+				} 
+			} 
+			( V0 == "最大風速" ) 
+			Group "最大風速" {
+				Link "最大風速" {
+					"最大風速" -90 -65  
+				} 
+			} 
 		} 
 	} 
 } 

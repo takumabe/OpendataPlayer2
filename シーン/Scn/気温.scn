@@ -1,0 +1,23 @@
+
+Frame "気温" {
+	Version 50463 
+	fVideoAtr { Ortho3D }
+	fOADevice { "GRID-EX32HD" }
+	Layer "レイヤー1" {
+		StringBox {
+			227 190 392 69  H CL T 0 
+			Style "LSN太角ゴシック体" 
+			Size 36 100 
+			Color { 255 255 255 255   AntiAlias 2 }
+			Space 50 
+			Proportional 
+			"今日の\n" 
+			"最高気温と最低気温" 
+		} 
+		PolyLine "折れ線" {
+			15 
+			Color { 25 255 204 255   AntiAlias 2 }
+			224 198  246 270  602 270  
+		} 
+	} 
+} 

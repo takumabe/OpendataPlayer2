@@ -36,20 +36,38 @@ Frame "日本地図" {
 		} 
 		Group {
 			StringBox {
-				203 292 354 124  H CL T 0 
-				Style "LSNマール体" 
+				232 308 303 106  H CL T 0 
+				Style "TV用太角ゴシック体" 
 				Size 40 100 
 				Color { 255 255 255 255   AntiAlias 2 }
-				Effect {
-					Edge {
-						3 
-						Color { 0 0 0 255  }
-					}
-				}
 				Proportional 
 				"新型コロナウイルス\n" 
-				"新規陽性者数\n" 
+				Offset 0 -7 
+				"新" 
+				Offset 0 -7 
+				"規" 
+				Offset 0 -7 
+				"陽" 
+				Offset 0 -7 
+				"性" 
+				Offset 0 -7 
+				"者" 
+				Offset 0 -7 
+				"数\n" 
+				Style "LSN太角ゴシック体" 
+				Size 32 100 
+				Offset 0 -22 
 				"\(V1 , Ss)" 
+				Offset 0 -22 
+			} 
+			PolyLine "折れ線" {
+				15 
+				Color { 25 255 204 255   AntiAlias 2 }
+				uPoints {
+					3 
+					214 304.693462 233.206349 450.018077 544 450.018077 
+				} 
+				214 305  233 450  544 450  
 			} 
 		} 
 	} 

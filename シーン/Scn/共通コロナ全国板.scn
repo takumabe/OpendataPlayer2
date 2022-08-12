@@ -9,18 +9,30 @@ Frame "共通コロナ全国板" {
 				Color { 255 22 40 255   AntiAlias 2 }
 			}
 			String {
-				392 382 245  H HL 
-				Style "LSNマール体" 
-				Size 92 100 
+				392 391 245  H CL 
+				Style "TV用太角ゴシック体" 
+				Size 64 100 
 				Color { 0 0 0 255   AntiAlias 2 }
 				Effect {
-					Depth {
-						7 SE  
+					Edge {
+						3 
 						Color { 255 255 0 255   BlendNamKey }
 					}
 				}
 				Proportional 
-				"\(T( "都道府県情報" ) C( "name" ) , Ss) : ,,\(T( "コロナの情報" ) R( V1 ) C( T( "都道府県情報" ) C( "name" ) ) , L/U31310d)" 
+				Offset 0 12 
+				"\(T( "都道府県情報" ) C( "name" ) , Ss)" 
+				Style "LSNマール体" 
+				Size 92 100 
+				Offset 0 12 
+				" " 
+				Size 64 100 
+				Offset 0 12 
+				":" 
+				Size 92 100 
+				" " 
+				Style "TV用太角ゴシック体" 
+				",,\(T( "コロナの情報" ) R( V1 ) C( T( "都道府県情報" ) C( "name" ) ) , L/U31310d)" 
 			} 
 		} 
 	} 

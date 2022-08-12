@@ -1,17 +1,23 @@
 
 Frame "全国の天気情報" {
 	Version 50463 
+	FadeIn {
+		Black 27 
+	} 
+	fOutFade {
+		29 
+		Delay 5000 
+	} 
 	BGC 0 0 0 115  
 	fVideoAtr { Ortho3D }
 	fOADevice { "GRID-EX32HD" }
 	Layer "レイヤー1" {
 		Image "イメージ" {
 			460 54 1000 849  CC 
-			Path "C:\\Users\\kimura\\Desktop\\チーム開発\\日本地図\\deforme" 
-			Name "nihonchizu-color-deformed.png" 0 
+			Name "zenkoku.png" 0 
 			ExpandForDevice 
 			Offset ( 0 ) ( 0 ) 
-			Resize byRect uLocked 
+			Resize byRect 
 		} 
 		Group {
 			T( "天気情報" ) R( 14163 ) 
@@ -334,7 +340,7 @@ Frame "全国の天気情報" {
 			} 
 		} 
 		Group {
-			T( "天気情報" ) R( 86141 ) 
+			T( "天気情報" ) R( 88317 ) 
 			PolyLine "直線" {
 				8 
 				Color { 255 255 255 255   AntiAlias 2 }
@@ -394,6 +400,28 @@ Frame "全国の天気情報" {
 				}
 				Link "リンク" {
 					"共通天気全国板" -56 57  
+				} 
+			} 
+		} 
+		Switch "スイッチ" {
+			Group "デフォルト" {
+			}
+			( V0 == "気温" ) 
+			Group "気温" {
+				Link "気温" {
+					"気温" -56 -86  
+				} 
+			} 
+			( V0 == "日降水量" ) 
+			Group "日降水量" {
+				Link "日降水量" {
+					"日降水量" -42 -65  
+				} 
+			} 
+			( V0 == "最大風速" ) 
+			Group "最大風速" {
+				Link "最大風速" {
+					"最大風速" -42 -65  
 				} 
 			} 
 		} 
