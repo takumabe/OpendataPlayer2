@@ -120,7 +120,7 @@ namespace OpendataDownLoader
         {
             string strFormatExePath = $@"{AppDomain.CurrentDomain.BaseDirectory}";
             strFormatExePath = strFormatExePath.Substring(0, strFormatExePath.IndexOf(@"\bin"));
-            strFormatExePath = strFormatExePath.Substring(0, strFormatExePath.LastIndexOf(@"\")) + @"\OpendataDownLoader\FormatCovidCsv\FormatCovidCsv\bin\Debug\FotmatCovidCsv.exe";
+            strFormatExePath = strFormatExePath.Substring(0, strFormatExePath.LastIndexOf(@"\")) + @"\OpendataDownLoader\FormatCovidCsv\FormatCovidCsv\bin\Debug\FormatCovidCsv.exe";
             System.IO.File.AppendAllText(strBatPath, " && " + strFormatExePath, System.Text.Encoding.GetEncoding("shift-jis"));
         }
 
@@ -437,7 +437,7 @@ namespace OpendataDownLoader
             strCommandDir = strCommandDir.Substring(0, strCommandDir.LastIndexOf(@"\")) + @"\OpendataDownLoader\TaskCommand\";
             string strCsvPath = $"{AppDomain.CurrentDomain.BaseDirectory}";
             strCsvPath = strCsvPath.Substring(0, strCsvPath.IndexOf(@"\bin"));
-            strCsvPath = strCsvPath.Substring(0, strCsvPath.LastIndexOf(@"\")) + @"\シーン\Data\";
+            strCsvPath = strCsvPath.Substring(0, strCsvPath.LastIndexOf(@"\")) + @"\シーン\Data";
             string strStart = DateTime.Now.ToString("yyyy-MM-ddT") + "00:00:00";
             string strEnd = "2100-01-01T00:00:00";
 

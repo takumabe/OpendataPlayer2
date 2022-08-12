@@ -52,10 +52,10 @@ namespace teamproject1
 
             this.m_strSceneDir = $"{AppDomain.CurrentDomain.BaseDirectory}";
             m_strSceneDir = m_strSceneDir.Substring(0, m_strSceneDir.IndexOf(@"\bin"));
-            m_strSceneDir = m_strSceneDir.Substring(0, m_strSceneDir.LastIndexOf(@"\")) + @"\シーン";
+            m_strSceneDir = m_strSceneDir.Substring(0, m_strSceneDir.LastIndexOf(@"\")) + @"\シーン\";
 
             // オープンデータ更新監視用fileSystemWatcher設定
-            string strDataPath = this.m_strSceneDir + @"\Data";
+            string strDataPath = this.m_strSceneDir + "Data";
             this.OpendataFileWatcher.Path = strDataPath;
             this.OpendataFileWatcher.Renamed += new System.IO.RenamedEventHandler(watcher_Renamed);
 
@@ -136,23 +136,26 @@ namespace teamproject1
         {
             DateTime ret;
 
+            Microsoft.Office.Interop.Excel.Application ExcelApp = null;
+            Excel.Workbook wb = null;
+            Excel.Worksheet ws = null;
+            Excel.Range LatestDateCell = null;
+
             if (System.IO.File.Exists(strDataPath))
             {
                 try
                 {
-                    Microsoft.Office.Interop.Excel.Application ExcelApp = new Microsoft.Office.Interop.Excel.Application();
+                    ExcelApp = new Microsoft.Office.Interop.Excel.Application();
                     ExcelApp.Visible = false;
 
-                    Excel.Workbook wb = ExcelApp.Workbooks.Open(strDataPath + @"\新規陽性者数.csv",
+                    wb = ExcelApp.Workbooks.Open(strDataPath + @"\新規陽性者数.csv",
                         Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
                         Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
                         Type.Missing);
-                    Excel.Worksheet ws = wb.Worksheets[1];
-                    Excel.Range LatestDateCell = ws.get_Range("A" + ws.UsedRange.Rows.Count.ToString());
+                    ws = wb.Worksheets[1];
+                    LatestDateCell = ws.get_Range("A" + ws.UsedRange.Rows.Count.ToString());
                     string strLatestDate = LatestDateCell.Text;
-
-                    wb.Close(false, Type.Missing, Type.Missing);
-                    ExcelApp.Quit();
+                    Console.WriteLine("getLatestDate => " + strLatestDate);
 
                     ret = DateTime.ParseExact(strLatestDate, "yyyy/MM/dd", null);
                 }
@@ -160,10 +163,44 @@ namespace teamproject1
                 {
                     throw ex;
                 }
+                finally
+                {
+                    if(LatestDateCell != null)
+                    {
+                        Marshal.ReleaseComObject(LatestDateCell);
+                        LatestDateCell = null;
+                    }
+                    if(ws != null)
+                    {
+                        Marshal.ReleaseComObject(ws);
+                        ws = null;
+                    }
+                    if(wb != null)
+                    {
+                        Marshal.ReleaseComObject(wb);
+                        wb = null;
+                    }
+
+                    GC.Collect();
+                    GC.WaitForPendingFinalizers();
+                    GC.Collect();
+
+                    if(ExcelApp != null)
+                    {
+                        ExcelApp.Quit();
+                        Marshal.ReleaseComObject(ExcelApp);
+                        ExcelApp = null;
+                    }
+
+                    GC.Collect();
+                    GC.WaitForPendingFinalizers();
+                    GC.Collect();
+                }
             }
             else
             {
                 ret = DateTime.Today.AddDays(-1);
+                Console.WriteLine("Latest date is " + ret.ToString());
             }
 
             return ret;
@@ -274,7 +311,7 @@ namespace teamproject1
         private void LoadScheme()
         {
             string strSchemePath = m_strSceneDir.Replace(@"\", @"\\");
-            m_pplayer.execute("Load '" + strSchemePath + @"\\Scn\\TeamDevelopment.scm'");
+            m_pplayer.execute("Load '" + strSchemePath + @"Scn\\TeamDevelopment.scm'");
         }
 
         /*--------------------------------------------------------------------------------
@@ -367,6 +404,9 @@ namespace teamproject1
             if (e.Name == "新規陽性者数.csv")
             {
                 // 新規陽性者数.csvが更新された時の処理
+                string strDataPath = m_strSceneDir + "Data";
+                Console.WriteLine(strDataPath);
+                MonthCalendar.MaxDate = getLatestDate(strDataPath);
                 LoadScheme();
             }
             else
