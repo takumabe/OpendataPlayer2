@@ -1,6 +1,13 @@
 
 Frame "’†•”“V‹C" {
 	Version 50463 
+	FadeIn {
+		Black 29 
+	} 
+	fOutFade {
+		29 
+		Delay 3730 
+	} 
 	BGC 0 0 0 115  
 	fVideoAtr { Ortho3D }
 	fOADevice { "GRID-EX32HD" }

@@ -1,6 +1,13 @@
 
 Frame "四国" {
 	Version 50463 
+	FadeIn {
+		Black 18 
+	} 
+	fOutFade {
+		18 
+		Delay 4000 
+	} 
 	BGC 0 0 0 115  
 	fVideoAtr { Ortho3D }
 	fOADevice { "GRID-EX32HD" }
@@ -50,7 +57,6 @@ Frame "四国" {
 				Size 32 100 
 				Offset 0 -22 
 				"\(T( "コロナの情報" ) C( "日付" ) , Ss)" 
-				Offset 0 -22 
 			} 
 			PolyLine "折れ線" {
 				15 
