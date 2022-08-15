@@ -22,6 +22,7 @@ namespace teamproject1
         private PrismPlayer m_pplayer = null;
         private bool m_bTakeFlag = false;
         private bool CoronaFlag = true;
+        private bool TimerFlag = false;
         private System.Threading.Thread m_TakeThread = null;    //Take実行スレッド生成用
         private OpendataDownLoader.OpendataDownLoader m_OpendataDownLoader = null;
         private string m_strSceneDir = "";
@@ -206,8 +207,9 @@ namespace teamproject1
             return ret;
         }
 
-        private static System.Threading.Timer MyTimer;
-        int n = 0;
+        private static System.Threading.Timer AreaTimer;
+        int nPlay = 0;
+        int mInfo = 0;
 
         /*--------------------------------------------------------------------------------
          * 自動再生ボタン.
@@ -222,76 +224,160 @@ namespace teamproject1
             {
                 if (CoronaFlag)
                 {//コロナ表示
-                    switch (n)
+                    switch (nPlay)
                     {
                         case 0:
                             m_pplayer.execute("Play '北海道'");
                             // Takeを別スレッドで実行
                             m_TakeThread = new System.Threading.Thread(new System.Threading.ThreadStart(TakeThread));
                             m_TakeThread.Start();
-                            n++;
+                            nPlay++;
                             break;
                         case 1:
                             m_pplayer.execute("Play '東北'");
                             // Takeを別スレッドで実行
                             m_TakeThread = new System.Threading.Thread(new System.Threading.ThreadStart(TakeThread));
                             m_TakeThread.Start();
-                            n++;
+                            nPlay++;
                             break;
                         case 2:
                             m_pplayer.execute("Play '関東'");
                             // Takeを別スレッドで実行
                             m_TakeThread = new System.Threading.Thread(new System.Threading.ThreadStart(TakeThread));
                             m_TakeThread.Start();
-                            n++;
+                            nPlay++;
                             break;
                         case 3:
                             m_pplayer.execute("Play '中部'");
                             // Takeを別スレッドで実行
                             m_TakeThread = new System.Threading.Thread(new System.Threading.ThreadStart(TakeThread));
                             m_TakeThread.Start();
-                            n++;
+                            nPlay++;
                             break;
                         case 4:
                             m_pplayer.execute("Play '近畿'");
                             // Takeを別スレッドで実行
                             m_TakeThread = new System.Threading.Thread(new System.Threading.ThreadStart(TakeThread));
                             m_TakeThread.Start();
-                            n++;
+                            nPlay++;
                             break;
                         case 5:
                             m_pplayer.execute("Play '中国'");
                             // Takeを別スレッドで実行
                             m_TakeThread = new System.Threading.Thread(new System.Threading.ThreadStart(TakeThread));
                             m_TakeThread.Start();
-                            n++;
+                            nPlay++;
                             break;
                         case 6:
                             m_pplayer.execute("Play '四国'");
                             // Takeを別スレッドで実行
                             m_TakeThread = new System.Threading.Thread(new System.Threading.ThreadStart(TakeThread));
                             m_TakeThread.Start();
-                            n++;
+                            nPlay++;
                             break;
-                        case 7:
+                        default:
                             m_pplayer.execute("Play '九州'");
                             // Takeを別スレッドで実行
                             m_TakeThread = new System.Threading.Thread(new System.Threading.ThreadStart(TakeThread));
                             m_TakeThread.Start();
-                            n++;
-                            break;
-                        default:
-                            n = 0;
+                            nPlay = 0;
                             break;
                     }
                 }
                 else
                 {
-                    //天気予報表示
+                    //天気情報表示
+                    switch (nPlay)
+                    {
+                        case 0:
+                            m_pplayer.execute("Play '全国の天気情報'");
+                            Items();
+                            nPlay++;
+                            break;
+                        case 1:
+                            m_pplayer.execute("Play '北海道天気'");
+                            Items();
+
+                            nPlay++;
+                            break;
+                        case 2:
+                            m_pplayer.execute("Play '東北天気'");
+                            Items();
+                            nPlay++;
+                            break;
+                        case 3:
+                            m_pplayer.execute("Play '関東天気'");
+                            Items();
+                            nPlay++;
+                            break;
+                        case 4:
+                            m_pplayer.execute("Play '中部天気'");
+                            Items();
+                            nPlay++;
+                            break;
+                        case 5:
+                            m_pplayer.execute("Play '関西天気'");
+                            Items();
+                            nPlay++;
+                            break;
+                        case 6:
+                            m_pplayer.execute("Play '中国天気'");
+                            Items();
+                            nPlay++;
+                            break;
+                        case 7:
+                            m_pplayer.execute("Play '四国天気'");
+                            Items();
+                            nPlay++;
+                            break;
+                        default:
+                            m_pplayer.execute("Play '九州天気'");
+                            Items();
+                            nPlay = 0;
+                            break;
+                    }
+                    // Takeを別スレッドで実行
+                    m_TakeThread = new System.Threading.Thread(new System.Threading.ThreadStart(TakeThread));
+                    m_TakeThread.Start();
+
                 }
             };
-            // タイマー起動(0.5秒後に処理実行、1秒おきに繰り返し)
-            MyTimer = new System.Threading.Timer(callback, null, 500, 1000);
+            // タイマー起動(0秒後に処理実行、5秒おきに繰り返し)
+            AreaTimer = new System.Threading.Timer(callback, null, 0, 10000);
+        }
+        private static System.Threading.Timer ItemTimer;
+        void Items() // 関数定義
+        {
+            TimerCallback callback = state =>
+            {
+                //タイマーで気温、日降水量、最大風速を一定時間ごとに切り換え
+                switch (mInfo)
+                {
+                    case 0:
+                        m_pplayer.execute("Set V0 '気温'");
+                        // Takeを別スレッドで実行
+                        m_TakeThread = new System.Threading.Thread(new System.Threading.ThreadStart(TakeThread));
+                        m_TakeThread.Start();
+                        mInfo++;
+                        break;
+                    case 1:
+                        m_pplayer.execute("Set V0 '日降水量'");
+                        // Takeを別スレッドで実行
+                        m_TakeThread = new System.Threading.Thread(new System.Threading.ThreadStart(TakeThread));
+                        m_TakeThread.Start();
+                        mInfo++;
+                        break;
+                    default:
+                        m_pplayer.execute("Set V0 '最大風速'");
+                        // Takeを別スレッドで実行
+                        m_TakeThread = new System.Threading.Thread(new System.Threading.ThreadStart(TakeThread));
+                        m_TakeThread.Start();
+                        mInfo = 0;
+                        break;
+                }
+            };
+            // タイマー起動(0秒後に処理実行、5秒おきに繰り返し)
+            ItemTimer = new System.Threading.Timer(callback, null, 0, 10000);
         }
 
         /*--------------------------------------------------------------------------------
@@ -302,7 +388,7 @@ namespace teamproject1
             Play.Visible = true;
             Stop.Visible = false;
             //タイマー停止
-            MyTimer.Dispose();
+            AreaTimer.Dispose();
         }
 
         /*--------------------------------------------------------------------------------
@@ -361,6 +447,87 @@ namespace teamproject1
             }
             else
             {//天気予報表示
+                if (TimerFlag)
+                {
+                    //タイマー停止
+                    AreaTimer.Dispose();
+                    nPlay = 0;
+                }
+                // 指定秒数間隔で呼び出される処理
+                TimerCallback callback = state =>
+                {
+                    //タイマーで気温、日降水量、最大風速を一定時間ごとに切り換え
+                    switch (nPlay)
+                    {
+                        case 0:
+                            m_pplayer.execute("Set V0 '気温'");
+                            // Takeを別スレッドで実行
+                            m_TakeThread = new System.Threading.Thread(new System.Threading.ThreadStart(TakeThread));
+                            m_TakeThread.Start();
+                            nPlay++;
+                            break;
+                        case 1:
+                            m_pplayer.execute("Set V0 '日降水量'");
+                            // Takeを別スレッドで実行
+                            m_TakeThread = new System.Threading.Thread(new System.Threading.ThreadStart(TakeThread));
+                            m_TakeThread.Start();
+                            nPlay++;
+                            break;
+                        case 2:
+                            m_pplayer.execute("Set V0 '最大風速'");
+                            // Takeを別スレッドで実行
+                            m_TakeThread = new System.Threading.Thread(new System.Threading.ThreadStart(TakeThread));
+                            m_TakeThread.Start();
+                            nPlay++;
+                            break;
+                        default:
+                            nPlay = 0;
+                            break;
+                    }
+                    string strSenderName = ((Button)sender).Name;
+                    int PreNumber = int.Parse(strSenderName.Substring(2));
+                    Console.WriteLine(strSenderName.Substring(2));
+
+                    //都道府県ボタンの数字から表示する画面を判定
+                    if (PreNumber == 2)
+                    {
+                        m_pplayer.execute("Play '北海道天気'");
+                    }
+                    else if (3 <= PreNumber && PreNumber <= 8)
+                    {
+                        m_pplayer.execute("Play '東北天気'");
+                    }
+                    else if (9 <= PreNumber && PreNumber <= 15)
+                    {
+                        m_pplayer.execute("Play '関東天気'");
+                    }
+                    else if (16 <= PreNumber && PreNumber <= 24)
+                    {
+                        m_pplayer.execute("Play '中部天気'");
+                    }
+                    else if (25 <= PreNumber && PreNumber <= 31)
+                    {
+                        m_pplayer.execute("Play '近畿天気'");
+                    }
+                    else if (32 <= PreNumber && PreNumber <= 36)
+                    {
+                        m_pplayer.execute("Play '中国天気'");
+                    }
+                    else if (37 <= PreNumber && PreNumber <= 40)
+                    {
+                        m_pplayer.execute("Play '四国天気'");
+                    }
+                    else if (41 <= PreNumber && PreNumber <= 48)
+                    {
+                        m_pplayer.execute("Play '九州天気'");
+                    }
+                    // Takeを別スレッドで実行
+                    m_TakeThread = new System.Threading.Thread(new System.Threading.ThreadStart(TakeThread));
+                    m_TakeThread.Start();
+                };
+                // タイマー起動(1秒後に処理実行、2秒おきに繰り返し)
+                AreaTimer = new System.Threading.Timer(callback, null, 1000, 2000);
+                TimerFlag = true;
 
             }
 
