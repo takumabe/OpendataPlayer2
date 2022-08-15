@@ -1,6 +1,13 @@
 
 Frame "‹ß‹E" {
 	Version 50463 
+	FadeIn {
+		Black 18 
+	} 
+	fOutFade {
+		18 
+		Delay 4000 
+	} 
 	BGC 0 0 0 115  
 	fVideoAtr { Ortho3D }
 	fOADevice { "GRID-EX32HD" }
@@ -71,7 +78,6 @@ Frame "‹ß‹E" {
 				Size 32 100 
 				Offset 0 -22 
 				"\(T( "ƒRƒƒi‚Ìî•ñ" ) C( "“ú•t" ) , Ss)" 
-				Offset 0 -22 
 			} 
 			PolyLine "Ü‚êü" {
 				15 

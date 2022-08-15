@@ -1,6 +1,13 @@
 
 Frame "東北天気" {
 	Version 50463 
+	FadeIn {
+		Black 29 
+	} 
+	fOutFade {
+		29 
+		Delay 3730 
+	} 
 	BGC 0 0 0 115  
 	fVideoAtr { Ortho3D }
 	fOADevice { "GRID-EX32HD" }
@@ -41,7 +48,7 @@ Frame "東北天気" {
 			"共通天気板" -80 606  T( "天気情報" ) R( 36127 ) 
 		} 
 		Link "山形" {
-			"共通天気板" -358 320  T( "天気情報" ) R( 33136 ) 
+			"共通天気板" -358 320  T( "天気情報" ) R( 35426 ) 
 		} 
 		Link "秋田" {
 			"共通天気板" -390 126  R( 32402 ) 

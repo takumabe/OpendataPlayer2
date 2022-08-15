@@ -1,6 +1,7 @@
 
 Frame "共通天気全国板" {
 	Version 50463 
+	fVideoAtr { Ortho3D }
 	fOADevice { "GRID-EX32HD" }
 	Layer "レイヤー1" {
 		Group {
@@ -18,7 +19,14 @@ Frame "共通天気全国板" {
 				Offset 0 10 
 				"\(C( 1 ) , S!s)" 
 			} 
-			Group {
+		} 
+		Switch "スイッチ" {
+			Group "デフォルト" {
+			}
+			( V0 == "気温" ) 
+			Group "気温" {
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 1 LinkTop 0 }
 				String {
 					372 881 138  H CL 
 					Style "マルＣフーツラ" 
@@ -54,39 +62,49 @@ Frame "共通天気全国板" {
 					"℃" 
 				} 
 			} 
-			String {
-				340 907 185  H CL 
-				Style "マルＣフーツラ" 
-				Size 70 100 
-				Color { 255 255 255 255   AntiAlias 2 }
-				Effect {
-					Edge {
-						3 
-						Color { 0 0 0 255  }
+			( V0 == "日降水量" ) 
+			Group "日降水量" {
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 1 LinkTop 0 }
+				String {
+					336 906 199  H CL 
+					Style "マルＣフーツラ" 
+					Size 70 100 
+					Color { 255 255 255 255   AntiAlias 2 }
+					Effect {
+						Edge {
+							3 
+							Color { 0 0 0 255  }
+						}
 					}
-				}
-				Proportional 
-				"\(C( 5 ) , S!s)" 
-				Style "LSN太角ゴシック体" 
-				Size 40 100 
-				"m/s" 
+					Proportional 
+					"\(C( 4 ) , S!s)" 
+					Style "LSN太角ゴシック体" 
+					Size 40 100 
+					"mm" 
+				} 
 			} 
-			String {
-				336 906 199  H CL 
-				Style "マルＣフーツラ" 
-				Size 70 100 
-				Color { 255 255 255 255   AntiAlias 2 }
-				Effect {
-					Edge {
-						3 
-						Color { 0 0 0 255  }
+			( V0 == "最大風速" ) 
+			Group "最大風速" {
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 1 LinkTop 0 }
+				String {
+					340 907 185  H CL 
+					Style "マルＣフーツラ" 
+					Size 70 100 
+					Color { 255 255 255 255   AntiAlias 2 }
+					Effect {
+						Edge {
+							3 
+							Color { 0 0 0 255  }
+						}
 					}
-				}
-				Proportional 
-				"\(C( 4 ) , S!s)" 
-				Style "LSN太角ゴシック体" 
-				Size 40 100 
-				"mm" 
+					Proportional 
+					"\(C( 5 ) , S!s)" 
+					Style "LSN太角ゴシック体" 
+					Size 40 100 
+					"m/s" 
+				} 
 			} 
 		} 
 	} 

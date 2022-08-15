@@ -1,6 +1,13 @@
 
 Frame "四国天気" {
 	Version 50463 
+	FadeIn {
+		Black 29 
+	} 
+	fOutFade {
+		29 
+		Delay 3730 
+	} 
 	BGC 0 0 0 115  
 	fVideoAtr { Ortho3D }
 	fOADevice { "GRID-EX32HD" }
@@ -29,7 +36,7 @@ Frame "四国天気" {
 			} 
 		} 
 		Link "高松" {
-			"共通天気板" 72 102  T( "天気情報" ) R( 23281 ) 
+			"共通天気板" 72 102  T( "天気情報" ) R( 72086 ) 
 		} 
 		Link "徳島" {
 			"共通天気板" 80 446  T( "天気情報" ) R( 71106 ) 

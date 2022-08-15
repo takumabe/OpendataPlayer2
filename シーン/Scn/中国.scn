@@ -6,7 +6,7 @@ Frame "íÜçë" {
 	} 
 	fOutFade {
 		18 
-		Nowait 
+		Delay 4000 
 	} 
 	BGC 0 0 0 115  
 	fVideoAtr { Ortho3D }

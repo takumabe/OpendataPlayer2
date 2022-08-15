@@ -27,7 +27,7 @@ Frame "共通天気板" {
 				}
 				( V0 == "気温" ) 
 				Group "気温" {
-					uZoomIn { NonVolatile 2000 CC 0 }
+					uPushWipeIn { NonVolatile 0 12000  1 }
 					uTimeCodeInfoIn { Priority 1 LinkTop 0 }
 					String {
 						1048 293 130  H CL 
@@ -66,7 +66,7 @@ Frame "共通天気板" {
 				} 
 				( V0 == "日降水量" ) 
 				Group "日降水量" {
-					uZoomIn { NonVolatile 2000 CC 0 }
+					uPushWipeIn { NonVolatile 0 12000  1 }
 					uTimeCodeInfoIn { Priority 1 LinkTop 0 }
 					String {
 						1011 319 185  H CL 
@@ -88,7 +88,7 @@ Frame "共通天気板" {
 				} 
 				( V0 == "最大風速" ) 
 				Group "最大風速" {
-					uZoomIn { NonVolatile 2000 CC 0 }
+					uPushWipeIn { NonVolatile 0 12000  1 }
 					uTimeCodeInfoIn { Priority 1 LinkTop 0 }
 					String {
 						1018 321 173  H CL 
