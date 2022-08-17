@@ -574,5 +574,19 @@ Frame "全国の天気情報" {
 				Color { 255 221 15 255   AntiAlias 2 }
 			}
 		}
-	}
-}
+		Group {
+			Board "板" {
+				1517 600 156 36  
+				Color { 255 255 255 255   AntiAlias 2 }
+			}
+			String {
+				1542 631 105  H CL 
+				Style "TV用太角ゴシック体" 
+				Size 30 100 
+				Color { 0 0 0 255   AntiAlias 3 }
+				Proportional 
+				"東京" 
+			} 
+		} 
+	} 
+} 

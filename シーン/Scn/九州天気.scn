@@ -9,22 +9,25 @@ Frame "九州天気" {
 		Delay 2101 
 	} 
 	BGC 0 0 0 115  
-	fVideoAtr { Ortho3D }
+	fVideoAtr { VPlane B End Ortho3D }
 	fOADevice { "GRID-EX32HD" }
 	Layer "レイヤー1" {
 		Link "気温" {
-			"気温" -104 -86  
+			"気温" -134 -96  
 		} 
 		Link "日降水量" {
-			"日降水量" -90 -65  
-			uPushWipeIn { NonVolatile -12000 0  4 }
+			"日降水量" -110 -13  
+			uPushWipeIn { NonVolatile 0 12000  1 }
 			uTimeCodeInfoIn { Priority 1 LinkTop 102 }
 		}
 		Link "最大風速" {
-			"最大風速" -90 -65  
-			uPushWipeIn { NonVolatile -12000 0  4 }
+			"最大風速" -110 -80  
+			uPushWipeIn { NonVolatile 0 12000  1 }
 			uTimeCodeInfoIn { Priority 10 LinkBottom 63 }
 		}
+		Link "時間" {
+			"時間" -91 21  
+		} 
 		Image "イメージ" {
 			857 361 206 358  CC 
 			Name "kyusyu.png" 0 
