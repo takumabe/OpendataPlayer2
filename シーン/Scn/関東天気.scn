@@ -13,18 +13,21 @@ Frame "関東天気" {
 	fOADevice { "GRID-EX32HD" }
 	Layer "レイヤー1" {
 		Link "気温" {
-			"気温" -104 -86  
+			"気温" -134 -96  
 		} 
 		Link "日降水量" {
-			"日降水量" -90 -65  
-			uPushWipeIn { NonVolatile -12000 0  4 }
+			"日降水量" -110 -13  
+			uPushWipeIn { NonVolatile 0 12000  1 }
 			uTimeCodeInfoIn { Priority 1 LinkTop 102 }
 		}
 		Link "最大風速" {
-			"最大風速" -90 -65  
-			uPushWipeIn { NonVolatile -12000 0  4 }
+			"最大風速" -110 -80  
+			uPushWipeIn { NonVolatile 0 12000  1 }
 			uTimeCodeInfoIn { Priority 9 LinkBottom 63 }
 		}
+		Link "時間" {
+			"時間" -91 21  
+		} 
 		Image "イメージ" {
 			869 418 182 244  CC 
 			Name "kanto.png" 0 
@@ -202,6 +205,20 @@ Frame "関東天気" {
 				Link "最大風速" {
 					"最大風速" -90 -65  
 				} 
+			} 
+		} 
+		Group {
+			Board "板" {
+				902 462 156 36  
+				Color { 255 255 255 255   AntiAlias 2 }
+			}
+			String {
+				927 493 105  H CL 
+				Style "TV用太角ゴシック体" 
+				Size 30 100 
+				Color { 0 0 0 255   AntiAlias 3 }
+				Proportional 
+				"東京" 
 			} 
 		} 
 	} 

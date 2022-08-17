@@ -20,18 +20,21 @@ Frame "–kŠC“¹“V‹C" {
 			Resize byRate 3 
 		} 
 		Link "‹C‰·" {
-			"‹C‰·" -104 -86  
+			"‹C‰·" -134 -96  
 		} 
 		Link "“ú~…—Ê" {
-			"“ú~…—Ê" -90 -65  
-			uPushWipeIn { NonVolatile -12000 0  4 }
+			"“ú~…—Ê" -110 -13  
+			uPushWipeIn { NonVolatile 0 12000  1 }
 			uTimeCodeInfoIn { Priority 1 LinkBottom 102 }
 		}
 		Link "Å‘å•—‘¬" {
-			"Å‘å•—‘¬" -90 -65  
-			uPushWipeIn { NonVolatile -12000 0  4 }
+			"Å‘å•—‘¬" -110 -80  
+			uPushWipeIn { NonVolatile 0 12000  1 }
 			uTimeCodeInfoIn { Priority 6 LinkTop 0 }
 		}
+		Link "ŽžŠÔ" {
+			"ŽžŠÔ" -91 21  
+		} 
 		Group "ŽD–y" {
 			Link "ŽD–y" {
 				"‹¤’Ê“V‹C”Â" -260 26  T( "“V‹Cî•ñ" ) R( 14163 ) 

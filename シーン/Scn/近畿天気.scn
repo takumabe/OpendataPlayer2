@@ -13,18 +13,21 @@ Frame "近畿天気" {
 	fOADevice { "GRID-EX32HD" }
 	Layer "レイヤー1" {
 		Link "気温" {
-			"気温" -104 -86  
+			"気温" -134 -96  
 		} 
 		Link "日降水量" {
-			"日降水量" -90 -65  
-			uPushWipeIn { NonVolatile -12000 0  4 }
+			"日降水量" -110 -13  
+			uPushWipeIn { NonVolatile 0 12000  1 }
 			uTimeCodeInfoIn { Priority 2 LinkTop 0 }
 		}
 		Link "最大風速" {
-			"最大風速" -90 -65  
-			uPushWipeIn { NonVolatile -12000 0  4 }
+			"最大風速" -110 -80  
+			uPushWipeIn { NonVolatile 0 12000  1 }
 			uTimeCodeInfoIn { Priority 10 LinkTop 0 }
 		}
+		Link "時間" {
+			"時間" -91 21  
+		} 
 		Image "イメージ" {
 			868 413 184 254  CC 
 			Name "kinki.png" 0 
