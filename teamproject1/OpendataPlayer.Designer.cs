@@ -82,6 +82,7 @@ namespace teamproject1
             this.Stop = new System.Windows.Forms.Button();
             this.Corona = new System.Windows.Forms.Button();
             this.Weather = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.OpendataFileWatcher)).BeginInit();
             this.SuspendLayout();
             // 
@@ -167,6 +168,7 @@ namespace teamproject1
             this.id7.FlatAppearance.BorderSize = 2;
             this.id7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.id7.Font = new System.Drawing.Font("HGｺﾞｼｯｸE", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.id7.ForeColor = System.Drawing.SystemColors.ControlText;
             this.id7.Location = new System.Drawing.Point(1307, 372);
             this.id7.Name = "id7";
             this.id7.Size = new System.Drawing.Size(118, 88);
@@ -558,7 +560,7 @@ namespace teamproject1
             this.id32.Font = new System.Drawing.Font("HGｺﾞｼｯｸE", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.id32.Location = new System.Drawing.Point(651, 553);
             this.id32.Name = "id32";
-            this.id32.Size = new System.Drawing.Size(85, 40);
+            this.id32.Size = new System.Drawing.Size(85, 50);
             this.id32.TabIndex = 12;
             this.id32.Text = "鳥取";
             this.id32.UseVisualStyleBackColor = false;
@@ -571,9 +573,9 @@ namespace teamproject1
             this.id34.FlatAppearance.BorderSize = 2;
             this.id34.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.id34.Font = new System.Drawing.Font("HGｺﾞｼｯｸE", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.id34.Location = new System.Drawing.Point(651, 600);
+            this.id34.Location = new System.Drawing.Point(651, 609);
             this.id34.Name = "id34";
-            this.id34.Size = new System.Drawing.Size(85, 62);
+            this.id34.Size = new System.Drawing.Size(85, 53);
             this.id34.TabIndex = 43;
             this.id34.Text = "岡山";
             this.id34.UseVisualStyleBackColor = false;
@@ -588,7 +590,7 @@ namespace teamproject1
             this.id33.Font = new System.Drawing.Font("HGｺﾞｼｯｸE", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.id33.Location = new System.Drawing.Point(559, 553);
             this.id33.Name = "id33";
-            this.id33.Size = new System.Drawing.Size(88, 40);
+            this.id33.Size = new System.Drawing.Size(88, 50);
             this.id33.TabIndex = 44;
             this.id33.Text = "島根";
             this.id33.UseVisualStyleBackColor = false;
@@ -601,9 +603,9 @@ namespace teamproject1
             this.id35.FlatAppearance.BorderSize = 2;
             this.id35.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.id35.Font = new System.Drawing.Font("HGｺﾞｼｯｸE", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.id35.Location = new System.Drawing.Point(559, 599);
+            this.id35.Location = new System.Drawing.Point(559, 609);
             this.id35.Name = "id35";
-            this.id35.Size = new System.Drawing.Size(88, 62);
+            this.id35.Size = new System.Drawing.Size(88, 52);
             this.id35.TabIndex = 45;
             this.id35.Text = "広島";
             this.id35.UseVisualStyleBackColor = false;
@@ -768,7 +770,7 @@ namespace teamproject1
             this.id48.FlatAppearance.BorderSize = 2;
             this.id48.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.id48.Font = new System.Drawing.Font("HGｺﾞｼｯｸE", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.id48.Location = new System.Drawing.Point(168, 817);
+            this.id48.Location = new System.Drawing.Point(95, 821);
             this.id48.Name = "id48";
             this.id48.Size = new System.Drawing.Size(94, 55);
             this.id48.TabIndex = 61;
@@ -811,8 +813,8 @@ namespace teamproject1
             this.MonthCalendar.BackColor = System.Drawing.Color.SandyBrown;
             this.MonthCalendar.CalendarDimensions = new System.Drawing.Size(3, 1);
             this.MonthCalendar.Font = new System.Drawing.Font("HGSｺﾞｼｯｸE", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.MonthCalendar.Location = new System.Drawing.Point(407, 47);
-            this.MonthCalendar.MaxDate = new System.DateTime(2022, 8, 10, 0, 0, 0, 0);
+            this.MonthCalendar.Location = new System.Drawing.Point(151, 269);
+            this.MonthCalendar.MaxDate = new System.DateTime(2022, 8, 17, 0, 0, 0, 0);
             this.MonthCalendar.MaxSelectionCount = 100000;
             this.MonthCalendar.MinDate = new System.DateTime(2020, 1, 16, 0, 0, 0, 0);
             this.MonthCalendar.Name = "MonthCalendar";
@@ -833,7 +835,7 @@ namespace teamproject1
             this.Play.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.Play.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.Play.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Play.Location = new System.Drawing.Point(740, 256);
+            this.Play.Location = new System.Drawing.Point(445, 100);
             this.Play.Name = "Play";
             this.Play.Size = new System.Drawing.Size(110, 110);
             this.Play.TabIndex = 12;
@@ -847,7 +849,7 @@ namespace teamproject1
             this.Stop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Stop.FlatAppearance.BorderSize = 0;
             this.Stop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Stop.Location = new System.Drawing.Point(740, 256);
+            this.Stop.Location = new System.Drawing.Point(445, 100);
             this.Stop.Name = "Stop";
             this.Stop.Size = new System.Drawing.Size(110, 110);
             this.Stop.TabIndex = 65;
@@ -861,7 +863,7 @@ namespace teamproject1
             this.Corona.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Corona.FlatAppearance.BorderSize = 0;
             this.Corona.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Corona.Location = new System.Drawing.Point(591, 256);
+            this.Corona.Location = new System.Drawing.Point(168, 100);
             this.Corona.Name = "Corona";
             this.Corona.Size = new System.Drawing.Size(110, 110);
             this.Corona.TabIndex = 56;
@@ -874,12 +876,21 @@ namespace teamproject1
             this.Weather.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Weather.FlatAppearance.BorderSize = 0;
             this.Weather.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Weather.Location = new System.Drawing.Point(445, 256);
+            this.Weather.Location = new System.Drawing.Point(304, 100);
             this.Weather.Name = "Weather";
             this.Weather.Size = new System.Drawing.Size(110, 110);
             this.Weather.TabIndex = 55;
             this.Weather.UseVisualStyleBackColor = true;
             this.Weather.Click += new System.EventHandler(this.Weather_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBox1.Location = new System.Drawing.Point(804, 100);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(352, 220);
+            this.textBox1.TabIndex = 66;
             // 
             // OpendataPlayer
             // 
@@ -888,6 +899,7 @@ namespace teamproject1
             this.BackColor = System.Drawing.Color.AliceBlue;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1770, 888);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.Play);
             this.Controls.Add(this.Stop);
             this.Controls.Add(this.MonthCalendar);
@@ -947,6 +959,7 @@ namespace teamproject1
             this.Load += new System.EventHandler(this.OpendataPlayer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.OpendataFileWatcher)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -1004,6 +1017,7 @@ namespace teamproject1
         private System.Windows.Forms.MonthCalendar MonthCalendar;
         private System.Windows.Forms.Button Stop;
         private System.IO.FileSystemWatcher OpendataFileWatcher;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
