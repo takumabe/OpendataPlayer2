@@ -143,9 +143,6 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\playbutton.bmp" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\playbutton.png" />
   </ItemGroup>
   <ItemGroup>
