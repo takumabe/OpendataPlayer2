@@ -47,22 +47,7 @@ namespace teamproject1
         private string m_strSceneDir = "";
         private byte m_WeatherFlag = 0x00;
         private int nPlay = 0;
-        private Microsoft.Office.Interop.Excel.Application m_ExcelApp = null;
-        private Excel.Workbook m_wbWeather = null;
-        private Excel.Workbook m_wbHigh = null;
-        private Excel.Workbook m_wbLow = null;
-        private Excel.Workbook m_wbRain = null;
-        private Excel.Workbook m_wbWind = null;
-        private int[] m_aryRegionID = new int[]
-        {
-            // 各都道府県の県庁所在地の観測所番号リスト.
-            14163, 19432, 31312, 32402, 33431, 34392, 35426, 36127, 40201, 41277,
-            42251, 43241, 44132, 45212, 46106, 48156, 49142, 50331, 51106, 52586,
-            53133, 54232, 55102, 56227, 57066, 60216, 61286, 62078, 63518, 64036,
-            65042, 66408, 67437, 68132, 69122, 71106, 72086, 73166, 74181, 81286,
-            82182, 83216, 84496, 85142, 86141, 87376, 88317, 91197
-        };
-        
+        private System.Diagnostics.Process m_procGatherCsvExe = null;
 
 
         /*--------------------------------------------------------------------------------
@@ -82,6 +67,17 @@ namespace teamproject1
             this.OpendataFileWatcher.Renamed += new System.IO.RenamedEventHandler(watcher_Renamed);
 
             MonthCalendar.MaxDate = getLatestDate(strDataPath);
+
+            // 天気情報.csv作成用プロセスの設定.
+            string strGatherCsvExePath = $"{AppDomain.CurrentDomain.BaseDirectory}";
+            strGatherCsvExePath = strGatherCsvExePath.Substring(0, strGatherCsvExePath.LastIndexOf("teamproject1")) + @"OpendataDownLoader\GatherWeatherCsv\GatherWeatherCsv\bin\Debug\GatherWeatherCsv.exe";
+
+            m_procGatherCsvExe = new System.Diagnostics.Process();
+            m_procGatherCsvExe.StartInfo.FileName = strGatherCsvExePath;
+            m_procGatherCsvExe.StartInfo.CreateNoWindow = true;
+            m_procGatherCsvExe.StartInfo.UseShellExecute = false;
+            m_procGatherCsvExe.EnableRaisingEvents = true;
+            m_procGatherCsvExe.Exited += new System.EventHandler(LoadScheme);
         }
 
         /*--------------------------------------------------------------------------------
@@ -89,8 +85,6 @@ namespace teamproject1
          *--------------------------------------------------------------------------------*/
         private void OpendataPlayer_Load(object sender, EventArgs e)
         {
-            
-
             try
             {
                 m_OpendataDownLoader = new OpendataDownLoader.OpendataDownLoader();
@@ -123,7 +117,7 @@ namespace teamproject1
             //送出デバイスの設定
             m_pplayer.execute("GetDevice WinGL HD SendTo -1 0");
 
-            LoadScheme();
+            LoadScheme(sender, e);
         }
 
         /*--------------------------------------------------------------------------------
@@ -146,9 +140,9 @@ namespace teamproject1
                 OpendataFileWatcher = null;
             }
 
-            releaseExcelCom();
-
             m_OpendataDownLoader.deleteTask();
+
+            m_procGatherCsvExe.Close();
         }
 
         /*--------------------------------------------------------------------------------
@@ -370,7 +364,7 @@ namespace teamproject1
         /*--------------------------------------------------------------------------------
          * スキーマの読み込み.
          *--------------------------------------------------------------------------------*/
-        private void LoadScheme()
+        private void LoadScheme(object sender, EventArgs e)
         {
             string strSchemePath = m_strSceneDir.Replace(@"\", @"\\");
             m_pplayer.execute("Load '" + strSchemePath + @"Scn\\TeamDevelopment.scm'");
@@ -722,7 +716,7 @@ namespace teamproject1
                 string strDataPath = m_strSceneDir + "Data";
                 Console.WriteLine(strDataPath);
                 MonthCalendar.MaxDate = getLatestDate(strDataPath);
-                LoadScheme();
+                LoadScheme(null, null);
             }
             else
             {
@@ -751,20 +745,8 @@ namespace teamproject1
                     // 4種類の天気情報すべてが更新された時の処理
                     try
                     {
-                        // 別タスクで天気データ統合処理→スキーマの再読み込み.
-                        Task weatherTask = Task.Run(() => {
-                            gatherWeatherCsv(e.FullPath.Substring(0, e.FullPath.IndexOf(e.Name)));
-                            LoadScheme();
-                            });
-
-                        // タスク内の例外受け取り.
-                        weatherTask.ContinueWith((exTask) =>
-                        {
-                            if (exTask.Exception != null)
-                            {
-                                MessageBox.Show(exTask.Exception.InnerException.Message);
-                            }
-                        });
+                        // 別exeファイル（天気情報をまとめるプログラム）を実行.
+                        m_procGatherCsvExe.Start();
 
                         m_WeatherFlag = 0x00;
                     }
@@ -774,176 +756,6 @@ namespace teamproject1
                     }
                 }
             }
-        }
-
-
-        /*--------------------------------------------------------------------------------
-         * ダウンロードした天気情報を一つのファイルにまとめるメソッド.
-         *--------------------------------------------------------------------------------*/
-        private void gatherWeatherCsv(string strDataPath)
-        {
-            Console.WriteLine("天気情報.csv生成タスク実行開始");
-
-            Excel._Worksheet ws = null;
-            Excel.Range RegionCell = null;
-            Excel.Range DataCell = null;
-            Excel._Worksheet DestCsv = null;
-
-            try
-            {
-                // excelを起動
-                m_ExcelApp = new Microsoft.Office.Interop.Excel.Application();
-                m_ExcelApp.Visible = false;
-                m_ExcelApp.DisplayAlerts = false;
-
-                // それぞれのワークブックを開く.
-                m_wbWeather = m_ExcelApp.Workbooks.Open(strDataPath + "天気情報.csv",
-                    Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-                    Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-                    Type.Missing);
-                m_wbHigh = m_ExcelApp.Workbooks.Open(strDataPath + "最高気温.csv",
-                    Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-                    Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-                    Type.Missing);
-                m_wbLow = m_ExcelApp.Workbooks.Open(strDataPath + "最低気温.csv",
-                    Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-                    Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-                    Type.Missing);
-                m_wbRain = m_ExcelApp.Workbooks.Open(strDataPath + "日降水量.csv",
-                    Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-                    Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-                    Type.Missing);
-                m_wbWind = m_ExcelApp.Workbooks.Open(strDataPath + "最大風速.csv",
-                    Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-                    Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-                    Type.Missing);
-
-
-                // 二番目に開いたワークブックから順にアクセス（一番目は書き込み先）.
-                for (int wbIndex = 2; wbIndex <= m_ExcelApp.Workbooks.Count; wbIndex++)
-                {
-                    m_ExcelApp.Workbooks[wbIndex].Activate();
-
-                    // 選択中のワークブックにあるワークシートを順にアクセス.
-                    for (int wsIndex = 1; wsIndex <= m_ExcelApp.Workbooks[wbIndex].Worksheets.Count; wsIndex++)
-                    {
-                        // wbIndex番目のワークブックのwsIndex番目のシートを選択.
-                        ws = (Excel._Worksheet)m_ExcelApp.Workbooks[wbIndex].Worksheets[wsIndex];
-                        ws.Select();
-
-                        // 県庁所在地のみの観測所番号リスト用インデックス
-                        int RegionIndex = 0;
-
-                        // 観測所番号の列（A列）を2行目（1行目は列の説明文）から順にアクセス.
-                        for (int nRow = 2; nRow <= ws.UsedRange.Rows.Count; nRow++)
-                        {
-                            RegionCell = ws.get_Range("A" + nRow.ToString());
-
-                            // 選択中のセルの値が県庁所在地の観測所番号リストに存在するか判定.
-                            // （データは観測所番号が昇順で重複がないこととする.）
-                            if (RegionCell.Text == m_aryRegionID[RegionIndex].ToString())
-                            {
-                                // 観測所番号リストに一致した行の「各ファイルの必要なデータが保存されているJ列」のセルを選択・コピー.
-                                DataCell = ws.get_Range("J" + nRow.ToString());
-                                DataCell.Select();
-                                DataCell.Copy();
-
-                                // 情報の貼り付け先csvファイルを用意（最初に開いたワークブックの一枚目のワークシート）.
-                                DestCsv = (Excel._Worksheet)m_ExcelApp.Workbooks[1].Worksheets[1];
-
-                                // アクセス中のワークブックの順番によって貼り付け先の列を切り替え.
-                                // C列 → D列 → E列 → F列の順.
-                                // 'C'はASCIIコードで67. wbIndexは2から始まるので65を加算して文字列に変換.
-                                int DestColumn_asciiCode = 65 + wbIndex;
-
-                                // 貼り付ける行は一行目を列の説明文とするため、2行目から48地点分を順番に貼り付ける.
-                                int DestRow = RegionIndex + 2;
-
-                                // 貼り付け先を指定してペースト.
-                                string strDestCell = ((char)DestColumn_asciiCode).ToString() + DestRow.ToString();
-                                DestCsv.Paste(DestCsv.get_Range(strDestCell), Type.Missing);
-
-                                if (m_aryRegionID.Length - 1 <= RegionIndex)
-                                {
-                                    // 検索する観測所番号がリストの要素数を超えたら終了.
-                                    break;
-                                }
-                                else
-                                {
-                                    // それ以外の時は次の観測所番号リストへ
-                                    RegionIndex++;
-                                }
-                            }
-                        }
-                    }
-                }
-                // 貼り付けた内容を保存.
-                m_wbWeather.SaveAs(strDataPath + "天気情報.csv", Excel.XlFileFormat.xlCSV);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                // Excelアプリの終了.
-                Marshal.ReleaseComObject(DestCsv);
-                DestCsv = null;
-                Marshal.ReleaseComObject(DataCell);
-                DataCell = null;
-                Marshal.ReleaseComObject(RegionCell);
-                RegionCell = null;
-                Marshal.ReleaseComObject(ws);
-                ws = null;
-
-                releaseExcelCom();
-            }
-
-            Console.WriteLine("天気情報.csv完了");
-        }
-
-        private void releaseExcelCom()
-        {
-            if(m_wbWind != null)
-            {
-                Marshal.ReleaseComObject(m_wbWind);
-                m_wbWind = null;
-            }
-            if(m_wbRain != null)
-            {
-                Marshal.ReleaseComObject(m_wbRain);
-                m_wbRain = null;
-            }
-            if(m_wbLow != null)
-            {
-                Marshal.ReleaseComObject(m_wbLow);
-                m_wbLow = null;
-            }
-            if(m_wbHigh != null)
-            {
-                Marshal.ReleaseComObject(m_wbHigh);
-                m_wbHigh = null;
-            }
-            if(m_wbWeather != null)
-            {
-                Marshal.ReleaseComObject(m_wbWeather);
-                m_wbWeather = null;
-            }
-
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
-            GC.Collect();
-
-            if(m_ExcelApp != null)
-            {
-                m_ExcelApp.Quit();
-                Marshal.ReleaseComObject(m_ExcelApp);
-                m_ExcelApp = null;
-            }
-
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
-            GC.Collect();
         }
     }
 }
