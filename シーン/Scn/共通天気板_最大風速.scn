@@ -1,0 +1,46 @@
+
+Frame "共通天気板_最大風速" {
+	Version 50463 
+	fVideoAtr { Ortho3D }
+	fOADevice { "GRID-EX32HD" }
+	Layer "レイヤー1" {
+		Group "最大風速" {
+			Board "枠" {
+				992 241 234 114  
+				Color { 255 255 255 0   AntiAlias 2  BlendMask }
+				Hidden 
+				Plane F uMask 
+			} 
+			Board "枠" {
+				992 241 234 114  
+				Color { 255 255 255 255   AntiAlias 2 }
+				Plane F 
+			} 
+			Rim "枠" {
+				987 236 244 124  5 
+				In 
+				Color { 255 221 15 255   AntiAlias 2 }
+				Hidden 
+				Plane F 
+			} 
+			String {
+				1019 328 180  H CL 
+				Plane F 
+				Style "マルＣフーツラ" 
+				Size 77 100 
+				Color { 255 255 255 255   AntiAlias 2 }
+				Effect {
+					Edge {
+						3 
+						Color { 0 0 0 255  }
+					}
+				}
+				Proportional 
+				"\(C( 5 ) , S!s)" 
+				Style "LSN太角ゴシック体" 
+				Size 44 100 
+				"m/s" 
+			} 
+		} 
+	} 
+} 

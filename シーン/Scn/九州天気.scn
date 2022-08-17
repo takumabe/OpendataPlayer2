@@ -6,12 +6,25 @@ Frame "九州天気" {
 	} 
 	fOutFade {
 		29 
-		Delay 3730 
+		Delay 2101 
 	} 
 	BGC 0 0 0 115  
 	fVideoAtr { Ortho3D }
 	fOADevice { "GRID-EX32HD" }
 	Layer "レイヤー1" {
+		Link "気温" {
+			"気温" -104 -86  
+		} 
+		Link "日降水量" {
+			"日降水量" -90 -65  
+			uPushWipeIn { NonVolatile -12000 0  4 }
+			uTimeCodeInfoIn { Priority 1 LinkTop 102 }
+		}
+		Link "最大風速" {
+			"最大風速" -90 -65  
+			uPushWipeIn { NonVolatile -12000 0  4 }
+			uTimeCodeInfoIn { Priority 10 LinkBottom 63 }
+		}
 		Image "イメージ" {
 			857 361 206 358  CC 
 			Name "kyusyu.png" 0 
@@ -19,47 +32,160 @@ Frame "九州天気" {
 			Offset ( 0 ) ( 0 ) 
 			Resize byRate 2.500000 
 		} 
-		Group {
-			String {
-				1674 73 486  V HL 
-				Style "LSN太角ゴシック体" 
-				Size 244 100 
-				Transparent { AntiAlias 2 }
-				Effect {
-					Edge {
-						5 
-						Color { 25 255 204 255  }
-					}
-				}
-				Proportional 
-				"九州" 
+		Group "那覇" {
+			Link "那覇" {
+				"共通天気板" -112 374  T( "天気情報" ) R( 91197 ) 
 			} 
-		} 
-		Link "福岡" {
-			"共通天気板" 40 -110  T( "天気情報" ) R( 82182 ) 
-		} 
-		Link "大分" {
-			"共通天気板" 164 72  T( "天気情報" ) R( 83216 ) 
-		} 
-		Link "宮崎" {
-			"共通天気板" 194 266  T( "天気情報" ) R( 87376 ) 
-		} 
-		Link "鹿児島" {
-			"共通天気板" 114 480  T( "天気情報" ) R( 88317 ) 
-		} 
-		Link "熊本" {
-			"共通天気板" -154 222  T( "天気情報" ) R( 86141 ) 
-		} 
-		Link "長崎" {
-			"共通天気板" -448 90  T( "天気情報" ) R( 84496 ) 
-		} 
-		Link "佐賀" {
-			"共通天気板" -278 -98  T( "天気情報" ) R( 85142 ) 
-		} 
-		Link "那覇" {
-			"共通天気板" -256 622  T( "天気情報" ) R( 91197 ) 
-		} 
+			Link "那覇水" {
+				"共通天気板_日降水量" -256 637  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 2 LinkTop 0 }
+			}
+			Link "那覇風" {
+				"共通天気板_最大風速" -261 632  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 11 LinkTop 0 }
+			}
+			Rim "枠" {
+				731 873 234 114  5 
+				Color { 255 221 15 255   AntiAlias 2 }
+			}
+		}
+		Group "佐賀" {
+			Link "佐賀" {
+				"共通天気板" -168 -374  T( "天気情報" ) R( 85142 ) 
+			} 
+			Link "佐賀水" {
+				"共通天気板_日降水量" -312 -111  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 3 LinkTop 0 }
+			}
+			Link "佐賀風" {
+				"共通天気板_最大風速" -317 -116  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 12 LinkTop 0 }
+			}
+			Rim "枠" {
+				675 125 234 114  5 
+				Color { 255 221 15 255   AntiAlias 2 }
+			}
+		}
+		Group "長崎" {
+			Link "長崎" {
+				"共通天気板" -332 -161  T( "天気情報" ) R( 84496 ) 
+			} 
+			Link "長崎水" {
+				"共通天気板_日降水量" -476 102  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 4 LinkTop 0 }
+			}
+			Link "長崎風" {
+				"共通天気板_最大風速" -481 97  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 13 LinkTop 0 }
+			}
+			Rim "枠" {
+				511 338 234 114  5 
+				Color { 255 221 15 255   AntiAlias 2 }
+			}
+		}
+		Group "熊本" {
+			Link "熊本" {
+				"共通天気板" -20 -44  T( "天気情報" ) R( 86141 ) 
+			} 
+			Link "熊本水" {
+				"共通天気板_日降水量" -164 219  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 5 LinkTop 0 }
+			}
+			Link "熊本風" {
+				"共通天気板_最大風速" -169 214  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 14 LinkTop 0 }
+			}
+			Rim "枠" {
+				823 455 234 114  5 
+				Color { 255 221 15 255   AntiAlias 2 }
+			}
+		}
+		Group "鹿児島" {
+			Link "鹿児島" {
+				"共通天気板" 248 180  T( "天気情報" ) R( 88317 ) 
+			} 
+			Link "鹿児島水" {
+				"共通天気板_日降水量" 104 443  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 6 LinkTop 0 }
+			}
+			Link "鹿児島風" {
+				"共通天気板_最大風速" 99 438  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 15 LinkTop 0 }
+			}
+			Rim "枠" {
+				1091 679 234 114  5 
+				Color { 255 221 15 255   AntiAlias 2 }
+			}
+		}
+		Group "宮崎" {
+			Link "宮崎" {
+				"共通天気板" 312 -15  T( "天気情報" ) R( 87376 ) 
+			} 
+			Link "宮崎水" {
+				"共通天気板_日降水量" 168 248  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 7 LinkTop 0 }
+			}
+			Link "宮崎風" {
+				"共通天気板_最大風速" 163 243  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 16 LinkTop 0 }
+			}
+			Rim "枠" {
+				1155 484 234 114  5 
+				Color { 255 221 15 255   AntiAlias 2 }
+			}
+		}
+		Group "大分" {
+			Link "大分" {
+				"共通天気板" 338 -195  T( "天気情報" ) R( 83216 ) 
+			} 
+			Link "大分水" {
+				"共通天気板_日降水量" 194 68  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 8 LinkTop 0 }
+			}
+			Link "大分風" {
+				"共通天気板_最大風速" 189 63  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 17 LinkTop 0 }
+			}
+			Rim "枠" {
+				1181 304 234 114  5 
+				Color { 255 221 15 255   AntiAlias 2 }
+			}
+		}
+		Group "福岡" {
+			Link "福岡" {
+				"共通天気板" 148 -389  T( "天気情報" ) R( 82182 ) 
+			} 
+			Link "福岡水" {
+				"共通天気板_日降水量" 4 -126  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 9 LinkTop 0 }
+			}
+			Link "福岡風" {
+				"共通天気板_最大風速" -1 -131  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 18 LinkTop 0 }
+			}
+			Rim "枠" {
+				991 110 234 114  5 
+				Color { 255 221 15 255   AntiAlias 2 }
+			}
+		}
 		Switch "スイッチ" {
+			Hidden 
 			Group "デフォルト" {
 			}
 			( V0 == "気温" ) 
@@ -80,6 +206,20 @@ Frame "九州天気" {
 					"最大風速" -90 -65  
 				} 
 			} 
+		} 
+		String {
+			1674 170 822  V HL 
+			Style "LSN太角ゴシック体" 
+			Size 185 100 
+			Transparent { AntiAlias 2 }
+			Effect {
+				Edge {
+					5 
+					Color { 25 255 204 255  }
+				}
+			}
+			Proportional 
+			"九州地方" 
 		} 
 	} 
 } 

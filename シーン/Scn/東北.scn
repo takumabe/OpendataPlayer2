@@ -73,9 +73,9 @@ Frame "“Œ–k" {
 			} 
 		} 
 		String {
-			1674 73 522  V HL 
+			1674 170 822  V HL 
 			Style "LSN‘¾ŠpƒSƒVƒbƒN‘Ì" 
-			Size 244 100 
+			Size 185 100 
 			Transparent { AntiAlias 2 }
 			Effect {
 				Edge {
@@ -84,7 +84,7 @@ Frame "“Œ–k" {
 				}
 			}
 			Proportional 
-			"“Œ–k" 
+			"“Œ–k’n•û" 
 		} 
 	} 
 } 

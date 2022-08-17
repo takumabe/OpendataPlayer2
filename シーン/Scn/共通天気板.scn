@@ -6,23 +6,25 @@ Frame "共通天気板" {
 	Layer "レイヤー1" {
 		Group {
 			Board "板" {
-				969 196 270 168  
-				Color { 255 255 255 191   AntiAlias 2 }
+				825 456 270 168  
+				Color { 255 255 255 255   AntiAlias 2 }
 			}
 			Rim "枠" {
-				987 236 234 114  5 
+				843 483 234 114  5 
 				In 
 				Color { 255 221 15 255   AntiAlias 2 }
-			}
+				Hidden 
+			} 
 			String {
-				1049 229 105  H CL 
+				908 491 105  H CL 
 				Style "TV用太角ゴシック体" 
 				Size 30 100 
 				Color { 0 0 0 255   AntiAlias 3 }
 				Proportional 
-				"\(C( 1 ) , Ss)" 
+				"\(C( 1 ) , Ss)市" 
 			} 
 			Switch "スイッチ" {
+				Hidden 
 				Group "デフォルト" {
 				}
 				( V0 == "気温" ) 
@@ -108,6 +110,121 @@ Frame "共通天気板" {
 						"m/s" 
 					} 
 				} 
+			} 
+			String {
+				901 558 130  H CL 
+				Style "マルＣフーツラ" 
+				Size 59 100 
+				Color { ColorSwitch { 255 255 255 255   ( C( 2 ) >= 35 ) 255 183 12 255   }  AntiAlias 2 }
+				Effect {
+					Edge {
+						3 
+						Color { 234 0 32 255  }
+					}
+				}
+				Proportional 
+				"\(C( 2 ) , S!s)" 
+				Style "LSN太角ゴシック体" 
+				Size 35 100 
+				"℃" 
+			} 
+			String {
+				925 603 78  H CL 
+				Style "マルＣフーツラ" 
+				Size 40 100 
+				Color { 255 255 255 255   AntiAlias 2 }
+				Effect {
+					Edge {
+						2 
+						Color { 0 0 192 255  }
+					}
+				}
+				Proportional 
+				"\(C( 3 ) , S!s)" 
+				Style "LSN太角ゴシック体" 
+				Size 28 100 
+				"℃" 
+			} 
+		} 
+		Group "日降水量" {
+			Hidden 
+			uPushWipeIn { NonVolatile -12000 0  8 }
+			uTimeCodeInfoIn { Priority 1 LinkTop 14 }
+			Board "枠" {
+				987 236 234 114  
+				Color { 0 0 0 0   AntiAlias 2  BlendMask }
+				Plane F uMask 
+			} 
+			Board "枠" {
+				987 236 234 114  
+				Color { 255 255 255 191   AntiAlias 2 }
+				Plane F 
+			} 
+			Rim "枠" {
+				987 236 234 114  5 
+				In 
+				Color { 255 221 15 255   AntiAlias 2 }
+				Plane F 
+			} 
+			String {
+				1011 319 185  H CL 
+				Plane F 
+				Style "マルＣフーツラ" 
+				Size 70 100 
+				Color { 255 255 255 255   AntiAlias 2 }
+				Effect {
+					Edge {
+						3 
+						Color { 0 0 0 255  }
+					}
+				}
+				Proportional 
+				"\(C( 4 ) , S!s)" 
+				Style "LSN太角ゴシック体" 
+				Size 40 100 
+				"mm" 
+			} 
+		} 
+		Group "最大風速" {
+			Hidden 
+			uPushWipeIn { NonVolatile -12000 0  1 }
+			uTimeCodeInfoIn { Priority 2 }
+			Board "枠" {
+				987 236 234 114  
+				Color { 255 255 255 0   AntiAlias 2  BlendMask }
+				Hidden 
+				Plane F uMask 
+			} 
+			Board "枠" {
+				987 236 234 114  
+				Color { 255 255 255 191   AntiAlias 2 }
+				Hidden 
+				Plane F 
+			} 
+			Rim "枠" {
+				987 236 234 114  5 
+				In 
+				Color { 255 221 15 255   AntiAlias 2 }
+				Hidden 
+				Plane F 
+			} 
+			String {
+				1018 321 173  H CL 
+				Plane F 
+				Style "マルＣフーツラ" 
+				Size 70 100 
+				Color { 255 255 255 255   AntiAlias 2 }
+				Effect {
+					Edge {
+						3 
+						Color { 0 0 0 255  }
+					}
+				}
+				Proportional 
+				"\(C( 5 ) , S!s)" 
+				Style "LSN太角ゴシック体" 
+				Size 40 100 
+				"m/s" 
 			} 
 		} 
 	} 

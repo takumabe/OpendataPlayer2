@@ -1,0 +1,38 @@
+
+Frame "共通天気板_日降水量" {
+	Version 50463 
+	fOADevice { "GRID-EX32HD" }
+	Layer "レイヤー1" {
+		Group "日降水量" {
+			Board "枠" {
+				987 236 234 114  
+				Color { 0 0 0 0   AntiAlias 2  BlendMask }
+				Hidden 
+				Plane F uMask 
+			} 
+			Board "枠" {
+				987 236 234 114  
+				Color { 255 255 255 255   AntiAlias 2 }
+				Plane F 
+			} 
+			String {
+				1011 319 185  H CL 
+				Plane F 
+				Style "マルＣフーツラ" 
+				Size 70 100 
+				Color { 255 255 255 255   AntiAlias 2 }
+				Effect {
+					Edge {
+						3 
+						Color { 0 0 0 255  }
+					}
+				}
+				Proportional 
+				"\(C( 4 ) , S!s)" 
+				Style "LSN太角ゴシック体" 
+				Size 40 100 
+				"mm" 
+			} 
+		} 
+	} 
+} 

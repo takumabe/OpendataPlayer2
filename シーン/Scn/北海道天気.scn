@@ -6,7 +6,7 @@ Frame "北海道天気" {
 	} 
 	fOutFade {
 		29 
-		Delay 3730 
+		Delay 2101 
 	} 
 	BGC 0 0 0 115  
 	fVideoAtr { Ortho3D }
@@ -19,11 +19,62 @@ Frame "北海道天気" {
 			Offset ( 0 ) ( 0 ) 
 			Resize byRate 3 
 		} 
+		Link "気温" {
+			"気温" -104 -86  
+		} 
+		Link "日降水量" {
+			"日降水量" -90 -65  
+			uPushWipeIn { NonVolatile -12000 0  4 }
+			uTimeCodeInfoIn { Priority 1 LinkBottom 102 }
+		}
+		Link "最大風速" {
+			"最大風速" -90 -65  
+			uPushWipeIn { NonVolatile -12000 0  4 }
+			uTimeCodeInfoIn { Priority 6 LinkTop 0 }
+		}
+		Group "札幌" {
+			Link "札幌" {
+				"共通天気板" -260 26  T( "天気情報" ) R( 14163 ) 
+			} 
+			Link "札幌水" {
+				"共通天気板_日降水量" -404 289  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 2 LinkTop 0 }
+			}
+			Link "札幌風" {
+				"共通天気板_最大風速" -409 284  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 5 LinkTop 0 }
+			}
+			Rim "枠" {
+				583 525 234 114  5 
+				Color { 255 221 15 255   AntiAlias 2 }
+			}
+		}
+		Group "釧路" {
+			Link "釧路" {
+				"共通天気板" 266 114  T( "天気情報" ) R( 19432 ) 
+			} 
+			Link "釧路水" {
+				"共通天気板_日降水量" 122 377  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 3 LinkTop 0 }
+			}
+			Link "釧路風" {
+				"共通天気板_最大風速" 117 372  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 4 LinkTop 120 }
+			}
+			Rim "枠" {
+				1109 613 234 114  5 
+				Color { 255 221 15 255   AntiAlias 2 }
+			}
+		}
 		Group {
 			String {
-				1674 73 736  V HL 
+				1674 77 948  V HL 
 				Style "LSN太角ゴシック体" 
-				Size 244 100 
+				Size 185 100 
 				Transparent { AntiAlias 2 }
 				Effect {
 					Edge {
@@ -32,36 +83,21 @@ Frame "北海道天気" {
 					}
 				}
 				Proportional 
-				"北海道" 
+				"北海道地方" 
 			} 
-		} 
-		Link "札幌" {
-			"共通天気板" -412 270  T( "天気情報" ) R( 14163 ) 
-		} 
-		Link "釧路" {
-			"共通天気板" 94 402  T( "天気情報" ) R( 19432 ) 
 		} 
 		Switch "スイッチ" {
 			Group "デフォルト" {
 			}
 			( V0 == "気温" ) 
 			Group "気温" {
-				Link "気温" {
-					"気温" -104 -86  
-				} 
-			} 
+			}
 			( V0 == "日降水量" ) 
 			Group "日降水量" {
-				Link "日降水量" {
-					"日降水量" -90 -65  
-				} 
-			} 
+			}
 			( V0 == "最大風速" ) 
 			Group "最大風速" {
-				Link "最大風速" {
-					"最大風速" -90 -65  
-				} 
-			} 
-		} 
-	} 
-} 
+			}
+		}
+	}
+}
