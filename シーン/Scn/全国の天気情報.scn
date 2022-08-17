@@ -6,12 +6,28 @@ Frame "全国の天気情報" {
 	} 
 	fOutFade {
 		29 
-		Delay 5000 
+		Delay 4103 
 	} 
 	BGC 0 0 0 115  
 	fVideoAtr { Ortho3D }
 	fOADevice { "GRID-EX32HD" }
 	Layer "レイヤー1" {
+		Link "気温" {
+			"気温" -134 -96  
+		} 
+		Link "日降水量" {
+			"日降水量" -110 -13  
+			uPushWipeIn { NonVolatile 0 12000  1 }
+			uTimeCodeInfoIn { Priority 12 LinkTop 0 }
+		}
+		Link "最大風速" {
+			"最大風速" -110 -80  
+			uPushWipeIn { NonVolatile 0 12000  1 }
+			uTimeCodeInfoIn { Priority 15 LinkTop 0 }
+		}
+		Link "時間" {
+			"時間" -91 21  
+		} 
 		Image "イメージ" {
 			460 54 1000 849  CC 
 			Name "zenkoku.png" 0 
@@ -19,391 +35,8 @@ Frame "全国の天気情報" {
 			Offset ( 0 ) ( 0 ) 
 			Resize byRect 
 		} 
-		Group {
-			T( "天気情報" ) R( 14163 ) 
-			Ellipse "円" {
-				1246 176 30 30  
-				Color { 255 255 255 255   AntiAlias 2 }
-			}
-			PolyLine "直線" {
-				8 
-				Color { 255 255 255 255   AntiAlias 2 }
-				uPoints {
-					2 
-					1257 164 1557 164 
-				} 
-				Rotate ( -10 ) 
-				1257 164  1557 164  
-			} 
-			Group {
-				Board "板" {
-					1509 78 270 168  
-					Color { 255 255 255 255   AntiAlias 2 }
-					Effect {
-						ShadeDrop {
-							10 SE  ShadeRate 40 
-							Color { 0 0 0 255  }
-						}
-					}
-				}
-				Link "リンク" {
-					"共通天気全国板" 1210 -701  
-				} 
-			} 
-		} 
-		Group {
-			T( "天気情報" ) R( 34392 ) 
-			PolyLine "直線" {
-				8 
-				Color { 255 255 255 255   AntiAlias 2 }
-				uPoints {
-					2 
-					1335 405 1535 405 
-				} 
-				Rotate ( -10 ) 
-				1335 405  1535 405  
-			} 
-			Ellipse "円" {
-				1322 408 30 30  
-				Color { 255 255 255 255   AntiAlias 2 }
-			}
-			Group {
-				Board "板" {
-					1475 328 270 168  
-					Color { 255 255 255 255   AntiAlias 2 }
-					Effect {
-						ShadeDrop {
-							10 SE  ShadeRate 40 
-							Color { 0 0 0 255  }
-						}
-					}
-				}
-				Link "リンク" {
-					"共通天気全国板" 1176 -452  
-				} 
-			} 
-		} 
-		Group {
-			T( "天気情報" ) R( 54232 ) 
-			PolyLine "直線" {
-				8 
-				Color { 255 255 255 255   AntiAlias 2 }
-				uPoints {
-					2 
-					1027 386 1227 386 
-				} 
-				Rotate ( 50 ) 
-				1027 386  1227 386  
-			} 
-			Ellipse "円" {
-				1176 448 30 30  
-				Color { 255 255 255 255   AntiAlias 2 }
-			}
-			Group {
-				Board "板" {
-					919 194 270 168  
-					Color { 255 255 255 255   AntiAlias 2 }
-					Effect {
-						ShadeDrop {
-							10 NW  ShadeRate 40 
-							Color { 0 0 0 255  }
-						}
-					}
-				}
-				Link "リンク" {
-					"共通天気全国板" 620 -585  
-				} 
-			} 
-		} 
-		Group {
-			T( "天気情報" ) R( 57066 ) 
-			PolyLine "直線" {
-				8 
-				Color { 255 255 255 255   AntiAlias 2 }
-				uPoints {
-					2 
-					781 422 1081 422 
-				} 
-				Rotate ( 60 ) 
-				781 422  1081 422  
-			} 
-			Ellipse "円" {
-				992 536 30 30  
-				Color { 255 255 255 255   AntiAlias 2 }
-			}
-			Group {
-				Board "板" {
-					621 150 270 168  
-					Color { 255 255 255 255   AntiAlias 2 }
-					Effect {
-						ShadeDrop {
-							10 NW  ShadeRate 40 
-							Color { 0 0 0 255  }
-						}
-					}
-				}
-				Link "リンク" {
-					"共通天気全国板" 322 -631  
-				} 
-			} 
-		} 
-		Group {
-			T( "天気情報" ) R( 44132 ) 
-			PolyLine "直線" {
-				8 
-				Color { 255 255 255 255   AntiAlias 2 }
-				uPoints {
-					2 
-					1307 666 1507 666 
-				} 
-				Rotate ( 12 ) 
-				1307 666  1507 666  
-			} 
-			Ellipse "円" {
-				1294 632 30 30  
-				Color { 255 255 255 255   AntiAlias 2 }
-			}
-			Group {
-				Board "板" {
-					1459 598 270 168  
-					Color { 255 255 255 255   AntiAlias 2 }
-					Effect {
-						ShadeDrop {
-							10 SE  ShadeRate 40 
-							Color { 0 0 0 255  }
-						}
-					}
-				}
-				Link "リンク" {
-					"共通天気全国板" 1160 -181  
-				} 
-			} 
-		} 
-		Group {
-			T( "天気情報" ) R( 51106 ) 
-			PolyLine "直線" {
-				8 
-				Color { 255 255 255 255   AntiAlias 2 }
-				uPoints {
-					2 
-					1061 782 1361 782 
-				} 
-				Rotate ( 30 ) 
-				1061 782  1361 782  
-			} 
-			Ellipse "円" {
-				1068 694 30 30  
-				Color { 255 255 255 255   AntiAlias 2 }
-			}
-			Group {
-				Board "板" {
-					1241 786 270 168  
-					Color { 255 255 255 255   AntiAlias 2 }
-					Effect {
-						ShadeDrop {
-							10 SE  ShadeRate 40 
-							Color { 0 0 0 255  }
-						}
-					}
-				}
-				Link "リンク" {
-					"共通天気全国板" 942 6  
-				} 
-			} 
-		} 
-		Group {
-			T( "天気情報" ) R( 62078 ) 
-			PolyLine "直線" {
-				8 
-				Color { 255 255 255 255   AntiAlias 2 }
-				uPoints {
-					2 
-					811 810 1111 810 
-				} 
-				Rotate ( 80 ) 
-				811 810  1111 810  
-			} 
-			Ellipse "円" {
-				920 650 30 30  
-				Color { 255 255 255 255   AntiAlias 2 }
-			}
-			Group {
-				Board "板" {
-					944 820 270 168  
-					Color { 255 255 255 255   AntiAlias 2 }
-					Effect {
-						ShadeDrop {
-							13 S  ShadeRate 40 
-							Color { 0 0 0 255  }
-						}
-					}
-				}
-				Link "リンク" {
-					"共通天気全国板" 645 38  
-				} 
-			} 
-		} 
-		Group {
-			T( "天気情報" ) R( 74181 ) 
-			PolyLine "直線" {
-				8 
-				Color { 255 255 255 255   AntiAlias 2 }
-				uPoints {
-					2 
-					671 868 871 868 
-				} 
-				Rotate ( 85 ) 
-				671 868  871 868  
-			} 
-			Ellipse "円" {
-				748 750 30 30  
-				Color { 255 255 255 255   AntiAlias 2 }
-			}
-			Group {
-				Board "板" {
-					645 840 270 168  
-					Color { 255 255 255 255   AntiAlias 2 }
-					Effect {
-						ShadeDrop {
-							10 SW  ShadeRate 40 
-							Color { 0 0 0 255  }
-						}
-					}
-				}
-				Link "リンク" {
-					"共通天気全国板" 346 59  
-				} 
-			} 
-		} 
-		Group {
-			T( "天気情報" ) R( 67437 ) 
-			PolyLine "直線" {
-				8 
-				Color { 255 255 255 255   AntiAlias 2 }
-				uPoints {
-					2 
-					641 526 841 526 
-				} 
-				Rotate ( 65 ) 
-				641 526  841 526  
-			} 
-			Ellipse "円" {
-				768 602 30 30  
-				Color { 255 255 255 255   AntiAlias 2 }
-			}
-			Group {
-				Board "板" {
-					585 344 270 168  
-					Color { 255 255 255 255   AntiAlias 2 }
-					Effect {
-						ShadeDrop {
-							10 NW  ShadeRate 40 
-							Color { 0 0 0 255  }
-						}
-					}
-				}
-				Link "リンク" {
-					"共通天気全国板" 286 -436  
-				} 
-			} 
-		} 
-		Group {
-			T( "天気情報" ) R( 82182 ) 
-			PolyLine "直線" {
-				8 
-				Color { 255 255 255 255   AntiAlias 2 }
-				uPoints {
-					2 
-					435 478 635 478 
-				} 
-				Rotate ( 55 ) 
-				435 478  635 478  
-			} 
-			Ellipse "円" {
-				580 548 30 30  
-				Color { 255 255 255 255   AntiAlias 2 }
-			}
-			Group {
-				Board "板" {
-					275 326 270 168  
-					Color { 255 255 255 255   AntiAlias 2 }
-					Effect {
-						ShadeDrop {
-							10 NW  ShadeRate 40 
-							Color { 0 0 0 255  }
-						}
-					}
-				}
-				Link "リンク" {
-					"共通天気全国板" -24 -455  
-				} 
-			} 
-		} 
-		Group {
-			T( "天気情報" ) R( 88317 ) 
-			PolyLine "直線" {
-				8 
-				Color { 255 255 255 255   AntiAlias 2 }
-				uPoints {
-					2 
-					421 734 621 734 
-				} 
-				Rotate ( 12 ) 
-				421 734  621 734  
-			} 
-			Ellipse "円" {
-				606 740 30 30  
-				Color { 255 255 255 255   AntiAlias 2 }
-			}
-			Group {
-				Board "板" {
-					184 616 270 168  
-					Color { 255 255 255 255   AntiAlias 2 }
-					Effect {
-						ShadeDrop {
-							10 SW  ShadeRate 40 
-							Color { 0 0 0 255  }
-						}
-					}
-				}
-				Link "リンク" {
-					"共通天気全国板" -115 -166  
-				} 
-			} 
-		} 
-		Group {
-			T( "天気情報" ) R( 91197 ) 
-			PolyLine "直線" {
-				8 
-				Color { 255 255 255 255   AntiAlias 2 }
-				uPoints {
-					2 
-					403 877 603 877 
-				} 
-				Rotate ( -20 ) 
-				403 877  603 877  
-			} 
-			Ellipse "円" {
-				586 826 30 30  
-				Color { 255 255 255 255   AntiAlias 2 }
-			}
-			Group {
-				Board "板" {
-					243 836 270 168  
-					Color { 255 255 255 255   AntiAlias 2 }
-					Effect {
-						ShadeDrop {
-							10 SW  ShadeRate 40 
-							Color { 0 0 0 255  }
-						}
-					}
-				}
-				Link "リンク" {
-					"共通天気全国板" -56 57  
-				} 
-			} 
-		} 
 		Switch "スイッチ" {
+			Hidden 
 			Group "デフォルト" {
 			}
 			( V0 == "気温" ) 
@@ -425,5 +58,521 @@ Frame "全国の天気情報" {
 				} 
 			} 
 		} 
-	} 
-} 
+		Group "札幌" {
+			Ellipse "円" {
+				1246 176 30 30  
+				Color { 255 255 255 255   AntiAlias 2 }
+			}
+			PolyLine "直線" {
+				8 
+				Color { 255 255 255 255   AntiAlias 2 }
+				uPoints {
+					2 
+					1257 164 1557 164 
+				} 
+				Rotate ( -10 ) 
+				1257 164  1557 164  
+			} 
+			Board "板" {
+				1509 78 270 168  
+				Color { 255 255 255 255   AntiAlias 2 }
+				Effect {
+					ShadeDrop {
+						10 SE  ShadeRate 40 
+						Color { 0 0 0 255  }
+					}
+				}
+			}
+			Link "札幌" {
+				"共通天気板" 684 -380  T( "天気情報" ) R( 14163 ) 
+			} 
+			Link "札幌水" {
+				"共通天気板_日降水量" 540 -117  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 5 LinkTop 0 }
+			}
+			Link "札幌風" {
+				"共通天気板_最大風速" 535 -122  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 24 LinkTop 0 }
+			}
+			Rim "枠" {
+				1527 119 234 114  5 
+				Color { 255 221 15 255   AntiAlias 2 }
+			}
+		}
+		Group "仙台" {
+			PolyLine "直線" {
+				8 
+				Color { 255 255 255 255   AntiAlias 2 }
+				uPoints {
+					2 
+					1335 405 1535 405 
+				} 
+				Rotate ( -10 ) 
+				1335 405  1535 405  
+			} 
+			Ellipse "円" {
+				1322 408 30 30  
+				Color { 255 255 255 255   AntiAlias 2 }
+			}
+			Board "板" {
+				1475 328 270 168  
+				Color { 255 255 255 255   AntiAlias 2 }
+				Effect {
+					ShadeDrop {
+						10 SE  ShadeRate 40 
+						Color { 0 0 0 255  }
+					}
+				}
+			}
+			Link "仙台" {
+				"共通天気板" 650 -127  T( "天気情報" ) R( 34392 ) 
+			} 
+			Link "仙台水" {
+				"共通天気板_日降水量" 506 136  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 4 LinkTop 0 }
+			}
+			Link "仙台風" {
+				"共通天気板_最大風速" 501 131  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 23 LinkTop 0 }
+			}
+			Rim "枠" {
+				1493 372 234 114  5 
+				Color { 255 221 15 255   AntiAlias 2 }
+			}
+		}
+		Group "新潟" {
+			PolyLine "直線" {
+				8 
+				Color { 255 255 255 255   AntiAlias 2 }
+				uPoints {
+					2 
+					1027 386 1227 386 
+				} 
+				Rotate ( 50 ) 
+				1027 386  1227 386  
+			} 
+			Ellipse "円" {
+				1176 448 30 30  
+				Color { 255 255 255 255   AntiAlias 2 }
+			}
+			Board "板" {
+				919 194 270 168  
+				Color { 255 255 255 255   AntiAlias 2 }
+				Effect {
+					ShadeDrop {
+						10 NW  ShadeRate 40 
+						Color { 0 0 0 255  }
+					}
+				}
+			}
+			Link "新潟" {
+				"共通天気板" 94 -262  T( "天気情報" ) R( 54232 ) 
+			} 
+			Link "新潟水" {
+				"共通天気板_日降水量" -50 1  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 6 LinkTop 0 }
+			}
+			Link "新潟風" {
+				"共通天気板_最大風速" -55 -4  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 25 LinkTop 0 }
+			}
+			Rim "枠" {
+				937 237 234 114  5 
+				Color { 255 221 15 255   AntiAlias 2 }
+			}
+		}
+		Group "大阪" {
+			PolyLine "直線" {
+				8 
+				Color { 255 255 255 255   AntiAlias 2 }
+				uPoints {
+					2 
+					811 810 1111 810 
+				} 
+				Rotate ( 80 ) 
+				811 810  1111 810  
+			} 
+			Ellipse "円" {
+				920 650 30 30  
+				Color { 255 255 255 255   AntiAlias 2 }
+			}
+			Board "板" {
+				944 820 270 168  
+				Color { 255 255 255 255   AntiAlias 2 }
+				Effect {
+					ShadeDrop {
+						13 S  ShadeRate 40 
+						Color { 0 0 0 255  }
+					}
+				}
+			}
+			Link "大阪" {
+				"共通天気板" 120 364  T( "天気情報" ) R( 62078 ) 
+			} 
+			Link "大阪水" {
+				"共通天気板_日降水量" -24 627  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 7 LinkTop 0 }
+			}
+			Link "大阪風" {
+				"共通天気板_最大風速" -29 622  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 26 LinkTop 0 }
+			}
+			Rim "枠" {
+				963 863 234 114  5 
+				Color { 255 221 15 255   AntiAlias 2 }
+			}
+		}
+		Group "広島" {
+			PolyLine "直線" {
+				8 
+				Color { 255 255 255 255   AntiAlias 2 }
+				uPoints {
+					2 
+					641 526 841 526 
+				} 
+				Rotate ( 65 ) 
+				641 526  841 526  
+			} 
+			Ellipse "円" {
+				768 602 30 30  
+				Color { 255 255 255 255   AntiAlias 2 }
+			}
+			Board "板" {
+				585 344 270 168  
+				Color { 255 255 255 255   AntiAlias 2 }
+				Effect {
+					ShadeDrop {
+						10 NW  ShadeRate 40 
+						Color { 0 0 0 255  }
+					}
+				}
+			}
+			Link "広島" {
+				"共通天気板" -239 -113  T( "天気情報" ) R( 67437 ) 
+			} 
+			Link "広島風" {
+				"共通天気板_最大風速" -388 145  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 14 LinkBottom 123 }
+			}
+			Link "広島水" {
+				"共通天気板_日降水量" -383 150  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 13 LinkTop 0 }
+			}
+			Rim "枠" {
+				604 386 234 114  5 
+				Color { 255 221 15 255   AntiAlias 2 }
+			}
+		}
+		Group "高知" {
+			PolyLine "直線" {
+				8 
+				Color { 255 255 255 255   AntiAlias 2 }
+				uPoints {
+					2 
+					671 868 871 868 
+				} 
+				Rotate ( 85 ) 
+				671 868  871 868  
+			} 
+			Ellipse "円" {
+				748 750 30 30  
+				Color { 255 255 255 255   AntiAlias 2 }
+			}
+			Board "板" {
+				645 840 270 168  
+				Color { 255 255 255 255   AntiAlias 2 }
+				Effect {
+					ShadeDrop {
+						10 SW  ShadeRate 40 
+						Color { 0 0 0 255  }
+					}
+				}
+			}
+			Link "高知" {
+				"共通天気板" -181 384  T( "天気情報" ) R( 74181 ) 
+			} 
+			Link "日降水量" {
+				"共通天気板_日降水量" -325 649  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 8 LinkTop 0 }
+			}
+			Link "最大風速" {
+				"共通天気板_最大風速" -330 644  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 16 LinkTop 0 }
+			}
+			Rim "枠" {
+				662 884 234 114  5 
+				Color { 255 221 15 255   AntiAlias 2 }
+			}
+		}
+		Group "福岡" {
+			PolyLine "直線" {
+				8 
+				Color { 255 255 255 255   AntiAlias 2 }
+				uPoints {
+					2 
+					435 478 635 478 
+				} 
+				Rotate ( 55 ) 
+				435 478  635 478  
+			} 
+			Ellipse "円" {
+				580 548 30 30  
+				Color { 255 255 255 255   AntiAlias 2 }
+			}
+			Board "板" {
+				275 326 270 168  
+				Color { 255 255 255 255   AntiAlias 2 }
+				Effect {
+					ShadeDrop {
+						10 NW  ShadeRate 40 
+						Color { 0 0 0 255  }
+					}
+				}
+			}
+			Link "福岡" {
+				"共通天気板" -550 -129  T( "天気情報" ) R( 82182 ) 
+			} 
+			Link "福岡水" {
+				"共通天気板_日降水量" -694 134  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 9 LinkTop 0 }
+			}
+			Link "福岡風" {
+				"共通天気板_最大風速" -699 129  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 17 LinkTop 0 }
+			}
+			Rim "枠" {
+				293 370 234 114  5 
+				Color { 255 221 15 255   AntiAlias 2 }
+			}
+		}
+		Group "鹿児島" {
+			PolyLine "直線" {
+				8 
+				Color { 255 255 255 255   AntiAlias 2 }
+				uPoints {
+					2 
+					421 734 621 734 
+				} 
+				Rotate ( 12 ) 
+				421 734  621 734  
+			} 
+			Ellipse "円" {
+				606 740 30 30  
+				Color { 255 255 255 255   AntiAlias 2 }
+			}
+			Board "板" {
+				184 616 270 168  
+				Color { 255 255 255 255   AntiAlias 2 }
+				Effect {
+					ShadeDrop {
+						10 SW  ShadeRate 40 
+						Color { 0 0 0 255  }
+					}
+				}
+			}
+			Link "鹿児島" {
+				"共通天気板" -642 160  T( "天気情報" ) R( 88317 ) 
+			} 
+			Link "鹿児島水" {
+				"共通天気板_日降水量" -786 423  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 10 LinkTop 0 }
+			}
+			Link "鹿児島風" {
+				"共通天気板_最大風速" -791 418  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 18 LinkTop 0 }
+			}
+			Rim "枠" {
+				201 659 234 114  5 
+				Color { 255 221 15 255   AntiAlias 2 }
+			}
+		}
+		Group "那覇" {
+			PolyLine "直線" {
+				8 
+				Color { 255 255 255 255   AntiAlias 2 }
+				uPoints {
+					2 
+					403 877 603 877 
+				} 
+				Rotate ( -20 ) 
+				403 877  603 877  
+			} 
+			Ellipse "円" {
+				586 826 30 30  
+				Color { 255 255 255 255   AntiAlias 2 }
+			}
+			Board "板" {
+				243 836 270 168  
+				Color { 255 255 255 255   AntiAlias 2 }
+				Effect {
+					ShadeDrop {
+						10 SW  ShadeRate 40 
+						Color { 0 0 0 255  }
+					}
+				}
+			}
+			Link "那覇" {
+				"共通天気板" -582 382  T( "天気情報" ) R( 91197 ) 
+			} 
+			Link "那覇水" {
+				"共通天気板_日降水量" -726 645  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 11 LinkTop 0 }
+			}
+			Link "那覇風" {
+				"共通天気板_最大風速" -731 640  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 19 LinkTop 0 }
+			}
+			Rim "枠" {
+				261 881 234 114  5 
+				Color { 255 221 15 255   AntiAlias 2 }
+			}
+		}
+		Group "福井" {
+			PolyLine "直線" {
+				8 
+				Color { 255 255 255 255   AntiAlias 2 }
+				uPoints {
+					2 
+					781 422 1081 422 
+				} 
+				Rotate ( 60 ) 
+				781 422  1081 422  
+			} 
+			Ellipse "円" {
+				992 536 30 30  
+				Color { 255 255 255 255   AntiAlias 2 }
+			}
+			Board "板" {
+				621 150 270 168  
+				Color { 255 255 255 255   AntiAlias 2 }
+				Effect {
+					ShadeDrop {
+						10 NW  ShadeRate 40 
+						Color { 0 0 0 255  }
+					}
+				}
+			}
+			Link "福井" {
+				"共通天気板" -204 -305  T( "天気情報" ) R( 57066 ) 
+			} 
+			Link "福井水" {
+				"共通天気板_日降水量" -348 -42  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 3 LinkTop 0 }
+			}
+			Link "福井風" {
+				"共通天気板_最大風速" -353 -47  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 20 LinkTop 0 }
+			}
+			Rim "枠" {
+				639 194 234 114  5 
+				Color { 255 221 15 255   AntiAlias 2 }
+			}
+		}
+		Group "東京" {
+			PolyLine "直線" {
+				8 
+				Color { 255 255 255 255   AntiAlias 2 }
+				uPoints {
+					2 
+					1307 666 1507 666 
+				} 
+				Rotate ( 12 ) 
+				1307 666  1507 666  
+			} 
+			Ellipse "円" {
+				1294 632 30 30  
+				Color { 255 255 255 255   AntiAlias 2 }
+			}
+			Board "板" {
+				1459 598 270 168  
+				Color { 255 255 255 255   AntiAlias 2 }
+				Effect {
+					ShadeDrop {
+						10 SE  ShadeRate 40 
+						Color { 0 0 0 255  }
+					}
+				}
+			}
+			Link "東京" {
+				"共通天気板" 634 143  T( "天気情報" ) R( 44132 ) 
+			} 
+			Link "東京水" {
+				"共通天気板_日降水量" 490 406  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 1 LinkBottom 162 }
+			}
+			Link "東京風" {
+				"共通天気板_最大風速" 485 401  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 21 LinkTop 0 }
+			}
+			Rim "枠" {
+				1477 642 234 114  5 
+				Color { 255 221 15 255   AntiAlias 2 }
+			}
+		}
+		Group "名古屋" {
+			PolyLine "直線" {
+				8 
+				Color { 255 255 255 255   AntiAlias 2 }
+				uPoints {
+					2 
+					1061 782 1361 782 
+				} 
+				Rotate ( 30 ) 
+				1061 782  1361 782  
+			} 
+			Ellipse "円" {
+				1068 694 30 30  
+				Color { 255 255 255 255   AntiAlias 2 }
+			}
+			Board "板" {
+				1241 786 270 168  
+				Color { 255 255 255 255   AntiAlias 2 }
+				Effect {
+					ShadeDrop {
+						10 SE  ShadeRate 40 
+						Color { 0 0 0 255  }
+					}
+				}
+			}
+			Link "名古屋" {
+				"共通天気板" 416 330  T( "天気情報" ) R( 51106 ) 
+			} 
+			Link "名古屋水" {
+				"共通天気板_日降水量" 272 593  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 2 LinkTop 0 }
+			}
+			Link "名古屋風" {
+				"共通天気板_最大風速" 267 588  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 22 LinkTop 0 }
+			}
+			Rim "枠" {
+				1259 829 234 114  5 
+				Color { 255 221 15 255   AntiAlias 2 }
+			}
+		}
+	}
+}

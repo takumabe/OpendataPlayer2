@@ -1,10 +1,16 @@
 
 Frame "日降水量" {
 	Version 50463 
+	fVideoAtr { Ortho3D }
 	fOADevice { "GRID-EX32HD" }
 	Layer "レイヤー1" {
+		Board "板" {
+			219 102 380 74  
+			Color { 0 0 0 115   AntiAlias 2  BlendMask }
+			Plane F uMask 
+		} 
 		StringBox {
-			219 169 296 69  H CL T 0 
+			219 102 372 74  H CL T 0 
 			Style "LSN太角ゴシック体" 
 			Size 36 100 
 			Color { 255 255 255 255   AntiAlias 2 }
@@ -17,8 +23,9 @@ Frame "日降水量" {
 			Color { 25 255 204 255   AntiAlias 2 }
 			uPoints {
 				3 
-				210.000000 191 227.111111 251 504 251 
+				210 191 227.111111 251 504 251 
 			} 
+			Hidden 
 			210 191  227 251  504 251  
 		} 
 	} 

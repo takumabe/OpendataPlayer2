@@ -89,6 +89,11 @@ Source "天気情報" {
 	Column "今日の最低気温" { L }
 	Column "現在の降水量" { L }
 	Column "今日の最大風速" { L }
+	Column "年" { L }
+	Column "月" { L }
+	Column "日" { L }
+	Column "時" { L }
+	Column "分" { L }
   }
 }
 

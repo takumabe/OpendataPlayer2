@@ -1,0 +1,35 @@
+
+Frame "時間" {
+	Version 50463 
+	fOADevice { "GRID-EX32HD" }
+	Layer "レイヤー1" {
+		StringBox {
+			247 163 286 96  H CL T 0 
+			Style "マルＣユニバース" 
+			Size 40 100 
+			Color { 255 255 255 255   AntiAlias 2 }
+			Space 50 
+			Proportional 
+			"\(T( "天気情報" ) C( "年" ) , S!s)" 
+			Style "LSN太角ゴシック体" 
+			Size 32 100 
+			"/" 
+			Style "マルＣユニバース" 
+			Size 40 100 
+			"\(T( "天気情報" ) C( "月" ) , S!s)" 
+			Style "LSN太角ゴシック体" 
+			Size 32 100 
+			"/" 
+			Style "マルＣユニバース" 
+			Size 40 100 
+			"\(T( "天気情報" ) C( "日" ) , S!s)\n" 
+			"\(T( "天気情報" ) C( "時" ) , S!s)" 
+			Style "LSN太角ゴシック体" 
+			Size 32 100 
+			":" 
+			Style "マルＣユニバース" 
+			Size 40 100 
+			"\(T( "天気情報" ) C( "分" ) , S!s)０" 
+		} 
+	} 
+} 

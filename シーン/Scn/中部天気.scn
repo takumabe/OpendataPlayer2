@@ -6,62 +6,207 @@ Frame "中部天気" {
 	} 
 	fOutFade {
 		29 
-		Delay 3730 
+		Delay 2101 
 	} 
 	BGC 0 0 0 115  
 	fVideoAtr { Ortho3D }
 	fOADevice { "GRID-EX32HD" }
 	Layer "レイヤー1" {
+		Link "気温" {
+			"気温" -134 -96  
+		} 
+		Link "日降水量" {
+			"日降水量" -110 -13  
+			uPushWipeIn { NonVolatile 0 12000  1 }
+			uTimeCodeInfoIn { Priority 1 LinkTop 102 }
+		}
+		Link "最大風速" {
+			"最大風速" -110 -80  
+			uPushWipeIn { NonVolatile 0 12000  1 }
+			uTimeCodeInfoIn { Priority 11 LinkBottom 63 }
+		}
+		Link "時間" {
+			"時間" -91 21  
+		} 
 		Image "イメージ" {
 			841 380 238 320  CC 
 			Name "chubu.png" 0 
 			Offset ( 0 ) ( 0 ) 
 			Resize byRate 3 
 		} 
-		Group {
-			String {
-				1674 73 486  V HL 
-				Style "LSN太角ゴシック体" 
-				Size 244 100 
-				Transparent { AntiAlias 2 }
-				Effect {
-					Edge {
-						5 
-						Color { 25 255 204 255  }
-					}
-				}
-				Proportional 
-				"中部" 
+		Group "富山" {
+			Link "富山" {
+				"共通天気板" 62 -346  T( "天気情報" ) R( 55102 ) 
 			} 
-		} 
-		Link "長野" {
-			"共通天気板" 106 224  T( "天気情報" ) R( 48156 ) 
-		} 
-		Link "新潟" {
-			"共通天気板" 250 6  T( "天気情報" ) R( 54232 ) 
-		} 
-		Link "甲府" {
-			"共通天気板" 250 434  T( "天気情報" ) R( 49142 ) 
-		} 
-		Link "静岡" {
-			"共通天気板" 164 644  T( "天気情報" ) R( 50331 ) 
-		} 
-		Link "名古屋" {
-			"共通天気板" -308 650  T( "天気情報" ) R( 51106 ) 
-		} 
-		Link "岐阜" {
-			"共通天気板" -298 380  T( "天気情報" ) R( 52586 ) 
-		} 
-		Link "福井" {
-			"共通天気板" -446 162  T( "天気情報" ) R( 57066 ) 
-		} 
-		Link "金沢" {
-			"共通天気板" -424 -88  T( "天気情報" ) R( 56227 ) 
-		} 
-		Link "富山" {
-			"共通天気板" -76 -112  T( "天気情報" ) R( 55102 ) 
-		} 
+			Link "富山水" {
+				"共通天気板_日降水量" -82 -83  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 2 LinkTop 0 }
+			}
+			Link "富山風" {
+				"共通天気板_最大風速" -87 -88  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 12 LinkTop 0 }
+			}
+			Rim "枠" {
+				905 153 234 114  5 
+				Color { 255 221 15 255   AntiAlias 2 }
+			}
+		}
+		Group "金沢" {
+			Link "金沢" {
+				"共通天気板" -254 -328  T( "天気情報" ) R( 56227 ) 
+			} 
+			Link "金沢水" {
+				"共通天気板_日降水量" -398 -65  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 3 LinkTop 0 }
+			}
+			Link "金沢風" {
+				"共通天気板_最大風速" -403 -70  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 13 LinkTop 0 }
+			}
+			Rim "枠" {
+				589 171 234 114  5 
+				Color { 255 221 15 255   AntiAlias 2 }
+			}
+		}
+		Group "福井" {
+			Link "福井" {
+				"共通天気板" -362 -63  T( "天気情報" ) R( 57066 ) 
+			} 
+			Link "福井水" {
+				"共通天気板_日降水量" -506 200  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 4 LinkTop 0 }
+			}
+			Link "福井風" {
+				"共通天気板_最大風速" -511 195  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 14 LinkTop 0 }
+			}
+			Rim "枠" {
+				481 436 234 114  5 
+				Color { 255 221 15 255   AntiAlias 2 }
+			}
+		}
+		Group "岐阜" {
+			Link "岐阜" {
+				"共通天気板" -58 63  T( "天気情報" ) R( 52586 ) 
+			} 
+			Link "岐阜水" {
+				"共通天気板_日降水量" -202 326  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 5 LinkTop 0 }
+			}
+			Link "岐阜風" {
+				"共通天気板_最大風速" -207 321  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 15 LinkTop 0 }
+			}
+			Rim "枠" {
+				785 562 234 114  5 
+				Color { 255 221 15 255   AntiAlias 2 }
+			}
+		}
+		Group "名古屋" {
+			Link "名古屋" {
+				"共通天気板" -138 382  T( "天気情報" ) R( 51106 ) 
+			} 
+			Link "名古屋水" {
+				"共通天気板_日降水量" -282 645  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 6 LinkTop 0 }
+			}
+			Link "名古屋風" {
+				"共通天気板_最大風速" -287 640  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 16 LinkTop 0 }
+			}
+			Rim "枠" {
+				705 881 234 114  5 
+				Color { 255 221 15 255   AntiAlias 2 }
+			}
+		}
+		Group "静岡" {
+			Link "静岡" {
+				"共通天気板" 286 385  T( "天気情報" ) R( 50331 ) 
+			} 
+			Link "静岡水" {
+				"共通天気板_日降水量" 142 648  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 7 LinkTop 0 }
+			}
+			Link "静岡風" {
+				"共通天気板_最大風速" 137 643  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 17 LinkTop 0 }
+			}
+			Rim "枠" {
+				1129 884 234 114  5 
+				Color { 255 221 15 255   AntiAlias 2 }
+			}
+		}
+		Group "甲府" {
+			Link "甲府" {
+				"共通天気板" 388 174  T( "天気情報" ) R( 49142 ) 
+			} 
+			Link "甲府水" {
+				"共通天気板_日降水量" 244 437  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 8 LinkTop 0 }
+			}
+			Link "甲府風" {
+				"共通天気板_最大風速" 239 432  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 18 LinkTop 0 }
+			}
+			Rim "枠" {
+				1231 673 234 114  5 
+				Color { 255 221 15 255   AntiAlias 2 }
+			}
+		}
+		Group "新潟" {
+			Link "新潟" {
+				"共通天気板" 374 -370  T( "天気情報" ) R( 54232 ) 
+			} 
+			Link "新潟水" {
+				"共通天気板_日降水量" 230 -107  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 9 LinkTop 0 }
+			}
+			Link "新潟風" {
+				"共通天気板_最大風速" 225 -112  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 19 LinkTop 0 }
+			}
+			Rim "枠" {
+				1217 129 234 114  5 
+				Color { 255 221 15 255   AntiAlias 2 }
+			}
+		}
+		Group "長野" {
+			Link "長野" {
+				"共通天気板" 252 -23  T( "天気情報" ) R( 48156 ) 
+			} 
+			Link "長野水" {
+				"共通天気板_日降水量" 108 240  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 10 LinkTop 0 }
+			}
+			Link "長野風" {
+				"共通天気板_最大風速" 103 235  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 20 LinkTop 0 }
+			}
+			Rim "枠" {
+				1095 476 234 114  5 
+				Color { 255 221 15 255   AntiAlias 2 }
+			}
+		}
 		Switch "スイッチ" {
+			Hidden 
 			Group "デフォルト" {
 			}
 			( V0 == "気温" ) 
@@ -82,6 +227,20 @@ Frame "中部天気" {
 					"最大風速" -90 -65  
 				} 
 			} 
+		} 
+		String {
+			1674 170 822  V HL 
+			Style "LSN太角ゴシック体" 
+			Size 185 100 
+			Transparent { AntiAlias 2 }
+			Effect {
+				Edge {
+					5 
+					Color { 25 255 204 255  }
+				}
+			}
+			Proportional 
+			"中部地方" 
 		} 
 	} 
 } 

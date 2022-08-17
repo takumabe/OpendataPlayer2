@@ -6,7 +6,7 @@ Frame "東北天気" {
 	} 
 	fOutFade {
 		29 
-		Delay 3730 
+		Delay 2101 
 	} 
 	BGC 0 0 0 115  
 	fVideoAtr { Ortho3D }
@@ -19,61 +19,266 @@ Frame "東北天気" {
 			Offset ( 0 ) ( 0 ) 
 			Resize byRate 3 
 		} 
-		Group {
-			String {
-				1674 73 486  V HL 
-				Style "LSN太角ゴシック体" 
-				Size 244 100 
-				Transparent { AntiAlias 2 }
-				Effect {
-					Edge {
-						5 
-						Color { 25 255 204 255  }
-					}
-				}
-				Proportional 
-				"東北" 
-			} 
+		Link "気温" {
+			"気温" -104 -86  
 		} 
+		Link "日降水量" {
+			"日降水量" -90 -65  
+			uPushWipeIn { NonVolatile -12000 0  4 }
+			uTimeCodeInfoIn { Priority 7 LinkTop 0 }
+		}
+		Link "最大風速" {
+			"最大風速" -90 -65  
+			uPushWipeIn { NonVolatile -12000 0  4 }
+			uTimeCodeInfoIn { Priority 8 LinkTop 120 }
+		}
+		Group "青森" {
+			Link "青森" {
+				"共通天気板" 4 -347  T( "天気情報" ) R( 31312 ) 
+			} 
+			Link "青森水" {
+				"共通天気板_日降水量" -140 -84  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 1 LinkTop 102 }
+			}
+			Link "青森風" {
+				"共通天気板_最大風速" -145 -89  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 12 LinkTop 0 }
+			}
+			Rim "枠" {
+				847 152 234 114  5 
+				Color { 255 221 15 255   AntiAlias 2 }
+			}
+		}
 		Link "仙台" {
 			"共通天気板" 118 314  T( "天気情報" ) R( 34392 ) 
-		} 
-		Link "青森" {
-			"共通天気板" -146 -116  T( "天気情報" ) R( 31312 ) 
+			Hidden 
 		} 
 		Link "盛岡" {
 			"共通天気板" 102 102  T( "天気情報" ) R( 33431 ) 
+			Hidden 
 		} 
 		Link "福島" {
 			"共通天気板" -80 606  T( "天気情報" ) R( 36127 ) 
+			Hidden 
 		} 
 		Link "山形" {
 			"共通天気板" -358 320  T( "天気情報" ) R( 35426 ) 
+			Hidden 
 		} 
 		Link "秋田" {
-			"共通天気板" -390 126  R( 32402 ) 
+			"共通天気板" -390 126  T( "天気情報" ) R( 32402 ) 
+			Hidden 
 		} 
 		Switch "スイッチ" {
+			Hidden 
 			Group "デフォルト" {
 			}
 			( V0 == "気温" ) 
 			Group "気温" {
-				Link "気温" {
-					"気温" -104 -86  
-				} 
-			} 
+			}
 			( V0 == "日降水量" ) 
 			Group "日降水量" {
-				Link "日降水量" {
-					"日降水量" -90 -65  
-				} 
-			} 
+			}
 			( V0 == "最大風速" ) 
 			Group "最大風速" {
-				Link "最大風速" {
-					"最大風速" -90 -65  
-				} 
+			}
+		}
+		Group {
+			Hidden 
+			Link "福島水" {
+				"共通天気板_日降水量" -81 608  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 1 LinkTop 102 }
+			}
+			Link "山形水" {
+				"共通天気板_日降水量" -358 322  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 2 LinkTop 0 }
+			}
+			Link "秋田水" {
+				"共通天気板_日降水量" -390 128  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 3 LinkTop 0 }
+			}
+			Link "仙台水" {
+				"共通天気板_日降水量" 118 316  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 4 LinkTop 0 }
+			}
+			Link "盛岡水" {
+				"共通天気板_日降水量" 102 104  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 5 LinkTop 0 }
+			}
+		}
+		Group {
+			Hidden 
+			Link "福島風" {
+				"共通天気板_最大風速" -85 603  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 2 LinkBottom 63 }
+			}
+			Link "盛岡風" {
+				"共通天気板_最大風速" 98 101  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 3 LinkTop 0 }
+			}
+			Link "仙台水" {
+				"共通天気板_最大風速" 112 312  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 4 LinkTop 0 }
+			}
+			Link "秋田風" {
+				"共通天気板_最大風速" -395 124  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 5 LinkTop 0 }
+			}
+			Link "山形風" {
+				"共通天気板_最大風速" -362 317  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 6 LinkTop 0 }
+			}
+			Link "福島風" {
+				"共通天気板_最大風速" -85 603  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 7 LinkTop 0 }
+			}
+		}
+		Rim "枠" {
+			597 364 234 114  5 
+			Color { 255 221 15 255   AntiAlias 2 }
+			Hidden 
+		} 
+		Rim "枠" {
+			1105 552 234 114  5 
+			Color { 255 221 15 255   AntiAlias 2 }
+			Hidden 
+		} 
+		Rim "枠" {
+			907 844 234 114  5 
+			Color { 255 221 15 255   AntiAlias 2 }
+			Hidden 
+		} 
+		Rim "枠" {
+			629 558 234 114  5 
+			Color { 255 221 15 255   AntiAlias 2 }
+			Hidden 
+		} 
+		Rim "枠" {
+			1264 470 234 114  5 
+			Color { 255 221 15 255   AntiAlias 2 }
+			Hidden 
+		} 
+		Group "秋田" {
+			Link "秋田" {
+				"共通天気板" -198 -103  T( "天気情報" ) R( 32402 ) 
 			} 
+			Link "秋田水" {
+				"共通天気板_日降水量" -342 160  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 3 LinkTop 0 }
+			}
+			Link "秋田風" {
+				"共通天気板_最大風速" -347 155  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 13 LinkTop 0 }
+			}
+			Rim "枠" {
+				645 396 234 114  5 
+				Color { 255 221 15 255   AntiAlias 2 }
+			}
+		}
+		Group "盛岡" {
+			Link "盛岡" {
+				"共通天気板" 208 -102  T( "天気情報" ) R( 33431 ) 
+			} 
+			Link "盛岡水" {
+				"共通天気板_日降水量" 64 161  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 2 LinkTop 0 }
+			}
+			Link "盛岡風" {
+				"共通天気板_最大風速" 59 156  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 14 LinkTop 0 }
+			}
+			Rim "枠" {
+				1051 397 234 114  5 
+				Color { 255 221 15 255   AntiAlias 2 }
+			}
+		}
+		Group "山形" {
+			Link "山形" {
+				"共通天気板" -258 86  T( "天気情報" ) R( 35426 ) 
+			} 
+			Link "山形水" {
+				"共通天気板_日降水量" -402 349  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 4 LinkTop 0 }
+			}
+			Link "山形風" {
+				"共通天気板_最大風速" -407 344  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 9 LinkTop 0 }
+			}
+			Rim "枠" {
+				585 585 234 114  5 
+				Color { 255 221 15 255   AntiAlias 2 }
+			}
+		}
+		Group "仙台" {
+			Link "仙台" {
+				"共通天気板" 270 81  T( "天気情報" ) R( 34392 ) 
+			} 
+			Link "仙台水" {
+				"共通天気板_日降水量" 126 344  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 5 LinkTop 0 }
+			}
+			Link "仙台風" {
+				"共通天気板_最大風速" 121 339  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 10 LinkTop 0 }
+			}
+			Rim "枠" {
+				1113 580 234 114  5 
+				Color { 255 221 15 255   AntiAlias 2 }
+			}
+		}
+		Group "福島" {
+			Link "福島" {
+				"共通天気板" 51 339  T( "天気情報" ) R( 36127 ) 
+			} 
+			Link "福島水" {
+				"共通天気板_日降水量" -93 602  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 6 LinkTop 0 }
+			}
+			Link "福島風" {
+				"共通天気板_最大風速" -98 597  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 11 LinkTop 0 }
+			}
+			Rim "枠" {
+				894 838 234 114  5 
+				Color { 255 221 15 255   AntiAlias 2 }
+			}
+		}
+		String {
+			1674 170 822  V HL 
+			Style "LSN太角ゴシック体" 
+			Size 185 100 
+			Transparent { AntiAlias 2 }
+			Effect {
+				Edge {
+					5 
+					Color { 25 255 204 255  }
+				}
+			}
+			Proportional 
+			"東北地方" 
 		} 
 	} 
 } 

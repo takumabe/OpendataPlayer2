@@ -6,12 +6,25 @@ Frame "四国天気" {
 	} 
 	fOutFade {
 		29 
-		Delay 3730 
+		Delay 2101 
 	} 
 	BGC 0 0 0 115  
 	fVideoAtr { Ortho3D }
 	fOADevice { "GRID-EX32HD" }
 	Layer "レイヤー1" {
+		Link "気温" {
+			"気温" -104 -86  
+		} 
+		Link "日降水量" {
+			"日降水量" -90 -65  
+			uPushWipeIn { NonVolatile -12000 0  4 }
+			uTimeCodeInfoIn { Priority 5 LinkTop 0 }
+		}
+		Link "最大風速" {
+			"最大風速" -90 -65  
+			uPushWipeIn { NonVolatile -12000 0  4 }
+			uTimeCodeInfoIn { Priority 10 LinkTop 0 }
+		}
 		Image "イメージ" {
 			877 483 166 114  CC 
 			Name "sikoku.png" 0 
@@ -19,55 +32,121 @@ Frame "四国天気" {
 			Offset ( 0 ) ( 0 ) 
 			Resize byRate 4 
 		} 
-		Group {
-			String {
-				1674 73 486  V HL 
-				Style "LSN太角ゴシック体" 
-				Size 244 100 
-				Transparent { AntiAlias 2 }
-				Effect {
-					Edge {
-						5 
-						Color { 25 255 204 255  }
-					}
-				}
-				Proportional 
-				"四国" 
+		Group "高松" {
+			Link "高松" {
+				"共通天気板" 250 -166  T( "天気情報" ) R( 72086 ) 
 			} 
-		} 
-		Link "高松" {
-			"共通天気板" 72 102  T( "天気情報" ) R( 72086 ) 
-		} 
+			Link "日降水量" {
+				"共通天気板_日降水量" 106 99  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 1 LinkBottom 102 }
+			}
+			Link "最大風速" {
+				"共通天気板_最大風速" 101 94  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 6 LinkTop 120 }
+			}
+			Rim "枠" {
+				1093 334 234 114  5 
+				Color { 255 221 15 255   AntiAlias 2 }
+			}
+		}
 		Link "徳島" {
 			"共通天気板" 80 446  T( "天気情報" ) R( 71106 ) 
+			Hidden 
 		} 
 		Link "高知" {
 			"共通天気板" -366 416  T( "天気情報" ) R( 74181 ) 
+			Hidden 
 		} 
 		Link "松山" {
-			"共通天気板" -378 78  T( "天気情報" ) R( 73166 ) 
+			"共通天気板" -246 -172  T( "天気情報" ) R( 73166 ) 
+			Hidden 
 		} 
 		Switch "スイッチ" {
+			Hidden 
 			Group "デフォルト" {
 			}
 			( V0 == "気温" ) 
 			Group "気温" {
-				Link "気温" {
-					"気温" -104 -86  
-				} 
-			} 
+			}
 			( V0 == "日降水量" ) 
 			Group "日降水量" {
-				Link "日降水量" {
-					"日降水量" -90 -65  
-				} 
-			} 
+			}
 			( V0 == "最大風速" ) 
 			Group "最大風速" {
-				Link "最大風速" {
-					"最大風速" -90 -65  
-				} 
+			}
+		}
+		Group "松山" {
+			Link "松山" {
+				"共通天気板" -265 -166  T( "天気情報" ) R( 73166 ) 
 			} 
+			Link "日降水量" {
+				"共通天気板_日降水量" -409 99  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 2 LinkTop 0 }
+			}
+			Link "最大風速" {
+				"共通天気板_最大風速" -414 94  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 7 LinkTop 0 }
+			}
+			Rim "枠" {
+				578 334 234 114  5 
+				Color { 255 221 15 255   AntiAlias 2 }
+			}
+		}
+		Group "高知" {
+			Link "高知" {
+				"共通天気板" -265 174  T( "天気情報" ) R( 74181 ) 
+			} 
+			Link "日降水量" {
+				"共通天気板_日降水量" -409 439  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 3 LinkTop 0 }
+			}
+			Link "最大風速" {
+				"共通天気板_最大風速" -414 434  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 8 LinkTop 0 }
+			}
+			Rim "枠" {
+				578 674 234 114  5 
+				Color { 255 221 15 255   AntiAlias 2 }
+			}
+		}
+		Group "徳島" {
+			Link "徳島" {
+				"共通天気板" 250 174  T( "天気情報" ) R( 71106 ) 
+			} 
+			Link "日降水量" {
+				"共通天気板_日降水量" 106 439  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 4 LinkTop 0 }
+			}
+			Link "最大風速" {
+				"共通天気板_最大風速" 101 434  
+				uPushWipeIn { NonVolatile 0 12000  1 }
+				uTimeCodeInfoIn { Priority 9 LinkTop 0 }
+			}
+			Rim "枠" {
+				1093 674 234 114  5 
+				Color { 255 221 15 255   AntiAlias 2 }
+			}
+		}
+		String {
+			1674 170 822  V HL 
+			Style "LSN太角ゴシック体" 
+			Size 185 100 
+			Transparent { AntiAlias 2 }
+			Effect {
+				Edge {
+					5 
+					Color { 25 255 204 255  }
+				}
+			}
+			Proportional 
+			"四国地方" 
 		} 
 	} 
 } 

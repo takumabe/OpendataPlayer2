@@ -76,9 +76,9 @@ Frame "関東" {
 			"共通コロナ板" 16 -44  T( "都道府県情報" ) R( 11 ) 
 		} 
 		String {
-			1674 73 522  V HL 
+			1674 170 948  V HL 
 			Style "LSN太角ゴシック体" 
-			Size 244 100 
+			Size 185 100 
 			Transparent { AntiAlias 2 }
 			Effect {
 				Edge {
@@ -87,7 +87,7 @@ Frame "関東" {
 				}
 			}
 			Proportional 
-			"関東" 
+			"関東地方" 
 		} 
 	} 
 } 

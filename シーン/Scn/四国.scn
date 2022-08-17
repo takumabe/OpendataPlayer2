@@ -19,20 +19,6 @@ Frame "四国" {
 			Offset ( 0 ) ( 0 ) 
 			Resize byRate 4 
 		} 
-		String {
-			1674 73 522  V HL 
-			Style "LSN太角ゴシック体" 
-			Size 244 100 
-			Transparent { AntiAlias 2 }
-			Effect {
-				Edge {
-					5 
-					Color { 25 255 204 255  }
-				}
-			}
-			Proportional 
-			"四国" 
-		} 
 		Group {
 			StringBox {
 				138 104 303 106  H CL T 0 
@@ -79,6 +65,20 @@ Frame "四国" {
 		} 
 		Link "愛媛" {
 			"共通コロナ板" -34 -2  T( "都道府県情報" ) R( 39 ) 
+		} 
+		String {
+			1674 170 822  V HL 
+			Style "LSN太角ゴシック体" 
+			Size 185 100 
+			Transparent { AntiAlias 2 }
+			Effect {
+				Edge {
+					5 
+					Color { 25 255 204 255  }
+				}
+			}
+			Proportional 
+			"四国地方" 
 		} 
 	} 
 } 

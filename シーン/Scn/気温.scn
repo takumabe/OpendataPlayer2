@@ -5,7 +5,7 @@ Frame "気温" {
 	fOADevice { "GRID-EX32HD" }
 	Layer "レイヤー1" {
 		StringBox {
-			227 190 392 69  H CL T 0 
+			247 185 372 74  H CL T 0 
 			Style "LSN太角ゴシック体" 
 			Size 36 100 
 			Color { 255 255 255 255   AntiAlias 2 }
@@ -17,7 +17,18 @@ Frame "気温" {
 		PolyLine "折れ線" {
 			15 
 			Color { 25 255 204 255   AntiAlias 2 }
-			224 198  246 270  602 270  
+			Hidden 
+			562 296  584 368  940 368  
+		} 
+		PolyLine "折れ線" {
+			15 
+			Color { 25 255 204 255   AntiAlias 2 }
+			uPoints {
+				3 
+				216 211 239.280423 271 616 271 
+			} 
+			Hidden 
+			216 211  239 271  616 271  
 		} 
 	} 
 } 

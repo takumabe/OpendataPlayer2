@@ -4,8 +4,8 @@ Frame "共通コロナ板" {
 	fOADevice { "GRID-EX32HD" }
 	Layer "レイヤー1" {
 		Group {
-			uWipeOpen { NonVolatile H 5 }
-			uTimeCodeInfoIn { Priority 1 }
+			uPushWipeIn { NonVolatile 0 12000  1 }
+			uTimeCodeInfoIn { Priority 1 LinkTop 0 }
 			Board "サンプル" {
 				535 289 280 117  
 				Color { 255 22 40 255   AntiAlias 2 }

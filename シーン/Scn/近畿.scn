@@ -19,20 +19,6 @@ Frame "‹ß‹E" {
 			Offset ( 0 ) ( 0 ) 
 			Resize byRate 3 
 		} 
-		String {
-			1674 73 522  V HL 
-			Style "LSN‘¾ŠpƒSƒVƒbƒN‘Ì" 
-			Size 244 100 
-			Transparent { AntiAlias 2 }
-			Effect {
-				Edge {
-					5 
-					Color { 25 255 204 255  }
-				}
-			}
-			Proportional 
-			"‹ß‹E" 
-		} 
 		Link "‹“s" {
 			"‹¤’ÊƒRƒƒi”Â" 356 -138  T( "“s“¹•{Œ§î•ñ" ) R( 27 ) 
 		} 
@@ -88,6 +74,20 @@ Frame "‹ß‹E" {
 				} 
 				120 101  139 246  450 246  
 			} 
+		} 
+		String {
+			1674 170 822  V HL 
+			Style "LSN‘¾ŠpƒSƒVƒbƒN‘Ì" 
+			Size 185 100 
+			Transparent { AntiAlias 2 }
+			Effect {
+				Edge {
+					5 
+					Color { 25 255 204 255  }
+				}
+			}
+			Proportional 
+			"‹ß‹E’n•û" 
 		} 
 	} 
 } 
