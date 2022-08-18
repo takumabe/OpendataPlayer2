@@ -49,12 +49,12 @@ Frame "関東天気" {
 				"共通天気板" 38 -359  T( "天気情報" ) R( 41277 ) 
 			} 
 			Link "宇都宮水" {
-				"共通天気板_日降水量" -106 -97  
+				"共通天気板_日降水量" -106 -97   T( "天気情報" ) R( 41277 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 8 LinkTop 0 }
 			}
 			Link "宇都宮風" {
-				"共通天気板_最大風速" -111 -102  
+				"共通天気板_最大風速" -111 -102   T( "天気情報" ) R( 41277 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 9 LinkTop 120 }
 			}
@@ -68,12 +68,12 @@ Frame "関東天気" {
 				"共通天気板" -302 -277  T( "天気情報" ) R( 42251 ) 
 			} 
 			Link "前橋水" {
-				"共通天気板_日降水量" -446 -14  
+				"共通天気板_日降水量" -446 -14  T( "天気情報" ) R( 42251 )
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 2 LinkTop 0 }
 			}
 			Link "前橋風" {
-				"共通天気板_最大風速" -451 -19  
+				"共通天気板_最大風速" -451 -19  T( "天気情報" ) R( 42251 )
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 16 LinkTop 0 }
 			}
@@ -87,12 +87,12 @@ Frame "関東天気" {
 				"共通天気板" -302 -47  T( "天気情報" ) R( 43241 ) 
 			} 
 			Link "さいたま水" {
-				"共通天気板_日降水量" -446 216  
+				"共通天気板_日降水量" -446 216  T( "天気情報" ) R( 43241 )
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 3 LinkTop 0 }
 			}
 			Link "さいたま風" {
-				"共通天気板_最大風速" -451 211  
+				"共通天気板_最大風速" -451 211  T( "天気情報" ) R( 43241 )
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 11 LinkTop 0 }
 			}
@@ -106,12 +106,12 @@ Frame "関東天気" {
 				"共通天気板" -164 287  T( "天気情報" ) R( 46106 ) 
 			} 
 			Link "横浜水" {
-				"共通天気板_日降水量" -308 550  
+				"共通天気板_日降水量" -308 550  T( "天気情報" ) R( 46106 )
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 4 LinkTop 0 }
 			}
 			Link "横浜風" {
-				"共通天気板_最大風速" -313 545  
+				"共通天気板_最大風速" -313 545  T( "天気情報" ) R( 46106 )
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 12 LinkTop 0 }
 			}
@@ -125,12 +125,12 @@ Frame "関東天気" {
 				"共通天気板" 20 5  T( "天気情報" ) R( 44132 ) 
 			} 
 			Link "東京水" {
-				"共通天気板_日降水量" -124 268  
+				"共通天気板_日降水量" -124 268  T( "天気情報" ) R( 44132 )
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 5 LinkTop 0 }
 			}
 			Link "東京風" {
-				"共通天気板_最大風速" -129 263  
+				"共通天気板_最大風速" -129 263  T( "天気情報" ) R( 44132 )
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 13 LinkTop 0 }
 			}
@@ -144,12 +144,12 @@ Frame "関東天気" {
 				"共通天気板" 320 -221  T( "天気情報" ) R( 40201 ) 
 			} 
 			Link "水戸水" {
-				"共通天気板_日降水量" 176 42  
+				"共通天気板_日降水量" 176 42  T( "天気情報" ) R( 40201 )
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 6 LinkTop 0 }
 			}
 			Link "水戸風" {
-				"共通天気板_最大風速" 171 37  
+				"共通天気板_最大風速" 171 37  T( "天気情報" ) R( 40201 )
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 14 LinkTop 0 }
 			}
@@ -163,12 +163,12 @@ Frame "関東天気" {
 				"共通天気板" 320 131  T( "天気情報" ) R( 45212 ) 
 			} 
 			Link "千葉水" {
-				"共通天気板_日降水量" 176 394  
+				"共通天気板_日降水量" 176 394  T( "天気情報" ) R( 45212 )
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 7 LinkTop 0 }
 			}
 			Link "千葉風" {
-				"共通天気板_最大風速" 171 389  
+				"共通天気板_最大風速" 171 389  T( "天気情報" ) R( 45212 )
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 15 LinkTop 0 }
 			}

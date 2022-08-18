@@ -121,13 +121,34 @@
   <data name="playbutton" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\playbutton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="stopbutton" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\stopbutton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="コロナアイコン" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\コロナアイコン.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="stopbutton" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\stopbutton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="天気アイコン" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\天気アイコン.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="covid19button" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\covid19button.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="covid19button-put" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\covid19button-put.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="playbutton1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\playbutton1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="stopbutton1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\stopbutton1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="weatherbutton" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\weatherbutton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="weatherbutton-put" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\weatherbutton-put.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="アプリアイコン" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\アプリアイコン.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -78,11 +78,11 @@ namespace teamproject1
             this.id47 = new System.Windows.Forms.Button();
             this.MonthCalendar = new System.Windows.Forms.MonthCalendar();
             this.OpendataFileWatcher = new System.IO.FileSystemWatcher();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.Play = new System.Windows.Forms.Button();
             this.Stop = new System.Windows.Forms.Button();
             this.Corona = new System.Windows.Forms.Button();
             this.Weather = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.OpendataFileWatcher)).BeginInit();
             this.SuspendLayout();
             // 
@@ -827,6 +827,16 @@ namespace teamproject1
             this.OpendataFileWatcher.EnableRaisingEvents = true;
             this.OpendataFileWatcher.SynchronizingObject = this;
             // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBox1.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBox1.Location = new System.Drawing.Point(804, 100);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(352, 220);
+            this.textBox1.TabIndex = 66;
+            // 
             // Play
             // 
             this.Play.BackgroundImage = global::teamproject1.Properties.Resources.playbutton;
@@ -859,7 +869,7 @@ namespace teamproject1
             // 
             // Corona
             // 
-            this.Corona.BackgroundImage = global::teamproject1.Properties.Resources.コロナアイコン;
+            this.Corona.BackgroundImage = global::teamproject1.Properties.Resources.covid19button;
             this.Corona.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Corona.FlatAppearance.BorderSize = 0;
             this.Corona.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -872,7 +882,7 @@ namespace teamproject1
             // 
             // Weather
             // 
-            this.Weather.BackgroundImage = global::teamproject1.Properties.Resources.天気アイコン;
+            this.Weather.BackgroundImage = global::teamproject1.Properties.Resources.weatherbutton;
             this.Weather.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Weather.FlatAppearance.BorderSize = 0;
             this.Weather.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -882,15 +892,6 @@ namespace teamproject1
             this.Weather.TabIndex = 55;
             this.Weather.UseVisualStyleBackColor = true;
             this.Weather.Click += new System.EventHandler(this.Weather_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox1.Location = new System.Drawing.Point(804, 100);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(352, 220);
-            this.textBox1.TabIndex = 66;
             // 
             // OpendataPlayer
             // 

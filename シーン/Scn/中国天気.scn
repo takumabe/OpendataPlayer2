@@ -54,12 +54,12 @@ Frame "中国天気" {
 				"共通天気板" 327 -181  T( "天気情報" ) R( 69122 ) 
 			} 
 			Link "鳥取風" {
-				"共通天気板_最大風速" 178 77  
+				"共通天気板_最大風速" 178 77  T( "天気情報" ) R( 69122 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 12 LinkTop 0 }
 			}
 			Link "鳥取水" {
-				"共通天気板_日降水量" 183 82  
+				"共通天気板_日降水量" 183 82  T( "天気情報" ) R( 69122 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 6 LinkTop 0 }
 			}
@@ -191,12 +191,12 @@ Frame "中国天気" {
 				"共通天気板" 7 -251  T( "天気情報" ) R( 68132 ) 
 			} 
 			Link "松江風" {
-				"共通天気板_最大風速" -142 7  
+				"共通天気板_最大風速" -142 7  T( "天気情報" ) R( 68132 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 7 LinkBottom 63 }
 			}
 			Link "松江水" {
-				"共通天気板_日降水量" -137 12  
+				"共通天気板_日降水量" -137 12  T( "天気情報" ) R( 68132 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 1 LinkTop 102 }
 			}
@@ -210,12 +210,12 @@ Frame "中国天気" {
 				"共通天気板" -279 -1  T( "天気情報" ) R( 81286 ) 
 			} 
 			Link "山口風" {
-				"共通天気板_最大風速" -428 257  
+				"共通天気板_最大風速" -428 257  T( "天気情報" ) R( 81286 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 9 LinkTop 0 }
 			}
 			Link "山口水" {
-				"共通天気板_日降水量" -423 262  
+				"共通天気板_日降水量" -423 262  T( "天気情報" ) R( 81286 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 2 LinkTop 0 }
 			}
@@ -229,12 +229,12 @@ Frame "中国天気" {
 				"共通天気板" 11 239  T( "天気情報" ) R( 67437 ) 
 			} 
 			Link "広島風" {
-				"共通天気板_最大風速" -138 497  
+				"共通天気板_最大風速" -138 497  T( "天気情報" ) R( 67437 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 10 LinkTop 0 }
 			}
 			Link "広島水" {
-				"共通天気板_日降水量" -133 502  
+				"共通天気板_日降水量" -133 502  T( "天気情報" ) R( 67437 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 3 LinkTop 0 }
 			}
@@ -248,12 +248,12 @@ Frame "中国天気" {
 				"共通天気板" 337 187  T( "天気情報" ) R( 66408 ) 
 			} 
 			Link "岡山風" {
-				"共通天気板_最大風速" 188 445  
+				"共通天気板_最大風速" 188 445  T( "天気情報" ) R( 66408 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 11 LinkTop 0 }
 			}
 			Link "岡山水" {
-				"共通天気板_日降水量" 193 450  
+				"共通天気板_日降水量" 193 450  T( "天気情報" ) R( 66408 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 4 LinkTop 0 }
 			}
