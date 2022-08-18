@@ -58,10 +58,9 @@ Frame "“ú–{’n}" {
 				Size 32 100 
 				Offset 0 -22 
 				"\(V1 , Ss)" 
-				Offset 0 -22 
 			} 
 			PolyLine "Ü‚êü" {
-				15 
+				10 
 				Color { 25 255 204 255   AntiAlias 2 }
 				uPoints {
 					3 

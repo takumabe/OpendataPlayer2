@@ -13,20 +13,29 @@ Frame "四国天気" {
 	fOADevice { "GRID-EX32HD" }
 	Layer "レイヤー1" {
 		Link "気温" {
-			"気温" -134 -96  
+			"気温テロップ" -42 -87  
 		} 
 		Link "日降水量" {
-			"日降水量" -110 -13  
+			"日降水量テロップ" -42 -84  
 			uPushWipeIn { NonVolatile 0 12000  1 }
 			uTimeCodeInfoIn { Priority 5 LinkTop 0 }
 		}
 		Link "最大風速" {
-			"最大風速" -110 -80  
+			"最大風速テロップ" -42 -83  
 			uPushWipeIn { NonVolatile 0 12000  1 }
 			uTimeCodeInfoIn { Priority 10 LinkTop 0 }
 		}
 		Link "時間" {
-			"時間" -91 21  
+			"時間テロップ" -61 26  
+		} 
+		PolyLine "折れ線" {
+			10 
+			Color { 25 255 204 255   AntiAlias 2 }
+			uPoints {
+				3 
+				183 124.853030 196.269841 194.529215 411 194.529215 
+			} 
+			183 125  196 195  411 195  
 		} 
 		Image "イメージ" {
 			877 483 166 114  CC 
@@ -47,7 +56,7 @@ Frame "四国天気" {
 			Link "最大風速" {
 				"共通天気板_最大風速" 101 94  
 				uPushWipeIn { NonVolatile 0 12000  1 }
-				uTimeCodeInfoIn { Priority 6 LinkTop 120 }
+				uTimeCodeInfoIn { Priority 9 LinkTop 0 }
 			}
 			Rim "枠" {
 				1093 334 234 114  5 
@@ -84,15 +93,15 @@ Frame "四国天気" {
 			Link "松山" {
 				"共通天気板" -265 -166  T( "天気情報" ) R( 73166 ) 
 			} 
-			Link "日降水量" {
+			Link "松山水" {
 				"共通天気板_日降水量" -409 99  
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 2 LinkTop 0 }
 			}
-			Link "最大風速" {
+			Link "松山風" {
 				"共通天気板_最大風速" -414 94  
 				uPushWipeIn { NonVolatile 0 12000  1 }
-				uTimeCodeInfoIn { Priority 7 LinkTop 0 }
+				uTimeCodeInfoIn { Priority 6 LinkTop 120 }
 			}
 			Rim "枠" {
 				578 334 234 114  5 
@@ -103,15 +112,15 @@ Frame "四国天気" {
 			Link "高知" {
 				"共通天気板" -265 174  T( "天気情報" ) R( 74181 ) 
 			} 
-			Link "日降水量" {
+			Link "高知水" {
 				"共通天気板_日降水量" -409 439  
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 3 LinkTop 0 }
 			}
-			Link "最大風速" {
+			Link "高知風" {
 				"共通天気板_最大風速" -414 434  
 				uPushWipeIn { NonVolatile 0 12000  1 }
-				uTimeCodeInfoIn { Priority 8 LinkTop 0 }
+				uTimeCodeInfoIn { Priority 7 LinkTop 0 }
 			}
 			Rim "枠" {
 				578 674 234 114  5 
@@ -122,15 +131,15 @@ Frame "四国天気" {
 			Link "徳島" {
 				"共通天気板" 250 174  T( "天気情報" ) R( 71106 ) 
 			} 
-			Link "日降水量" {
+			Link "徳島水" {
 				"共通天気板_日降水量" 106 439  
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 4 LinkTop 0 }
 			}
-			Link "最大風速" {
+			Link "徳島風" {
 				"共通天気板_最大風速" 101 434  
 				uPushWipeIn { NonVolatile 0 12000  1 }
-				uTimeCodeInfoIn { Priority 9 LinkTop 0 }
+				uTimeCodeInfoIn { Priority 8 LinkTop 0 }
 			}
 			Rim "枠" {
 				1093 674 234 114  5 

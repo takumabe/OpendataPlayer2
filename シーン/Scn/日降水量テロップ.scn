@@ -1,5 +1,5 @@
 
-Frame "“ú~…—Ê" {
+Frame "“ú~…—Êƒeƒƒbƒv" {
 	Version 50463 
 	fVideoAtr { Ortho3D }
 	fOADevice { "GRID-EX32HD" }
@@ -7,10 +7,12 @@ Frame "“ú~…—Ê" {
 		Board "”Â" {
 			219 102 380 74  
 			Color { 0 0 0 115   AntiAlias 2  BlendMask }
+			Hidden 
 			Plane F uMask 
 		} 
 		StringBox {
 			219 102 372 74  H CL T 0 
+			Hidden 
 			Style "LSN‘¾ŠpƒSƒVƒbƒN‘Ì" 
 			Size 36 100 
 			Color { 255 255 255 255   AntiAlias 2 }
@@ -27,6 +29,27 @@ Frame "“ú~…—Ê" {
 			} 
 			Hidden 
 			210 191  227 251  504 251  
+		} 
+		Board "”Â" {
+			247 185 198 80  
+			Color { 0 0 0 115   AntiAlias 2  BlendMask }
+			Plane F uMask 
+		} 
+		StringBox {
+			247 185 198 74  H CL T 0 
+			uBlock { C }
+			Style "LSN‘¾ŠpƒSƒVƒbƒN‘Ì" 
+			Size 36 100 
+			Color { 255 255 255 255   AntiAlias 2 }
+			Effect {
+				Edge {
+					2 
+					Color { 0 73 192 255  }
+				}
+			}
+			Space 50 
+			Proportional 
+			"“ú~…—Ê" 
 		} 
 	} 
 } 

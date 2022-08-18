@@ -13,20 +13,29 @@ Frame "九州天気" {
 	fOADevice { "GRID-EX32HD" }
 	Layer "レイヤー1" {
 		Link "気温" {
-			"気温" -134 -96  
+			"気温テロップ" -42 -87  
 		} 
 		Link "日降水量" {
-			"日降水量" -110 -13  
+			"日降水量テロップ" -42 -84  
 			uPushWipeIn { NonVolatile 0 12000  1 }
 			uTimeCodeInfoIn { Priority 1 LinkTop 102 }
 		}
 		Link "最大風速" {
-			"最大風速" -110 -80  
+			"最大風速テロップ" -42 -83  
 			uPushWipeIn { NonVolatile 0 12000  1 }
 			uTimeCodeInfoIn { Priority 10 LinkBottom 63 }
 		}
 		Link "時間" {
-			"時間" -91 21  
+			"時間テロップ" -61 26  
+		} 
+		PolyLine "折れ線" {
+			10 
+			Color { 25 255 204 255   AntiAlias 2 }
+			uPoints {
+				3 
+				183 124.853030 196.269841 194.529215 411 194.529215 
+			} 
+			183 125  196 195  411 195  
 		} 
 		Image "イメージ" {
 			857 361 206 358  CC 
@@ -42,7 +51,7 @@ Frame "九州天気" {
 			Link "那覇水" {
 				"共通天気板_日降水量" -256 637  
 				uPushWipeIn { NonVolatile 0 12000  1 }
-				uTimeCodeInfoIn { Priority 2 LinkTop 0 }
+				uTimeCodeInfoIn { Priority 9 LinkTop 0 }
 			}
 			Link "那覇風" {
 				"共通天気板_最大風速" -261 632  
@@ -61,7 +70,7 @@ Frame "九州天気" {
 			Link "佐賀水" {
 				"共通天気板_日降水量" -312 -111  
 				uPushWipeIn { NonVolatile 0 12000  1 }
-				uTimeCodeInfoIn { Priority 3 LinkTop 0 }
+				uTimeCodeInfoIn { Priority 2 LinkTop 0 }
 			}
 			Link "佐賀風" {
 				"共通天気板_最大風速" -317 -116  
@@ -80,12 +89,12 @@ Frame "九州天気" {
 			Link "長崎水" {
 				"共通天気板_日降水量" -476 102  
 				uPushWipeIn { NonVolatile 0 12000  1 }
-				uTimeCodeInfoIn { Priority 4 LinkTop 0 }
+				uTimeCodeInfoIn { Priority 3 LinkTop 0 }
 			}
 			Link "長崎風" {
 				"共通天気板_最大風速" -481 97  
 				uPushWipeIn { NonVolatile 0 12000  1 }
-				uTimeCodeInfoIn { Priority 13 LinkTop 0 }
+				uTimeCodeInfoIn { Priority 18 LinkTop 0 }
 			}
 			Rim "枠" {
 				511 338 234 114  5 
@@ -99,12 +108,12 @@ Frame "九州天気" {
 			Link "熊本水" {
 				"共通天気板_日降水量" -164 219  
 				uPushWipeIn { NonVolatile 0 12000  1 }
-				uTimeCodeInfoIn { Priority 5 LinkTop 0 }
+				uTimeCodeInfoIn { Priority 4 LinkTop 0 }
 			}
 			Link "熊本風" {
 				"共通天気板_最大風速" -169 214  
 				uPushWipeIn { NonVolatile 0 12000  1 }
-				uTimeCodeInfoIn { Priority 14 LinkTop 0 }
+				uTimeCodeInfoIn { Priority 17 LinkTop 0 }
 			}
 			Rim "枠" {
 				823 455 234 114  5 
@@ -118,12 +127,12 @@ Frame "九州天気" {
 			Link "鹿児島水" {
 				"共通天気板_日降水量" 104 443  
 				uPushWipeIn { NonVolatile 0 12000  1 }
-				uTimeCodeInfoIn { Priority 6 LinkTop 0 }
+				uTimeCodeInfoIn { Priority 5 LinkTop 0 }
 			}
 			Link "鹿児島風" {
 				"共通天気板_最大風速" 99 438  
 				uPushWipeIn { NonVolatile 0 12000  1 }
-				uTimeCodeInfoIn { Priority 15 LinkTop 0 }
+				uTimeCodeInfoIn { Priority 16 LinkTop 0 }
 			}
 			Rim "枠" {
 				1091 679 234 114  5 
@@ -137,12 +146,12 @@ Frame "九州天気" {
 			Link "宮崎水" {
 				"共通天気板_日降水量" 168 248  
 				uPushWipeIn { NonVolatile 0 12000  1 }
-				uTimeCodeInfoIn { Priority 7 LinkTop 0 }
+				uTimeCodeInfoIn { Priority 6 LinkTop 0 }
 			}
 			Link "宮崎風" {
 				"共通天気板_最大風速" 163 243  
 				uPushWipeIn { NonVolatile 0 12000  1 }
-				uTimeCodeInfoIn { Priority 16 LinkTop 0 }
+				uTimeCodeInfoIn { Priority 15 LinkTop 0 }
 			}
 			Rim "枠" {
 				1155 484 234 114  5 
@@ -156,12 +165,12 @@ Frame "九州天気" {
 			Link "大分水" {
 				"共通天気板_日降水量" 194 68  
 				uPushWipeIn { NonVolatile 0 12000  1 }
-				uTimeCodeInfoIn { Priority 8 LinkTop 0 }
+				uTimeCodeInfoIn { Priority 7 LinkTop 0 }
 			}
 			Link "大分風" {
 				"共通天気板_最大風速" 189 63  
 				uPushWipeIn { NonVolatile 0 12000  1 }
-				uTimeCodeInfoIn { Priority 17 LinkTop 0 }
+				uTimeCodeInfoIn { Priority 14 LinkTop 0 }
 			}
 			Rim "枠" {
 				1181 304 234 114  5 
@@ -175,12 +184,12 @@ Frame "九州天気" {
 			Link "福岡水" {
 				"共通天気板_日降水量" 4 -126  
 				uPushWipeIn { NonVolatile 0 12000  1 }
-				uTimeCodeInfoIn { Priority 9 LinkTop 0 }
+				uTimeCodeInfoIn { Priority 8 LinkTop 0 }
 			}
 			Link "福岡風" {
 				"共通天気板_最大風速" -1 -131  
 				uPushWipeIn { NonVolatile 0 12000  1 }
-				uTimeCodeInfoIn { Priority 18 LinkTop 0 }
+				uTimeCodeInfoIn { Priority 13 LinkTop 0 }
 			}
 			Rim "枠" {
 				991 110 234 114  5 

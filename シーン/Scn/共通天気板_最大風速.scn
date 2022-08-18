@@ -32,7 +32,7 @@ Frame "‹¤’Ê“V‹C”Â_Å‘å•—‘¬" {
 				Effect {
 					Edge {
 						3 
-						Color { 0 0 0 255  }
+						Color { 60 0 255 255  }
 					}
 				}
 				Proportional 

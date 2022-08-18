@@ -13,20 +13,29 @@ Frame "全国の天気情報" {
 	fOADevice { "GRID-EX32HD" }
 	Layer "レイヤー1" {
 		Link "気温" {
-			"気温" -134 -96  
+			"気温テロップ" -42 -87  
 		} 
 		Link "日降水量" {
-			"日降水量" -110 -13  
+			"日降水量テロップ" -42 -84  
 			uPushWipeIn { NonVolatile 0 12000  1 }
 			uTimeCodeInfoIn { Priority 12 LinkTop 0 }
 		}
 		Link "最大風速" {
-			"最大風速" -110 -80  
+			"最大風速テロップ" -42 -83  
 			uPushWipeIn { NonVolatile 0 12000  1 }
 			uTimeCodeInfoIn { Priority 15 LinkTop 0 }
 		}
 		Link "時間" {
-			"時間" -91 21  
+			"時間テロップ" -61 26  
+		} 
+		PolyLine "折れ線" {
+			10 
+			Color { 25 255 204 255   AntiAlias 2 }
+			uPoints {
+				3 
+				183 124.853030 196.269841 194.529215 411 194.529215 
+			} 
+			183 125  196 195  411 195  
 		} 
 		Image "イメージ" {
 			460 54 1000 849  CC 
@@ -94,7 +103,7 @@ Frame "全国の天気情報" {
 			Link "札幌風" {
 				"共通天気板_最大風速" 535 -122  
 				uPushWipeIn { NonVolatile 0 12000  1 }
-				uTimeCodeInfoIn { Priority 24 LinkTop 0 }
+				uTimeCodeInfoIn { Priority 16 LinkTop 0 }
 			}
 			Rim "枠" {
 				1527 119 234 114  5 
@@ -137,7 +146,7 @@ Frame "全国の天気情報" {
 			Link "仙台風" {
 				"共通天気板_最大風速" 501 131  
 				uPushWipeIn { NonVolatile 0 12000  1 }
-				uTimeCodeInfoIn { Priority 23 LinkTop 0 }
+				uTimeCodeInfoIn { Priority 20 LinkTop 0 }
 			}
 			Rim "枠" {
 				1493 372 234 114  5 
@@ -180,7 +189,7 @@ Frame "全国の天気情報" {
 			Link "新潟風" {
 				"共通天気板_最大風速" -55 -4  
 				uPushWipeIn { NonVolatile 0 12000  1 }
-				uTimeCodeInfoIn { Priority 25 LinkTop 0 }
+				uTimeCodeInfoIn { Priority 19 LinkTop 0 }
 			}
 			Rim "枠" {
 				937 237 234 114  5 
@@ -223,7 +232,7 @@ Frame "全国の天気情報" {
 			Link "大阪風" {
 				"共通天気板_最大風速" -29 622  
 				uPushWipeIn { NonVolatile 0 12000  1 }
-				uTimeCodeInfoIn { Priority 26 LinkTop 0 }
+				uTimeCodeInfoIn { Priority 18 LinkTop 0 }
 			}
 			Rim "枠" {
 				963 863 234 114  5 
@@ -309,7 +318,7 @@ Frame "全国の天気情報" {
 			Link "最大風速" {
 				"共通天気板_最大風速" -330 644  
 				uPushWipeIn { NonVolatile 0 12000  1 }
-				uTimeCodeInfoIn { Priority 16 LinkTop 0 }
+				uTimeCodeInfoIn { Priority 26 LinkTop 0 }
 			}
 			Rim "枠" {
 				662 884 234 114  5 
@@ -395,7 +404,7 @@ Frame "全国の天気情報" {
 			Link "鹿児島風" {
 				"共通天気板_最大風速" -791 418  
 				uPushWipeIn { NonVolatile 0 12000  1 }
-				uTimeCodeInfoIn { Priority 18 LinkTop 0 }
+				uTimeCodeInfoIn { Priority 25 LinkTop 0 }
 			}
 			Rim "枠" {
 				201 659 234 114  5 
@@ -438,7 +447,7 @@ Frame "全国の天気情報" {
 			Link "那覇風" {
 				"共通天気板_最大風速" -731 640  
 				uPushWipeIn { NonVolatile 0 12000  1 }
-				uTimeCodeInfoIn { Priority 19 LinkTop 0 }
+				uTimeCodeInfoIn { Priority 24 LinkTop 0 }
 			}
 			Rim "枠" {
 				261 881 234 114  5 
@@ -481,7 +490,7 @@ Frame "全国の天気情報" {
 			Link "福井風" {
 				"共通天気板_最大風速" -353 -47  
 				uPushWipeIn { NonVolatile 0 12000  1 }
-				uTimeCodeInfoIn { Priority 20 LinkTop 0 }
+				uTimeCodeInfoIn { Priority 23 LinkTop 0 }
 			}
 			Rim "枠" {
 				639 194 234 114  5 
@@ -524,7 +533,7 @@ Frame "全国の天気情報" {
 			Link "東京風" {
 				"共通天気板_最大風速" 485 401  
 				uPushWipeIn { NonVolatile 0 12000  1 }
-				uTimeCodeInfoIn { Priority 21 LinkTop 0 }
+				uTimeCodeInfoIn { Priority 22 LinkTop 0 }
 			}
 			Rim "枠" {
 				1477 642 234 114  5 
@@ -567,7 +576,7 @@ Frame "全国の天気情報" {
 			Link "名古屋風" {
 				"共通天気板_最大風速" 267 588  
 				uPushWipeIn { NonVolatile 0 12000  1 }
-				uTimeCodeInfoIn { Priority 22 LinkTop 0 }
+				uTimeCodeInfoIn { Priority 21 LinkTop 0 }
 			}
 			Rim "枠" {
 				1259 829 234 114  5 

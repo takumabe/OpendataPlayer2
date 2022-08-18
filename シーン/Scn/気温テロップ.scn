@@ -1,0 +1,72 @@
+
+Frame "気温テロップ" {
+	Version 50463 
+	fVideoAtr { Ortho3D }
+	fOADevice { "GRID-EX32HD" }
+	Layer "レイヤー1" {
+		StringBox {
+			247 185 372 74  H CL T 0 
+			Hidden 
+			Style "LSN太角ゴシック体" 
+			Size 36 100 
+			Color { 255 255 255 255   AntiAlias 2 }
+			Space 50 
+			Proportional 
+			"今日の\n" 
+			"最高気温と最低気温" 
+		} 
+		PolyLine "折れ線" {
+			15 
+			Color { 25 255 204 255   AntiAlias 2 }
+			Hidden 
+			562 296  584 368  940 368  
+		} 
+		PolyLine "折れ線" {
+			15 
+			Color { 25 255 204 255   AntiAlias 2 }
+			uPoints {
+				3 
+				210 211 233.280423 271 610 271 
+			} 
+			Hidden 
+			210 211  233 271  610 271  
+		} 
+		StringBox {
+			247 185 198 74  H C T 0 
+			uBlock { C }
+			Style "LSN太角ゴシック体" 
+			Size 36 100 
+			Color { 255 255 255 255   AntiAlias 2 }
+			Effect {
+				Edge {
+					2 
+					Color { 234 0 32 255  }
+				}
+			}
+			Space 50 
+			Proportional 
+			"最高気温" 
+			Effect {
+			}
+			"\n" 
+			Size 32 100 
+			Effect {
+				Edge {
+					2 
+					Color { 0 0 192 255  }
+				}
+			}
+			Offset 0 -7 
+			"最" 
+			Offset 0 -7 
+			"低" 
+			Offset 0 -7 
+			"気" 
+			Offset 0 -7 
+			"温" 
+			Effect {
+			}
+			Offset 0 -7 
+		} 
+	} 
+} 
