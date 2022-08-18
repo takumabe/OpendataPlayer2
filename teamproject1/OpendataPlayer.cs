@@ -232,6 +232,8 @@ namespace teamproject1
         {
             m_pplayer.execute("Abort B");
             m_pplayer.execute("Clear B");
+            //TextBox表示
+            textBox1.Text += "【自動再生中】";
             //再生停止ボタンの切り替え
             Play.Visible = false;
             Stop.Visible = true;
@@ -355,6 +357,9 @@ namespace teamproject1
          *--------------------------------------------------------------------------------*/
         private void Stop_Click(object sender, EventArgs e)
         {
+            //TextBoxに表示
+            textBox1.Text = "【停止】";
+            //再生停止の切り替え
             Play.Visible = true;
             Stop.Visible = false;
             //タイマー停止
@@ -510,6 +515,9 @@ namespace teamproject1
 
             if (CoronaFlag)
             {//コロナ表示
+                //TextBoxに都道府県名を表示
+                textBox1.Text = ((Button)sender).Text;
+                //押したボタンの色変更
                 if (PrefectureNumber == 2)
                 {
                     ((Button)sender).BackColor = Color.FromArgb(24,92,209);
@@ -561,6 +569,7 @@ namespace teamproject1
                         ((Button)control).FlatAppearance.BorderColor = Color.FromArgb(24, 92, 209);
                         ((Button)control).FlatAppearance.BorderSize = 7;
                         strAreaName = "北海道天気";
+                        textBox1.Text = strAreaName.Substring(0, 3)+"地方";
                         break;
                     case 1:
                         for (int Num = 3; Num <= 8; Num++)
@@ -570,6 +579,7 @@ namespace teamproject1
                             ((Button)control).FlatAppearance.BorderSize = 7;    
                         }
                         strAreaName = "東北天気";
+                        textBox1.Text = strAreaName.Substring(0, 2) + "地方";
                         break;
                     case 2:
                         for (int Num = 9; Num <= 15; Num++)
@@ -579,6 +589,7 @@ namespace teamproject1
                             ((Button)control).FlatAppearance.BorderSize = 7;  
                         }
                         strAreaName = "関東天気";
+                        textBox1.Text = strAreaName.Substring(0, 2) + "地方";
                         break;
                     case 3:
                         for (int Num = 16; Num <= 24; Num++)
@@ -588,6 +599,7 @@ namespace teamproject1
                             ((Button)control).FlatAppearance.BorderSize = 7;  
                         }
                         strAreaName = "中部天気";
+                        textBox1.Text = strAreaName.Substring(0, 2) + "地方";
                         break;
                     case 4:
                         for (int Num = 25; Num <= 31; Num++)
@@ -597,6 +609,7 @@ namespace teamproject1
                             ((Button)control).FlatAppearance.BorderSize = 7;  
                         }
                         strAreaName = "近畿天気";
+                        textBox1.Text = strAreaName.Substring(0, 2) + "地方";
                         break;
                     case 5:
                         for (int Num = 32; Num <= 36; Num++)
@@ -606,6 +619,7 @@ namespace teamproject1
                             ((Button)control).FlatAppearance.BorderSize = 7;   
                         }
                         strAreaName = "中国天気";
+                        textBox1.Text = strAreaName.Substring(0, 2) + "地方";
                         break;
                     case 6:
                         for (int Num = 37; Num <= 40; Num++)
@@ -615,6 +629,7 @@ namespace teamproject1
                             ((Button)control).FlatAppearance.BorderSize = 7;   
                         }
                         strAreaName = "四国天気";
+                        textBox1.Text = strAreaName.Substring(0, 2) + "地方";
                         break;
                     case 7:
                         for (int Num = 41; Num <= 48; Num++)
@@ -624,6 +639,7 @@ namespace teamproject1
                             ((Button)control).FlatAppearance.BorderSize = 7;  
                         }
                         strAreaName = "九州天気";
+                        textBox1.Text = strAreaName.Substring(0, 2) + "地方";
                         break;
                 }
                 ((Button)sender).UseVisualStyleBackColor = true;
@@ -691,7 +707,7 @@ namespace teamproject1
         private void Weather_Click(object sender, EventArgs e)
         {
             CoronaFlag = false;
-            MonthCalendar.Enabled = false; 
+            MonthCalendar.Enabled = false;
         }
 
         /*--------------------------------------------------------------------------------

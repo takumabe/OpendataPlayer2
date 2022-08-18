@@ -48,12 +48,12 @@ Frame "中部天気" {
 				"共通天気板" 62 -346  T( "天気情報" ) R( 55102 ) 
 			} 
 			Link "富山水" {
-				"共通天気板_日降水量" -82 -83  
+				"共通天気板_日降水量" -82 -83  T( "天気情報" ) R( 55102 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 10 LinkTop 0 }
 			}
 			Link "富山風" {
-				"共通天気板_最大風速" -87 -88  
+				"共通天気板_最大風速" -87 -88  T( "天気情報" ) R( 55102 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 18 LinkTop 0 }
 			}
@@ -67,12 +67,12 @@ Frame "中部天気" {
 				"共通天気板" -254 -328  T( "天気情報" ) R( 56227 ) 
 			} 
 			Link "金沢水" {
-				"共通天気板_日降水量" -398 -65  
+				"共通天気板_日降水量" -398 -65  T( "天気情報" ) R( 56227 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 2 LinkTop 0 }
 			}
 			Link "金沢風" {
-				"共通天気板_最大風速" -403 -70  
+				"共通天気板_最大風速" -403 -70  T( "天気情報" ) R( 56227 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 12 LinkTop 0 }
 			}
@@ -86,12 +86,12 @@ Frame "中部天気" {
 				"共通天気板" -362 -63  T( "天気情報" ) R( 57066 ) 
 			} 
 			Link "福井水" {
-				"共通天気板_日降水量" -506 200  
+				"共通天気板_日降水量" -506 200  T( "天気情報" ) R( 57066 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 3 LinkTop 0 }
 			}
 			Link "福井風" {
-				"共通天気板_最大風速" -511 195  
+				"共通天気板_最大風速" -511 195  T( "天気情報" ) R( 57066 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 19 LinkTop 0 }
 			}
@@ -105,12 +105,12 @@ Frame "中部天気" {
 				"共通天気板" -58 63  T( "天気情報" ) R( 52586 ) 
 			} 
 			Link "岐阜水" {
-				"共通天気板_日降水量" -202 326  
+				"共通天気板_日降水量" -202 326  T( "天気情報" ) R( 52586 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 4 LinkTop 0 }
 			}
 			Link "岐阜風" {
-				"共通天気板_最大風速" -207 321  
+				"共通天気板_最大風速" -207 321  T( "天気情報" ) R( 52586 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 20 LinkTop 0 }
 			}
@@ -124,12 +124,12 @@ Frame "中部天気" {
 				"共通天気板" -138 382  T( "天気情報" ) R( 51106 ) 
 			} 
 			Link "名古屋水" {
-				"共通天気板_日降水量" -282 645  
+				"共通天気板_日降水量" -282 645  T( "天気情報" ) R( 51106 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 5 LinkTop 0 }
 			}
 			Link "名古屋風" {
-				"共通天気板_最大風速" -287 640  
+				"共通天気板_最大風速" -287 640  T( "天気情報" ) R( 51106 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 17 LinkTop 0 }
 			}
@@ -143,12 +143,12 @@ Frame "中部天気" {
 				"共通天気板" 286 385  T( "天気情報" ) R( 50331 ) 
 			} 
 			Link "静岡水" {
-				"共通天気板_日降水量" 142 648  
+				"共通天気板_日降水量" 142 648  T( "天気情報" ) R( 50331 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 6 LinkTop 0 }
 			}
 			Link "静岡風" {
-				"共通天気板_最大風速" 137 643  
+				"共通天気板_最大風速" 137 643  T( "天気情報" ) R( 50331 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 16 LinkTop 0 }
 			}
@@ -162,12 +162,12 @@ Frame "中部天気" {
 				"共通天気板" 388 174  T( "天気情報" ) R( 49142 ) 
 			} 
 			Link "甲府水" {
-				"共通天気板_日降水量" 244 437  
+				"共通天気板_日降水量" 244 437  T( "天気情報" ) R( 49142 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 7 LinkTop 0 }
 			}
 			Link "甲府風" {
-				"共通天気板_最大風速" 239 432  
+				"共通天気板_最大風速" 239 432  T( "天気情報" ) R( 49142 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 15 LinkTop 0 }
 			}
@@ -181,12 +181,12 @@ Frame "中部天気" {
 				"共通天気板" 374 -370  T( "天気情報" ) R( 54232 ) 
 			} 
 			Link "新潟水" {
-				"共通天気板_日降水量" 230 -107  
+				"共通天気板_日降水量" 230 -107  T( "天気情報" ) R( 54232 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 8 LinkTop 0 }
 			}
 			Link "新潟風" {
-				"共通天気板_最大風速" 225 -112  
+				"共通天気板_最大風速" 225 -112  T( "天気情報" ) R( 54232 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 14 LinkTop 0 }
 			}
@@ -200,12 +200,12 @@ Frame "中部天気" {
 				"共通天気板" 252 -23  T( "天気情報" ) R( 48156 ) 
 			} 
 			Link "長野水" {
-				"共通天気板_日降水量" 108 240  
+				"共通天気板_日降水量" 108 240  T( "天気情報" ) R( 48156 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 9 LinkTop 0 }
 			}
 			Link "長野風" {
-				"共通天気板_最大風速" 103 235  
+				"共通天気板_最大風速" 103 235  T( "天気情報" ) R( 48156 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 13 LinkTop 0 }
 			}

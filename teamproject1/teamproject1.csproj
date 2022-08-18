@@ -154,5 +154,26 @@
   <ItemGroup>
     <None Include="Resources\天気アイコン.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\covid19button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\covid19button-put.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\playbutton1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stopbutton1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weatherbutton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weatherbutton-put.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\アプリアイコン.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

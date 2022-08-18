@@ -49,12 +49,12 @@ Frame "近畿天気" {
 				"共通天気板" -60 370  T( "天気情報" ) R( 65042 ) 
 			} 
 			Link "和歌山水" {
-				"共通天気板_日降水量" -204 633  
+				"共通天気板_日降水量" -204 633  T( "天気情報" ) R( 65042 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 1 LinkBottom 102 }
 			}
 			Link "和歌山風" {
-				"共通天気板_最大風速" -209 628  
+				"共通天気板_最大風速" -209 628  T( "天気情報" ) R( 65042 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 16 LinkTop 0 }
 			}
@@ -68,12 +68,12 @@ Frame "近畿天気" {
 				"共通天気板" -200 88  T( "天気情報" ) R( 62078 ) 
 			} 
 			Link "大阪水" {
-				"共通天気板_日降水量" -344 351  
+				"共通天気板_日降水量" -344 351  T( "天気情報" ) R( 62078 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 4 LinkTop 0 }
 			}
 			Link "大阪風" {
-				"共通天気板_最大風速" -349 346  
+				"共通天気板_最大風速" -349 346  T( "天気情報" ) R( 62078 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 12 LinkTop 0 }
 			}
@@ -87,12 +87,12 @@ Frame "近畿天気" {
 				"共通天気板" -316 -174  T( "天気情報" ) R( 63518 ) 
 			} 
 			Link "神戸水" {
-				"共通天気板_日降水量" -460 89  
+				"共通天気板_日降水量" -460 89  T( "天気情報" ) R( 63518 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 5 LinkTop 0 }
 			}
 			Link "神戸風" {
-				"共通天気板_最大風速" -465 84  
+				"共通天気板_最大風速" -465 84  T( "天気情報" ) R( 63518 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 13 LinkTop 0 }
 			}
@@ -106,12 +106,12 @@ Frame "近畿天気" {
 				"共通天気板" 34 -320  T( "天気情報" ) R( 61286 ) 
 			} 
 			Link "京都水" {
-				"共通天気板_日降水量" -110 -57  
+				"共通天気板_日降水量" -110 -57  T( "天気情報" ) R( 61286 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 6 LinkTop 0 }
 			}
 			Link "京都風" {
-				"共通天気板_最大風速" -115 -62  
+				"共通天気板_最大風速" -115 -62  T( "天気情報" ) R( 61286 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 14 LinkTop 0 }
 			}
@@ -125,12 +125,12 @@ Frame "近畿天気" {
 				"共通天気板" 94 -2  T( "天気情報" ) R( 64036 ) 
 			} 
 			Link "奈良水" {
-				"共通天気板_日降水量" -50 261  
+				"共通天気板_日降水量" -50 261  T( "天気情報" ) R( 64036 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 7 LinkTop 0 }
 			}
 			Link "奈良風" {
-				"共通天気板_最大風速" -55 256  
+				"共通天気板_最大風速" -55 256  T( "天気情報" ) R( 64036 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 15 LinkTop 0 }
 			}
@@ -144,12 +144,12 @@ Frame "近畿天気" {
 				"共通天気板" 296 200  T( "天気情報" ) R( 53133 ) 
 			} 
 			Link "津水" {
-				"共通天気板_日降水量" 152 463  
+				"共通天気板_日降水量" 152 463  T( "天気情報" ) R( 53133 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 3 LinkTop 0 }
 			}
 			Link "津風" {
-				"共通天気板_最大風速" 147 458  
+				"共通天気板_最大風速" 147 458  T( "天気情報" ) R( 53133 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 9 LinkBottom 63 }
 			}
@@ -163,12 +163,12 @@ Frame "近畿天気" {
 				"共通天気板" 330 -182  T( "天気情報" ) R( 60216 ) 
 			} 
 			Link "大津水" {
-				"共通天気板_日降水量" 186 81  
+				"共通天気板_日降水量" 186 81  T( "天気情報" ) R( 60216 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 8 LinkTop 0 }
 			}
 			Link "大津風" {
-				"共通天気板_最大風速" 181 76  
+				"共通天気板_最大風速" 181 76  T( "天気情報" ) R( 60216 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 10 LinkTop 0 }
 			}

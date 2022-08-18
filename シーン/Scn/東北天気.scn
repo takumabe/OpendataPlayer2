@@ -188,12 +188,12 @@ Frame "東北天気" {
 				"共通天気板" -198 -103  T( "天気情報" ) R( 32402 ) 
 			} 
 			Link "秋田水" {
-				"共通天気板_日降水量" -342 160  
+				"共通天気板_日降水量" -342 160  T( "天気情報" ) R( 32402 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 3 LinkTop 0 }
 			}
 			Link "秋田風" {
-				"共通天気板_最大風速" -347 155  
+				"共通天気板_最大風速" -347 155  T( "天気情報" ) R( 32402 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 11 LinkTop 0 }
 			}
@@ -207,12 +207,12 @@ Frame "東北天気" {
 				"共通天気板" 208 -102  T( "天気情報" ) R( 33431 ) 
 			} 
 			Link "盛岡水" {
-				"共通天気板_日降水量" 64 161  
+				"共通天気板_日降水量" 64 161  T( "天気情報" ) R( 33431 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 2 LinkTop 0 }
 			}
 			Link "盛岡風" {
-				"共通天気板_最大風速" 59 156  
+				"共通天気板_最大風速" 59 156  T( "天気情報" ) R( 33431 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 12 LinkTop 0 }
 			}
@@ -226,12 +226,12 @@ Frame "東北天気" {
 				"共通天気板" -258 86  T( "天気情報" ) R( 35426 ) 
 			} 
 			Link "山形水" {
-				"共通天気板_日降水量" -402 349  
+				"共通天気板_日降水量" -402 349  T( "天気情報" ) R( 35426 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 4 LinkTop 0 }
 			}
 			Link "山形風" {
-				"共通天気板_最大風速" -407 344  
+				"共通天気板_最大風速" -407 344  T( "天気情報" ) R( 35426 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 13 LinkTop 0 }
 			}
@@ -245,12 +245,12 @@ Frame "東北天気" {
 				"共通天気板" 270 81  T( "天気情報" ) R( 34392 ) 
 			} 
 			Link "仙台水" {
-				"共通天気板_日降水量" 126 344  
+				"共通天気板_日降水量" 126 344  T( "天気情報" ) R( 34392 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 5 LinkTop 0 }
 			}
 			Link "仙台風" {
-				"共通天気板_最大風速" 121 339  
+				"共通天気板_最大風速" 121 339  T( "天気情報" ) R( 34392 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 14 LinkTop 0 }
 			}
@@ -264,12 +264,12 @@ Frame "東北天気" {
 				"共通天気板" 51 339  T( "天気情報" ) R( 36127 ) 
 			} 
 			Link "福島水" {
-				"共通天気板_日降水量" -93 602  
+				"共通天気板_日降水量" -93 602  T( "天気情報" ) R( 36127 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 6 LinkTop 0 }
 			}
 			Link "福島風" {
-				"共通天気板_最大風速" -98 597  
+				"共通天気板_最大風速" -98 597  T( "天気情報" ) R( 36127 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 9 LinkTop 0 }
 			}

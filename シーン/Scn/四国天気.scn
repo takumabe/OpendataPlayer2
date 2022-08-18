@@ -49,12 +49,12 @@ Frame "四国天気" {
 				"共通天気板" 250 -166  T( "天気情報" ) R( 72086 ) 
 			} 
 			Link "日降水量" {
-				"共通天気板_日降水量" 106 99  
+				"共通天気板_日降水量" 106 99  T( "天気情報" ) R( 72086 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 1 LinkBottom 102 }
 			}
 			Link "最大風速" {
-				"共通天気板_最大風速" 101 94  
+				"共通天気板_最大風速" 101 94  T( "天気情報" ) R( 72086 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 9 LinkTop 0 }
 			}
@@ -94,12 +94,12 @@ Frame "四国天気" {
 				"共通天気板" -265 -166  T( "天気情報" ) R( 73166 ) 
 			} 
 			Link "松山水" {
-				"共通天気板_日降水量" -409 99  
+				"共通天気板_日降水量" -409 99  T( "天気情報" ) R( 73166 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 2 LinkTop 0 }
 			}
 			Link "松山風" {
-				"共通天気板_最大風速" -414 94  
+				"共通天気板_最大風速" -414 94  T( "天気情報" ) R( 73166 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 6 LinkTop 120 }
 			}
@@ -113,12 +113,12 @@ Frame "四国天気" {
 				"共通天気板" -265 174  T( "天気情報" ) R( 74181 ) 
 			} 
 			Link "高知水" {
-				"共通天気板_日降水量" -409 439  
+				"共通天気板_日降水量" -409 439  T( "天気情報" ) R( 74181 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 3 LinkTop 0 }
 			}
 			Link "高知風" {
-				"共通天気板_最大風速" -414 434  
+				"共通天気板_最大風速" -414 434  T( "天気情報" ) R( 74181 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 7 LinkTop 0 }
 			}
@@ -132,12 +132,12 @@ Frame "四国天気" {
 				"共通天気板" 250 174  T( "天気情報" ) R( 71106 ) 
 			} 
 			Link "徳島水" {
-				"共通天気板_日降水量" 106 439  
+				"共通天気板_日降水量" 106 439  T( "天気情報" ) R( 71106 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 4 LinkTop 0 }
 			}
 			Link "徳島風" {
-				"共通天気板_最大風速" 101 434  
+				"共通天気板_最大風速" 101 434  T( "天気情報" ) R( 71106 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
 				uTimeCodeInfoIn { Priority 8 LinkTop 0 }
 			}
