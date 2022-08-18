@@ -1,5 +1,5 @@
 
-Frame "最大風速" {
+Frame "最大風速テロップ" {
 	Version 50463 
 	fVideoAtr { Ortho3D }
 	fOADevice { "GRID-EX32HD" }
@@ -7,10 +7,12 @@ Frame "最大風速" {
 		Board "板" {
 			219 169 380 74  
 			Color { 0 0 0 115   AntiAlias 2  BlendMask }
+			Hidden 
 			Plane F uMask 
 		} 
 		StringBox {
 			219 169 372 74  H CL T 0 
+			Hidden 
 			Style "LSN太角ゴシック体" 
 			Size 36 100 
 			Color { 255 255 255 255   AntiAlias 2 }
@@ -27,6 +29,27 @@ Frame "最大風速" {
 			} 
 			Hidden 
 			210 191  227 251  504 251  
+		} 
+		Board "板" {
+			247 185 198 80  
+			Color { 0 0 0 115   AntiAlias 2  BlendMask }
+			Plane F uMask 
+		} 
+		StringBox {
+			247 185 198 74  H CL T 0 
+			uBlock { C }
+			Style "LSN太角ゴシック体" 
+			Size 36 100 
+			Color { 255 255 255 255   AntiAlias 2 }
+			Effect {
+				Edge {
+					2 
+					Color { 60 0 255 255  }
+				}
+			}
+			Space 50 
+			Proportional 
+			"最大風速" 
 		} 
 	} 
 } 

@@ -27,20 +27,20 @@ Frame "中国天気" {
 			"中国地方" 
 		} 
 		Link "気温" {
-			"気温" -134 -96  
+			"気温テロップ" -42 -87  
 		} 
 		Link "日降水量" {
-			"日降水量" -110 -13  
+			"日降水量テロップ" -42 -84  
 			uPushWipeIn { NonVolatile 0 12000  1 }
 			uTimeCodeInfoIn { Priority 5 LinkTop 0 }
 		}
 		Link "最大風速" {
-			"最大風速" -110 -80  
+			"最大風速テロップ" -42 -83  
 			uPushWipeIn { NonVolatile 0 12000  1 }
-			uTimeCodeInfoIn { Priority 12 LinkTop 0 }
+			uTimeCodeInfoIn { Priority 8 LinkTop 0 }
 		}
 		Link "時間" {
-			"時間" -91 21  
+			"時間テロップ" -61 26  
 		} 
 		Image "イメージ" {
 			887 468 146 144  CC 
@@ -56,7 +56,7 @@ Frame "中国天気" {
 			Link "鳥取風" {
 				"共通天気板_最大風速" 178 77  
 				uPushWipeIn { NonVolatile 0 12000  1 }
-				uTimeCodeInfoIn { Priority 8 LinkTop 0 }
+				uTimeCodeInfoIn { Priority 12 LinkTop 0 }
 			}
 			Link "鳥取水" {
 				"共通天気板_日降水量" 183 82  
@@ -212,7 +212,7 @@ Frame "中国天気" {
 			Link "山口風" {
 				"共通天気板_最大風速" -428 257  
 				uPushWipeIn { NonVolatile 0 12000  1 }
-				uTimeCodeInfoIn { Priority 11 LinkTop 0 }
+				uTimeCodeInfoIn { Priority 9 LinkTop 0 }
 			}
 			Link "山口水" {
 				"共通天気板_日降水量" -423 262  
@@ -250,7 +250,7 @@ Frame "中国天気" {
 			Link "岡山風" {
 				"共通天気板_最大風速" 188 445  
 				uPushWipeIn { NonVolatile 0 12000  1 }
-				uTimeCodeInfoIn { Priority 9 LinkTop 0 }
+				uTimeCodeInfoIn { Priority 11 LinkTop 0 }
 			}
 			Link "岡山水" {
 				"共通天気板_日降水量" 193 450  
@@ -262,5 +262,14 @@ Frame "中国天気" {
 				Color { 255 221 15 255   AntiAlias 2 }
 			}
 		}
-	}
-}
+		PolyLine "折れ線" {
+			10 
+			Color { 25 255 204 255   AntiAlias 2 }
+			uPoints {
+				3 
+				183 124.853030 196.269841 194.529215 411 194.529215 
+			} 
+			183 125  196 195  411 195  
+		} 
+	} 
+} 

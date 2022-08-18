@@ -2,11 +2,11 @@
 Frame "‹ãB" {
 	Version 50463 
 	FadeIn {
-		Black 18 
+		Black 29 
 	} 
 	fOutFade {
-		18 
-		Delay 4000 
+		29 
+		Delay 2435 
 	} 
 	BGC 0 0 0 115  
 	fVideoAtr { Ortho3D }
@@ -45,7 +45,7 @@ Frame "‹ãB" {
 				"\(T( "ƒRƒƒi‚Ìî•ñ" ) C( "“ú•t" ) , Ss)" 
 			} 
 			PolyLine "Ü‚êü" {
-				15 
+				10 
 				Color { 25 255 204 255   AntiAlias 2 }
 				uPoints {
 					3 

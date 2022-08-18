@@ -20,20 +20,29 @@ Frame "東北天気" {
 			Resize byRate 3 
 		} 
 		Link "気温" {
-			"気温" -134 -96  
+			"気温テロップ" -42 -87  
 		} 
 		Link "日降水量" {
-			"日降水量" -110 -13  
+			"日降水量テロップ" -42 -84  
 			uPushWipeIn { NonVolatile 0 12000  1 }
 			uTimeCodeInfoIn { Priority 7 LinkTop 0 }
 		}
 		Link "最大風速" {
-			"最大風速" -110 -80  
+			"最大風速テロップ" -42 -83  
 			uPushWipeIn { NonVolatile 0 12000  1 }
 			uTimeCodeInfoIn { Priority 8 LinkTop 120 }
 		}
 		Link "時間" {
-			"時間" -91 21  
+			"時間テロップ" -61 26  
+		} 
+		PolyLine "折れ線" {
+			10 
+			Color { 25 255 204 255   AntiAlias 2 }
+			uPoints {
+				3 
+				183 124.853030 196.269841 194.529215 411 194.529215 
+			} 
+			183 125  196 195  411 195  
 		} 
 		Group "青森" {
 			Link "青森" {
@@ -47,7 +56,7 @@ Frame "東北天気" {
 			Link "青森風" {
 				"共通天気板_最大風速" -145 -89  
 				uPushWipeIn { NonVolatile 0 12000  1 }
-				uTimeCodeInfoIn { Priority 12 LinkTop 0 }
+				uTimeCodeInfoIn { Priority 10 LinkTop 0 }
 			}
 			Rim "枠" {
 				847 152 234 114  5 
@@ -186,7 +195,7 @@ Frame "東北天気" {
 			Link "秋田風" {
 				"共通天気板_最大風速" -347 155  
 				uPushWipeIn { NonVolatile 0 12000  1 }
-				uTimeCodeInfoIn { Priority 13 LinkTop 0 }
+				uTimeCodeInfoIn { Priority 11 LinkTop 0 }
 			}
 			Rim "枠" {
 				645 396 234 114  5 
@@ -205,7 +214,7 @@ Frame "東北天気" {
 			Link "盛岡風" {
 				"共通天気板_最大風速" 59 156  
 				uPushWipeIn { NonVolatile 0 12000  1 }
-				uTimeCodeInfoIn { Priority 14 LinkTop 0 }
+				uTimeCodeInfoIn { Priority 12 LinkTop 0 }
 			}
 			Rim "枠" {
 				1051 397 234 114  5 
@@ -224,7 +233,7 @@ Frame "東北天気" {
 			Link "山形風" {
 				"共通天気板_最大風速" -407 344  
 				uPushWipeIn { NonVolatile 0 12000  1 }
-				uTimeCodeInfoIn { Priority 9 LinkTop 0 }
+				uTimeCodeInfoIn { Priority 13 LinkTop 0 }
 			}
 			Rim "枠" {
 				585 585 234 114  5 
@@ -243,7 +252,7 @@ Frame "東北天気" {
 			Link "仙台風" {
 				"共通天気板_最大風速" 121 339  
 				uPushWipeIn { NonVolatile 0 12000  1 }
-				uTimeCodeInfoIn { Priority 10 LinkTop 0 }
+				uTimeCodeInfoIn { Priority 14 LinkTop 0 }
 			}
 			Rim "枠" {
 				1113 580 234 114  5 
@@ -262,7 +271,7 @@ Frame "東北天気" {
 			Link "福島風" {
 				"共通天気板_最大風速" -98 597  
 				uPushWipeIn { NonVolatile 0 12000  1 }
-				uTimeCodeInfoIn { Priority 11 LinkTop 0 }
+				uTimeCodeInfoIn { Priority 9 LinkTop 0 }
 			}
 			Rim "枠" {
 				894 838 234 114  5 
