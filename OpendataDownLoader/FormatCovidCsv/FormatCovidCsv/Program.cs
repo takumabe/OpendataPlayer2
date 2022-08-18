@@ -21,7 +21,10 @@ namespace FormatCovidCsv
                 {
                     // 列の説明行は＃を付けてコメントアウト
                     string header = streamReader.ReadLine();
-                    System.IO.File.WriteAllText(strCsv, "#" + header + Environment.NewLine, System.Text.Encoding.GetEncoding("shift-jis"));
+                    using(var sw = new System.IO.StreamWriter(strCsv, false, System.Text.Encoding.GetEncoding("shift-jis")))
+                    {
+                        sw.Write("#" + header + Environment.NewLine);
+                    }
 
                     while (!streamReader.EndOfStream)
                     {
@@ -40,7 +43,10 @@ namespace FormatCovidCsv
                         }
                         line = date[0] + "/" + date[1] + "/" + date[2] + line;
 
-                        System.IO.File.AppendAllText(strCsv, line + Environment.NewLine, System.Text.Encoding.GetEncoding("shift-jis"));
+                        using(var sw = new System.IO.StreamWriter(strCsv, true, System.Text.Encoding.GetEncoding("shift-jis")))
+                        {
+                            sw.Write(line + Environment.NewLine);
+                        }
                     }
                 }
                 System.IO.File.Delete(strTmpCsv);
