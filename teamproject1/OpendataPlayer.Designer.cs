@@ -29,6 +29,7 @@ namespace teamproject1
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OpendataPlayer));
             this.id2 = new System.Windows.Forms.Button();
             this.id3 = new System.Windows.Forms.Button();
             this.id4 = new System.Windows.Forms.Button();
@@ -814,7 +815,7 @@ namespace teamproject1
             this.MonthCalendar.CalendarDimensions = new System.Drawing.Size(3, 1);
             this.MonthCalendar.Font = new System.Drawing.Font("HGSｺﾞｼｯｸE", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.MonthCalendar.Location = new System.Drawing.Point(151, 269);
-            this.MonthCalendar.MaxDate = new System.DateTime(2022, 8, 17, 0, 0, 0, 0);
+            this.MonthCalendar.MaxDate = new System.DateTime(2022, 8, 19, 0, 0, 0, 0);
             this.MonthCalendar.MaxSelectionCount = 100000;
             this.MonthCalendar.MinDate = new System.DateTime(2020, 1, 16, 0, 0, 0, 0);
             this.MonthCalendar.Name = "MonthCalendar";
@@ -831,9 +832,11 @@ namespace teamproject1
             // 
             this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBox1.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBox1.HideSelection = false;
             this.textBox1.Location = new System.Drawing.Point(804, 100);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
+            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox1.Size = new System.Drawing.Size(352, 220);
             this.textBox1.TabIndex = 66;
             // 
@@ -845,7 +848,7 @@ namespace teamproject1
             this.Play.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.Play.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.Play.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Play.Location = new System.Drawing.Point(446, 100);
+            this.Play.Location = new System.Drawing.Point(445, 100);
             this.Play.Name = "Play";
             this.Play.Size = new System.Drawing.Size(110, 110);
             this.Play.TabIndex = 12;
@@ -854,7 +857,7 @@ namespace teamproject1
             // 
             // Stop
             // 
-            this.Stop.BackColor = System.Drawing.Color.Transparent;
+            this.Stop.BackColor = System.Drawing.Color.AliceBlue;
             this.Stop.BackgroundImage = global::teamproject1.Properties.Resources.stopbutton1;
             this.Stop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Stop.FlatAppearance.BorderSize = 0;
@@ -954,6 +957,7 @@ namespace teamproject1
             this.Controls.Add(this.id3);
             this.Controls.Add(this.id2);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "OpendataPlayer";
             this.Text = "OpendataPlayer";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.OpendataPlayer_FormClosed);

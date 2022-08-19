@@ -52,6 +52,9 @@
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>アイコン.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="OpendataDownLoader, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
@@ -174,6 +177,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\アプリアイコン.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="アイコン.ico" />
+    <Content Include="アプリアイコン.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

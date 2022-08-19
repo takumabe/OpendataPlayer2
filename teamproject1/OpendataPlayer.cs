@@ -118,6 +118,12 @@ namespace teamproject1
             m_pplayer.execute("GetDevice WinGL HD SendTo -1 0");
 
             LoadScheme(sender, e);
+            if (CoronaFlag)
+            {
+                Corona.BackgroundImage = Properties.Resources.covid19button_put;
+                Weather.BackgroundImage = Properties.Resources.weatherbutton;
+                textBox1.AppendText( "《コロナ》\r\n");
+            }
         }
 
         /*--------------------------------------------------------------------------------
@@ -164,7 +170,7 @@ namespace teamproject1
         }
 
         private static System.Threading.Timer CovidAreaTimer;
-        private static System.Threading.Timer WeatherAreaTimer;
+        //private static System.Threading.Timer WeatherAreaTimer;
 
         /*--------------------------------------------------------------------------------
          * 自動再生ボタン.
@@ -174,7 +180,7 @@ namespace teamproject1
             m_pplayer.execute("Abort B");
             m_pplayer.execute("Clear B");
             //TextBox表示
-            textBox1.Text += "【自動再生中】";
+            textBox1.AppendText( "【自動再生中】\r\n");
             //再生停止ボタンの切り替え
             Play.Visible = false;
             Stop.Visible = true;
@@ -226,38 +232,47 @@ namespace teamproject1
                     {
                         case 0:
                             m_pplayer.execute("Play '全国の天気情報'");
+                            Console.WriteLine("全国天気");
                             nPlay++;
                             break;
                         case 1:
                             m_pplayer.execute("Play '北海道天気'");
+                            Console.WriteLine("北海道天気");
                             nPlay++;
                             break;
                         case 2:
                             m_pplayer.execute("Play '東北天気'");
+                            Console.WriteLine("東北天気");
                             nPlay++;
                             break;
                         case 3:
                             m_pplayer.execute("Play '関東天気'");
+                            Console.WriteLine("関東天気");
                             nPlay++;
                             break;
                         case 4:
                             m_pplayer.execute("Play '中部天気'");
+                            Console.WriteLine("中部天気");
                             nPlay++;
                             break;
                         case 5:
                             m_pplayer.execute("Play '関西天気'");
+                            Console.WriteLine("近畿天気");
                             nPlay++;
                             break;
                         case 6:
                             m_pplayer.execute("Play '中国天気'");
+                            Console.WriteLine("中国天気");
                             nPlay++;
                             break;
                         case 7:
                             m_pplayer.execute("Play '四国天気'");
+                            Console.WriteLine("四国天気");
                             nPlay++;
                             break;
                         default:
                             m_pplayer.execute("Play '九州天気'");
+                            Console.WriteLine("九州天気");
                             nPlay = 0;
                             break;
                     }
@@ -267,7 +282,15 @@ namespace teamproject1
                 m_TakeThread.Start();
             };
             // タイマー起動(0秒後に処理実行、5秒おきに繰り返し)
-            CovidAreaTimer = new System.Threading.Timer(callback, null, 0, 10000);
+            if (CoronaFlag)
+            {
+                CovidAreaTimer = new System.Threading.Timer(callback, null, 0, 7500);
+            }
+            else
+            {
+                CovidAreaTimer = new System.Threading.Timer(callback, null, 0, 14000);
+            }
+            
         }
 
 
@@ -278,7 +301,7 @@ namespace teamproject1
         private void Stop_Click(object sender, EventArgs e)
         {
             //TextBoxに表示
-            textBox1.Text = "【停止】";
+            textBox1.AppendText( "【停止】\r\n");
             //再生停止の切り替え
             Play.Visible = true;
             Stop.Visible = false;
@@ -436,7 +459,7 @@ namespace teamproject1
             if (CoronaFlag)
             {//コロナ表示
                 //TextBoxに都道府県名を表示
-                textBox1.Text = ((Button)sender).Text;
+                textBox1.AppendText( ((Button)sender).Text+"\r\n");
                 //押したボタンの色変更
                 if (PrefectureNumber == 2)
                 {
@@ -489,7 +512,7 @@ namespace teamproject1
                         ((Button)control).FlatAppearance.BorderColor = Color.FromArgb(24, 92, 209);
                         ((Button)control).FlatAppearance.BorderSize = 7;
                         strAreaName = "北海道天気";
-                        textBox1.Text = strAreaName.Substring(0, 3)+"地方";
+                        textBox1.AppendText( strAreaName.Substring(0, 3)+"地方\r\n");
                         break;
                     case 1:
                         for (int Num = 3; Num <= 8; Num++)
@@ -499,7 +522,7 @@ namespace teamproject1
                             ((Button)control).FlatAppearance.BorderSize = 7;    
                         }
                         strAreaName = "東北天気";
-                        textBox1.Text = strAreaName.Substring(0, 2) + "地方";
+                        textBox1.AppendText( strAreaName.Substring(0, 2) + "地方\r\n");
                         break;
                     case 2:
                         for (int Num = 9; Num <= 15; Num++)
@@ -509,7 +532,7 @@ namespace teamproject1
                             ((Button)control).FlatAppearance.BorderSize = 7;  
                         }
                         strAreaName = "関東天気";
-                        textBox1.Text = strAreaName.Substring(0, 2) + "地方";
+                        textBox1.AppendText( strAreaName.Substring(0, 2) + "地方\r\n");
                         break;
                     case 3:
                         for (int Num = 16; Num <= 24; Num++)
@@ -519,7 +542,7 @@ namespace teamproject1
                             ((Button)control).FlatAppearance.BorderSize = 7;  
                         }
                         strAreaName = "中部天気";
-                        textBox1.Text = strAreaName.Substring(0, 2) + "地方";
+                        textBox1.AppendText( strAreaName.Substring(0, 2) + "地方\r\n");
                         break;
                     case 4:
                         for (int Num = 25; Num <= 31; Num++)
@@ -529,7 +552,7 @@ namespace teamproject1
                             ((Button)control).FlatAppearance.BorderSize = 7;  
                         }
                         strAreaName = "近畿天気";
-                        textBox1.Text = strAreaName.Substring(0, 2) + "地方";
+                        textBox1.AppendText( strAreaName.Substring(0, 2) + "地方\r\n");
                         break;
                     case 5:
                         for (int Num = 32; Num <= 36; Num++)
@@ -539,7 +562,7 @@ namespace teamproject1
                             ((Button)control).FlatAppearance.BorderSize = 7;   
                         }
                         strAreaName = "中国天気";
-                        textBox1.Text = strAreaName.Substring(0, 2) + "地方";
+                        textBox1.AppendText( strAreaName.Substring(0, 2) + "地方\r\n");
                         break;
                     case 6:
                         for (int Num = 37; Num <= 40; Num++)
@@ -549,7 +572,7 @@ namespace teamproject1
                             ((Button)control).FlatAppearance.BorderSize = 7;   
                         }
                         strAreaName = "四国天気";
-                        textBox1.Text = strAreaName.Substring(0, 2) + "地方";
+                        textBox1.AppendText( strAreaName.Substring(0, 2) + "地方\r\n");
                         break;
                     case 7:
                         for (int Num = 41; Num <= 48; Num++)
@@ -559,7 +582,7 @@ namespace teamproject1
                             ((Button)control).FlatAppearance.BorderSize = 7;  
                         }
                         strAreaName = "九州天気";
-                        textBox1.Text = strAreaName.Substring(0, 2) + "地方";
+                        textBox1.AppendText( strAreaName.Substring(0, 2) + "地方\r\n");
                         break;
                 }
                 ((Button)sender).UseVisualStyleBackColor = true;
@@ -609,10 +632,6 @@ namespace teamproject1
             }
             return ret;
         }
-
-
-
-
         /*--------------------------------------------------------------------------------
          * 
          *--------------------------------------------------------------------------------*/
@@ -621,24 +640,35 @@ namespace teamproject1
             //選択した日付を出力
             selectDate = MonthCalendar.SelectionStart.ToShortDateString();
             Console.WriteLine(MonthCalendar.SelectionStart.ToShortDateString());
+            textBox1.AppendText(MonthCalendar.SelectionStart.ToShortDateString() + "\r\n");
         }
 
         /*--------------------------------------------------------------------------------
-         * 
+         * 天気ボタンでボタン画像の切り替え・カレンダー機能の停止
          *--------------------------------------------------------------------------------*/
         private void Weather_Click(object sender, EventArgs e)
         {
             CoronaFlag = false;
             MonthCalendar.Enabled = false;
+            Corona.BackgroundImage = Properties.Resources.covid19button;
+            Weather.BackgroundImage = Properties.Resources.weatherbutton_put;
+            textBox1.AppendText("《天気》\r\n");
+            //自動のリセット
+            nPlay = 0;
         }
 
         /*--------------------------------------------------------------------------------
-         * 
+         * コロナボタンで画像の切り替え・カレンダー作動
          *--------------------------------------------------------------------------------*/
         private void Corona_Click(object sender, EventArgs e)
         {
             CoronaFlag = true;
             MonthCalendar.Enabled = true;
+            Corona.BackgroundImage = Properties.Resources.covid19button_put;
+            Weather.BackgroundImage = Properties.Resources.weatherbutton;
+            textBox1.AppendText( "《コロナ》\r\n");
+            //自動のリセット
+            nPlay = 0;
         }
 
         /*--------------------------------------------------------------------------------
