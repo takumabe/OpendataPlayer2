@@ -6,7 +6,7 @@ Frame "全国の天気情報" {
 	} 
 	fOutFade {
 		29 
-		Delay 4103 
+		Delay 2101 
 	} 
 	BGC 0 0 0 115  
 	fVideoAtr { Ortho3D }
@@ -43,29 +43,6 @@ Frame "全国の天気情報" {
 			ExpandForDevice 
 			Offset ( 0 ) ( 0 ) 
 			Resize byRect 
-		} 
-		Switch "スイッチ" {
-			Hidden 
-			Group "デフォルト" {
-			}
-			( V0 == "気温" ) 
-			Group "気温" {
-				Link "気温" {
-					"気温" -56 -86  
-				} 
-			} 
-			( V0 == "日降水量" ) 
-			Group "日降水量" {
-				Link "日降水量" {
-					"日降水量" -42 -65  
-				} 
-			} 
-			( V0 == "最大風速" ) 
-			Group "最大風速" {
-				Link "最大風速" {
-					"最大風速" -42 -65  
-				} 
-			} 
 		} 
 		Group "札幌" {
 			Ellipse "円" {
@@ -270,7 +247,7 @@ Frame "全国の天気情報" {
 			Link "広島風" {
 				"共通天気板_最大風速" -388 145  T( "天気情報" ) R( 67437 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
-				uTimeCodeInfoIn { Priority 14 LinkBottom 123 }
+				uTimeCodeInfoIn { Priority 14 LinkBottom 63 }
 			}
 			Link "広島水" {
 				"共通天気板_日降水量" -383 150  T( "天気情報" ) R( 67437 ) 
@@ -528,7 +505,7 @@ Frame "全国の天気情報" {
 			Link "東京水" {
 				"共通天気板_日降水量" 490 406  T( "天気情報" ) R( 44132 ) 
 				uPushWipeIn { NonVolatile 0 12000  1 }
-				uTimeCodeInfoIn { Priority 1 LinkBottom 162 }
+				uTimeCodeInfoIn { Priority 1 LinkBottom 102 }
 			}
 			Link "東京風" {
 				"共通天気板_最大風速" 485 401  T( "天気情報" ) R( 44132 ) 

@@ -42,6 +42,15 @@ Frame "中国天気" {
 		Link "時間" {
 			"時間テロップ" -61 26  
 		} 
+		PolyLine "折れ線" {
+			10 
+			Color { 25 255 204 255   AntiAlias 2 }
+			uPoints {
+				3 
+				183 124.853030 196.269841 194.529215 411 194.529215 
+			} 
+			183 125  196 195  411 195  
+		} 
 		Image "イメージ" {
 			887 468 146 144  CC 
 			Name "chugoku.png" 0 
@@ -68,124 +77,6 @@ Frame "中国天気" {
 				Color { 255 221 15 255   AntiAlias 2 }
 			}
 		}
-		Group "気温" {
-		}
-		Link "岡山" {
-			"共通天気板" 178 388  T( "天気情報" ) R( 66408 ) 
-			Hidden 
-		} 
-		Link "広島" {
-			"共通天気板" -156 486  T( "天気情報" ) R( 67437 ) 
-			Hidden 
-		} 
-		Link "山口" {
-			"共通天気板" -438 266  T( "天気情報" ) R( 81286 ) 
-			Hidden 
-		} 
-		Link "松江" {
-			"共通天気板" -156 16  T( "天気情報" ) R( 68132 ) 
-			Hidden 
-		} 
-		Switch "スイッチ" {
-			Hidden 
-			Group "デフォルト" {
-			}
-			( V0 == "気温" ) 
-			Group "気温" {
-			}
-			( V0 == "日降水量" ) 
-			Group "日降水量" {
-			}
-			( V0 == "最大風速" ) 
-			Group "最大風速" {
-			}
-		}
-		Link "鳥取" {
-			"共通天気板" 178 140  T( "天気情報" ) R( 69122 ) 
-			Hidden 
-		} 
-		Link "岡山" {
-			"共通天気板" 178 388  T( "天気情報" ) R( 66408 ) 
-			Hidden 
-		} 
-		Link "広島" {
-			"共通天気板" -156 486  T( "天気情報" ) R( 67437 ) 
-			Hidden 
-		} 
-		Link "山口" {
-			"共通天気板" -438 266  T( "天気情報" ) R( 81286 ) 
-			Hidden 
-		} 
-		Link "松江" {
-			"共通天気板" -156 16  T( "天気情報" ) R( 68132 ) 
-			Hidden 
-		} 
-		Group "最大風速" {
-			Hidden 
-			Link "岡山風" {
-				"共通天気板_最大風速" 176 381  
-				uPushWipeIn { NonVolatile 0 12000  1 }
-				uTimeCodeInfoIn { Priority 7 LinkTop 0 }
-			}
-			Link "広島風" {
-				"共通天気板_最大風速" -157 481  
-				uPushWipeIn { NonVolatile 0 12000  1 }
-				uTimeCodeInfoIn { Priority 8 LinkTop 0 }
-			}
-			Link "山口風" {
-				"共通天気板_最大風速" -441 263  
-				uPushWipeIn { NonVolatile 0 12000  1 }
-				uTimeCodeInfoIn { Priority 9 LinkTop 0 }
-			}
-			Link "松江風" {
-				"共通天気板_最大風速" -158 10  
-				uPushWipeIn { NonVolatile 0 12000  1 }
-				uTimeCodeInfoIn { Priority 10 LinkTop 0 }
-			}
-		}
-		Group "日降水量" {
-			Hidden 
-			Link "山口風" {
-				"共通天気板_日降水量" -438 266  
-				uPushWipeIn { NonVolatile 0 12000  1 }
-				uTimeCodeInfoIn { Priority 1 LinkTop 102 }
-			}
-			Link "広島風" {
-				"共通天気板_日降水量" -152 487  
-				uPushWipeIn { NonVolatile 0 12000  1 }
-				uTimeCodeInfoIn { Priority 2 LinkTop 0 }
-			}
-			Link "岡山風" {
-				"共通天気板_日降水量" 180 386  
-				uPushWipeIn { NonVolatile 0 12000  1 }
-				uTimeCodeInfoIn { Priority 3 LinkTop 0 }
-			}
-			Link "松江風" {
-				"共通天気板_日降水量" -154 13  
-				uPushWipeIn { NonVolatile 0 12000  1 }
-				uTimeCodeInfoIn { Priority 5 LinkTop 0 }
-			}
-		}
-		Rim "枠" {
-			835 253 234 114  5 
-			Color { 255 221 15 255   AntiAlias 2 }
-			Hidden 
-		} 
-		Rim "枠" {
-			551 502 234 114  5 
-			Color { 255 221 15 255   AntiAlias 2 }
-			Hidden 
-		} 
-		Rim "枠" {
-			835 721 234 114  5 
-			Color { 255 221 15 255   AntiAlias 2 }
-			Hidden 
-		} 
-		Rim "枠" {
-			1169 622 234 114  5 
-			Color { 255 221 15 255   AntiAlias 2 }
-			Hidden 
-		} 
 		Group "松江" {
 			Link "松江" {
 				"共通天気板" 7 -251  T( "天気情報" ) R( 68132 ) 
@@ -262,14 +153,5 @@ Frame "中国天気" {
 				Color { 255 221 15 255   AntiAlias 2 }
 			}
 		}
-		PolyLine "折れ線" {
-			10 
-			Color { 25 255 204 255   AntiAlias 2 }
-			uPoints {
-				3 
-				183 124.853030 196.269841 194.529215 411 194.529215 
-			} 
-			183 125  196 195  411 195  
-		} 
-	} 
-} 
+	}
+}
