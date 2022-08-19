@@ -839,13 +839,13 @@ namespace teamproject1
             // 
             // Play
             // 
-            this.Play.BackgroundImage = global::teamproject1.Properties.Resources.playbutton;
+            this.Play.BackgroundImage = global::teamproject1.Properties.Resources.playbutton1;
             this.Play.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Play.FlatAppearance.BorderSize = 0;
             this.Play.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.Play.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.Play.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Play.Location = new System.Drawing.Point(445, 100);
+            this.Play.Location = new System.Drawing.Point(446, 100);
             this.Play.Name = "Play";
             this.Play.Size = new System.Drawing.Size(110, 110);
             this.Play.TabIndex = 12;
@@ -855,7 +855,7 @@ namespace teamproject1
             // Stop
             // 
             this.Stop.BackColor = System.Drawing.Color.Transparent;
-            this.Stop.BackgroundImage = global::teamproject1.Properties.Resources.stopbutton;
+            this.Stop.BackgroundImage = global::teamproject1.Properties.Resources.stopbutton1;
             this.Stop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Stop.FlatAppearance.BorderSize = 0;
             this.Stop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

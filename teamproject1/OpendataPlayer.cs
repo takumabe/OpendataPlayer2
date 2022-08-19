@@ -66,7 +66,7 @@ namespace teamproject1
             this.OpendataFileWatcher.Path = strDataPath;
             this.OpendataFileWatcher.Renamed += new System.IO.RenamedEventHandler(watcher_Renamed);
 
-            MonthCalendar.MaxDate = getLatestDate(strDataPath);
+            MonthCalendar.MaxDate = getLatestDate(strDataPath + @"\新規陽性者数.csv");
 
             // 天気情報.csv作成用プロセスの設定.
             string strGatherCsvExePath = $"{AppDomain.CurrentDomain.BaseDirectory}";
@@ -148,82 +148,23 @@ namespace teamproject1
         /*--------------------------------------------------------------------------------
          * 最新日付取得メソッド.
          *--------------------------------------------------------------------------------*/
-        private DateTime getLatestDate(string strDataPath)
+        private DateTime getLatestDate(string strCovidPath)
         {
-            DateTime ret;
-
-            Microsoft.Office.Interop.Excel.Application ExcelApp = null;
-            Excel.Workbook wb = null;
-            Excel.Worksheet ws = null;
-            Excel.Range LatestDateCell = null;
-
-            if (System.IO.File.Exists(strDataPath))
+            DateTime ret = DateTime.Today.AddDays(-1);
+            
+            if (System.IO.File.Exists(strCovidPath))
             {
-                try
-                {
-                    ExcelApp = new Microsoft.Office.Interop.Excel.Application();
-                    ExcelApp.Visible = false;
-
-                    wb = ExcelApp.Workbooks.Open(strDataPath + @"\新規陽性者数.csv",
-                        Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-                        Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing,
-                        Type.Missing);
-                    ws = wb.Worksheets[1];
-                    LatestDateCell = ws.get_Range("A" + ws.UsedRange.Rows.Count.ToString());
-                    string strLatestDate = LatestDateCell.Text;
-                    Console.WriteLine("getLatestDate => " + strLatestDate);
-
-                    ret = DateTime.ParseExact(strLatestDate, "yyyy/MM/dd", null);
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
-                finally
-                {
-                    if(LatestDateCell != null)
-                    {
-                        Marshal.ReleaseComObject(LatestDateCell);
-                        LatestDateCell = null;
-                    }
-                    if(ws != null)
-                    {
-                        Marshal.ReleaseComObject(ws);
-                        ws = null;
-                    }
-                    if(wb != null)
-                    {
-                        Marshal.ReleaseComObject(wb);
-                        wb = null;
-                    }
-
-                    GC.Collect();
-                    GC.WaitForPendingFinalizers();
-                    GC.Collect();
-
-                    if(ExcelApp != null)
-                    {
-                        ExcelApp.Quit();
-                        Marshal.ReleaseComObject(ExcelApp);
-                        ExcelApp = null;
-                    }
-
-                    GC.Collect();
-                    GC.WaitForPendingFinalizers();
-                    GC.Collect();
-                }
+                string strAllText = System.IO.File.ReadAllText(strCovidPath, System.Text.Encoding.GetEncoding("shift-jis"));
+                string[] arySplitesText = strAllText.Replace('\n', ',').Split(',');
+                Array.Reverse(arySplitesText);
+                DateTime dtLatestDate = DateTime.ParseExact(arySplitesText[49], "yyyy/MM/dd", null);
+                ret = dtLatestDate;
             }
-            else
-            {
-                ret = DateTime.Today.AddDays(-1);
-                Console.WriteLine("Latest date is " + ret.ToString());
-            }
-
             return ret;
         }
 
-        private static System.Threading.Timer AreaTimer;
-        
+        private static System.Threading.Timer CovidAreaTimer;
+        private static System.Threading.Timer WeatherAreaTimer;
 
         /*--------------------------------------------------------------------------------
          * 自動再生ボタン.
@@ -246,58 +187,34 @@ namespace teamproject1
                     {
                         case 0:
                             m_pplayer.execute("Play '北海道'");
-                            // Takeを別スレッドで実行
-                            m_TakeThread = new System.Threading.Thread(new System.Threading.ThreadStart(TakeThread));
-                            m_TakeThread.Start();
                             nPlay++;
                             break;
                         case 1:
                             m_pplayer.execute("Play '東北'");
-                            // Takeを別スレッドで実行
-                            m_TakeThread = new System.Threading.Thread(new System.Threading.ThreadStart(TakeThread));
-                            m_TakeThread.Start();
                             nPlay++;
                             break;
                         case 2:
                             m_pplayer.execute("Play '関東'");
-                            // Takeを別スレッドで実行
-                            m_TakeThread = new System.Threading.Thread(new System.Threading.ThreadStart(TakeThread));
-                            m_TakeThread.Start();
                             nPlay++;
                             break;
                         case 3:
                             m_pplayer.execute("Play '中部'");
-                            // Takeを別スレッドで実行
-                            m_TakeThread = new System.Threading.Thread(new System.Threading.ThreadStart(TakeThread));
-                            m_TakeThread.Start();
                             nPlay++;
                             break;
                         case 4:
                             m_pplayer.execute("Play '近畿'");
-                            // Takeを別スレッドで実行
-                            m_TakeThread = new System.Threading.Thread(new System.Threading.ThreadStart(TakeThread));
-                            m_TakeThread.Start();
                             nPlay++;
                             break;
                         case 5:
                             m_pplayer.execute("Play '中国'");
-                            // Takeを別スレッドで実行
-                            m_TakeThread = new System.Threading.Thread(new System.Threading.ThreadStart(TakeThread));
-                            m_TakeThread.Start();
                             nPlay++;
                             break;
                         case 6:
                             m_pplayer.execute("Play '四国'");
-                            // Takeを別スレッドで実行
-                            m_TakeThread = new System.Threading.Thread(new System.Threading.ThreadStart(TakeThread));
-                            m_TakeThread.Start();
                             nPlay++;
                             break;
                         default:
                             m_pplayer.execute("Play '九州'");
-                            // Takeを別スレッドで実行
-                            m_TakeThread = new System.Threading.Thread(new System.Threading.ThreadStart(TakeThread));
-                            m_TakeThread.Start();
                             nPlay = 0;
                             break;
                     }
@@ -344,14 +261,17 @@ namespace teamproject1
                             nPlay = 0;
                             break;
                     }
-                    // Takeを別スレッドで実行
-                    m_TakeThread = new System.Threading.Thread(new System.Threading.ThreadStart(TakeThread));
-                    m_TakeThread.Start();
                 }
+                // Takeを別スレッドで実行
+                m_TakeThread = new System.Threading.Thread(new System.Threading.ThreadStart(TakeThread));
+                m_TakeThread.Start();
             };
             // タイマー起動(0秒後に処理実行、5秒おきに繰り返し)
-            AreaTimer = new System.Threading.Timer(callback, null, 0, 10000);
+            CovidAreaTimer = new System.Threading.Timer(callback, null, 0, 10000);
         }
+
+
+
         /*--------------------------------------------------------------------------------
          * 再生停止ボタン.
          *--------------------------------------------------------------------------------*/
@@ -363,7 +283,7 @@ namespace teamproject1
             Play.Visible = true;
             Stop.Visible = false;
             //タイマー停止
-            AreaTimer.Dispose();
+            CovidAreaTimer.Dispose();
         }
 
         /*--------------------------------------------------------------------------------
@@ -649,6 +569,8 @@ namespace teamproject1
                 m_TakeThread.Start();
             }
         }
+
+
         private int Localjudge(int PreNumber)
         {
             int ret = -1;
@@ -729,9 +651,7 @@ namespace teamproject1
             if (e.Name == "新規陽性者数.csv")
             {
                 // 新規陽性者数.csvが更新された時の処理
-                string strDataPath = m_strSceneDir + "Data";
-                Console.WriteLine(strDataPath);
-                MonthCalendar.MaxDate = getLatestDate(strDataPath);
+                MonthCalendar.MaxDate = getLatestDate(e.FullPath);
                 LoadScheme(null, null);
             }
             else
