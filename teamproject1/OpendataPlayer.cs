@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,10 +22,15 @@ namespace teamproject1
         private PrismPlayer m_pplayer = null;
         private bool m_bTakeFlag = false;
         private bool CoronaFlag = true;
-        private string m_strPreButtonName = "";
-        private Color m_PreButtonColor=Color.Empty;
-        private Color m_PreButtonBorderColor = Color.Empty;
-        private ButtonBorderStyle m_PreButtonStyle = ButtonBorderStyle.Dashed;
+        private string[][] m_jaryScnNames = new string[][]
+        {
+            new string[] { "北海道", "東北", "関東", "中部", "近畿", "中国", "四国", "九州"},
+            new string[] { "全国の天気情報", "北海道天気", "東北天気", "関東天気", "中部天気", "近畿天気", "中国天気", "四国天気", "九州天気"}
+        };
+        private string m_strOldButtonName = "";
+        private Color m_OldButtonColor=Color.Empty;
+        private Color m_OldButtonBorderColor = Color.Empty;
+        private ButtonBorderStyle m_OldButtonStyle = ButtonBorderStyle.Dashed;
         private Color[] m_aryLocalColors = new Color[]
         {
             Color.FromArgb(24,92,209),Color.FromArgb(34,168,245),Color.FromArgb(30,122,30),Color.FromArgb(54, 246,54),
@@ -169,7 +174,7 @@ namespace teamproject1
             return ret;
         }
 
-        private static System.Threading.Timer CovidAreaTimer;
+        private static System.Threading.Timer AreaTimer;
         //private static System.Threading.Timer WeatherAreaTimer;
 
         /*--------------------------------------------------------------------------------
@@ -179,118 +184,38 @@ namespace teamproject1
         {
             m_pplayer.execute("Abort B");
             m_pplayer.execute("Clear B");
+            
             //TextBox表示
             textBox1.AppendText( "【自動再生中】\r\n");
+            
             //再生停止ボタンの切り替え
             Play.Visible = false;
             Stop.Visible = true;
+
             // 指定秒数間隔で呼び出される処理
             TimerCallback callback = state =>
             {
-                if (CoronaFlag)
-                {//コロナ表示
-                    switch (nPlay)
-                    {
-                        case 0:
-                            m_pplayer.execute("Play '北海道'");
-                            nPlay++;
-                            break;
-                        case 1:
-                            m_pplayer.execute("Play '東北'");
-                            nPlay++;
-                            break;
-                        case 2:
-                            m_pplayer.execute("Play '関東'");
-                            nPlay++;
-                            break;
-                        case 3:
-                            m_pplayer.execute("Play '中部'");
-                            nPlay++;
-                            break;
-                        case 4:
-                            m_pplayer.execute("Play '近畿'");
-                            nPlay++;
-                            break;
-                        case 5:
-                            m_pplayer.execute("Play '中国'");
-                            nPlay++;
-                            break;
-                        case 6:
-                            m_pplayer.execute("Play '四国'");
-                            nPlay++;
-                            break;
-                        default:
-                            m_pplayer.execute("Play '九州'");
-                            nPlay = 0;
-                            break;
-                    }
+                string strScnName = "";
+                if(CoronaFlag)
+                {
+                    strScnName = m_jaryScnNames[0][nPlay];
+                    nPlay = (nPlay < m_jaryScnNames[0].Length - 1) ? ++nPlay : 0;
                 }
                 else
                 {
-                    //天気情報表示
-                    switch (nPlay)
-                    {
-                        case 0:
-                            m_pplayer.execute("Play '全国の天気情報'");
-                            Console.WriteLine("全国天気");
-                            nPlay++;
-                            break;
-                        case 1:
-                            m_pplayer.execute("Play '北海道天気'");
-                            Console.WriteLine("北海道天気");
-                            nPlay++;
-                            break;
-                        case 2:
-                            m_pplayer.execute("Play '東北天気'");
-                            Console.WriteLine("東北天気");
-                            nPlay++;
-                            break;
-                        case 3:
-                            m_pplayer.execute("Play '関東天気'");
-                            Console.WriteLine("関東天気");
-                            nPlay++;
-                            break;
-                        case 4:
-                            m_pplayer.execute("Play '中部天気'");
-                            Console.WriteLine("中部天気");
-                            nPlay++;
-                            break;
-                        case 5:
-                            m_pplayer.execute("Play '関西天気'");
-                            Console.WriteLine("近畿天気");
-                            nPlay++;
-                            break;
-                        case 6:
-                            m_pplayer.execute("Play '中国天気'");
-                            Console.WriteLine("中国天気");
-                            nPlay++;
-                            break;
-                        case 7:
-                            m_pplayer.execute("Play '四国天気'");
-                            Console.WriteLine("四国天気");
-                            nPlay++;
-                            break;
-                        default:
-                            m_pplayer.execute("Play '九州天気'");
-                            Console.WriteLine("九州天気");
-                            nPlay = 0;
-                            break;
-                    }
+                    strScnName = m_jaryScnNames[1][nPlay];
+                    nPlay = (nPlay < m_jaryScnNames[1].Length - 1) ? ++nPlay : 0;
+                    Console.WriteLine(strScnName);
                 }
+
+                m_pplayer.execute("Play '" + strScnName + "'");
                 // Takeを別スレッドで実行
                 m_TakeThread = new System.Threading.Thread(new System.Threading.ThreadStart(TakeThread));
-                m_TakeThread.Start();
+                m_TakeThread.Start();                
             };
+
             // タイマー起動(0秒後に処理実行、5秒おきに繰り返し)
-            if (CoronaFlag)
-            {
-                CovidAreaTimer = new System.Threading.Timer(callback, null, 0, 7500);
-            }
-            else
-            {
-                CovidAreaTimer = new System.Threading.Timer(callback, null, 0, 14000);
-            }
-            
+            AreaTimer = CoronaFlag ? new System.Threading.Timer(callback, null, 0, 7500) : new System.Threading.Timer(callback, null, 0, 14000);            
         }
 
 
@@ -306,7 +231,7 @@ namespace teamproject1
             Play.Visible = true;
             Stop.Visible = false;
             //タイマー停止
-            CovidAreaTimer.Dispose();
+            AreaTimer.Dispose();
         }
 
         /*--------------------------------------------------------------------------------
@@ -355,282 +280,119 @@ namespace teamproject1
         {
             m_pplayer.execute("Abort B");
             m_pplayer.execute("Clear B");
+
             //一つ前に押したボタンのデザインを戻す処理
-            //押されたボタンの名前を記憶
+            //押されたボタンの名前とIDを記憶
             string strSenderName = ((Button)sender).Name;
             int PrefectureNumber = int.Parse(strSenderName.Substring(2));
-            Console.WriteLine(strSenderName.Substring(2));
-            int Localid = Localjudge(PrefectureNumber);
+            Console.WriteLine(PrefectureNumber);
+
+            // 押されたボタンの地方を取得
+            int nLocalID = Localjudge(PrefectureNumber);
             //Console.WriteLine(Localid);
+ 
             Control control = null;
 
             //ひとつ前に押されたボタンの名前が保存されているとき
-            //ひとつ前に押されたボタンの名前が空欄じゃないとき
-            if (m_strPreButtonName != "")
+            if (m_strOldButtonName != "")
             {
                 //ひとつ前に押されたボタンの機能を記憶
-                control = this.Controls[m_strPreButtonName];
-                int PreButtonNumber = int.Parse(m_strPreButtonName.Substring(2));
+                int OldButtonNumber = int.Parse(m_strOldButtonName.Substring(2));
+                int nOldLocalID = Localjudge(OldButtonNumber);
+
                 //押されたボタンを元に戻す
-                if (PreButtonNumber == 2)
+                // 押されたボタンの地方の各都道府県のID配列を取得
+                int[] aryOldLocalPrefectureIDs = m_jaryLocalPrefectureIDs[nOldLocalID];
+                foreach(int PrefectureID in aryOldLocalPrefectureIDs)
                 {
-                    control = this.Controls["id2"];
-                    ((Button)control).BackColor = m_PreButtonColor;
-                    ((Button)control).FlatAppearance.BorderColor = m_PreButtonBorderColor;
-                    ((Button)control).FlatAppearance.BorderSize = (int)m_PreButtonStyle;
-                }
-                else if (3 <= PreButtonNumber && PreButtonNumber <= 8)
-                {
-                    for (int Num = 3; Num <= 8; Num++)
-                    {
-                        control = this.Controls["id" + Num.ToString()];
-                        ((Button)control).BackColor = m_PreButtonColor;
-                        ((Button)control).FlatAppearance.BorderColor = m_PreButtonBorderColor;
-                        ((Button)control).FlatAppearance.BorderSize = (int)m_PreButtonStyle;
-                    }
-                }
-                else if (9 <= PreButtonNumber && PreButtonNumber <= 15)
-                {
-                    for (int Num = 9; Num <= 15; Num++)
-                    {
-                        control = this.Controls["id" + Num.ToString()];
-                        ((Button)control).BackColor = m_PreButtonColor;
-                        ((Button)control).FlatAppearance.BorderColor = m_PreButtonBorderColor;
-                        ((Button)control).FlatAppearance.BorderSize = (int)m_PreButtonStyle;
-                    }
-                }
-                else if (16 <= PreButtonNumber && PreButtonNumber <= 24)
-                {
-                    for (int Num = 16; Num <= 24; Num++)
-                    {
-                        control = this.Controls["id" + Num.ToString()];
-                        ((Button)control).BackColor = m_PreButtonColor;
-                        ((Button)control).FlatAppearance.BorderColor = m_PreButtonBorderColor;
-                        ((Button)control).FlatAppearance.BorderSize = (int)m_PreButtonStyle;
-                    }
-                }
-                else if (25 <= PreButtonNumber && PreButtonNumber <= 31)
-                {
-                    for (int Num = 25; Num <= 31; Num++)
-                    {
-                        control = this.Controls["id" + Num.ToString()];
-                        ((Button)control).BackColor = m_PreButtonColor;
-                        ((Button)control).FlatAppearance.BorderColor = m_PreButtonBorderColor;
-                        ((Button)control).FlatAppearance.BorderSize = (int)m_PreButtonStyle;
-                    }
-                }
-                else if (32 <= PreButtonNumber && PreButtonNumber <= 36)
-                {
-                    for (int Num = 32; Num <= 36; Num++)
-                    {
-                        control = this.Controls["id" + Num.ToString()];
-                        ((Button)control).BackColor = m_PreButtonColor;
-                        ((Button)control).FlatAppearance.BorderColor = m_PreButtonBorderColor;
-                        ((Button)control).FlatAppearance.BorderSize = (int)m_PreButtonStyle;
-                    }
-                }
-                else if (37 <= PreButtonNumber && PreButtonNumber <= 40)
-                {
-                    for (int Num = 37; Num <= 40; Num++)
-                    {
-                        control = this.Controls["id" + Num.ToString()];
-                        ((Button)control).BackColor = m_PreButtonColor;
-                        ((Button)control).FlatAppearance.BorderColor = m_PreButtonBorderColor;
-                        ((Button)control).FlatAppearance.BorderSize = (int)m_PreButtonStyle;
-                    }
-                }
-                else if (41 <= PreButtonNumber && PreButtonNumber <= 48)
-                {
-                    for (int Num = 41; Num <= 48; Num++)
-                    {
-                        control = this.Controls["id" + Num.ToString()];
-                        ((Button)control).BackColor = m_PreButtonColor;
-                        ((Button)control).FlatAppearance.BorderColor = m_PreButtonBorderColor;
-                        ((Button)control).FlatAppearance.BorderSize = (int)m_PreButtonStyle;
-                    }
-                }
-                ((Button)control).UseVisualStyleBackColor = true;                
+                    control = this.Controls["id" + PrefectureID.ToString()];
+                    ((Button)control).BackColor = m_OldButtonColor;
+                    ((Button)control).FlatAppearance.BorderColor = m_OldButtonBorderColor;
+                    ((Button)control).FlatAppearance.BorderSize = (int)m_OldButtonStyle;
+                    ((Button)control).UseVisualStyleBackColor = true;
+                }                
             }
-            m_strPreButtonName = strSenderName;
-            m_PreButtonColor = ((Button)sender).BackColor;
+
+            // 今押されたボタンを一つ前のボタンとして記憶
+            m_strOldButtonName = strSenderName;
+            m_OldButtonColor = ((Button)sender).BackColor;
+            
             //id番号の検出
-            string strAreaName = "";           
+            string strAreaName = "";
 
             if (CoronaFlag)
             {//コロナ表示
                 //TextBoxに都道府県名を表示
                 textBox1.AppendText( ((Button)sender).Text+"\r\n");
+
                 //押したボタンの色変更
-                if (PrefectureNumber == 2)
-                {
-                    ((Button)sender).BackColor = Color.FromArgb(24,92,209);
-                }
-                else if (3 <= PrefectureNumber && PrefectureNumber <= 8)
-                {
-                    ((Button)sender).BackColor = Color.FromArgb(34,168,245);
-                }
-                else if (9 <= PrefectureNumber && PrefectureNumber <= 15)
-                {
-                    ((Button)sender).BackColor = Color.FromArgb(30,122,30);
-                }
-                else if (16 <= PrefectureNumber && PrefectureNumber <= 24)
-                {
-                    ((Button)sender).BackColor = Color.FromArgb(54, 246,54);
-                }
-                else if (25 <= PrefectureNumber && PrefectureNumber <= 31)
-                {
-                    ((Button)sender).BackColor = Color.FromArgb(226,209,48);
-                }
-                else if (32 <= PrefectureNumber && PrefectureNumber <= 36)
-                {
-                    ((Button)sender).BackColor = Color.FromArgb(153,96,0);
-                }
-                else if (37 <= PrefectureNumber && PrefectureNumber <= 40)
-                {
-                    ((Button)sender).BackColor = Color.FromArgb(255,106,76);
-                }
-                else if (41 <= PrefectureNumber && PrefectureNumber <= 48)
-                {
-                    ((Button)sender).BackColor = Color.FromArgb(233,51,51);
-                }
+                ((Button)sender).BackColor = m_aryLocalColors[nLocalID];
                 ((Button)sender).UseVisualStyleBackColor = true;
+
                 m_pplayer.execute("Set V0 " + strSenderName.Substring(2));
                 Console.WriteLine(strSenderName);
                 Console.WriteLine(strSenderName.Substring(2));
                 m_pplayer.execute("Set V1 '" + selectDate + "'");
                 m_pplayer.execute("Play '日本地図'");
-                // Takeを別スレッドで実行
-                m_TakeThread = new System.Threading.Thread(new System.Threading.ThreadStart(TakeThread));
-                m_TakeThread.Start();
             }
             else
             {//天気予報表示  
-                switch (Localid)
+                int[] aryLocalPrefectureIDs = m_jaryLocalPrefectureIDs[nLocalID];
+                foreach (int PrefectureID in aryLocalPrefectureIDs)
                 {
-                    case 0:
-                        control = this.Controls["id2"];
-                        ((Button)control).FlatAppearance.BorderColor = Color.FromArgb(24, 92, 209);
-                        ((Button)control).FlatAppearance.BorderSize = 7;
-                        strAreaName = "北海道天気";
-                        textBox1.AppendText( strAreaName.Substring(0, 3)+"地方\r\n");
-                        break;
-                    case 1:
-                        for (int Num = 3; Num <= 8; Num++)
-                        {
-                            control = this.Controls["id" + Num.ToString()];
-                            ((Button)control).FlatAppearance.BorderColor = Color.FromArgb(34, 168, 245);
-                            ((Button)control).FlatAppearance.BorderSize = 7;    
-                        }
-                        strAreaName = "東北天気";
-                        textBox1.AppendText( strAreaName.Substring(0, 2) + "地方\r\n");
-                        break;
-                    case 2:
-                        for (int Num = 9; Num <= 15; Num++)
-                        {
-                            control = this.Controls["id" + Num.ToString()];
-                            ((Button)control).FlatAppearance.BorderColor = Color.FromArgb(30, 122, 30);
-                            ((Button)control).FlatAppearance.BorderSize = 7;  
-                        }
-                        strAreaName = "関東天気";
-                        textBox1.AppendText( strAreaName.Substring(0, 2) + "地方\r\n");
-                        break;
-                    case 3:
-                        for (int Num = 16; Num <= 24; Num++)
-                        {
-                            control = this.Controls["id" + Num.ToString()];
-                            ((Button)control).FlatAppearance.BorderColor = Color.FromArgb(54, 246, 54);
-                            ((Button)control).FlatAppearance.BorderSize = 7;  
-                        }
-                        strAreaName = "中部天気";
-                        textBox1.AppendText( strAreaName.Substring(0, 2) + "地方\r\n");
-                        break;
-                    case 4:
-                        for (int Num = 25; Num <= 31; Num++)
-                        {
-                            control = this.Controls["id" + Num.ToString()];
-                            ((Button)control).FlatAppearance.BorderColor = Color.FromArgb(226, 209, 48);
-                            ((Button)control).FlatAppearance.BorderSize = 7;  
-                        }
-                        strAreaName = "近畿天気";
-                        textBox1.AppendText( strAreaName.Substring(0, 2) + "地方\r\n");
-                        break;
-                    case 5:
-                        for (int Num = 32; Num <= 36; Num++)
-                        {
-                            control = this.Controls["id" + Num.ToString()];
-                            ((Button)control).FlatAppearance.BorderColor = Color.FromArgb(153, 96, 0);
-                            ((Button)control).FlatAppearance.BorderSize = 7;   
-                        }
-                        strAreaName = "中国天気";
-                        textBox1.AppendText( strAreaName.Substring(0, 2) + "地方\r\n");
-                        break;
-                    case 6:
-                        for (int Num = 37; Num <= 40; Num++)
-                        {
-                            control = this.Controls["id" + Num.ToString()];
-                            ((Button)control).FlatAppearance.BorderColor = Color.FromArgb(255, 106, 76);
-                            ((Button)control).FlatAppearance.BorderSize = 7;   
-                        }
-                        strAreaName = "四国天気";
-                        textBox1.AppendText( strAreaName.Substring(0, 2) + "地方\r\n");
-                        break;
-                    case 7:
-                        for (int Num = 41; Num <= 48; Num++)
-                        {
-                            control = this.Controls["id" + Num.ToString()];
-                            ((Button)control).FlatAppearance.BorderColor = Color.FromArgb(233, 51, 51);
-                            ((Button)control).FlatAppearance.BorderSize = 7;  
-                        }
-                        strAreaName = "九州天気";
-                        textBox1.AppendText( strAreaName.Substring(0, 2) + "地方\r\n");
-                        break;
+                    control = this.Controls["id" + PrefectureID.ToString()];
+                    ((Button)control).FlatAppearance.BorderColor = m_aryLocalColors[nLocalID];
+                    ((Button)control).FlatAppearance.BorderSize = 7;
+                    ((Button)sender).UseVisualStyleBackColor = true;
                 }
-                ((Button)sender).UseVisualStyleBackColor = true;
+                strAreaName = m_jaryScnNames[1][nLocalID + 1];
+                textBox1.AppendText(strAreaName.Replace("天気", "地方") + "\r\n");
                 m_pplayer.execute("Play '" + strAreaName + "'");
-                // Takeを別スレッドで実行
-                m_TakeThread = new System.Threading.Thread(new System.Threading.ThreadStart(TakeThread));
-                m_TakeThread.Start();
             }
+            
+            // Takeを別スレッドで実行
+            m_TakeThread = new System.Threading.Thread(new System.Threading.ThreadStart(TakeThread));
+            m_TakeThread.Start();
         }
 
 
-        private int Localjudge(int PreNumber)
+        private int Localjudge(int PrefectureID)
         {
-            int ret = -1;
+            int retLocalID = -1;
 
-            if (PreNumber == 2)
+            if (PrefectureID == 2)
             {
-                ret=0;
+                retLocalID = 0;
             }
-            else if (3 <= PreNumber && PreNumber <= 8)
+            else if (3 <= PrefectureID && PrefectureID <= 8)
             {
-                ret = 1;
+                retLocalID = 1;
             }
-            else if (9 <= PreNumber && PreNumber <= 15)
+            else if (9 <= PrefectureID && PrefectureID <= 15)
             {
-                ret = 2;
+                retLocalID = 2;
             }
-            else if (16 <= PreNumber && PreNumber <= 24)
+            else if (16 <= PrefectureID && PrefectureID <= 24)
             {
-                ret = 3;
+                retLocalID = 3;
             }
-            else if (25 <= PreNumber && PreNumber <= 31)
+            else if (25 <= PrefectureID && PrefectureID <= 31)
             {
-                ret = 4;
+                retLocalID = 4;
             }
-            else if (32 <= PreNumber && PreNumber <= 36)
+            else if (32 <= PrefectureID && PrefectureID <= 36)
             {
-                ret = 5;
+                retLocalID = 5;
             }
-            else if (37 <= PreNumber && PreNumber <= 40)
+            else if (37 <= PrefectureID && PrefectureID <= 40)
             {
-                ret = 6;
+                retLocalID = 6;
             }
-            else if (41 <= PreNumber && PreNumber <= 48)
+            else if (41 <= PrefectureID && PrefectureID <= 48)
             {
-                ret = 7;
+                retLocalID = 7;
             }
-            return ret;
+            return retLocalID;
         }
         /*--------------------------------------------------------------------------------
          * 
