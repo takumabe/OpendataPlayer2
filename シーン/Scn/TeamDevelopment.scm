@@ -85,10 +85,10 @@ Source "天気情報" {
   Struct {
 	Column "観測所番号" { L Ascent }
 	Column "地点" { S 32 }
-	Column "今日の最高気温" { L }
-	Column "今日の最低気温" { L }
-	Column "現在の降水量" { L }
-	Column "今日の最大風速" { L }
+	Column "今日の最高気温" { S 8 }
+	Column "今日の最低気温" { S 8 }
+	Column "現在の降水量" { S 8 }
+	Column "今日の最大風速" { S 8 }
 	Column "年" { L }
 	Column "月" { L }
 	Column "日" { L }
