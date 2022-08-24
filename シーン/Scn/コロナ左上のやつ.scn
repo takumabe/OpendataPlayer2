@@ -1,0 +1,65 @@
+
+Frame "コロナ左上のやつ" {
+	Version 50463 
+	fOADevice { "GRID-EX32HD" }
+	Layer "レイヤー1" {
+		Group {
+			StringBox {
+				211 92 303 106  H CL T 0 
+				Style "LSN太角ゴシック体" 
+				Size 36 100 
+				Color { 255 255 255 255   AntiAlias 2 }
+				Proportional 
+				"新型コロナウイルス\n" 
+				Offset 0 -7 
+				"新" 
+				Offset 0 -7 
+				"規" 
+				Offset 0 -7 
+				"陽" 
+				Offset 0 -7 
+				"性" 
+				Offset 0 -7 
+				"者" 
+				Offset 0 -7 
+				"数" 
+			} 
+			PolyLine "折れ線" {
+				10 
+				Color { 25 255 204 255   AntiAlias 2 }
+				uPoints {
+					3 
+					183 124.802640 202.206349 218.367803 513 218.367803 
+				} 
+				183 125  202 218  513 218  
+			} 
+			String "日付" {
+				239 268 216  H CL 
+				Style "マルＣユニバース" 
+				Size 36 100 
+				Color { 255 255 255 255   AntiAlias 2 }
+				Proportional 
+				"\(T( "コロナの情報" ) C( "年" ) , S!s)" 
+				Style "LSN太角ゴシック体" 
+				Size 32 100 
+				"/" 
+				Style "マルＣユニバース" 
+				Size 36 100 
+				"\(T( "コロナの情報" ) C( "月" ) , S!s)" 
+				Style "LSN太角ゴシック体" 
+				Size 32 100 
+				"/" 
+				Style "マルＣユニバース" 
+				Size 36 100 
+				"\(T( "コロナの情報" ) C( "日" ) , S!s) " 
+				Style "LSN太角ゴシック体" 
+				Size 30 100 
+				Offset 0 1 
+				"時" 
+				Offset 0 1 
+				"点" 
+				Offset 0 1 
+			} 
+		} 
+	} 
+} 

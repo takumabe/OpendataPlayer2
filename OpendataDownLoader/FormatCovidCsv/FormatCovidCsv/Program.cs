@@ -23,7 +23,7 @@ namespace FormatCovidCsv
                     string header = streamReader.ReadLine();
                     using(var sw = new System.IO.StreamWriter(strCsv, false, System.Text.Encoding.GetEncoding("shift-jis")))
                     {
-                        sw.Write("#" + header + Environment.NewLine);
+                        sw.Write($"#{header},年,月,日{Environment.NewLine}");
                     }
 
                     while (!streamReader.EndOfStream)
@@ -41,7 +41,7 @@ namespace FormatCovidCsv
                         {
                             date[2] = "0" + date[2];
                         }
-                        line = date[0] + "/" + date[1] + "/" + date[2] + line;
+                        line = date[0] + "/" + date[1] + "/" + date[2] + line + ","+ date[0] + "," + date[1] + "," + date[2];
 
                         using(var sw = new System.IO.StreamWriter(strCsv, true, System.Text.Encoding.GetEncoding("shift-jis")))
                         {

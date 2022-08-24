@@ -6,8 +6,33 @@ Frame "日本地図" {
 	fOADevice { "GRID-EX32HD" }
 	Layer "レイヤー1" {
 		Group {
-			Link "リンク" {
-				"共通コロナ全国板" -135 -121  T( "都道府県情報" ) R( 1 ) 
+			T( "コロナの情報" ) R( 1 ) 
+			Board "サンプル" {
+				183 304 330 117  
+				Color { 107 0 0 255   AntiAlias 2 }
+			}
+			String "サンプル" {
+				208 405 278  H CL 
+				Style "TV用太角ゴシック体" 
+				Size 64 100 
+				Color { 0 0 0 255   AntiAlias 2 }
+				Effect {
+					Edge {
+						3 
+						Color { 207 214 0 255   BlendNamKey }
+					}
+				}
+				Proportional 
+				Offset 0 5 
+				"\(T( "都道府県情報" ) C( "name" ) , Ss) ,," 
+				Size 90 100 
+				Space 90 
+				Offset 0 1 
+				"\(T( "コロナの情報" ) R( V1 ) C( T( "都道府県情報" ) C( "name" ) ) , L/U31310d)" 
+				Size 64 100 
+				Offset 0 1 
+				"人" 
+				Offset 0 1 
 			} 
 		} 
 		Image "イメージ" {
@@ -36,9 +61,9 @@ Frame "日本地図" {
 		} 
 		Group {
 			StringBox {
-				232 308 303 106  H CL T 0 
-				Style "TV用太角ゴシック体" 
-				Size 40 100 
+				211 92 303 106  H CL T 0 
+				Style "LSN太角ゴシック体" 
+				Size 36 100 
 				Color { 255 255 255 255   AntiAlias 2 }
 				Proportional 
 				"新型コロナウイルス\n" 
@@ -53,20 +78,44 @@ Frame "日本地図" {
 				Offset 0 -7 
 				"者" 
 				Offset 0 -7 
-				"数\n" 
-				Style "LSN太角ゴシック体" 
-				Size 32 100 
-				Offset 0 -22 
-				"\(V1 , Ss)" 
+				"数" 
+				Offset 0 -7 
 			} 
 			PolyLine "折れ線" {
 				10 
 				Color { 25 255 204 255   AntiAlias 2 }
 				uPoints {
 					3 
-					214 304.693462 233.206349 450.018077 544 450.018077 
+					183 124.802640 202.206349 218.367803 513 218.367803 
 				} 
-				214 305  233 450  544 450  
+				183 125  202 218  513 218  
+			} 
+			String "日付" {
+				239 268 216  H CL 
+				Style "マルＣユニバース" 
+				Size 36 100 
+				Color { 255 255 255 255   AntiAlias 2 }
+				Proportional 
+				"\(T( "コロナの情報" ) R( V1 ) C( "年" ) , S!s)" 
+				Style "LSN太角ゴシック体" 
+				Size 32 100 
+				"/" 
+				Style "マルＣユニバース" 
+				Size 36 100 
+				"\(T( "コロナの情報" ) R( V1 ) C( "月" ) , S!s)" 
+				Style "LSN太角ゴシック体" 
+				Size 32 100 
+				"/" 
+				Style "マルＣユニバース" 
+				Size 36 100 
+				"\(T( "コロナの情報" ) R( V1 ) C( "日" ) , S!s) " 
+				Style "LSN太角ゴシック体" 
+				Size 30 100 
+				Offset 0 1 
+				"時" 
+				Offset 0 1 
+				"点" 
+				Offset 0 1 
 			} 
 		} 
 	} 

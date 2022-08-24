@@ -22,19 +22,20 @@ Frame "共通コロナ板" {
 					}
 				}
 				Proportional 
-				Offset 0 12 
+				Offset 0 5 
 				"\(T( "都道府県情報" ) C( "name" ) , Ss)" 
 				Style "LSNマール体" 
 				Size 92 100 
 				Offset 0 12 
 				" " 
-				Size 64 100 
-				Offset 0 12 
-				":" 
-				Size 92 100 
-				" " 
 				Style "TV用太角ゴシック体" 
-				",,\(T( "コロナの情報" ) C( T( "都道府県情報" ) C( "name" ) ) , L/U31310d)" 
+				",," 
+				Offset 0 1 
+				"\(T( "コロナの情報" ) C( T( "都道府県情報" ) C( "name" ) ) , L/U31310d)" 
+				Size 64 100 
+				Offset 0 1 
+				"人" 
+				Offset 0 1 
 			} 
 		} 
 	} 

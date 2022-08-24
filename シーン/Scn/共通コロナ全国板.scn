@@ -1,6 +1,7 @@
 
 Frame "共通コロナ全国板" {
 	Version 50463 
+	fVideoAtr { Ortho3D }
 	fOADevice { "GRID-EX32HD" }
 	Layer "レイヤー1" {
 		Group {
@@ -20,19 +21,21 @@ Frame "共通コロナ全国板" {
 					}
 				}
 				Proportional 
-				Offset 0 12 
+				Offset 0 5 
 				"\(T( "都道府県情報" ) C( "name" ) , Ss)" 
-				Style "LSNマール体" 
+				Style "Ｎ-マール体" 
 				Size 92 100 
 				Offset 0 12 
-				" " 
-				Size 64 100 
-				Offset 0 12 
-				":" 
-				Size 92 100 
-				" " 
+				" ,," 
 				Style "TV用太角ゴシック体" 
-				",,\(T( "コロナの情報" ) R( V1 ) C( T( "都道府県情報" ) C( "name" ) ) , L/U31310d)" 
+				Size 90 100 
+				Space 90 
+				Offset 0 1 
+				"\(T( "コロナの情報" ) R( V1 ) C( T( "都道府県情報" ) C( "name" ) ) , L/U31310d)" 
+				Size 64 100 
+				Offset 0 1 
+				"人" 
+				Offset 0 1 
 			} 
 		} 
 	} 
