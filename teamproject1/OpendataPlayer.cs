@@ -44,11 +44,14 @@ namespace teamproject1
             new string[] { "北海道", "東北", "関東", "中部", "近畿", "中国", "四国", "九州"},    // コロナ自動再生用シーン名
             new string[] { "全国の天気情報", "北海道天気", "東北天気", "関東天気", "中部天気", "近畿天気", "中国天気", "四国天気", "九州天気"}  // 天気自動再生用シーン名
         };
-        private Color[] m_aryLocalColors = new Color[]
+        private Color[][] m_jaryLocalColors = new Color[][]
         {
+            //各地方の標準色
+            new Color[]{Color.CornflowerBlue ,Color.LightSkyBlue,Color.LimeGreen,Color.PaleGreen,
+                Color.Khaki,Color.Orange,Color.LightPink,Color.FromArgb(244, 146, 146) },
             // 各地方の押された時の色
-            Color.FromArgb(24,92,209),Color.FromArgb(34,168,245),Color.FromArgb(30,122,30),Color.FromArgb(54, 246,54),
-            Color.FromArgb(226,209,48),Color.FromArgb(153,96,0),Color.FromArgb(255,106,76),Color.FromArgb(233,51,51)
+            new Color[] { Color.FromArgb(24,92,209),Color.FromArgb(34,168,245),Color.FromArgb(30,122,30),Color.FromArgb(54, 246,54),
+            Color.FromArgb(226,209,48),Color.FromArgb(153,96,0),Color.FromArgb(255,106,76),Color.FromArgb(233,51,51) }
         };
         private int[][] m_jaryLocalPrefectureIDs = new int[][]
         {
@@ -183,7 +186,7 @@ namespace teamproject1
         private void Corona_Click(object sender, EventArgs e)
         {
             m_bCoronaFlag = true;
-            MonthCalendar.Enabled = true;
+            MonthCalendar.Visible = true;
             Corona.BackgroundImage = Properties.Resources.covid19button_put;
             Weather.BackgroundImage = Properties.Resources.weatherbutton;
             textBox1.AppendText("《コロナ》\r\n");
@@ -197,7 +200,7 @@ namespace teamproject1
         private void Weather_Click(object sender, EventArgs e)
         {
             m_bCoronaFlag = false;
-            MonthCalendar.Enabled = false;
+            MonthCalendar.Visible = false;
             Corona.BackgroundImage = Properties.Resources.covid19button;
             Weather.BackgroundImage = Properties.Resources.weatherbutton_put;
             textBox1.AppendText("《天気》\r\n");
@@ -221,6 +224,8 @@ namespace teamproject1
          *--------------------------------------------------------------------------------*/
         private void Play_Click(object sender, EventArgs e)
         {
+            //カレンダー非表示
+            MonthCalendar.Visible = false;
             m_pplayer.execute("Abort B");
             m_pplayer.execute("Clear B");
 
@@ -229,6 +234,16 @@ namespace teamproject1
             {//一つ前に押したボタンのデザインを戻す処理
                 this.ResetButtonDesign();
                 m_strOldButtonName = "";
+            }
+
+            foreach (int[] aryPrefectureIDs in m_jaryLocalPrefectureIDs)
+            {
+                foreach(int nPrefectureID in aryPrefectureIDs)
+                {
+                    Control control = this.Controls[$"id{nPrefectureID}"];
+                    ((Button)control).Enabled = false;
+                    ((Button)control).BackColor = Color.AliceBlue;
+                }
             }
 
             //TextBox表示
@@ -274,6 +289,22 @@ namespace teamproject1
          *--------------------------------------------------------------------------------*/
         private void Stop_Click(object sender, EventArgs e)
         {
+            //カレンダー表示
+            if (m_bCoronaFlag)
+            {
+                MonthCalendar.Visible = true;
+            }
+            //ボタンの色を戻す
+            foreach (int[] aryPrefectureIDs in m_jaryLocalPrefectureIDs)
+            {
+                foreach (int nPrefectureID in aryPrefectureIDs)
+                {
+                    Control control = this.Controls[$"id{nPrefectureID}"];
+                    ((Button)control).Enabled = true;
+                    int nLocalID = Localjudge(nPrefectureID);
+                    ((Button)control).BackColor = m_jaryLocalColors[0][nLocalID];
+                }
+            }
             //TextBoxに表示
             textBox1.AppendText( "【停止】\r\n");
             //再生停止の切り替え
@@ -315,7 +346,7 @@ namespace teamproject1
             if (m_bCoronaFlag)
             {//コロナ表示
                 //押したボタンの色変更
-                ((Button)sender).BackColor = m_aryLocalColors[nLocalID];
+                ((Button)sender).BackColor = m_jaryLocalColors[1][nLocalID];
                 ((Button)sender).UseVisualStyleBackColor = true;
 
                 m_pplayer.execute("Set V0 " + nPrefectureNumber);
@@ -336,7 +367,7 @@ namespace teamproject1
                 foreach (int nPrefectureID in aryLocalPrefectureIDs)
                 {
                     control = this.Controls["id" + nPrefectureID.ToString()];
-                    ((Button)control).FlatAppearance.BorderColor = m_aryLocalColors[nLocalID];
+                    ((Button)control).FlatAppearance.BorderColor = m_jaryLocalColors[1][nLocalID];
                     ((Button)control).FlatAppearance.BorderSize = 7;
                     ((Button)sender).UseVisualStyleBackColor = true;
                 }
