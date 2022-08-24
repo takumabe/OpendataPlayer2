@@ -23,7 +23,7 @@ Source "都道府県" {
 	Column "file name" { S 32 }
   }
 }
-Source "corona" {
+Source "コロナ" {
   Csv { , Comment "#" }
   SysVar {}
   Struct {
@@ -76,6 +76,9 @@ Source "corona" {
 	Column "宮崎" { L }
 	Column "鹿児島" { L }
 	Column "沖縄" { L }
+	Column "年" { L }
+	Column "月" { L }
+	Column "日" { L }
   }
 }
 
@@ -98,6 +101,6 @@ Source "天気情報" {
 }
 
 
-DataTable "コロナの情報" { "corona" "新規陽性者数.csv" }
+DataTable "コロナの情報" { "コロナ" "新規陽性者数.csv" }
 DataTable "都道府県情報" { "都道府県" "都道府県.csv" }
 DataTable "天気情報" { "天気情報" "天気情報.csv" }

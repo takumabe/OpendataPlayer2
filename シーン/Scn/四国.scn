@@ -18,42 +18,7 @@ Frame "四国" {
 			ExpandForDevice 
 			Offset ( 0 ) ( 0 ) 
 			Resize byRate 4 
-		} 
-		Group {
-			StringBox {
-				138 104 303 106  H CL T 0 
-				Style "TV用太角ゴシック体" 
-				Size 40 100 
-				Color { 255 255 255 255   AntiAlias 2 }
-				Proportional 
-				"新型コロナウイルス\n" 
-				Offset 0 -7 
-				"新" 
-				Offset 0 -7 
-				"規" 
-				Offset 0 -7 
-				"陽" 
-				Offset 0 -7 
-				"性" 
-				Offset 0 -7 
-				"者" 
-				Offset 0 -7 
-				"数\n" 
-				Style "LSN太角ゴシック体" 
-				Size 32 100 
-				Offset 0 -22 
-				"\(T( "コロナの情報" ) C( "日付" ) , Ss)" 
-			} 
-			PolyLine "折れ線" {
-				10 
-				Color { 25 255 204 255   AntiAlias 2 }
-				uPoints {
-					3 
-					120 100.693462 139.206349 246.018077 450 246.018077 
-				} 
-				120 101  139 246  450 246  
-			} 
-		} 
+		}
 		Link "香川" {
 			"共通コロナ板" 648 116  T( "都道府県情報" ) R( 38 ) 
 		} 
@@ -79,6 +44,9 @@ Frame "四国" {
 			}
 			Proportional 
 			"四国地方" 
+		} 
+		Link "リンク" {
+			"コロナ左上のやつ" 
 		} 
 	} 
 } 

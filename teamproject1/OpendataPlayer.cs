@@ -706,7 +706,7 @@ namespace teamproject1
                 string strAllText = System.IO.File.ReadAllText(strCovidPath, System.Text.Encoding.GetEncoding("shift-jis"));
                 string[] arySplitesText = strAllText.Replace('\n', ',').Split(',');
                 Array.Reverse(arySplitesText);
-                DateTime dtLatestDate = DateTime.ParseExact(arySplitesText[49], "yyyy/MM/dd", null);
+                DateTime dtLatestDate = DateTime.ParseExact(arySplitesText[52], "yyyy/MM/dd", null);
                 ret = dtLatestDate;
             }
             return ret;
