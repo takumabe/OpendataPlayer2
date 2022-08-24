@@ -470,7 +470,7 @@ namespace OpendataDownLoader
             try
             {
                 this.createTaskCommand(URLCovid, CsvPathCovid, strCommandDir, CommandFileNameCovid);
-                this.addFormatBat(strBatPathCovid);
+                //this.addFormatBat(strBatPathCovid);
                 System.Xml.XmlDocument covidXml = this.createXmlTime(SchedulerPathCovid, strStart, strEnd, strCommandDir + CommandFileNameCovid + ".vbs", "PT6H");
                 if (this.registerTaskByXml(covidXml) == "")
                 {

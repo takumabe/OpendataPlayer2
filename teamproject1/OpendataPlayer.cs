@@ -22,6 +22,7 @@ namespace teamproject1
         private PrismPlayer m_pplayer = null;
         private System.Threading.Thread m_TakeThread = null;    //Take実行スレッド生成用
         private OpendataDownLoader.OpendataDownLoader m_OpendataDownLoader = null;  // 自動ダウンロード設定をするクラス
+        private System.Diagnostics.Process m_procFormatCsvExe = null;   // 新規陽性者数.csvの書式を整えるプログラムを実行するプロセス
         private System.Diagnostics.Process m_procGatherCsvExe = null;   // 天気情報をまとめるプログラムを実行するプロセス
 
         private string m_strSelectDate = "";    // 選択中の日付保存用
@@ -29,6 +30,7 @@ namespace teamproject1
 
         private bool m_bTakeFlag = false;       // Takeできるかどうか
         private bool m_bCoronaFlag = true;      // コロナか天気か
+        private bool m_bCsvExistFlag = false;   // 新規陽性者数.csvと天気情報.csvが存在しているか
         private byte m_WeatherCsvFlag = 0x00;   // 天気系csvファイルのどれが存在しているか
 
         private static System.Threading.Timer m_AreaTimer;      // 自動再生用タイマ
@@ -98,6 +100,16 @@ namespace teamproject1
 
             MonthCalendar.MaxDate = getLatestDate($@"{strDataPath}\新規陽性者数.csv");
 
+            // 新規陽性者数.csv作成用プロセスの設定.
+            string strFormatCsvExePath = $"{AppDomain.CurrentDomain.BaseDirectory}";
+            strFormatCsvExePath = strFormatCsvExePath.Substring(0, strFormatCsvExePath.LastIndexOf("teamproject1")) + @"OpendataDownLoader\FormatCovidCsv\FormatCovidCsv\bin\Debug\FormatCovidCsv.exe";
+            m_procFormatCsvExe = new System.Diagnostics.Process();
+            m_procFormatCsvExe.StartInfo.FileName = strFormatCsvExePath;
+            m_procFormatCsvExe.StartInfo.CreateNoWindow = true;
+            m_procFormatCsvExe.StartInfo.UseShellExecute = false;
+            m_procFormatCsvExe.EnableRaisingEvents = true;
+            m_procFormatCsvExe.Exited += new System.EventHandler(UpdatedCovidData);
+
             // 天気情報.csv作成用プロセスの設定.
             string strGatherCsvExePath = $"{AppDomain.CurrentDomain.BaseDirectory}";
             strGatherCsvExePath = strGatherCsvExePath.Substring(0, strGatherCsvExePath.LastIndexOf("teamproject1")) + @"OpendataDownLoader\GatherWeatherCsv\GatherWeatherCsv\bin\Debug\GatherWeatherCsv.exe";
@@ -106,7 +118,7 @@ namespace teamproject1
             m_procGatherCsvExe.StartInfo.CreateNoWindow = true;
             m_procGatherCsvExe.StartInfo.UseShellExecute = false;
             m_procGatherCsvExe.EnableRaisingEvents = true;
-            m_procGatherCsvExe.Exited += new System.EventHandler(LoadScheme);
+            m_procGatherCsvExe.Exited += new System.EventHandler(UpdatedWeatherCsv);
         }
 
         /*--------------------------------------------------------------------------------
@@ -146,13 +158,34 @@ namespace teamproject1
             //送出デバイスの設定
             m_pplayer.execute("GetDevice WinGL HD SendTo -1 0");
 
-            LoadScheme(sender, e);
-            if (m_bCoronaFlag)
+            if (!System.IO.File.Exists($@"{m_strSceneDir}\Data\新規陽性者数.csv") || !System.IO.File.Exists($@"{m_strSceneDir}\Data\天気情報.csv"))
+            {
+                MonthCalendar.Visible = false;
+                Corona.Enabled = false;
+                Weather.Enabled = false;
+                Play.Enabled = false;
+                // 日本地図のボタンデザインの変更・機能停止
+                foreach (int[] aryPrefectureIDs in m_jaryLocalPrefectureIDs)
+                {
+                    foreach (int nPrefectureID in aryPrefectureIDs)
+                    {
+                        Control control = this.Controls[$"id{nPrefectureID}"];
+                        ((Button)control).Enabled = false;
+                        ((Button)control).BackColor = Color.AliceBlue;
+                    }
+                }
+                m_bCsvExistFlag = true;
+                textBox1.AppendText("データダウンロード中\r\n");
+            }
+            else
             {
                 Corona.BackgroundImage = Properties.Resources.covid19button_put;
                 Weather.BackgroundImage = Properties.Resources.weatherbutton;
-                textBox1.AppendText( "《コロナ》\r\n");
+                textBox1.AppendText("《コロナ》\r\n");
+                MonthCalendar.SelectionStart = MonthCalendar.MaxDate;
             }
+
+            LoadScheme();
         }
 
         /*--------------------------------------------------------------------------------
@@ -185,6 +218,12 @@ namespace teamproject1
          *--------------------------------------------------------------------------------*/
         private void Corona_Click(object sender, EventArgs e)
         {
+            //ひとつ前に押されたボタンの名前が保存されているとき
+            if (m_strOldButtonName != "")
+            {//一つ前に押したボタンのデザインを戻す処理
+                this.ResetButtonDesign();
+                m_strOldButtonName = "";
+            }
             m_bCoronaFlag = true;
             MonthCalendar.Visible = true;
             Corona.BackgroundImage = Properties.Resources.covid19button_put;
@@ -199,6 +238,12 @@ namespace teamproject1
          *--------------------------------------------------------------------------------*/
         private void Weather_Click(object sender, EventArgs e)
         {
+            //ひとつ前に押されたボタンの名前が保存されているとき
+            if (m_strOldButtonName != "")
+            {//一つ前に押したボタンのデザインを戻す処理
+                this.ResetButtonDesign();
+                m_strOldButtonName = "";
+            }
             m_bCoronaFlag = false;
             MonthCalendar.Visible = false;
             Corona.BackgroundImage = Properties.Resources.covid19button;
@@ -224,10 +269,11 @@ namespace teamproject1
          *--------------------------------------------------------------------------------*/
         private void Play_Click(object sender, EventArgs e)
         {
-            //カレンダー非表示
-            MonthCalendar.Visible = false;
             m_pplayer.execute("Abort B");
             m_pplayer.execute("Clear B");
+
+            //カレンダー非表示
+            MonthCalendar.Visible = false;
 
             //ひとつ前に押されたボタンの名前が保存されているとき
             if (m_strOldButtonName != "")
@@ -236,9 +282,10 @@ namespace teamproject1
                 m_strOldButtonName = "";
             }
 
+            // 日本地図のボタンデザインの変更・機能停止
             foreach (int[] aryPrefectureIDs in m_jaryLocalPrefectureIDs)
             {
-                foreach(int nPrefectureID in aryPrefectureIDs)
+                foreach (int nPrefectureID in aryPrefectureIDs)
                 {
                     Control control = this.Controls[$"id{nPrefectureID}"];
                     ((Button)control).Enabled = false;
@@ -252,6 +299,10 @@ namespace teamproject1
             //再生停止ボタンの切り替え
             Play.Visible = false;
             Stop.Visible = true;
+
+            // 再生中のジャンル変更禁止
+            Corona.Enabled = false;
+            Weather.Enabled = false;
 
             // 指定秒数間隔で呼び出される処理
             TimerCallback callback = state =>
@@ -289,6 +340,10 @@ namespace teamproject1
          *--------------------------------------------------------------------------------*/
         private void Stop_Click(object sender, EventArgs e)
         {
+            // ジャンル変更解禁
+            Corona.Enabled = true;
+            Weather.Enabled = true;
+
             //カレンダー表示
             if (m_bCoronaFlag)
             {
@@ -389,11 +444,18 @@ namespace teamproject1
          *--------------------------------------------------------------------------------*/
         private void watcher_Renamed(object sender, System.IO.FileSystemEventArgs e)
         {
-            if (e.Name == "新規陽性者数.csv")
+            if (e.Name == "新規陽性者数tmp.csv")
             {
                 // 新規陽性者数.csvが更新された時の処理
-                MonthCalendar.MaxDate = getLatestDate(e.FullPath);
-                LoadScheme(null, null);
+                try
+                {
+                    // 別exeファイルを実行.
+                    m_procFormatCsvExe.Start();
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
             else
             {
@@ -469,6 +531,170 @@ namespace teamproject1
         }
 
         /*--------------------------------------------------------------------------------
+         * スキーマの読み込み.
+         *--------------------------------------------------------------------------------*/
+        private void LoadScheme()
+        {
+            string strSchemePath = m_strSceneDir.Replace(@"\", @"\\");
+            m_pplayer.execute("Load '" + strSchemePath + @"Scn\\TeamDevelopment.scm'");
+        }
+
+        private void ReEnableButtons()
+        {
+            string strCsvPath = $@"{m_strSceneDir}\Data\";
+            if (System.IO.File.Exists($"{strCsvPath}新規陽性者数.csv") && System.IO.File.Exists($"{strCsvPath}天気情報.csv") && m_bCsvExistFlag)
+            {
+                if (textBox1.InvokeRequired)
+                {
+                    textBox1.Invoke((MethodInvoker)delegate
+                    {
+                        textBox1.AppendText("データダウンロード完了\r\n");
+                        textBox1.AppendText("《コロナ》\r\n");
+                    });
+                }
+                else
+                {
+                    textBox1.AppendText("データダウンロード完了\r\n");
+                    textBox1.AppendText("《コロナ》\r\n");
+                }
+                
+                if(Play.InvokeRequired)
+                {
+                    Play.Invoke((MethodInvoker)delegate
+                    {
+                        Play.Enabled = true;
+                    });
+                }
+                else
+                {
+                    Play.Enabled = true;
+                }
+
+                if (Corona.InvokeRequired)
+                {
+                    Corona.Invoke((MethodInvoker)delegate
+                    {
+                        Corona.Enabled = true;
+                    });
+                }
+                else
+                {
+                    Corona.Enabled = true;
+                }
+                if (Weather.InvokeRequired)
+                {
+                    Weather.Invoke((MethodInvoker)delegate
+                    {
+                        Weather.Enabled = true;
+                    });
+                }
+                else
+                {
+                    Weather.Enabled = true;
+                }
+
+                foreach (int[] aryPrefectureIDs in m_jaryLocalPrefectureIDs)
+                {
+                    foreach (int nPrefectureID in aryPrefectureIDs)
+                    {
+                        Control control = this.Controls[$"id{nPrefectureID}"];
+                        Button button = ((Button)control);
+                        if (button.InvokeRequired)
+                        {
+                            button.Invoke((MethodInvoker)delegate
+                            {
+                                button.Enabled = true;
+                                int nLocalID = Localjudge(nPrefectureID);
+                                button.BackColor = m_jaryLocalColors[0][nLocalID];
+                            });
+                        }
+                        else
+                        {
+                            button.Enabled = true;
+                            int nLocalID = Localjudge(nPrefectureID);
+                            button.BackColor = m_jaryLocalColors[0][nLocalID];
+                        }
+                    }
+                }
+
+                if (m_bCoronaFlag)
+                {
+                    if (Corona.InvokeRequired)
+                    {
+                        Corona.Invoke((MethodInvoker)delegate
+                        {
+                            Corona.BackgroundImage = Properties.Resources.covid19button_put;
+                        });
+                    }
+                    else
+                    {
+                        Corona.BackgroundImage = Properties.Resources.covid19button_put;
+                    }
+
+                    if (Weather.InvokeRequired)
+                    {
+                        Weather.Invoke((MethodInvoker)delegate
+                        {
+                            Weather.BackgroundImage = Properties.Resources.weatherbutton;
+                        });
+                    }
+                    else
+                    {
+                        Weather.BackgroundImage = Properties.Resources.weatherbutton;
+                    }
+                }
+
+                if (MonthCalendar.InvokeRequired)
+                {
+                    MonthCalendar.Invoke((MethodInvoker)delegate
+                    {
+                        MonthCalendar.Visible = true;
+                        MonthCalendar.SelectionStart = MonthCalendar.MaxDate;
+                    });
+                }
+                else
+                {
+                    MonthCalendar.Visible = true;
+                    MonthCalendar.SelectionStart = MonthCalendar.MaxDate;
+                }
+
+                m_bCsvExistFlag = false;
+            }
+        }
+
+        /*--------------------------------------------------------------------------------
+         * 新規陽性者数.csvを更新した後に実行されるメソッド.
+         *--------------------------------------------------------------------------------*/
+        private void UpdatedCovidData(object sender, EventArgs e)
+        {
+            ReEnableButtons();
+            string strCovidCsvPath = $@"{m_strSceneDir}\Data\新規陽性者数.csv";
+            if (MonthCalendar.InvokeRequired)
+            {
+                MonthCalendar.Invoke((MethodInvoker)delegate
+                {
+                    MonthCalendar.MaxDate = getLatestDate(strCovidCsvPath);
+                    MonthCalendar.SelectionStart = MonthCalendar.MaxDate;
+                });
+            }
+            else
+            {
+                MonthCalendar.MaxDate = getLatestDate(strCovidCsvPath);
+                MonthCalendar.SelectionStart = MonthCalendar.MaxDate;
+            }
+            LoadScheme();
+        }
+
+        /*--------------------------------------------------------------------------------
+         * 天気情報.csvを更新した後に実行されるメソッド.
+         *--------------------------------------------------------------------------------*/
+        private void UpdatedWeatherCsv(object sender, EventArgs e)
+        {
+            ReEnableButtons();
+            LoadScheme();
+        }
+
+        /*--------------------------------------------------------------------------------
          * 最新日付取得メソッド.
          *--------------------------------------------------------------------------------*/
         private DateTime getLatestDate(string strCovidPath)
@@ -484,15 +710,6 @@ namespace teamproject1
                 ret = dtLatestDate;
             }
             return ret;
-        }
-
-        /*--------------------------------------------------------------------------------
-         * スキーマの読み込み.
-         *--------------------------------------------------------------------------------*/
-        private void LoadScheme(object sender, EventArgs e)
-        {
-            string strSchemePath = m_strSceneDir.Replace(@"\", @"\\");
-            m_pplayer.execute("Load '" + strSchemePath + @"Scn\\TeamDevelopment.scm'");
         }
 
         /*--------------------------------------------------------------------------------
