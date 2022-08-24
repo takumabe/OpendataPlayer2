@@ -20,53 +20,60 @@ namespace teamproject1
          * 変数
          *--------------------------------------------------------------------------------*/
         private PrismPlayer m_pplayer = null;
-        private bool m_bTakeFlag = false;
-        private bool m_bCoronaFlag = true;
-        private static System.Threading.Timer m_AreaTimer;
+        private System.Threading.Thread m_TakeThread = null;    //Take実行スレッド生成用
+        private OpendataDownLoader.OpendataDownLoader m_OpendataDownLoader = null;  // 自動ダウンロード設定をするクラス
+        private System.Diagnostics.Process m_procGatherCsvExe = null;   // 天気情報をまとめるプログラムを実行するプロセス
+
+        private string m_strSelectDate = "";    // 選択中の日付保存用
+        private string m_strSceneDir = "";      // シーンディレクトリのパス
+
+        private bool m_bTakeFlag = false;       // Takeできるかどうか
+        private bool m_bCoronaFlag = true;      // コロナか天気か
+        private byte m_WeatherCsvFlag = 0x00;   // 天気系csvファイルのどれが存在しているか
+
+        private static System.Threading.Timer m_AreaTimer;      // 自動再生用タイマ
+        private int m_nPlayCount = 0;                           // 自動再生の繰り返しカウンタ
+
+        private string m_strOldButtonName = "";                                 // 一つ前に押された都道府県ボタンの名前
+        private Color m_OldButtonColor = Color.Empty;                           // 一つ前に押されたボタンの色
+        private Color m_OldButtonBorderColor = Color.Empty;                     // 一つ前に押されたボタンの枠の色
+        private ButtonBorderStyle m_OldButtonStyle = ButtonBorderStyle.Dashed;  // 一つ前に押されたボタンの枠の太さ
+
         private string[][] m_jaryScnNames = new string[][]
         {
-            new string[] { "北海道", "東北", "関東", "中部", "近畿", "中国", "四国", "九州"},
-            new string[] { "全国の天気情報", "北海道天気", "東北天気", "関東天気", "中部天気", "近畿天気", "中国天気", "四国天気", "九州天気"}
+            new string[] { "北海道", "東北", "関東", "中部", "近畿", "中国", "四国", "九州"},    // コロナ自動再生用シーン名
+            new string[] { "全国の天気情報", "北海道天気", "東北天気", "関東天気", "中部天気", "近畿天気", "中国天気", "四国天気", "九州天気"}  // 天気自動再生用シーン名
         };
-        private string m_strOldButtonName = "";
-        private Color m_OldButtonColor=Color.Empty;
-        private Color m_OldButtonBorderColor = Color.Empty;
-        private ButtonBorderStyle m_OldButtonStyle = ButtonBorderStyle.Dashed;
         private Color[] m_aryLocalColors = new Color[]
         {
+            // 各地方の押された時の色
             Color.FromArgb(24,92,209),Color.FromArgb(34,168,245),Color.FromArgb(30,122,30),Color.FromArgb(54, 246,54),
             Color.FromArgb(226,209,48),Color.FromArgb(153,96,0),Color.FromArgb(255,106,76),Color.FromArgb(233,51,51)
         };
         private int[][] m_jaryLocalPrefectureIDs = new int[][]
-        {//都道府県番号から地方分け
-            new int[] {2},
-            new int[] {3,4,5,6,7,8},
-            new int[] {9,10,11,12,13,14,15},
-            new int[] {16,17,18,19,20,21,22,23,24},
-            new int[] {25,26,27,28,29,30,31},
-            new int[] {32,33,34,35,36},
-            new int[] {37,38,39,40},
-            new int[] {41,42,43,44,45,46,47,48},
+        {
+            //都道府県番号から地方分け
+            new int[] {2},                              // 北海道地方
+            new int[] {3,4,5,6,7,8},                    // 東北地方
+            new int[] {9,10,11,12,13,14,15},            // 関東地方
+            new int[] {16,17,18,19,20,21,22,23,24},     // 中部地方
+            new int[] {25,26,27,28,29,30,31},           // 近畿地方
+            new int[] {32,33,34,35,36},                 // 中国地方
+            new int[] {37,38,39,40},                    // 四国地方
+            new int[] {41,42,43,44,45,46,47,48}         // 九州地方
         };
-        private string m_strSelectDate = "";
-        private System.Threading.Thread m_TakeThread = null;    //Take実行スレッド生成用
-        private OpendataDownLoader.OpendataDownLoader m_OpendataDownLoader = null;
-        private string m_strSceneDir = "";
-        private byte m_WeatherCsvFlag = 0x00;
-        private int m_nPlayCount = 0;
-        private System.Diagnostics.Process m_procGatherCsvExe = null;
         private int[][] m_jarySpotIDs = new int[][]
         {
             // 各都道府県の県庁所在地の観測所番号リスト.
-            new int[] {14163,34392,54232,44132,51106,57066, 62078, 67437, 74181, 82182, 88317, 91197 },
-            new int[] {14163,19432},
-            new int[] {31312,33431,34392,32402,35426,36127},
-            new int[] {40201,41277,42251,43241,45212,44132,46106},
-            new int[] {54232,55102,56227,57066,49142,48156,52586,50331,51106},
-            new int[] {53133,60216,61286,62078,63518,64036,65042},
-            new int[] {69122,68132,66408,67437,81286},
-            new int[] {71106,72086,73166,74181},
-            new int[] {82182,85142,84496,86141,83216,87376,88317,91197}
+            new int[] {14163,34392,54232,44132,51106,57066, 62078, 67437, 74181, 82182, 88317, 91197 },     // 全国の天気情報シーンに表示される観測所番号
+            new int[] {14163,19432},                                                // 北海道天気の観測所番号
+            new int[] {31312,33431,34392,32402,35426,36127},                        // 東北天気の観測所番号
+            new int[] {40201,41277,42251,43241,45212,44132,46106},                  // 関東天気の観測所番号
+            new int[] {54232,55102,56227,57066,49142,48156,52586,50331,51106},      // 中部天気の観測所番号
+            new int[] {53133,60216,61286,62078,63518,64036,65042},                  // 近畿天気の観測所番号
+            new int[] {69122,68132,66408,67437,81286},                              // 中国天気の観測所番号
+            new int[] {71106,72086,73166,74181},                                    // 四国天気の観測所番号
+            new int[] {82182,85142,84496,86141,83216,87376,88317,91197}             // 九州天気の観測所番号
         };
 
 
@@ -86,12 +93,11 @@ namespace teamproject1
             this.OpendataFileWatcher.Path = strDataPath;
             this.OpendataFileWatcher.Renamed += new System.IO.RenamedEventHandler(watcher_Renamed);
 
-            MonthCalendar.MaxDate = getLatestDate(strDataPath + @"\新規陽性者数.csv");
+            MonthCalendar.MaxDate = getLatestDate($@"{strDataPath}\新規陽性者数.csv");
 
             // 天気情報.csv作成用プロセスの設定.
             string strGatherCsvExePath = $"{AppDomain.CurrentDomain.BaseDirectory}";
             strGatherCsvExePath = strGatherCsvExePath.Substring(0, strGatherCsvExePath.LastIndexOf("teamproject1")) + @"OpendataDownLoader\GatherWeatherCsv\GatherWeatherCsv\bin\Debug\GatherWeatherCsv.exe";
-
             m_procGatherCsvExe = new System.Diagnostics.Process();
             m_procGatherCsvExe.StartInfo.FileName = strGatherCsvExePath;
             m_procGatherCsvExe.StartInfo.CreateNoWindow = true;
@@ -172,24 +178,43 @@ namespace teamproject1
         }
 
         /*--------------------------------------------------------------------------------
-         * 最新日付取得メソッド.
+         * コロナボタンで画像の切り替え・カレンダー作動
          *--------------------------------------------------------------------------------*/
-        private DateTime getLatestDate(string strCovidPath)
+        private void Corona_Click(object sender, EventArgs e)
         {
-            DateTime ret = DateTime.Today.AddDays(-1);
-            
-            if (System.IO.File.Exists(strCovidPath))
-            {
-                string strAllText = System.IO.File.ReadAllText(strCovidPath, System.Text.Encoding.GetEncoding("shift-jis"));
-                string[] arySplitesText = strAllText.Replace('\n', ',').Split(',');
-                Array.Reverse(arySplitesText);
-                DateTime dtLatestDate = DateTime.ParseExact(arySplitesText[49], "yyyy/MM/dd", null);
-                ret = dtLatestDate;
-            }
-            return ret;
+            m_bCoronaFlag = true;
+            MonthCalendar.Enabled = true;
+            Corona.BackgroundImage = Properties.Resources.covid19button_put;
+            Weather.BackgroundImage = Properties.Resources.weatherbutton;
+            textBox1.AppendText("《コロナ》\r\n");
+            //自動のリセット
+            m_nPlayCount = 0;
         }
 
-        
+        /*--------------------------------------------------------------------------------
+         * 天気ボタンでボタン画像の切り替え・カレンダー機能の停止
+         *--------------------------------------------------------------------------------*/
+        private void Weather_Click(object sender, EventArgs e)
+        {
+            m_bCoronaFlag = false;
+            MonthCalendar.Enabled = false;
+            Corona.BackgroundImage = Properties.Resources.covid19button;
+            Weather.BackgroundImage = Properties.Resources.weatherbutton_put;
+            textBox1.AppendText("《天気》\r\n");
+            //自動のリセット
+            m_nPlayCount = 0;
+        }
+
+        /*--------------------------------------------------------------------------------
+         *  カレンダーで選択された日付を取得.
+         *--------------------------------------------------------------------------------*/
+        private void MonthCalendar_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            //選択した日付を出力
+            m_strSelectDate = MonthCalendar.SelectionStart.ToShortDateString();
+            Console.WriteLine(MonthCalendar.SelectionStart.ToShortDateString());
+            textBox1.AppendText(MonthCalendar.SelectionStart.ToShortDateString() + "\r\n");
+        }
 
         /*--------------------------------------------------------------------------------
          * 自動再生ボタン.
@@ -198,7 +223,14 @@ namespace teamproject1
         {
             m_pplayer.execute("Abort B");
             m_pplayer.execute("Clear B");
-            
+
+            //ひとつ前に押されたボタンの名前が保存されているとき
+            if (m_strOldButtonName != "")
+            {//一つ前に押したボタンのデザインを戻す処理
+                this.ResetButtonDesign();
+                m_strOldButtonName = "";
+            }
+
             //TextBox表示
             textBox1.AppendText( "【自動再生中】\r\n");
             
@@ -209,11 +241,12 @@ namespace teamproject1
             // 指定秒数間隔で呼び出される処理
             TimerCallback callback = state =>
             {
-                DispData(m_nPlayCount);
                 string strScnName = "";
                 if(m_bCoronaFlag)
                 {
+                    // シーン名取得
                     strScnName = m_jaryScnNames[0][m_nPlayCount];
+                    // シーン順に再生、最後まで再生されたら最初から繰り返す
                     m_nPlayCount = (m_nPlayCount < m_jaryScnNames[0].Length - 1) ? ++m_nPlayCount : 0;
                 }
                 else
@@ -226,14 +259,15 @@ namespace teamproject1
                 m_pplayer.execute("Play '" + strScnName + "'");
                 // Takeを別スレッドで実行
                 m_TakeThread = new System.Threading.Thread(new System.Threading.ThreadStart(TakeThread));
-                m_TakeThread.Start();                
+                m_TakeThread.Start();
+
+                // 操作画面に情報表示
+                DispData(m_nPlayCount);
             };
 
             // タイマー起動(0秒後に処理実行、5秒おきに繰り返し)
             m_AreaTimer = m_bCoronaFlag ? new System.Threading.Timer(callback, null, 0, 7500) : new System.Threading.Timer(callback, null, 0, 14000);            
         }
-
-
 
         /*--------------------------------------------------------------------------------
          * 再生停止ボタン.
@@ -247,42 +281,6 @@ namespace teamproject1
             Stop.Visible = false;
             //タイマー停止
             m_AreaTimer.Dispose();
-        }
-
-        /*--------------------------------------------------------------------------------
-         * スキーマの読み込み.
-         *--------------------------------------------------------------------------------*/
-        private void LoadScheme(object sender, EventArgs e)
-        {
-            string strSchemePath = m_strSceneDir.Replace(@"\", @"\\");
-            m_pplayer.execute("Load '" + strSchemePath + @"Scn\\TeamDevelopment.scm'");
-        }
-
-        /*--------------------------------------------------------------------------------
-         * OAStateのイベント時に呼ばれます。
-         * Take待ち状態ならTakeスレッドのフラグを立てる。
-         *--------------------------------------------------------------------------------*/
-        private void IsWaitingtoTake_onChangeOAState(String bstrDevice, int lOAState, int lOAType)
-        {
-            //テイクできるかどうか
-            m_bTakeFlag = (lOAState == 1) ? true : false;
-        }
-
-        /*--------------------------------------------------------------------------------
-         * Takeができるまで実行するスレッド。
-         * システム変数操作ボタン押下時に呼ばれます。
-         *--------------------------------------------------------------------------------*/
-        private async void TakeThread()
-        {
-            //テイク待ちになるまで
-            while (!m_bTakeFlag)
-            {
-                System.Diagnostics.Debug.WriteLine("ログテスト\n");
-                await Task.Delay(10);
-            }
-            // 送出
-            m_pplayer.execute("Take");
-            return;
         }
 
         /*--------------------------------------------------------------------------------
@@ -316,11 +314,6 @@ namespace teamproject1
 
             if (m_bCoronaFlag)
             {//コロナ表示
-                //TextBoxに都道府県名を表示
-                var Data = m_pplayer.getTableData($"T( 'コロナの情報' ) R( '{m_strSelectDate}' ) C( {nPrefectureNumber.ToString()} )");
-                var Name = m_pplayer.getTableData($"T( '都道府県情報' ) R( {nPrefectureNumber.ToString()} ) C( 'name' )");
-                textBox1.AppendText($"《コロナ》{m_strSelectDate}　{FormatPrefetureName(Name)} : {Data}人\r\n");
-
                 //押したボタンの色変更
                 ((Button)sender).BackColor = m_aryLocalColors[nLocalID];
                 ((Button)sender).UseVisualStyleBackColor = true;
@@ -330,12 +323,15 @@ namespace teamproject1
                 Console.WriteLine(strSenderName.Substring(2));
                 m_pplayer.execute("Set V1 '" + m_strSelectDate + "'");
                 m_pplayer.execute("Play '日本地図'");
+
+                //TextBoxに都道府県名を表示
+                var Data = m_pplayer.getTableData($"T( 'コロナの情報' ) R( '{m_strSelectDate}' ) C( {nPrefectureNumber.ToString()} )");
+                var Name = m_pplayer.getTableData($"T( '都道府県情報' ) R( {nPrefectureNumber.ToString()} ) C( 'name' )");
+                textBox1.AppendText($"《コロナ》{m_strSelectDate}　{FormatPrefetureName(Name)} : {Data}人\r\n");
             }
             else
-            {//天気予報表示  
-                // TextBoxに都道府県名を表示.
-                DispData(nLocalID + 1);
-
+            {//天気予報表示
+                // 押した都道府県の地方に属する都道府県IDを取得してボタンのデザインを変更.
                 int[] aryLocalPrefectureIDs = m_jaryLocalPrefectureIDs[nLocalID];
                 foreach (int nPrefectureID in aryLocalPrefectureIDs)
                 {
@@ -345,11 +341,127 @@ namespace teamproject1
                     ((Button)sender).UseVisualStyleBackColor = true;
                 }
                 m_pplayer.execute($"Play '{ m_jaryScnNames[1][nLocalID + 1] }'");
+                
+                // TextBoxに都道府県名を表示.
+                DispData(nLocalID + 1);
             }
-            
+
             // Takeを別スレッドで実行
             m_TakeThread = new System.Threading.Thread(new System.Threading.ThreadStart(TakeThread));
             m_TakeThread.Start();
+        }
+
+        /*--------------------------------------------------------------------------------
+         * オープンデータ保存ディレクトリ内に変更が起きた時に呼び出されるイベント.
+         * スキーマを読み込みなおす.
+         * 天気情報をまとめたファイルを作成する.
+         *--------------------------------------------------------------------------------*/
+        private void watcher_Renamed(object sender, System.IO.FileSystemEventArgs e)
+        {
+            if (e.Name == "新規陽性者数.csv")
+            {
+                // 新規陽性者数.csvが更新された時の処理
+                MonthCalendar.MaxDate = getLatestDate(e.FullPath);
+                LoadScheme(null, null);
+            }
+            else
+            {
+                // 天気情報の更新処理
+                // 全ての天気に関するファイルが更新されたら、まとめる処理を実行.
+                switch (e.Name)
+                {
+                    case "最高気温.csv":
+                        m_WeatherCsvFlag |= 0x01;
+                        break;
+                    case "最低気温.csv":
+                        m_WeatherCsvFlag |= 0x02;
+                        break;
+                    case "日降水量.csv":
+                        m_WeatherCsvFlag |= 0x04;
+                        break;
+                    case "最大風速.csv":
+                        m_WeatherCsvFlag |= 0x08;
+                        break;
+                    default:
+                        break;
+                }
+
+                if (m_WeatherCsvFlag == 0x0f)
+                {
+                    // 4種類の天気情報すべてが更新された時の処理
+                    try
+                    {
+                        // 別exeファイル（天気情報をまとめるプログラム）を実行.
+                        m_procGatherCsvExe.Start();
+
+                        m_WeatherCsvFlag = 0x00;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+        }
+
+
+        /*--------------------------------------------------------------------------------
+         *  以下サブメソッド（コントロールに直接呼ばれるメソッドは以上）
+         * --------------------------------------------------------------------------------*/
+
+
+        /*--------------------------------------------------------------------------------
+         * OAStateのイベント時に呼ばれます。
+         * Take待ち状態ならTakeスレッドのフラグを立てる。
+         *--------------------------------------------------------------------------------*/
+        private void IsWaitingtoTake_onChangeOAState(String bstrDevice, int lOAState, int lOAType)
+        {
+            //テイクできるかどうか
+            m_bTakeFlag = (lOAState == 1) ? true : false;
+        }
+
+        /*--------------------------------------------------------------------------------
+         * Takeができるまで実行するスレッド。
+         * システム変数操作ボタン押下時に呼ばれます。
+         *--------------------------------------------------------------------------------*/
+        private async void TakeThread()
+        {
+            //テイク待ちになるまで
+            while (!m_bTakeFlag)
+            {
+                System.Diagnostics.Debug.WriteLine("ログテスト\n");
+                await Task.Delay(10);
+            }
+            // 送出
+            m_pplayer.execute("Take");
+            return;
+        }
+
+        /*--------------------------------------------------------------------------------
+         * 最新日付取得メソッド.
+         *--------------------------------------------------------------------------------*/
+        private DateTime getLatestDate(string strCovidPath)
+        {
+            DateTime ret = DateTime.Today.AddDays(-1);
+
+            if (System.IO.File.Exists(strCovidPath))
+            {
+                string strAllText = System.IO.File.ReadAllText(strCovidPath, System.Text.Encoding.GetEncoding("shift-jis"));
+                string[] arySplitesText = strAllText.Replace('\n', ',').Split(',');
+                Array.Reverse(arySplitesText);
+                DateTime dtLatestDate = DateTime.ParseExact(arySplitesText[49], "yyyy/MM/dd", null);
+                ret = dtLatestDate;
+            }
+            return ret;
+        }
+
+        /*--------------------------------------------------------------------------------
+         * スキーマの読み込み.
+         *--------------------------------------------------------------------------------*/
+        private void LoadScheme(object sender, EventArgs e)
+        {
+            string strSchemePath = m_strSceneDir.Replace(@"\", @"\\");
+            m_pplayer.execute("Load '" + strSchemePath + @"Scn\\TeamDevelopment.scm'");
         }
 
         /*--------------------------------------------------------------------------------
@@ -387,7 +499,7 @@ namespace teamproject1
         private string FormatPrefCapital(string strName)
         {
             string strRet = "";
-            if(strName == "東京")
+            if (strName == "東京")
             {
                 strRet = "　東　京　";
             }
@@ -395,11 +507,11 @@ namespace teamproject1
             {
                 strRet = strName + "市";
             }
-            else if(strName.Length == 3)
+            else if (strName.Length == 3)
             {
                 strRet = strName + "市";
             }
-            else if(strName.Length == 1)
+            else if (strName.Length == 1)
             {
                 strRet = $"　{strName}　市　";
             }
@@ -461,71 +573,93 @@ namespace teamproject1
         }
 
         /*--------------------------------------------------------------------------------
-         * 
+         *  textBox1に送出中のシーンが参照しているデータを表示するメソッド.
          *--------------------------------------------------------------------------------*/
         private void DispData(int nLocalID)
         {
-            string strScnName = "";
-            if (m_bCoronaFlag)
+            try
             {
-                strScnName = m_jaryScnNames[0][nLocalID];
-                var Date = m_pplayer.getTableData($"T( 'コロナの情報' ) C( '日付' ) ");
-                textBox1.Invoke((MethodInvoker)delegate
+                string strScnName = "";
+                if (m_bCoronaFlag)
                 {
-                    textBox1.AppendText($"'{strScnName}' ({Date})\r\n");
-                });
+                    // シーン名と日付を取得・表示
+                    strScnName = m_jaryScnNames[0][nLocalID];
+                    var Date = m_pplayer.getTableData($"T( 'コロナの情報' ) C( '日付' ) ");
+                    textBox1.Invoke((MethodInvoker)delegate
+                    {
+                        textBox1.AppendText($"'{strScnName}' ({Date})\r\n");
+                    });
 
-                int[] aryPrefectureIDs = m_jaryLocalPrefectureIDs[nLocalID];
-                foreach(int PrefectureID in aryPrefectureIDs)
-                {
-                    var Name = m_pplayer.getTableData($"T( '都道府県情報' ) R( {PrefectureID} ) C( 'name' )");
-                    var Data = m_pplayer.getTableData($"T( 'コロナの情報' ) C( {PrefectureID} )");
-                    textBox1.Invoke((MethodInvoker)delegate
+                    // 同地方の各都道府県名と新規陽性者数を取得・表示
+                    int[] aryPrefectureIDs = m_jaryLocalPrefectureIDs[nLocalID];
+                    foreach (int PrefectureID in aryPrefectureIDs)
                     {
-                        textBox1.AppendText($"　・{FormatPrefetureName(Name)} : {Data}人\r\n");
-                    });
-                }
-            }
-            else
-            {
-                strScnName = m_jaryScnNames[1][nLocalID];
-                var Year = m_pplayer.getTableData("T( '天気情報' ) C( '年' )");
-                var Month = m_pplayer.getTableData("T( '天気情報' ) C( '月' )");
-                var Date = m_pplayer.getTableData("T( '天気情報' ) C( '日' )");
-                var Hour = m_pplayer.getTableData("T( '天気情報' ) C( '時' )");
-                var Minute = m_pplayer.getTableData("T( '天気情報' ) C( '分' )");
-                string strDate = $"{Year}/{Month}/{Date} {Hour}:{Minute}0";
-                if(textBox1.InvokeRequired)
-                {
-                    textBox1.Invoke((MethodInvoker)delegate
-                    {
-                        textBox1.AppendText($"'{strScnName}' ({strDate})\r\n");
-                    });
+                        var Name = m_pplayer.getTableData($"T( '都道府県情報' ) R( {PrefectureID} ) C( 'name' )");
+                        var Data = m_pplayer.getTableData($"T( 'コロナの情報' ) C( {PrefectureID} )");
+                        textBox1.Invoke((MethodInvoker)delegate
+                        {
+                            textBox1.AppendText($"　・{FormatPrefetureName(Name)} : {Data}人\r\n");
+                        });
+                    }
                 }
                 else
                 {
-                    textBox1.AppendText($"{strScnName} ({strDate})\r\n");
-                }
-
-                int[] arySpotIDs = m_jarySpotIDs[nLocalID];
-                foreach (int nSpotID in arySpotIDs)
-                {
-                    var name = m_pplayer.getTableData($"T( '天気情報' ) R( {nSpotID} ) C( '地点' )");
-                    var HighTemp = m_pplayer.getTableData($"T( '天気情報' ) R( {nSpotID.ToString()} ) C( '今日の最高気温' )");
-                    var LowTemp = m_pplayer.getTableData($"T( '天気情報' ) R( { nSpotID.ToString()} ) C('今日の最低気温')");
-                    var Rain = m_pplayer.getTableData($"T( '天気情報' ) R( {nSpotID.ToString()} ) C( '現在の降水量' )");
-                    var Wind = m_pplayer.getTableData($"T( '天気情報' ) R( {nSpotID.ToString()} ) C( '今日の最大風速' )");
+                    // シーン名と日付を取得・表示
+                    strScnName = m_jaryScnNames[1][nLocalID];
+                    var Year = m_pplayer.getTableData("T( '天気情報' ) C( '年' )");
+                    var Month = m_pplayer.getTableData("T( '天気情報' ) C( '月' )");
+                    var Date = m_pplayer.getTableData("T( '天気情報' ) C( '日' )");
+                    var Hour = m_pplayer.getTableData("T( '天気情報' ) C( '時' )");
+                    var Minute = m_pplayer.getTableData("T( '天気情報' ) C( '分' )");
+                    string strDate = $"{Year}/{Month}/{Date} {Hour}:{Minute}0";
                     if (textBox1.InvokeRequired)
                     {
                         textBox1.Invoke((MethodInvoker)delegate
                         {
-                            textBox1.AppendText($"　・{FormatPrefCapital(name)}　{HighTemp}℃, {LowTemp}℃, {Rain} mm, {Wind} m/s\r\n");
+                            textBox1.AppendText($"'{strScnName}' ({strDate})\r\n");
                         });
                     }
                     else
                     {
-                        textBox1.AppendText($"　・{FormatPrefCapital(name)}　{HighTemp}℃, {LowTemp}℃, {Rain} mm, {Wind} m/s\r\n");
+                        textBox1.AppendText($"{strScnName} ({strDate})\r\n");
                     }
+
+                    // 送出中のシーンに表示されている観測所番号リストを取得
+                    int[] arySpotIDs = m_jarySpotIDs[nLocalID];
+                    foreach (int nSpotID in arySpotIDs)
+                    {
+                        // 観測所番号から名前と各情報を取得・表示
+                        var name = m_pplayer.getTableData($"T( '天気情報' ) R( {nSpotID} ) C( '地点' )");
+                        var HighTemp = m_pplayer.getTableData($"T( '天気情報' ) R( {nSpotID.ToString()} ) C( '今日の最高気温' )");
+                        var LowTemp = m_pplayer.getTableData($"T( '天気情報' ) R( { nSpotID.ToString()} ) C('今日の最低気温')");
+                        var Rain = m_pplayer.getTableData($"T( '天気情報' ) R( {nSpotID.ToString()} ) C( '現在の降水量' )");
+                        var Wind = m_pplayer.getTableData($"T( '天気情報' ) R( {nSpotID.ToString()} ) C( '今日の最大風速' )");
+                        if (textBox1.InvokeRequired)
+                        {
+                            textBox1.Invoke((MethodInvoker)delegate
+                            {
+                                textBox1.AppendText($"　・{FormatPrefCapital(name)}　{HighTemp}℃, {LowTemp}℃, {Rain} mm, {Wind} m/s\r\n");
+                            });
+                        }
+                        else
+                        {
+                            textBox1.AppendText($"　・{FormatPrefCapital(name)}　{HighTemp}℃, {LowTemp}℃, {Rain} mm, {Wind} m/s\r\n");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                if (textBox1.InvokeRequired)
+                {
+                    textBox1.Invoke((MethodInvoker)delegate
+                    {
+                        textBox1.AppendText(ex.Message);
+                    });
+                }
+                else
+                {
+                    textBox1.AppendText(ex.Message);
                 }
             }
         }
@@ -550,99 +684,6 @@ namespace teamproject1
                 ((Button)OldButton).FlatAppearance.BorderColor = m_OldButtonBorderColor;
                 ((Button)OldButton).FlatAppearance.BorderSize = (int)m_OldButtonStyle;
                 ((Button)OldButton).UseVisualStyleBackColor = true;
-            }
-        }
-
-
-        /*--------------------------------------------------------------------------------
-         * 
-         *--------------------------------------------------------------------------------*/
-        private void MonthCalendar_DateChanged(object sender, DateRangeEventArgs e)
-        {
-            //選択した日付を出力
-            m_strSelectDate = MonthCalendar.SelectionStart.ToShortDateString();
-            Console.WriteLine(MonthCalendar.SelectionStart.ToShortDateString());
-            textBox1.AppendText(MonthCalendar.SelectionStart.ToShortDateString() + "\r\n");
-        }
-
-        /*--------------------------------------------------------------------------------
-         * 天気ボタンでボタン画像の切り替え・カレンダー機能の停止
-         *--------------------------------------------------------------------------------*/
-        private void Weather_Click(object sender, EventArgs e)
-        {
-            m_bCoronaFlag = false;
-            MonthCalendar.Enabled = false;
-            Corona.BackgroundImage = Properties.Resources.covid19button;
-            Weather.BackgroundImage = Properties.Resources.weatherbutton_put;
-            textBox1.AppendText("《天気》\r\n");
-            //自動のリセット
-            m_nPlayCount = 0;
-        }
-
-        /*--------------------------------------------------------------------------------
-         * コロナボタンで画像の切り替え・カレンダー作動
-         *--------------------------------------------------------------------------------*/
-        private void Corona_Click(object sender, EventArgs e)
-        {
-            m_bCoronaFlag = true;
-            MonthCalendar.Enabled = true;
-            Corona.BackgroundImage = Properties.Resources.covid19button_put;
-            Weather.BackgroundImage = Properties.Resources.weatherbutton;
-            textBox1.AppendText( "《コロナ》\r\n");
-            //自動のリセット
-            m_nPlayCount = 0;
-        }
-
-        /*--------------------------------------------------------------------------------
-         * オープンデータ保存ディレクトリ内に変更が起きた時に呼び出されるイベント.
-         * スキーマを読み込みなおす.
-         * 天気情報をまとめたファイルを作成する.
-         *--------------------------------------------------------------------------------*/
-        private void watcher_Renamed(object sender, System.IO.FileSystemEventArgs e)
-        {
-            if (e.Name == "新規陽性者数.csv")
-            {
-                // 新規陽性者数.csvが更新された時の処理
-                MonthCalendar.MaxDate = getLatestDate(e.FullPath);
-                LoadScheme(null, null);
-            }
-            else
-            {
-                // 天気情報の更新処理
-                // 全ての天気に関するファイルが更新されたら、まとめる処理を実行.
-                switch(e.Name)
-                {
-                    case "最高気温.csv":
-                        m_WeatherCsvFlag |= 0x01;
-                        break;
-                    case "最低気温.csv":
-                        m_WeatherCsvFlag |= 0x02;
-                        break;
-                    case "日降水量.csv":
-                        m_WeatherCsvFlag |= 0x04;
-                        break;
-                    case "最大風速.csv":
-                        m_WeatherCsvFlag |= 0x08;
-                        break;
-                    default:
-                        break;
-                }
-
-                if(m_WeatherCsvFlag == 0x0f)
-                {
-                    // 4種類の天気情報すべてが更新された時の処理
-                    try
-                    {
-                        // 別exeファイル（天気情報をまとめるプログラム）を実行.
-                        m_procGatherCsvExe.Start();
-
-                        m_WeatherCsvFlag = 0x00;
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                }
             }
         }
     }
