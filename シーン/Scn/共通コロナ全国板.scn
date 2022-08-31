@@ -5,37 +5,34 @@ Frame "共通コロナ全国板" {
 	fOADevice { "GRID-EX32HD" }
 	Layer "レイヤー1" {
 		Group {
-			Board "サンプル" {
-				375 291 280 117  
-				Color { 255 22 40 255   AntiAlias 2 }
+			Group "板" {
+				Board "サンプル" {
+					100 112 230 128  
+					Color { 226 42 18 255   AntiAlias 2 }
+				}
+				Board "サンプル" {
+					100 112 230 50  
+					Color { 240 245 0 255   AntiAlias 2 }
+				}
+			}
+			StringBox {
+				111 164 207 74  H CL T 0 R( V0 ) 
+				Style "TV用太角ゴシック体" 
+				Size 65 100 
+				Color { 255 255 255 255   AntiAlias 2 }
+				Proportional 
+				",,\(T( "コロナの情報" ) R( V1 ) C( T( "都道府県情報" ) C( "name" ) ) , L/U31310d)" 
+				Size 30 100 
+				"人" 
+				Color { 41 41 41 255   AntiAlias 2 }
 			}
 			String {
-				392 391 245  H CL 
+				128 156 175  H CL R( V0 ) 
 				Style "TV用太角ゴシック体" 
-				Size 64 100 
-				Color { 0 0 0 255   AntiAlias 2 }
-				Effect {
-					Edge {
-						3 
-						Color { 255 255 0 255   BlendNamKey }
-					}
-				}
+				Size 40 100 
+				Color { 41 41 41 255   AntiAlias 2 }
 				Proportional 
-				Offset 0 5 
 				"\(T( "都道府県情報" ) C( "name" ) , Ss)" 
-				Style "Ｎ-マール体" 
-				Size 92 100 
-				Offset 0 12 
-				" ,," 
-				Style "TV用太角ゴシック体" 
-				Size 90 100 
-				Space 90 
-				Offset 0 1 
-				"\(T( "コロナの情報" ) R( V1 ) C( T( "都道府県情報" ) C( "name" ) ) , L/U31310d)" 
-				Size 64 100 
-				Offset 0 1 
-				"人" 
-				Offset 0 1 
 			} 
 		} 
 	} 
