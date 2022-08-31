@@ -158,12 +158,18 @@ namespace teamproject1
             //送出デバイスの設定
             m_pplayer.execute("GetDevice WinGL HD SendTo -1 0");
 
-            if (!System.IO.File.Exists($@"{m_strSceneDir}\Data\新規陽性者数.csv") || !System.IO.File.Exists($@"{m_strSceneDir}\Data\天気情報.csv"))
+            // ファイルの有無によるボタンの有効・無効化
+            if (!System.IO.File.Exists($@"{m_strSceneDir}\Data\新規陽性者数.csv") && !System.IO.File.Exists($@"{m_strSceneDir}\Data\天気情報.csv"))
             {
+                // 両方ない場合、全てを無効
                 MonthCalendar.Visible = false;
                 Corona.Enabled = false;
                 Weather.Enabled = false;
                 Play.Enabled = false;
+
+                Corona.BackgroundImage = Properties.Resources.covid19button_impossible;
+                Weather.BackgroundImage = Properties.Resources.weatherbutton_impossible;
+
                 // 日本地図のボタンデザインの変更・機能停止
                 foreach (int[] aryPrefectureIDs in m_jaryLocalPrefectureIDs)
                 {
@@ -174,15 +180,41 @@ namespace teamproject1
                         ((Button)control).BackColor = Color.AliceBlue;
                     }
                 }
-                m_bCsvExistFlag = true;
                 textBox1.AppendText("データダウンロード中\r\n");
+                m_bCsvExistFlag = true;
+            }
+            else if (System.IO.File.Exists($@"{m_strSceneDir}\Data\新規陽性者数.csv") && !System.IO.File.Exists($@"{m_strSceneDir}\Data\天気情報.csv"))
+            {
+                // 新規陽性者数.csvのみある場合、天気ボタンを無効
+                Weather.Enabled = false;
+                Corona.BackgroundImage = Properties.Resources.covid19buttonpush_dimensional;
+                Weather.BackgroundImage = Properties.Resources.weatherbutton_impossible;
+                textBox1.AppendText("《コロナ》\r\n");
+                MonthCalendar.SelectionStart = MonthCalendar.MaxDate;
+                textBox1.AppendText("天気情報ダウンロード中\r\n");
+                m_bCoronaFlag = true;
+                m_bCsvExistFlag = true;
+            }
+            else if (!System.IO.File.Exists($@"{m_strSceneDir}\Data\新規陽性者数.csv") && System.IO.File.Exists($@"{m_strSceneDir}\Data\天気情報.csv"))
+            {
+                // 天気情報.csvのみある場合、コロナボタンとカレンダーを無効
+                MonthCalendar.Visible = false;
+                Corona.Enabled = false;
+                Corona.BackgroundImage = Properties.Resources.covid19button_impossible;
+                Weather.BackgroundImage = Properties.Resources.weatherbuttonsuph_dimensional;
+                textBox1.AppendText("《天気》\r\n");
+                textBox1.AppendText("新規陽性者数ダウンロード中\r\n");
+                m_bCoronaFlag = false;
+                m_bCsvExistFlag = true;
             }
             else
             {
+                // 両方ある場合、デフォルトで選択されるボタンをコロナにしてボタンのイメージを押された状態に変更
                 Corona.BackgroundImage = Properties.Resources.covid19buttonpush_dimensional;
                 Weather.BackgroundImage = Properties.Resources.weatherbutton_dimensional;
                 textBox1.AppendText("《コロナ》\r\n");
                 MonthCalendar.SelectionStart = MonthCalendar.MaxDate;
+                m_bCoronaFlag = true;
             }
 
             LoadScheme();
@@ -546,79 +578,65 @@ namespace teamproject1
         private void ReEnableButtons()
         {
             string strCsvPath = $@"{m_strSceneDir}\Data\";
-            if (System.IO.File.Exists($"{strCsvPath}新規陽性者数.csv") && System.IO.File.Exists($"{strCsvPath}天気情報.csv") && m_bCsvExistFlag)
+            if (System.IO.File.Exists($"{strCsvPath}新規陽性者数.csv"))
             {
-                if (textBox1.InvokeRequired)
+                if (m_bCsvExistFlag)
                 {
                     textBox1.Invoke((MethodInvoker)delegate
                     {
-                        textBox1.AppendText("データダウンロード完了\r\n");
+                        textBox1.AppendText("新規陽性者数.csvデータダウンロード完了\r\n");
                         textBox1.AppendText("《コロナ》\r\n");
                     });
-                }
-                else
-                {
-                    textBox1.AppendText("データダウンロード完了\r\n");
-                    textBox1.AppendText("《コロナ》\r\n");
-                }
-                
-                if(Play.InvokeRequired)
-                {
-                    Play.Invoke((MethodInvoker)delegate
-                    {
-                        Play.Enabled = true;
-                    });
-                }
-                else
-                {
-                    Play.Enabled = true;
+                    m_bCsvExistFlag = false;
                 }
 
-                if (Corona.InvokeRequired)
+                Corona.Invoke((MethodInvoker)delegate
+                {
+                    Corona.Enabled = true;
+                });
+
+                if (m_bCoronaFlag)
                 {
                     Corona.Invoke((MethodInvoker)delegate
                     {
-                        Corona.Enabled = true;
+                        Corona.BackgroundImage = Properties.Resources.covid19buttonpush_dimensional;
                     });
-                }
-                else
-                {
-                    Corona.Enabled = true;
-                }
-                if (Weather.InvokeRequired)
-                {
+
                     Weather.Invoke((MethodInvoker)delegate
                     {
-                        Weather.Enabled = true;
+                        Weather.BackgroundImage = Properties.Resources.weatherbutton_dimensional;
                     });
                 }
                 else
                 {
-                    Weather.Enabled = true;
+                    Corona.Invoke((MethodInvoker)delegate
+                    {
+                        Corona.BackgroundImage = Properties.Resources.covid19button_dimensional;
+                    });
+
+                    Weather.Invoke((MethodInvoker)delegate
+                    {
+                        Weather.BackgroundImage = Properties.Resources.weatherbuttonsuph_dimensional;
+                    });
                 }
 
-                foreach (int[] aryPrefectureIDs in m_jaryLocalPrefectureIDs)
+                MonthCalendar.Invoke((MethodInvoker)delegate
                 {
-                    foreach (int nPrefectureID in aryPrefectureIDs)
+                    MonthCalendar.Visible = true;
+                    MonthCalendar.SelectionStart = MonthCalendar.MaxDate;
+                });
+            }
+
+            if (System.IO.File.Exists($"{strCsvPath}天気情報.csv"))
+            {
+                if (m_bCsvExistFlag)
+                {
+                    textBox1.Invoke((MethodInvoker)delegate
                     {
-                        Control control = this.Controls[$"id{nPrefectureID}"];
-                        Button button = ((Button)control);
-                        if (button.InvokeRequired)
-                        {
-                            button.Invoke((MethodInvoker)delegate
-                            {
-                                button.Enabled = true;
-                                int nLocalID = Localjudge(nPrefectureID);
-                                button.BackColor = m_jaryLocalColors[0][nLocalID];
-                            });
-                        }
-                        else
-                        {
-                            button.Enabled = true;
-                            int nLocalID = Localjudge(nPrefectureID);
-                            button.BackColor = m_jaryLocalColors[0][nLocalID];
-                        }
-                    }
+                        textBox1.AppendText("天気情報.csvデータダウンロード完了\r\n");
+                        textBox1.AppendText("《天気》\r\n");
+                    });
+                    m_bCsvExistFlag = false;
                 }
 
                 if (m_bCoronaFlag)
@@ -646,21 +664,31 @@ namespace teamproject1
                     });
                 }
 
-                if (MonthCalendar.InvokeRequired)
+                Weather.Invoke((MethodInvoker)delegate
                 {
-                    MonthCalendar.Invoke((MethodInvoker)delegate
+                    Weather.Enabled = true;
+                });
+            }
+
+
+            Play.Invoke((MethodInvoker)delegate
+            {
+                Play.Enabled = true;
+            });
+
+            foreach (int[] aryPrefectureIDs in m_jaryLocalPrefectureIDs)
+            {
+                foreach (int nPrefectureID in aryPrefectureIDs)
+                {
+                    Control control = this.Controls[$"id{nPrefectureID}"];
+                    Button button = ((Button)control);
+                    button.Invoke((MethodInvoker)delegate
                     {
-                        MonthCalendar.Visible = true;
-                        MonthCalendar.SelectionStart = MonthCalendar.MaxDate;
+                        button.Enabled = true;
+                        int nLocalID = Localjudge(nPrefectureID);
+                        button.BackColor = m_jaryLocalColors[0][nLocalID];
                     });
                 }
-                else
-                {
-                    MonthCalendar.Visible = true;
-                    MonthCalendar.SelectionStart = MonthCalendar.MaxDate;
-                }
-
-                m_bCsvExistFlag = false;
             }
         }
 
