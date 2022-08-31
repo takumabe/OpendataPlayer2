@@ -118,37 +118,43 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="playbutton" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\playbutton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="covid19button_impossible" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\covid19button_impossible1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="コロナアイコン" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\コロナアイコン.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="weatherbutton_impossible" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\weatherbutton_impossible.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="stopbutton" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\stopbutton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="weatherbuttonsuph_dimensional" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\weatherbuttonsuph_dimensional.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="天気アイコン" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\天気アイコン.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="covid19button_dimensional" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\covid19button_dimensional.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="covid19button" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\covid19button.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="playbuttonフチなし " type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\playbuttonフチなし .png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="covid19button-put" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\covid19button-put.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="stopbutton2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\stopbutton2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="playbutton1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\playbutton1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="covid19buttonpush_dimensional" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\covid19buttonpush_dimensional.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="stopbutton1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\stopbutton1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="playbutton2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\playbutton2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="weatherbutton" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\weatherbutton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="weatherbutton-put" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\weatherbutton-put.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="weatherbutton_dimensional" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\weatherbutton_dimensional.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="アプリアイコン" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\アプリアイコン.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="stopbutton3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\stopbutton3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="playbutton2フチなし" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\playbutton2フチなし.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="stopbuttonフチなし" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\stopbuttonフチなし.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

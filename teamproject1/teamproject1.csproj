@@ -179,6 +179,22 @@
     <None Include="Resources\アプリアイコン.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\covid19button_dimensional.png" />
+    <None Include="Resources\covid19buttonpush_dimensional.png" />
+    <None Include="Resources\covid19button_impossible.png" />
+    <None Include="Resources\weatherbutton_dimensional.png" />
+    <None Include="Resources\weatherbutton_impossible.png" />
+    <None Include="Resources\weatherbuttonsuph_dimensional.png" />
+    <None Include="Resources\covid19button_impossible1.png" />
+    <None Include="Resources\playbutton2.png" />
+    <None Include="Resources\stopbutton2.png" />
+    <None Include="Resources\stopbutton3.png" />
+    <None Include="Resources\playbutton3.png" />
+    <None Include="Resources\playbutton2フチなし.png" />
+    <None Include="Resources\playbutton2フチなし %281%29.png" />
+    <None Include="Resources\playbutton2フチなし %282%29.png" />
+    <None Include="Resources\playbuttonフチなし .png" />
+    <None Include="Resources\stopbuttonフチなし.png" />
     <Content Include="アイコン.ico" />
     <Content Include="アプリアイコン.ico" />
   </ItemGroup>
