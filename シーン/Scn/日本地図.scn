@@ -5,34 +5,45 @@ Frame "日本地図" {
 	fVideoAtr { Ortho3D }
 	fOADevice { "GRID-EX32HD" }
 	Layer "レイヤー1" {
+		Link "リンク" {
+			"共通コロナ全国板" 163 618  
+			Hidden 
+		} 
 		Group {
 			T( "コロナの情報" ) R( 1 ) 
+			Image "イメージ" {
+				555 115 510 137  CC 
+				Name "コロナ.png" 0 
+				ExpandForDevice 
+				Offset ( 0 ) ( 0 ) 
+				Resize byRect 
+			} 
 			Board "サンプル" {
-				183 304 330 117  
-				Color { 107 0 0 255   AntiAlias 2 }
-			}
+				694 128 354 117  
+				Color { 255 255 255 255   AntiAlias 2 }
+				Hidden 
+			} 
 			String "サンプル" {
-				208 405 278  H CL 
+				676 219 362  H CL 
 				Style "TV用太角ゴシック体" 
 				Size 64 100 
-				Color { 0 0 0 255   AntiAlias 2 }
+				Color { 255 255 255 255   AntiAlias 2 }
+				Proportional 
+				"\(T( "都道府県情報" ) C( "name" ) , Ss) " 
+				Size 80 100 
+				Color { 41 41 41 255   AntiAlias 2 }
 				Effect {
 					Edge {
 						3 
-						Color { 207 214 0 255   BlendNamKey }
+						Color { 240 245 0 255  }
 					}
 				}
-				Proportional 
-				Offset 0 5 
-				"\(T( "都道府県情報" ) C( "name" ) , Ss) ,," 
-				Size 90 100 
-				Space 90 
-				Offset 0 1 
-				"\(T( "コロナの情報" ) R( V1 ) C( T( "都道府県情報" ) C( "name" ) ) , L/U31310d)" 
-				Size 64 100 
-				Offset 0 1 
+				",,\(T( "コロナの情報" ) R( V1 ) C( T( "都道府県情報" ) C( "name" ) ) , L/U31310d)" 
+				Size 50 100 
+				Color { 255 255 255 255   AntiAlias 2 }
+				Effect {
+				}
 				"人" 
-				Offset 0 1 
 			} 
 		} 
 		Image "イメージ" {
@@ -79,7 +90,6 @@ Frame "日本地図" {
 				"者" 
 				Offset 0 -7 
 				"数" 
-				Offset 0 -7 
 			} 
 			PolyLine "折れ線" {
 				10 
@@ -115,7 +125,6 @@ Frame "日本地図" {
 				"時" 
 				Offset 0 1 
 				"点" 
-				Offset 0 1 
 			} 
 		} 
 	} 

@@ -1,9 +1,73 @@
 
 Frame "共通コロナ板" {
 	Version 50463 
+	fVideoAtr { Ortho3D }
 	fOADevice { "GRID-EX32HD" }
 	Layer "レイヤー1" {
 		Group {
+			Group "板" {
+				Board "サンプル" {
+					535 289 230 128  
+					Color { 226 42 18 255   AntiAlias 2 }
+				}
+				Board "サンプル" {
+					535 289 230 47  
+					Color { 25 255 204 255   AntiAlias 2 }
+					Hidden 
+				} 
+				PolyLine "直線" {
+					7 
+					Color { 0 0 0 255   AntiAlias 2 }
+					uPoints {
+						2 
+						535 339 765 339 
+					} 
+					Hidden 
+					535 339  765 339  
+				} 
+			} 
+			StringBox {
+				533 339 233 74  H CL T 0 
+				Style "TV用太角ゴシック体" 
+				Size 70 100 
+				Color { 41 41 41 255   AntiAlias 2 }
+				Effect {
+					Edge {
+						3 
+						Color { 240 245 0 255  }
+					}
+				}
+				Proportional 
+				",,\(T( "コロナの情報" ) C( T( "都道府県情報" ) C( "name" ) ) , L/U31310d)" 
+				Size 25 100 
+				Color { 240 245 0 255   AntiAlias 2 }
+				Effect {
+					Edge {
+						2 
+						Color { 41 41 41 255  }
+					}
+				}
+				Offset 9 0 
+				"人" 
+				Offset 9 0 
+			} 
+			String {
+				563 329 175  H CL 
+				Style "TV用太角ゴシック体" 
+				Size 32 100 
+				Color { 240 245 0 255   AntiAlias 2 }
+				Effect {
+					Edge {
+						2 
+						Color { 41 41 41 255  }
+					}
+				}
+				Proportional 
+				"\(T( "都道府県情報" ) C( "name" ) , Ss)" 
+			} 
+		} 
+		Group {
+			Hidden 
 			uPushWipeIn { NonVolatile 0 12000  1 }
 			uTimeCodeInfoIn { Priority 1 LinkTop 0 }
 			Board "サンプル" {

@@ -202,7 +202,7 @@ Frame "関東天気" {
 				927 493 105  H CL 
 				Style "TV用太角ゴシック体" 
 				Size 30 100 
-				Color { 0 0 0 255   AntiAlias 3 }
+				Color { 41 41 41 255   AntiAlias 3 }
 				Proportional 
 				"東京" 
 			} 
