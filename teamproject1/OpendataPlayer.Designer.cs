@@ -843,7 +843,7 @@ namespace teamproject1
             // 
             // Play
             // 
-            this.Play.BackgroundImage = global::teamproject1.Properties.Resources.playbutton1;
+            this.Play.BackgroundImage = global::teamproject1.Properties.Resources.playbuttonフチなし_;
             this.Play.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Play.FlatAppearance.BorderSize = 0;
             this.Play.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
@@ -859,9 +859,11 @@ namespace teamproject1
             // Stop
             // 
             this.Stop.BackColor = System.Drawing.Color.AliceBlue;
-            this.Stop.BackgroundImage = global::teamproject1.Properties.Resources.stopbutton1;
+            this.Stop.BackgroundImage = global::teamproject1.Properties.Resources.stopbuttonフチなし;
             this.Stop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Stop.FlatAppearance.BorderSize = 0;
+            this.Stop.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.Stop.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.Stop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Stop.Location = new System.Drawing.Point(445, 100);
             this.Stop.Name = "Stop";
@@ -873,7 +875,7 @@ namespace teamproject1
             // 
             // Corona
             // 
-            this.Corona.BackgroundImage = global::teamproject1.Properties.Resources.covid19button;
+            this.Corona.BackgroundImage = global::teamproject1.Properties.Resources.covid19button_dimensional;
             this.Corona.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Corona.FlatAppearance.BorderSize = 0;
             this.Corona.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -886,7 +888,7 @@ namespace teamproject1
             // 
             // Weather
             // 
-            this.Weather.BackgroundImage = global::teamproject1.Properties.Resources.weatherbutton;
+            this.Weather.BackgroundImage = global::teamproject1.Properties.Resources.weatherbutton_dimensional;
             this.Weather.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Weather.FlatAppearance.BorderSize = 0;
             this.Weather.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

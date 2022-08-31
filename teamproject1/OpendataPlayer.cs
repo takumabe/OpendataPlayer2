@@ -179,8 +179,8 @@ namespace teamproject1
             }
             else
             {
-                Corona.BackgroundImage = Properties.Resources.covid19button_put;
-                Weather.BackgroundImage = Properties.Resources.weatherbutton;
+                Corona.BackgroundImage = Properties.Resources.covid19buttonpush_dimensional;
+                Weather.BackgroundImage = Properties.Resources.weatherbutton_dimensional;
                 textBox1.AppendText("《コロナ》\r\n");
                 MonthCalendar.SelectionStart = MonthCalendar.MaxDate;
             }
@@ -226,8 +226,8 @@ namespace teamproject1
             }
             m_bCoronaFlag = true;
             MonthCalendar.Visible = true;
-            Corona.BackgroundImage = Properties.Resources.covid19button_put;
-            Weather.BackgroundImage = Properties.Resources.weatherbutton;
+            Corona.BackgroundImage = Properties.Resources.covid19buttonpush_dimensional;
+            Weather.BackgroundImage = Properties.Resources.weatherbutton_dimensional;
             textBox1.AppendText("《コロナ》\r\n");
             //自動のリセット
             m_nPlayCount = 0;
@@ -246,8 +246,8 @@ namespace teamproject1
             }
             m_bCoronaFlag = false;
             MonthCalendar.Visible = false;
-            Corona.BackgroundImage = Properties.Resources.covid19button;
-            Weather.BackgroundImage = Properties.Resources.weatherbutton_put;
+            Corona.BackgroundImage = Properties.Resources.covid19button_dimensional;
+            Weather.BackgroundImage = Properties.Resources.weatherbuttonsuph_dimensional;
             textBox1.AppendText("《天気》\r\n");
             //自動のリセット
             m_nPlayCount = 0;
@@ -292,7 +292,6 @@ namespace teamproject1
                     ((Button)control).BackColor = Color.AliceBlue;
                 }
             }
-
             //TextBox表示
             textBox1.AppendText( "【自動再生中】\r\n");
             
@@ -343,7 +342,8 @@ namespace teamproject1
             // ジャンル変更解禁
             Corona.Enabled = true;
             Weather.Enabled = true;
-
+            //自動再生中の再生ボタンの色に切り換え
+           // Play.BackgroundImage = Properties.Resources.playbutton3;
             //カレンダー表示
             if (m_bCoronaFlag)
             {
@@ -360,6 +360,7 @@ namespace teamproject1
                     ((Button)control).BackColor = m_jaryLocalColors[0][nLocalID];
                 }
             }
+
             //TextBoxに表示
             textBox1.AppendText( "【停止】\r\n");
             //再生停止の切り替え
@@ -374,6 +375,9 @@ namespace teamproject1
          *--------------------------------------------------------------------------------*/
         private void NihonMethod(object sender, EventArgs e)
         {
+            //手動中再生ボタンを黄色に変更
+            Play.BackgroundImage = Properties.Resources.playbutton2;
+
             m_pplayer.execute("Abort B");
             m_pplayer.execute("Clear B");
 
@@ -619,29 +623,27 @@ namespace teamproject1
 
                 if (m_bCoronaFlag)
                 {
-                    if (Corona.InvokeRequired)
+                    Corona.Invoke((MethodInvoker)delegate
                     {
-                        Corona.Invoke((MethodInvoker)delegate
-                        {
-                            Corona.BackgroundImage = Properties.Resources.covid19button_put;
-                        });
-                    }
-                    else
-                    {
-                        Corona.BackgroundImage = Properties.Resources.covid19button_put;
-                    }
+                        Corona.BackgroundImage = Properties.Resources.covid19buttonpush_dimensional;
+                    });
 
-                    if (Weather.InvokeRequired)
+                    Weather.Invoke((MethodInvoker)delegate
                     {
-                        Weather.Invoke((MethodInvoker)delegate
-                        {
-                            Weather.BackgroundImage = Properties.Resources.weatherbutton;
-                        });
-                    }
-                    else
+                        Weather.BackgroundImage = Properties.Resources.weatherbutton_dimensional;
+                    });
+                }
+                else
+                {
+                    Corona.Invoke((MethodInvoker)delegate
                     {
-                        Weather.BackgroundImage = Properties.Resources.weatherbutton;
-                    }
+                        Corona.BackgroundImage = Properties.Resources.covid19button_dimensional;
+                    });
+
+                    Weather.Invoke((MethodInvoker)delegate
+                    {
+                        Weather.BackgroundImage = Properties.Resources.weatherbuttonsuph_dimensional;
+                    });
                 }
 
                 if (MonthCalendar.InvokeRequired)
@@ -700,14 +702,20 @@ namespace teamproject1
         private DateTime getLatestDate(string strCovidPath)
         {
             DateTime ret = DateTime.Today.AddDays(-1);
-
-            if (System.IO.File.Exists(strCovidPath))
+            try
             {
-                string strAllText = System.IO.File.ReadAllText(strCovidPath, System.Text.Encoding.GetEncoding("shift-jis"));
-                string[] arySplitesText = strAllText.Replace('\n', ',').Split(',');
-                Array.Reverse(arySplitesText);
-                DateTime dtLatestDate = DateTime.ParseExact(arySplitesText[52], "yyyy/MM/dd", null);
-                ret = dtLatestDate;
+                if (System.IO.File.Exists(strCovidPath))
+                {
+                    string strAllText = System.IO.File.ReadAllText(strCovidPath, System.Text.Encoding.GetEncoding("shift-jis"));
+                    string[] arySplitesText = strAllText.Replace('\n', ',').Split(',');
+                    Array.Reverse(arySplitesText);
+                    DateTime dtLatestDate = DateTime.ParseExact(arySplitesText[52], "yyyy/MM/dd", null);
+                    ret = dtLatestDate;
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
             return ret;
         }

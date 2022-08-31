@@ -63,9 +63,9 @@ namespace teamproject1.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap covid19button {
+        internal static System.Drawing.Bitmap covid19button_dimensional {
             get {
-                object obj = ResourceManager.GetObject("covid19button", resourceCulture);
+                object obj = ResourceManager.GetObject("covid19button_dimensional", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace teamproject1.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap covid19button_put {
+        internal static System.Drawing.Bitmap covid19button_impossible {
             get {
-                object obj = ResourceManager.GetObject("covid19button-put", resourceCulture);
+                object obj = ResourceManager.GetObject("covid19button_impossible", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace teamproject1.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap playbutton {
+        internal static System.Drawing.Bitmap covid19buttonpush_dimensional {
             get {
-                object obj = ResourceManager.GetObject("playbutton", resourceCulture);
+                object obj = ResourceManager.GetObject("covid19buttonpush_dimensional", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace teamproject1.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap playbutton1 {
+        internal static System.Drawing.Bitmap playbutton2 {
             get {
-                object obj = ResourceManager.GetObject("playbutton1", resourceCulture);
+                object obj = ResourceManager.GetObject("playbutton2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +103,9 @@ namespace teamproject1.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap stopbutton {
+        internal static System.Drawing.Bitmap playbutton2フチなし {
             get {
-                object obj = ResourceManager.GetObject("stopbutton", resourceCulture);
+                object obj = ResourceManager.GetObject("playbutton2フチなし", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +113,9 @@ namespace teamproject1.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap stopbutton1 {
+        internal static System.Drawing.Bitmap playbuttonフチなし_ {
             get {
-                object obj = ResourceManager.GetObject("stopbutton1", resourceCulture);
+                object obj = ResourceManager.GetObject("playbuttonフチなし ", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +123,9 @@ namespace teamproject1.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap weatherbutton {
+        internal static System.Drawing.Bitmap stopbutton2 {
             get {
-                object obj = ResourceManager.GetObject("weatherbutton", resourceCulture);
+                object obj = ResourceManager.GetObject("stopbutton2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +133,49 @@ namespace teamproject1.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap weatherbutton_put {
+        internal static System.Drawing.Bitmap stopbutton3 {
             get {
-                object obj = ResourceManager.GetObject("weatherbutton-put", resourceCulture);
+                object obj = ResourceManager.GetObject("stopbutton3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap stopbuttonフチなし {
+            get {
+                object obj = ResourceManager.GetObject("stopbuttonフチなし", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap weatherbutton_dimensional {
+            get {
+                object obj = ResourceManager.GetObject("weatherbutton_dimensional", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap weatherbutton_impossible {
+            get {
+                object obj = ResourceManager.GetObject("weatherbutton_impossible", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap weatherbuttonsuph_dimensional {
+            get {
+                object obj = ResourceManager.GetObject("weatherbuttonsuph_dimensional", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -146,26 +186,6 @@ namespace teamproject1.Properties {
         internal static System.Drawing.Bitmap アプリアイコン {
             get {
                 object obj = ResourceManager.GetObject("アプリアイコン", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
-        /// </summary>
-        internal static System.Drawing.Bitmap コロナアイコン {
-            get {
-                object obj = ResourceManager.GetObject("コロナアイコン", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
-        /// </summary>
-        internal static System.Drawing.Bitmap 天気アイコン {
-            get {
-                object obj = ResourceManager.GetObject("天気アイコン", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
