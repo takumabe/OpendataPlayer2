@@ -195,6 +195,7 @@
     <None Include="Resources\playbutton2フチなし %282%29.png" />
     <None Include="Resources\playbuttonフチなし .png" />
     <None Include="Resources\stopbuttonフチなし.png" />
+    <None Include="Resources\playbutton_impossible.png" />
     <Content Include="アイコン.ico" />
     <Content Include="アプリアイコン.ico" />
   </ItemGroup>

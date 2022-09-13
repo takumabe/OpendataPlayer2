@@ -843,7 +843,7 @@ namespace teamproject1
             // 
             // Play
             // 
-            this.Play.BackgroundImage = global::teamproject1.Properties.Resources.playbuttonフチなし_;
+            this.Play.BackgroundImage = global::teamproject1.Properties.Resources.playbutton_decision;
             this.Play.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Play.FlatAppearance.BorderSize = 0;
             this.Play.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
@@ -859,7 +859,7 @@ namespace teamproject1
             // Stop
             // 
             this.Stop.BackColor = System.Drawing.Color.AliceBlue;
-            this.Stop.BackgroundImage = global::teamproject1.Properties.Resources.stopbuttonフチなし;
+            this.Stop.BackgroundImage = global::teamproject1.Properties.Resources.stopbutton;
             this.Stop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Stop.FlatAppearance.BorderSize = 0;
             this.Stop.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
