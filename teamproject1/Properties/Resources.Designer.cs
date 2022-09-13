@@ -93,9 +93,9 @@ namespace teamproject1.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap playbutton2 {
+        internal static System.Drawing.Bitmap playbutton_decision {
             get {
-                object obj = ResourceManager.GetObject("playbutton2", resourceCulture);
+                object obj = ResourceManager.GetObject("playbutton_decision", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +103,9 @@ namespace teamproject1.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap playbutton2フチなし {
+        internal static System.Drawing.Bitmap playbutton_impossible {
             get {
-                object obj = ResourceManager.GetObject("playbutton2フチなし", resourceCulture);
+                object obj = ResourceManager.GetObject("playbutton_impossible", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,39 +113,9 @@ namespace teamproject1.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap playbuttonフチなし_ {
+        internal static System.Drawing.Bitmap stopbutton {
             get {
-                object obj = ResourceManager.GetObject("playbuttonフチなし ", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
-        /// </summary>
-        internal static System.Drawing.Bitmap stopbutton2 {
-            get {
-                object obj = ResourceManager.GetObject("stopbutton2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
-        /// </summary>
-        internal static System.Drawing.Bitmap stopbutton3 {
-            get {
-                object obj = ResourceManager.GetObject("stopbutton3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
-        /// </summary>
-        internal static System.Drawing.Bitmap stopbuttonフチなし {
-            get {
-                object obj = ResourceManager.GetObject("stopbuttonフチなし", resourceCulture);
+                object obj = ResourceManager.GetObject("stopbutton", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

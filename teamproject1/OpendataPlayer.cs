@@ -170,6 +170,7 @@ namespace teamproject1
 
                 Corona.BackgroundImage = Properties.Resources.covid19button_impossible;
                 Weather.BackgroundImage = Properties.Resources.weatherbutton_impossible;
+                Play.BackgroundImage = Properties.Resources.playbutton_impossible;
 
                 // 日本地図のボタンデザインの変更・機能停止
                 foreach (int[] aryPrefectureIDs in m_jaryLocalPrefectureIDs)
@@ -412,7 +413,7 @@ namespace teamproject1
         private void NihonMethod(object sender, EventArgs e)
         {
             //手動中再生ボタンを黄色に変更
-            Play.BackgroundImage = Properties.Resources.playbutton2;
+            Play.BackgroundImage = Properties.Resources.playbutton_decision;
 
             m_pplayer.execute("Abort B");
             m_pplayer.execute("Clear B");
@@ -686,6 +687,7 @@ namespace teamproject1
             Play.Invoke((MethodInvoker)delegate
             {
                 Play.Enabled = true;
+                Play.BackgroundImage = Properties.Resources.playbutton_decision;
             });
 
             foreach (int[] aryPrefectureIDs in m_jaryLocalPrefectureIDs)
