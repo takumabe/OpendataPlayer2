@@ -30,7 +30,8 @@ namespace teamproject1
 
         private bool m_bTakeFlag = false;       // Takeできるかどうか
         private bool m_bCoronaFlag = true;      // コロナか天気か
-        private bool m_bCsvExistFlag = false;   // 新規陽性者数.csvと天気情報.csvが存在しているか
+        private bool m_bCovidCsvExistFlag = false;   // 新規陽性者数.csvが存在しているか
+        private bool m_bWeatherCsvExistFlag = false;   // 天気情報.csvが存在しているか
         private byte m_WeatherCsvFlag = 0x00;   // 天気系csvファイルのどれが存在しているか
 
         private static System.Threading.Timer m_AreaTimer;      // 自動再生用タイマ
@@ -181,7 +182,8 @@ namespace teamproject1
                     }
                 }
                 textBox1.AppendText("データダウンロード中\r\n");
-                m_bCsvExistFlag = true;
+                m_bCovidCsvExistFlag = true;
+                m_bWeatherCsvExistFlag = true;
             }
             else if (System.IO.File.Exists($@"{m_strSceneDir}\Data\新規陽性者数.csv") && !System.IO.File.Exists($@"{m_strSceneDir}\Data\天気情報.csv"))
             {
@@ -193,7 +195,8 @@ namespace teamproject1
                 MonthCalendar.SelectionStart = MonthCalendar.MaxDate;
                 textBox1.AppendText("天気情報ダウンロード中\r\n");
                 m_bCoronaFlag = true;
-                m_bCsvExistFlag = true;
+                m_bCovidCsvExistFlag = true;
+                m_bWeatherCsvExistFlag = false;
             }
             else if (!System.IO.File.Exists($@"{m_strSceneDir}\Data\新規陽性者数.csv") && System.IO.File.Exists($@"{m_strSceneDir}\Data\天気情報.csv"))
             {
@@ -205,7 +208,8 @@ namespace teamproject1
                 textBox1.AppendText("《天気》\r\n");
                 textBox1.AppendText("新規陽性者数ダウンロード中\r\n");
                 m_bCoronaFlag = false;
-                m_bCsvExistFlag = true;
+                m_bCovidCsvExistFlag = false;
+                m_bWeatherCsvExistFlag = true;
             }
             else
             {
@@ -338,6 +342,9 @@ namespace teamproject1
             // 指定秒数間隔で呼び出される処理
             TimerCallback callback = state =>
             {
+                // 操作画面に情報表示
+                DispData(m_nPlayCount);
+
                 string strScnName = "";
                 if(m_bCoronaFlag)
                 {
@@ -357,9 +364,6 @@ namespace teamproject1
                 // Takeを別スレッドで実行
                 m_TakeThread = new System.Threading.Thread(new System.Threading.ThreadStart(TakeThread));
                 m_TakeThread.Start();
-
-                // 操作画面に情報表示
-                DispData(m_nPlayCount);
             };
 
             // タイマー起動(0秒後に処理実行、5秒おきに繰り返し)
@@ -580,14 +584,13 @@ namespace teamproject1
             string strCsvPath = $@"{m_strSceneDir}\Data\";
             if (System.IO.File.Exists($"{strCsvPath}新規陽性者数.csv"))
             {
-                if (m_bCsvExistFlag)
+                if (m_bCovidCsvExistFlag)
                 {
                     textBox1.Invoke((MethodInvoker)delegate
                     {
                         textBox1.AppendText("新規陽性者数.csvデータダウンロード完了\r\n");
-                        textBox1.AppendText("《コロナ》\r\n");
                     });
-                    m_bCsvExistFlag = false;
+                    m_bCovidCsvExistFlag = false;
                 }
 
                 Corona.Invoke((MethodInvoker)delegate
@@ -597,6 +600,11 @@ namespace teamproject1
 
                 if (m_bCoronaFlag)
                 {
+                    textBox1.Invoke((MethodInvoker)delegate
+                    {
+                        textBox1.AppendText("《コロナ》\r\n");
+                    });
+
                     Corona.Invoke((MethodInvoker)delegate
                     {
                         Corona.BackgroundImage = Properties.Resources.covid19buttonpush_dimensional;
@@ -605,6 +613,12 @@ namespace teamproject1
                     Weather.Invoke((MethodInvoker)delegate
                     {
                         Weather.BackgroundImage = Properties.Resources.weatherbutton_dimensional;
+                    });
+
+                    MonthCalendar.Invoke((MethodInvoker)delegate
+                    {
+                        MonthCalendar.Visible = true;
+                        MonthCalendar.SelectionStart = MonthCalendar.MaxDate;
                     });
                 }
                 else
@@ -619,25 +633,23 @@ namespace teamproject1
                         Weather.BackgroundImage = Properties.Resources.weatherbuttonsuph_dimensional;
                     });
                 }
-
-                MonthCalendar.Invoke((MethodInvoker)delegate
-                {
-                    MonthCalendar.Visible = true;
-                    MonthCalendar.SelectionStart = MonthCalendar.MaxDate;
-                });
             }
 
             if (System.IO.File.Exists($"{strCsvPath}天気情報.csv"))
             {
-                if (m_bCsvExistFlag)
+                if (m_bWeatherCsvExistFlag)
                 {
                     textBox1.Invoke((MethodInvoker)delegate
                     {
                         textBox1.AppendText("天気情報.csvデータダウンロード完了\r\n");
-                        textBox1.AppendText("《天気》\r\n");
                     });
-                    m_bCsvExistFlag = false;
+                    m_bWeatherCsvExistFlag = false;
                 }
+
+                Weather.Invoke((MethodInvoker)delegate
+                {
+                    Weather.Enabled = true;
+                });
 
                 if (m_bCoronaFlag)
                 {
@@ -653,6 +665,11 @@ namespace teamproject1
                 }
                 else
                 {
+                    textBox1.Invoke((MethodInvoker)delegate
+                    {
+                        textBox1.AppendText("《天気》\r\n");
+                    });
+
                     Corona.Invoke((MethodInvoker)delegate
                     {
                         Corona.BackgroundImage = Properties.Resources.covid19button_dimensional;
@@ -663,11 +680,6 @@ namespace teamproject1
                         Weather.BackgroundImage = Properties.Resources.weatherbuttonsuph_dimensional;
                     });
                 }
-
-                Weather.Invoke((MethodInvoker)delegate
-                {
-                    Weather.Enabled = true;
-                });
             }
 
 
